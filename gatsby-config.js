@@ -27,6 +27,22 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: "gatsby-source-prismic-graphql",
+      options: {
+        repositoryName: "statement", // (REQUIRED, replace with your own)
+        path: "/preview", // (optional preview path. Default: /preview)
+        previews: false, // (optional, activated Previews. Default: false)
+        // pages: [
+        //   {
+        //     type: "Artist", // TypeName from prismic
+        //     match: "/artist/:uid", // Pages will be generated under this pattern
+        //     path: "/artist", // Placeholder page for unpublished documents
+        //     component: require.resolve("./src/page/artist.js"),
+        //   },
+        // ],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
