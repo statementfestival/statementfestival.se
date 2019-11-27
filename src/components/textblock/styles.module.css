@@ -1,0 +1,12 @@
+.textBlock {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.textBlock h2 {
+  color: #FFF800;
+}
+
+.textBlock p {
+  color: #FFF;
+}

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Logo = () => {
+const Logo = styles => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      height="92.68"
-      width="757.62"
+      height="100%"
+      width="100%"
       viewBox="0 0 757.62 92.68"
     >
       <path

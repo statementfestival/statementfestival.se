@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 
 import Page from '../components/page'
 import Hero from '../components/hero'
+import TextBlock from '../components/textblock'
 import SEO from '../components/seo'
 
 export const query = graphql`
@@ -46,7 +47,7 @@ export const query = graphql`
                 label
                 primary {
                   text_block_content
-                  text_block_hero
+                  text_block_title
                 }
               }
             }
@@ -64,6 +65,8 @@ const RenderSlices = ({ slices }) => {
       switch (slice.type) {
         case 'hero':
           return <Hero key={index} slice={slice} />
+        case 'text_block':
+          return <TextBlock key={index} slice={slice} />
         default:
           return
       }

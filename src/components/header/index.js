@@ -3,29 +3,16 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Logo from '../logo'
+import styles from './styles.module.css'
 
 const Header = ({ siteTitle }) => (
-  <header>
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-          <Logo />
-        </Link>
-      </h1>
-    </div>
+  <header className={styles.header}>
+    <Link to="/">
+      <div className={styles.logo}>
+        <Logo />
+      </div>
+      <h1 className={styles.hidden}>{siteTitle}</h1>
+    </Link>
   </header>
 )
 
