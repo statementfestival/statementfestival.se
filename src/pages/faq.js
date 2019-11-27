@@ -1,15 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
+import Page from "../components/page"
 import SEO from "../components/seo"
 
 const FAQPage = () => (
-  <Layout>
+  <Page>
     <SEO title="FAQ" />
     <h1>Vanliga frågor</h1>
     <Link to="/">Gå tillbaka till start</Link>
-  </Layout>
+  </Page>
 )
 
 export default FAQPage

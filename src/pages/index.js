@@ -1,11 +1,11 @@
 import React from "react"
 
-import Layout from "../components/layout"
+import Page from "../components/page"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
-  <Layout>
+  <Page>
     <SEO title="Home" />
     <h1>We are back</h1>
     <p>20 juni 2020</p>
@@ -16,7 +16,7 @@ const IndexPage = () => (
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
-  </Layout>
+  </Page>
 )
 
 export default IndexPage
