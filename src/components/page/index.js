@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Header from "../header"
+import "./global.css"
 import styles from "./styles.module.css"
 
 const Page = ({ children }) => {
