@@ -1,0 +1,22 @@
+.hero {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.title {
+  color: #FFF800;
+}
+
+.subTitle {
+  color: #EB8CB2;
+}
+
+.description,
+.link {
+  color: #FFF;
+}
+
+.link {
+  text-decoration: none;
+  text-align: center;
+}
