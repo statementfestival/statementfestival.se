@@ -1,4 +1,5 @@
 body {
   background: transparent linear-gradient(180deg, #954587 0vh, #393662 50vh, #0D2F51 100vh) 0% 0% no-repeat padding-box;
+  min-height: 100vh;
   width: 100vw;
 }
