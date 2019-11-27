@@ -1,22 +1,36 @@
 .hero {
   text-align: center;
   font-family: sans-serif;
+  padding: 6rem 0;
+}
+
+.title,
+.subTitle {
+  font-family: ActofRejection;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .title {
   color: #FFF800;
+  font-size: 5.5rem;
 }
 
 .subTitle {
   color: #EB8CB2;
+  font-size: 1.8rem;
 }
 
 .description,
 .link {
   color: #FFF;
+  font-family: HKGrotesk;
+  font-weight: 200;
 }
 
 .link {
+  font-weight: 800;
   text-decoration: none;
   text-align: center;
 }
