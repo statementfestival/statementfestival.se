@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
 import SEO from '../components/seo'
@@ -32,7 +31,6 @@ const ContactPage = ({ data }) => {
   return (
     <Page>
       <SEO title="Kontakt" />
-      {RichText.render(doc.node.title)}
       {contacts.map(contact => {
         return (
           <div>

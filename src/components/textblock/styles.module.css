@@ -3,19 +3,7 @@
   font-family: sans-serif;
 }
 
-.textBlock h2,
-.textBlock p {
-  font-family: HKGrotesk;
-}
-
 .textBlock h2 {
-  color: #FFF800;
-  font-size: 3rem;
-  font-weight: 800;
-}
-
-.textBlock p {
-  color: #FFF;
-  font-size: 1.2rem;
-  font-weight: 200;
+  font-size: 3.75rem;
+  line-height: 1.2;
 }
