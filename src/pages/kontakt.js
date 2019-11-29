@@ -31,9 +31,9 @@ const ContactPage = ({ data }) => {
   return (
     <Page>
       <SEO title="Kontakt" />
-      {contacts.map(contact => {
+      {contacts.map((contact, index) => {
         return (
-          <div>
+          <div key={`contactGroup-${index}`}>
             <a href={contact.email_address}>{contact.email_address}</a>
             <p>{contact.description}</p>
           </div>
