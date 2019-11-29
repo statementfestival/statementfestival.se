@@ -36,7 +36,7 @@ const ContactPage = ({ data }) => {
       {doc.node.body[0].fields.map((contact, index) => {
         return (
           <div key={`contactGroup-${index}`}>
-            <a href={contact.email_address}>{contact.email_address}</a>
+            <a href={`mailto:${contact.email_address}`}>{contact.email_address}</a>
             <p>{contact.description}</p>
           </div>
         )
