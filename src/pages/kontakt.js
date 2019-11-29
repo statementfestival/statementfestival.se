@@ -7,14 +7,17 @@ import SEO from '../components/seo'
 export const query = graphql`
   {
     prismic {
-      allContacts {
+      allPages(uid: "kontakt") {
         edges {
           node {
             title
-            _linkType
-            contact_group {
-              description
-              email_address
+            body {
+              ... on PRISMIC_PageBodyContact_group {
+                fields {
+                  description
+                  email_address
+                }
+              }
             }
           }
         }
@@ -24,14 +27,13 @@ export const query = graphql`
 `
 
 const ContactPage = ({ data }) => {
-  const doc = data.prismic.allContacts.edges.slice(0, 1).pop()
+  const doc = data.prismic.allPages.edges.slice(0, 1).pop()
   if (!doc) return null
 
-  const contacts = doc.node.contact_group || []
   return (
     <Page>
       <SEO title="Kontakt" />
-      {contacts.map((contact, index) => {
+      {doc.node.body[0].fields.map((contact, index) => {
         return (
           <div key={`contactGroup-${index}`}>
             <a href={contact.email_address}>{contact.email_address}</a>
