@@ -13,18 +13,24 @@
 }
 
 .title {
-  color: #FFF800;
-  font-size: 5.5rem;
+  color: var(--primary);
+  font-size: 3.2rem;
+}
+
+@media (--desktop) {
+  .title {
+    font-size: 5.5rem;
+  }
 }
 
 .subTitle {
-  color: #EB8CB2;
+  color: var(--secondary);
   font-size: 1.8rem;
 }
 
 .description,
 .link {
-  color: #FFF;
+  color: var(--white);
   font-family: HKGrotesk;
   font-weight: 200;
 }

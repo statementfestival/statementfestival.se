@@ -28,10 +28,16 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-prismic-graphql",
+      resolve: `gatsby-plugin-postcss`,
       options: {
-        repositoryName: "statement", // (REQUIRED, replace with your own)
-        path: "/preview", // (optional preview path. Default: /preview)
+        postCssPlugins: [require(`postcss-preset-env`)({ stage: 1 })],
+      },
+    },
+    {
+      resolve: 'gatsby-source-prismic-graphql',
+      options: {
+        repositoryName: 'statement', // (REQUIRED, replace with your own)
+        path: '/preview', // (optional preview path. Default: /preview)
         previews: false, // (optional, activated Previews. Default: false)
         // pages: [
         //   {
