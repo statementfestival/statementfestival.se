@@ -3,7 +3,7 @@ export const linkResolver = doc => {
     return `/artist/${doc.uid}`
   }
 
-  if (doc.type === 'contact') {
+  if (doc.type === 'page') {
     return `/${doc.uid}`
   }
 
