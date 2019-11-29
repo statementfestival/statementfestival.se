@@ -42,12 +42,12 @@ export const query = graphql`
                   merch_title
                 }
               }
-              ... on PRISMIC_HomepageBodyText_block {
+              ... on PRISMIC_HomepageBodyText {
                 type
                 label
                 primary {
-                  text_block_content
-                  text_block_title
+                  text_content
+                  text_title
                 }
               }
             }
@@ -65,7 +65,7 @@ const RenderSlices = ({ slices }) => {
       switch (slice.type) {
         case 'hero':
           return <Hero key={index} slice={slice} />
-        case 'text_block':
+        case 'text':
           return <TextBlock key={index} slice={slice} />
         default:
           return
