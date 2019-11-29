@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
 import SEO from '../components/seo'
@@ -32,16 +33,17 @@ const ContactPage = ({ data }) => {
 
   return (
     <Page>
-      <SEO title="Kontakt" />
+      <SEO title={RichText.asText(doc.node.title)} />
       {doc.node.body[0].fields.map((contact, index) => {
         return (
           <div key={`contactGroup-${index}`}>
-            <a href={`mailto:${contact.email_address}`}>{contact.email_address}</a>
+            <a href={`mailto:${contact.email_address}`}>
+              {contact.email_address}
+            </a>
             <p>{contact.description}</p>
           </div>
         )
       })}
-      <Link to="/">Gå tillbaka till start</Link>
     </Page>
   )
 }

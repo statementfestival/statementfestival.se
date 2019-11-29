@@ -6,8 +6,12 @@ import styles from './styles.module.css'
 const TextBlock = ({ slice }) => {
   return (
     <div className={styles.textBlock}>
-      {RichText.render(slice.primary.text_title)}
-      {RichText.render(slice.primary.text_content)}
+      {slice.primary.text_title
+        ? RichText.render(slice.primary.text_title)
+        : null}
+      {slice.primary.text_content
+        ? RichText.render(slice.primary.text_content)
+        : null}
     </div>
   )
 }

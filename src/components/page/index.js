@@ -38,13 +38,13 @@ const Page = ({ children }) => {
         if (!doc) return null
 
         return (
-          <>
+          <div className={styles.page}>
             <Header siteTitle={doc.node.site_title} />
             <div className={styles.container}>
               <main>{children}</main>
               <Footer />
             </div>
-          </>
+          </div>
         )
       }}
     />

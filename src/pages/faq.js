@@ -1,15 +1,41 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
 import SEO from '../components/seo'
 
-const FAQPage = () => (
-  <Page>
-    <SEO title="FAQ" />
-    <h1>Vanliga frågor</h1>
-    <Link to="/">Gå tillbaka till start</Link>
-  </Page>
-)
+export const query = graphql`
+  {
+    prismic {
+      allPages(uid: "faq") {
+        edges {
+          node {
+            title
+            body {
+              ... on PRISMIC_PageBodyContact_group {
+                fields {
+                  description
+                  email_address
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
-export default FAQPage
+const FAQ = ({ data }) => {
+  const doc = data.prismic.allPages.edges.slice(0, 1).pop()
+  if (!doc) return null
+
+  return (
+    <Page>
+      <SEO title={RichText.asText(doc.node.title)} />
+    </Page>
+  )
+}
+
+export default FAQ

@@ -17,23 +17,28 @@
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2') format('woff2'),
+  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2')
+      format('woff2'),
     url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff') format('woff');
   font-weight: 200;
 }
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2') format('woff2'),
+  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2')
+      format('woff2'),
     url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff') format('woff');
   font-weight: 800;
 }
 
 body {
-  background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0% no-repeat padding-box;
+  background: transparent
+    linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0%
+    no-repeat padding-box;
   font-size: 18px;
   min-height: 100vh;
   width: 100vw;
+  margin: 0;
 }
 
 h1,
@@ -43,7 +48,7 @@ h4,
 h5,
 h6,
 a {
-  color: #FFF800;
+  color: #fff800;
   font-family: HKGrotesk;
   font-weight: 800;
 }
