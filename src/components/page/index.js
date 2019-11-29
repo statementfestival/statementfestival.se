@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql, Link } from 'gatsby'
 
 import Header from '../header'
-import './global.css'
+import './theme.css'
 import styles from './styles.module.css'
 
 /**
