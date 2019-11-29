@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
