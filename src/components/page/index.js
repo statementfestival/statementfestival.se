@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql, Link } from 'gatsby'
 
 import Header from '../header'
+import Footer from '../footer'
 import './theme.css'
 import styles from './styles.module.css'
 
@@ -41,11 +42,7 @@ const Page = ({ children }) => {
             <Header siteTitle={doc.node.site_title} />
             <div className={styles.container}>
               <main>{children}</main>
-              <footer>
-                <Link to="/kontakt/">Kontakt</Link>
-                <Link to="/faq/">FAQ</Link>
-                <Link to="/partners/">Partners</Link>
-              </footer>
+              <Footer />
             </div>
           </>
         )
