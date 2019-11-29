@@ -81,7 +81,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Page>
-      <SEO title="Home" />
+      <SEO title="Statement" />
       <RenderSlices slices={doc.node.body} />
     </Page>
   )
