@@ -4,6 +4,6 @@
 }
 
 .textBlock h2 {
-  font-size: 3.75rem;
+  font-size: var(--font-size-headline);
   line-height: 1.2;
 }

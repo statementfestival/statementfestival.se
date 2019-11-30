@@ -7,6 +7,12 @@
 }
 
 .container {
-  max-width: 542px;
-  padding: 0px 1.0875rem 1.45rem;
+  margin: 0 3.9rem 1.45rem;
+}
+
+@media (--desktop) {
+  .container {
+    max-width: 542px;
+    margin: 0 1.0875rem 1.45rem;
+  }
 }

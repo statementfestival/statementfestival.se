@@ -14,18 +14,12 @@
 
 .title {
   color: var(--primary);
-  font-size: 3.2rem;
-}
-
-@media (--desktop) {
-  .title {
-    font-size: 5.5rem;
-  }
+  font-size: var(--font-size-display-headline);
 }
 
 .subTitle {
   color: var(--secondary);
-  font-size: 1.8rem;
+  font-size: var(--font-size-display-sub);
 }
 
 .description,

@@ -3,9 +3,25 @@
 @custom-media --desktop (min-width: 1200px);
 
 :root {
+  --font-family-display: ActOfRejection, serif;
+  --font-family-sans-serif: HKGrotesk, sans-serif;
+
   --primary: #fff800;
   --secondary: #eb8cb2;
   --white: #ffffff;
+
+  --font-size-display-headline: 3.2rem;
+  --font-size-display-sub: 1.2rem;
+  --font-size-headline: 3.75rem;
+  --font-size-text: 1.2rem;
+}
+
+@media (--tablet), (--desktop) {
+  :root {
+    --font-size-display-headline: 5.3rem;
+    --font-size-headline: 3.75rem;
+    --font-size-text: 1.25rem;
+  }
 }
 
 /**
@@ -45,7 +61,6 @@ body {
   background: transparent
     linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0%
     no-repeat padding-box;
-  font-size: 18px;
   min-height: 100vh;
   width: 100vw;
   margin: 0;
@@ -58,15 +73,15 @@ h4,
 h5,
 h6,
 a {
-  color: #fff800;
+  color: var(--primary);
   font-family: HKGrotesk;
   font-weight: 800;
 }
 
 p {
-  color: #fff;
+  color: var(--white);
   font-family: HKGrotesk;
   font-weight: 200;
-  font-size: 1.25rem;
+  font-size: var(--font-size-text);
   line-height: 1.4;
 }

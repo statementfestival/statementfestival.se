@@ -1,10 +1,17 @@
 .header {
-  padding: 2rem;
+  padding-top: 2rem;
 }
 
 .logo {
   width: 277px;
+  width: 9.375rem;
   margin: 0 auto;
+}
+
+@media (--desktop) {
+  .logo {
+    width: 17.3rem;
+  }
 }
 
 .hidden {
