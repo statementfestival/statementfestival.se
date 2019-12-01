@@ -1,0 +1,34 @@
+.merch {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  z-index: -1;
+}
+
+.titleContainer {
+  position: absolute;
+  top: 30%;
+  width: 100vw;
+  left: calc(-1 * var(--main-container-horizontal-spacing-mobile));
+  overflow: hidden;
+}
+
+.title {
+  font-size: 4rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+@media (--tablet), (--desktop) {
+  .titleContainer {
+    left: calc(-50vw + (var(--main-container-desktop-width) / 2));
+  }
+
+  .title {
+    font-size: 12.5rem;
+  }
+}
