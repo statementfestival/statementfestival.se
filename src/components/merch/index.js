@@ -2,20 +2,32 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 import styles from './styles.module.css'
 
+// TODO: Move this to utils file
+const isClient = () =>
+  !!(
+    typeof window !== 'undefined' &&
+    window.document &&
+    window.document.createElement
+  )
+
 const Merch = ({ slice }) => {
   const [playing, setPlaying] = useState(false)
   const [visibilityIndex, setVisibility] = useState(0)
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.intersectionRatio === 1 && !playing) {
-          setPlaying(true)
-        }
-      })
-    },
-    { threshold: 1 }
-  )
+  let observer
+
+  if (isClient()) {
+    observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio === 1 && !playing) {
+            setPlaying(true)
+          }
+        })
+      },
+      { threshold: 1 }
+    )
+  }
 
   const ref = useCallback(
     node => {
