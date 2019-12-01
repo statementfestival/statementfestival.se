@@ -4,7 +4,7 @@ import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
 import SEO from '../components/seo'
-import TextBlock from '../components/textblock'
+import Text from '../components/text'
 
 export const query = graphql`
   {
@@ -35,7 +35,7 @@ const PartnersPage = ({ data }) => {
   return (
     <Page>
       <SEO title={RichText.asText(doc.node.title)} />
-      <TextBlock slice={doc.node.body[0]} />
+      <Text slice={doc.node.body[0]} />
     </Page>
   )
 }

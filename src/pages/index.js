@@ -3,7 +3,8 @@ import { graphql } from 'gatsby'
 
 import Page from '../components/page'
 import Hero from '../components/hero'
-import TextBlock from '../components/textblock'
+import Text from '../components/text'
+import Merch from '../components/merch'
 import SEO from '../components/seo'
 
 export const query = graphql`
@@ -31,7 +32,6 @@ export const query = graphql`
               }
               ... on PRISMIC_HomepageBodyMerch {
                 type
-                label
                 primary {
                   merch_link_address {
                     ... on PRISMIC__ExternalLink {
@@ -40,11 +40,14 @@ export const query = graphql`
                   }
                   merch_link_title
                   merch_title
+                  merch_link_title_hover
+                }
+                fields {
+                  merch_image
                 }
               }
               ... on PRISMIC_HomepageBodyText {
                 type
-                label
                 primary {
                   text_content
                   text_title
@@ -66,7 +69,9 @@ const RenderSlices = ({ slices }) => {
         case 'hero':
           return <Hero key={index} slice={slice} />
         case 'text':
-          return <TextBlock key={index} slice={slice} />
+          return <Text key={index} slice={slice} />
+        case 'merch':
+          return <Merch key={index} slice={slice} />
         default:
           return
       }

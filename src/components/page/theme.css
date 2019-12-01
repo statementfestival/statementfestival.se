@@ -14,6 +14,8 @@
   --font-size-display-sub: 1.2rem;
   --font-size-headline: 3.75rem;
   --font-size-text: 1.2rem;
+  --main-container-desktop-width: 542px;
+  --main-container-horizontal-spacing-mobile: 3.9rem;
 }
 
 @media (--tablet), (--desktop) {
