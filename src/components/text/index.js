@@ -3,7 +3,7 @@ import { RichText } from 'prismic-reactjs'
 
 import styles from './styles.module.css'
 
-const TextBlock = ({ slice }) => {
+const Text = ({ slice }) => {
   return (
     <div className={styles.textBlock}>
       {slice.primary.text_title
@@ -16,4 +16,4 @@ const TextBlock = ({ slice }) => {
   )
 }
 
-export default TextBlock
+export default Text
