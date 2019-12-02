@@ -1,8 +1,6 @@
 .hero {
-  text-align: center;
   font-family: sans-serif;
-  margin-bottom: 25rem;
-  /* TODO: Figure out where the above belongs */
+  text-align: center;
 }
 
 .title,
