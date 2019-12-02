@@ -1,4 +1,5 @@
 .merch {
+  align-items: center;
   display: flex;
   height: 50vh;
   justify-content: center;
@@ -24,22 +25,19 @@
 .titleContainer {
   left: 0;
   position: absolute;
-  top: 20%;
+  top: 40%;
   width: 100%;
 }
 
 .title {
   font-size: 4rem;
-  text-transform: uppercase;
+  margin: 0;
   text-align: center;
+  text-transform: uppercase;
 }
 
 /* Design exception for content to fit really small screens */
 @media (--mobile-smallest) {
-  .titleContainer {
-    top: 30%;
-  }
-
   .title {
     font-size: 3rem;
   }
@@ -47,23 +45,39 @@
 
 @media (--tablet-up) {
   .merch {
-    height: 80vh;
-  }
-
-  .image {
-    max-width: 90%;
-  }
-
-  .image:nth-of-type(3n+1) {
-    margin-right: auto;
-  }
-
-  .image:nth-of-type(3n+3) {
-    margin-left: auto;
+    height: 488px;
   }
 
   .titleContainer {
-    top: 0;
+    top: 35%;
+  }
+
+  .title {
+    font-size: 8rem;
+  }
+
+  /* First of three */
+  .image:nth-of-type(3n+1) {
+    width: 486px;
+    margin-right: auto;
+  }
+
+  /* Middle image */
+  .image:nth-of-type(3n+2) {
+    margin-left: auto;
+    width: 325px;
+  }
+
+  /* Last of three */
+  .image:nth-of-type(3n+3) {
+    margin: 0 auto;
+    width: var(--container-desktop-width);
+  }
+}
+
+@media (--desktop-up) {
+  .titleContainer {
+    top: 25%;
   }
 
   .title {
