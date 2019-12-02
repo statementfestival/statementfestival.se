@@ -61,7 +61,7 @@ const Footer = () => (
 
       return (
         <footer className={styles.footer}>
-          <div className={styles.items}>
+          <div className={styles.footerLinks}>
             {internalLinks.map((internal, index) => (
               <Link
                 className={styles.link}
@@ -72,7 +72,7 @@ const Footer = () => (
               </Link>
             ))}
           </div>
-          <div className={styles.items}>
+          <div className={styles.footerSocials}>
             {socials.map((item, index) => (
               <a
                 className={styles.social}
