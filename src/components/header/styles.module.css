@@ -28,6 +28,12 @@
   text-transform: lowercase;
 }
 
+@media (--mobile-only) {
+  .visible {
+    line-height: 0.5;
+  }
+}
+
 @media (--tablet-up) {
   .logo {
     width: 17.3rem;

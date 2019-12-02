@@ -6,7 +6,6 @@ import Header from '../header'
 import Footer from '../footer'
 import PageSection from '../pageSection'
 
-import './theme.css'
 import styles from './styles.module.css'
 
 /**
