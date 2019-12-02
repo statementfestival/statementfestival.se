@@ -8,7 +8,7 @@
   margin: 0 auto;
 }
 
-@media (--desktop) {
+@media (--tablet-up) {
   .logo {
     width: 17.3rem;
   }

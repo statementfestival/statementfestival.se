@@ -1,7 +1,7 @@
 @custom-media --mobile-smallest (max-width: 320px);
 @custom-media --mobile-only (max-width: 899px);
-@custom-media --tablet (min-width: 900px);
-@custom-media --desktop (min-width: 1200px);
+@custom-media --tablet-up (min-width: 900px);
+@custom-media --desktop-up (min-width: 1200px);
 
 :root {
   --font-family-display: ActOfRejection, serif;
@@ -20,8 +20,7 @@
   --container-horizontal-spacing-mobile: 3.9rem;
 }
 
-@media (--tablet),
-(--desktop) {
+@media (--tablet-up) {
   :root {
     --font-size-display-headline: 5.3rem;
     --font-size-headline: 3.75rem;

@@ -45,8 +45,7 @@
   }
 }
 
-@media (--tablet),
-(--desktop) {
+@media (--tablet-up) {
   .merch {
     height: 80vh;
   }

@@ -2,6 +2,7 @@
 .containerLarge {
   box-sizing: border-box;
   width: 100%;
+  border: 1px solid red;
 }
 
 .container {
@@ -15,8 +16,7 @@
   }
 }
 
-@media (--tablet),
-(--desktop) {
+@media (--tablet-up) {
 
   .container,
   .containerLarge {
