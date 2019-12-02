@@ -56,6 +56,13 @@
 
 @font-face {
   font-family: HKGrotesk;
+  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2') format('woff2'),
+    url('../../fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff') format('woff');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: HKGrotesk;
   src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2') format('woff2'),
     url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff') format('woff');
   font-weight: 800;
