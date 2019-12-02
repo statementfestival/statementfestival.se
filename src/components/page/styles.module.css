@@ -1,18 +1,13 @@
 .page {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  box-sizing: border-box;
+  margin: 0 0 1.45rem;
   min-height: 100vh;
 }
 
-.container {
-  margin: 0 3.9rem 1.45rem;
-}
-
-@media (--tablet), (--desktop) {
-  .container {
-    max-width: var(--main-container-desktop-width);
-    margin: 0 1.0875rem 1.45rem;
-  }
+.page,
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

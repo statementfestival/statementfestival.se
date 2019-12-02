@@ -4,6 +4,8 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from '../header'
 import Footer from '../footer'
+import PageSection from '../pageSection'
+
 import './theme.css'
 import styles from './styles.module.css'
 
@@ -39,11 +41,13 @@ const Page = ({ children }) => {
 
         return (
           <div className={styles.page}>
-            <Header siteTitle={doc.node.site_title} />
-            <div className={styles.container}>
-              <main>{children}</main>
+            <PageSection>
+              <Header siteTitle={doc.node.site_title} />
+            </PageSection>
+            <main className={styles.main}>{children}</main>
+            <PageSection>
               <Footer />
-            </div>
+            </PageSection>
           </div>
         )
       }}
@@ -52,7 +56,7 @@ const Page = ({ children }) => {
 }
 
 Page.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default Page

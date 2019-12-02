@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
+import PageSection from '../components/pageSection'
 import SEO from '../components/seo'
 import Text from '../components/text'
 
@@ -35,7 +36,9 @@ const PartnersPage = ({ data }) => {
   return (
     <Page>
       <SEO title={RichText.asText(doc.node.title)} />
-      <Text slice={doc.node.body[0]} />
+      <PageSection>
+        <Text slice={doc.node.body[0]} />
+      </PageSection>
     </Page>
   )
 }

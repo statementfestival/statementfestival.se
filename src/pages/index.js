@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Page from '../components/page'
+import PageSection from '../components/pageSection'
 import Hero from '../components/hero'
 import Text from '../components/text'
 import Merch from '../components/merch'
@@ -67,11 +68,23 @@ const RenderSlices = ({ slices }) => {
     const res = (() => {
       switch (slice.type) {
         case 'hero':
-          return <Hero key={index} slice={slice} />
+          return (
+            <PageSection key={index}>
+              <Hero slice={slice} />
+            </PageSection>
+          )
         case 'text':
-          return <Text key={index} slice={slice} />
+          return (
+            <PageSection key={index}>
+              <Text slice={slice} />
+            </PageSection>
+          )
         case 'merch':
-          return <Merch key={index} slice={slice} />
+          return (
+            <PageSection size="large" key={index}>
+              <Merch slice={slice} />
+            </PageSection>
+          )
         default:
           return
       }

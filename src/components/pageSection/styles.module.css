@@ -1,0 +1,35 @@
+.container,
+.containerLarge {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.container {
+  padding: 0 2.8rem;
+}
+
+/* Design exception for content to fit really small screens */
+@media (--mobile-smallest) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (--tablet),
+(--desktop) {
+
+  .container,
+  .containerLarge {
+    margin: 0 1.0875rem;
+  }
+
+  .container {
+    width: var(--container-desktop-width);
+    max-width: 100vw;
+  }
+
+  .containerLarge {
+    width: var(--container-large-desktop-width);
+    max-width: 100vw;
+  }
+}
