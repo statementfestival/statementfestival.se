@@ -1,7 +1,12 @@
 .container,
-.containerLarge {
+.containerLarge,
+.containerFull {
   box-sizing: border-box;
   width: 100%;
+}
+
+.containerFull {
+  width: 100vw;
 }
 
 .container {

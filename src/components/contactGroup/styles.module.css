@@ -1,0 +1,19 @@
+.link,
+.description {
+  display: block;
+  text-align: center;
+}
+
+.link {
+  font-size: 1.5rem;
+}
+
+.description {
+  font-size: var(--font-size-text);
+}
+
+@media (--tablet-up) {
+  .link {
+    font-size: var(--font-size-headline);
+  }
+}

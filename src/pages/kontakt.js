@@ -4,6 +4,7 @@ import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
+import ContactGroup from '../components/contactGroup'
 import SEO from '../components/seo'
 
 export const query = graphql`
@@ -35,17 +36,8 @@ const ContactPage = ({ data }) => {
   return (
     <Page>
       <SEO title={RichText.asText(doc.node.title)} />
-      <PageSection>
-        {doc.node.body[0].fields.map((contact, index) => {
-          return (
-            <div key={`contactGroup-${index}`}>
-              <a href={`mailto:${contact.email_address}`}>
-                {contact.email_address}
-              </a>
-              <p>{contact.description}</p>
-            </div>
-          )
-        })}
+      <PageSection size="full">
+        <ContactGroup slice={doc.node.body[0]} />
       </PageSection>
     </Page>
   )
