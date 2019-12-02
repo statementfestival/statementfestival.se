@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 import { isClient } from '../../utils'
 
+import ExternalLink from '../externalLink'
+
 import styles from './styles.module.css'
 
 /**
@@ -60,18 +62,33 @@ const Merch = ({ slice }) => {
 
   return (
     <div className={styles.merch} ref={ref}>
-      {images.map((image, index) => {
-        return (
-          <img
-            key={`merchImage-${index}`}
-            className={visibilityIndex === index ? styles.image : styles.hidden}
-            src={image.url}
-            alt={image.alt}
-          />
-        )
-      })}
-      <div className={styles.titleContainer}>
-        <h3 className={styles.title}>{words[visibilityIndex]}</h3>
+      <div className={styles.content}>
+        {images.map((image, index) => {
+          return (
+            <img
+              key={`merchImage-${index}`}
+              className={
+                visibilityIndex === index ? styles.image : styles.hidden
+              }
+              src={image.url}
+              alt={image.alt}
+            />
+          )
+        })}
+        <div className={styles.titleContainer}>
+          <h3 className={styles.title}>{words[visibilityIndex]}</h3>
+        </div>
+      </div>
+      <div className={styles.linkContainer}>
+        <ExternalLink
+          href={
+            slice.primary.merch_link_address
+              ? slice.primary.merch_link_address.url
+              : ''
+          }
+          title={slice.primary.merch_link_title}
+          hoverTitle={slice.primary.merch_link_title_hover}
+        />
       </div>
     </div>
   )

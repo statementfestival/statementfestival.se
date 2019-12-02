@@ -9,12 +9,14 @@
 
   --primary: #fff800;
   --secondary: #eb8cb2;
+  --secondary-variant: #D65D87;
   --white: #ffffff;
 
   --font-size-display-headline: 3.2rem;
   --font-size-display-sub: 1.2rem;
   --font-size-headline: 3.75rem;
   --font-size-text: 1.2rem;
+  --font-size-button: 1.125rem;
   --container-desktop-width: 542px;
   --container-large-desktop-width: 1122px;
   --container-horizontal-spacing-mobile: 3.9rem;

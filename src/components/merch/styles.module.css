@@ -1,10 +1,19 @@
 .merch {
+  margin-bottom: 5rem;
+}
+
+.content {
   align-items: center;
   display: flex;
   height: 50vh;
   justify-content: center;
+  margin-bottom: 4rem;
   overflow: hidden;
   position: relative;
+}
+
+.linkContainer {
+  display: flex;
 }
 
 .hidden {
@@ -44,7 +53,7 @@
 }
 
 @media (--tablet-up) {
-  .merch {
+  .content {
     height: 488px;
   }
 
