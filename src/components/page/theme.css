@@ -1,3 +1,4 @@
+@custom-media --mobile-smallest (max-width: 320px);
 @custom-media --mobile-only (max-width: 899px);
 @custom-media --tablet (min-width: 900px);
 @custom-media --desktop (min-width: 1200px);
@@ -14,11 +15,13 @@
   --font-size-display-sub: 1.2rem;
   --font-size-headline: 3.75rem;
   --font-size-text: 1.2rem;
-  --main-container-desktop-width: 542px;
-  --main-container-horizontal-spacing-mobile: 3.9rem;
+  --container-desktop-width: 542px;
+  --container-large-desktop-width: 1122px;
+  --container-horizontal-spacing-mobile: 3.9rem;
 }
 
-@media (--tablet), (--desktop) {
+@media (--tablet),
+(--desktop) {
   :root {
     --font-size-display-headline: 5.3rem;
     --font-size-headline: 3.75rem;
@@ -45,24 +48,20 @@
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2')
-      format('woff2'),
+  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2') format('woff2'),
     url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff') format('woff');
   font-weight: 200;
 }
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2')
-      format('woff2'),
+  src: url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2') format('woff2'),
     url('../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff') format('woff');
   font-weight: 800;
 }
 
 body {
-  background: transparent
-    linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0%
-    no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0% no-repeat padding-box;
   min-height: 100vh;
   width: 100vw;
   margin: 0;
