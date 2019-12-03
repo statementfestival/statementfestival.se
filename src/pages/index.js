@@ -1,12 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
-import PageSection from '../components/pageSection'
-import Hero from '../components/hero'
-import Text from '../components/text'
-import Merch from '../components/merch'
 import SEO from '../components/seo'
+import SliceRenderer from '../components/sliceRenderer'
 
 export const query = graphql`
   {
@@ -15,6 +13,7 @@ export const query = graphql`
       allHomepages {
         edges {
           node {
+            title
             body {
               ... on PRISMIC_HomepageBodyHero {
                 type
@@ -63,44 +62,14 @@ export const query = graphql`
   }
 `
 
-const RenderSlices = ({ slices }) => {
-  return slices.map((slice, index) => {
-    const res = (() => {
-      switch (slice.type) {
-        case 'hero':
-          return (
-            <PageSection key={index}>
-              <Hero slice={slice} />
-            </PageSection>
-          )
-        case 'text':
-          return (
-            <PageSection key={index}>
-              <Text slice={slice} />
-            </PageSection>
-          )
-        case 'merch':
-          return (
-            <PageSection size="large" key={index}>
-              <Merch slice={slice} />
-            </PageSection>
-          )
-        default:
-          return
-      }
-    })()
-    return res
-  })
-}
-
 const IndexPage = ({ data }) => {
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
   if (!doc) return null
 
   return (
     <Page>
-      <SEO title="Statement" />
-      <RenderSlices slices={doc.node.body} />
+      <SEO title={RichText.asText(doc.node.title)} />
+      <SliceRenderer slices={doc.node.body} />
     </Page>
   )
 }
