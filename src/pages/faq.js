@@ -4,6 +4,7 @@ import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
 import SEO from '../components/seo'
+import SliceRenderer from '../components/sliceRenderer'
 
 export const query = graphql`
   {
@@ -13,11 +14,15 @@ export const query = graphql`
           node {
             title
             body {
-              ... on PRISMIC_PageBodyContact_group {
+              ... on PRISMIC_PageBodyFaq {
                 fields {
-                  description
-                  email_address
+                  faq_question
+                  faq_answer
                 }
+                primary {
+                  faq_title
+                }
+                type
               }
             }
           }
@@ -31,9 +36,12 @@ const FAQ = ({ data }) => {
   const doc = data.prismic.allPages.edges.slice(0, 1).pop()
   if (!doc) return null
 
+  const slices = doc.node.body.filter(item => item.type === 'faq')
+
   return (
     <Page>
       <SEO title={RichText.asText(doc.node.title)} />
+      <SliceRenderer slices={slices} />
     </Page>
   )
 }

@@ -3,9 +3,8 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
-import PageSection from '../components/pageSection'
-import ContactGroup from '../components/contactGroup'
 import SEO from '../components/seo'
+import SliceRenderer from '../components/sliceRenderer'
 
 export const query = graphql`
   {
@@ -20,6 +19,7 @@ export const query = graphql`
                   description
                   email_address
                 }
+                type
               }
             }
           }
@@ -36,9 +36,7 @@ const ContactPage = ({ data }) => {
   return (
     <Page>
       <SEO title={RichText.asText(doc.node.title)} />
-      <PageSection size="full">
-        <ContactGroup slice={doc.node.body[0]} />
-      </PageSection>
+      <SliceRenderer slices={doc.node.body} />
     </Page>
   )
 }
