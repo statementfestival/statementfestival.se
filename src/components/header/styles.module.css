@@ -18,20 +18,14 @@
 }
 
 .visible {
+  display: block;
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.5rem;
-  margin: 0;
-  /* Below is needed to compensate for letter-spacing */
-  margin-left: 0.5rem;
+  /* Left margin is needed to compensate for letter-spacing */
+  margin: 0.1rem 0 0 0.2rem;
   text-align: center;
   text-transform: lowercase;
-}
-
-@media (--mobile-only) {
-  .visible {
-    line-height: 0.5;
-  }
 }
 
 @media (--tablet-up) {
@@ -41,6 +35,7 @@
 
   .visible {
     font-size: 1.75rem;
+    margin: 0.3rem 0 0 0.2rem;
   }
 }
 
