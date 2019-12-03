@@ -9,9 +9,11 @@ const Text = ({ slice }) => {
       {slice.primary.text_title
         ? RichText.render(slice.primary.text_title)
         : null}
-      {slice.primary.text_content
-        ? RichText.render(slice.primary.text_content)
-        : null}
+      {slice.primary.text_content ? (
+        <div className={styles.content}>
+          {RichText.render(slice.primary.text_content)}
+        </div>
+      ) : null}
     </div>
   )
 }
