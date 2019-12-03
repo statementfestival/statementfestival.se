@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
+import Parallax from '../components/parallax'
 import SEO from '../components/seo'
 import SliceRenderer from '../components/sliceRenderer'
 
@@ -69,6 +70,7 @@ const IndexPage = ({ data }) => {
   return (
     <Page>
       <SEO title={RichText.asText(doc.node.title)} />
+      <Parallax />
       <SliceRenderer slices={doc.node.body} />
     </Page>
   )
