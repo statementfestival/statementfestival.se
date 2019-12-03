@@ -25,6 +25,7 @@
   .container,
   .containerLarge {
     margin: 0 1.0875rem;
+    padding: 0;
   }
 
   .container {
