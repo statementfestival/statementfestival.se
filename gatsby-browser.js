@@ -1,4 +1,5 @@
 require('./src/styles/global.css')
+require('normalize.css')
 const { registerLinkResolver } = require('gatsby-source-prismic-graphql')
 const { linkResolver } = require('./src/utils/linkResolver')
 registerLinkResolver(linkResolver)
