@@ -21,8 +21,10 @@ const Merch = ({ slice }) => {
   if (isClient()) {
     observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (entry.intersectionRatio >= 0.1 && !playing) {
+        if (entry.isIntersecting && !playing) {
           setPlaying(true)
+        } else if (!entry.isIntersecting && playing) {
+          setPlaying(false)
         }
       })
     })
