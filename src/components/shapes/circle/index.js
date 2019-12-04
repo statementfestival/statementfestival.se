@@ -44,13 +44,13 @@ const Circle = ({
         '--top': top !== null ? `${top}%` : 'initial',
         '--transform': `-${progress * speed * 10}vh`
       }}
-      className={styles[`${color}Circle`]}
+      className={styles.circle}
       height="100%"
       viewBox="0 0 100 100"
       width="100%"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle fill="currentColor" cx="50" cy="50" r="50" />
+      <circle fill="#eb8cb2" cx="50" cy="50" r="50" />
     </svg>
   )
 }
