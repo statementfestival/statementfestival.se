@@ -24,6 +24,7 @@
 }
 
 .secondCircle,
+.fourthCircle,
 .sixthCircle {
   height: 10.5rem;
   width: 10.5rem;
@@ -64,11 +65,29 @@
   .fifthCircle,
   .organicRight {
     display: block;
-    border: 2px solid gold;
+  }
+
+  .firstCircle,
+  .thirdCircle,
+  .fifthCircle {
+    height: 5.3rem;
+    width: 5.3rem;
+  }
+
+  .secondCircle,
+  .sixthCircle {
+    height: 27rem;
+    width: 27rem;
+  }
+
+
+  .secondCircle {
+    right: -10%;
+    top: -2%;
   }
 
   .thirdCircle {
-    left: 9%;
+    left: 15%;
     top: 42%;
   }
 
@@ -82,10 +101,25 @@
     right: 20%;
   }
 
+  .sixthCircle {
+    bottom: -35%;
+    left: -15%;
+  }
+
   .organicLeft,
   .organicRight {
     display: block;
     width: 38vw;
     z-index: 1;
+  }
+
+  .organicLeft {
+    left: 0;
+    top: 23%;
+  }
+
+  .organicRight {
+    right: 0;
+    bottom: -50%
   }
 }
