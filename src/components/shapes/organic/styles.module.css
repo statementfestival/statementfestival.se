@@ -1,0 +1,16 @@
+.shape {
+  display: var(--displayOnMobile, 'none');
+  height: auto;
+  position: absolute;
+  transform: translateY(var(--transform, 0));
+  width: 150vw;
+  z-index: -1;
+}
+
+@media (--tablet-up) {
+  .shape {
+    display: block;
+    width: 38vw;
+    z-index: 1;
+  }
+}

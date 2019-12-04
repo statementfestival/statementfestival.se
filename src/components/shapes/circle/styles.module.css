@@ -1,0 +1,24 @@
+.circle {
+  display: var(--displayOnMobile, 'none');
+  position: absolute;
+  width: calc(var(--diameter, 100%) / 2);
+  height: calc(var(--diameter, 100%) / 2);
+  transform: translateY(var(--transform, 0));
+  top: calc(var(--top, 0) / 2);
+  bottom: calc(var(--bottom, 0) / 2);
+  left: calc(var(--left, 0) / 2);
+  right: calc(var(--right, 0) / 2);
+  z-index: -1;
+}
+
+@media (--tablet-up) {
+  .circle {
+    display: block;
+    width: var(--diameter, 100%);
+    height: var(--diameter, 100%);
+    top: var(--top, 'initial');
+    bottom: var(--bottom, 'initial');
+    left: var(--left, 'initial');
+    right: var(--right, 'initial');
+  }
+}
