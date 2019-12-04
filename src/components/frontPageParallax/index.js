@@ -5,6 +5,11 @@ import Organic from './shapes/organic.js'
 
 import styles from './styles.module.css'
 
+/**
+ * Custom made component that is used on front page
+ * to create a parallax effect based on scroll progress.
+ * Progress goes from 0 (at top of page) to 1 (at bottom of page).
+ */
 const FrontPageParallax = ({ progress = 0 }) => (
   <>
     <Circle

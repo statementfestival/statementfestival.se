@@ -1,24 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 /**
- * SVG circle that creates a parallax effect based on props like speed and progress.
- * Speed is an arbitrary value that could be improved, progress goes from 0
- * (at top of page) to 1 (at bottom of page).
- *
- * Required props:
- * - speed
- * - progress
- *
- * Optional props:
- * - bottom
- * - color
- * - displayOnMobile
- * - left
- * - right
- * - top
+ * SVG circle that is used to create a parallax effect
  */
-
 const Circle = ({ className, style }) => {
   return (
     <svg
@@ -33,30 +17,6 @@ const Circle = ({ className, style }) => {
       <circle fill="#eb8cb2" cx="50" cy="50" r="50" />
     </svg>
   )
-}
-
-Circle.propTypes = {
-  bottom: PropTypes.number,
-  color: PropTypes.string,
-  diameter: PropTypes.number,
-  displayOnMobile: PropTypes.bool,
-  left: PropTypes.number,
-  progress: PropTypes.number.isRequired,
-  right: PropTypes.number,
-  speed: PropTypes.number.isRequired,
-  top: PropTypes.number
-}
-
-Circle.defaultProps = {
-  bottom: null,
-  color: 'primary',
-  diameter: 85,
-  displayOnMobile: false,
-  left: null,
-  progress: 0,
-  right: null,
-  speed: 1,
-  top: null
 }
 
 export default Circle

@@ -1,25 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 /**
- * SVG shape that creates a parallax effect based on props like speed and progress.
- * Speed is an arbitrary value that could be improved, progress goes from 0
- * (at top of page) to 1 (at bottom of page).
- *
- * Required props:
- * - speed
- * - progress
- *
- * Optional props:
- * - left
- * - right
- * - top
- * - bottom
- * - flipped
- * - displayOnMobile
+ * SVG shape that is used to create a parallax effect
  */
-
-const Organic = ({ className, flipped, style }) => {
+const Organic = ({ className = {}, flipped = false, style = {} }) => {
   return (
     <svg
       pointerEvents="none"
@@ -45,18 +29,6 @@ const Organic = ({ className, flipped, style }) => {
       )}
     </svg>
   )
-}
-
-Organic.propTypes = {
-  flipped: PropTypes.bool,
-  className: PropTypes.object,
-  style: PropTypes.object
-}
-
-Organic.defaultProps = {
-  flipped: false,
-  className: {},
-  style: {}
 }
 
 export default Organic
