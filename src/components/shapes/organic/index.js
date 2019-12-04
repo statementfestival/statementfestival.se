@@ -3,6 +3,24 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
+/**
+ * SVG shape that creates a parallax effect based on props like speed and progress.
+ * Speed is an arbitrary value that could be improved, progress goes from 0
+ * (at top of page) to 1 (at bottom of page).
+ *
+ * Required props:
+ * - speed
+ * - progress
+ *
+ * Optional props:
+ * - left
+ * - right
+ * - top
+ * - bottom
+ * - flipped
+ * - displayOnMobile
+ */
+
 const Organic = ({
   left,
   right,
@@ -26,8 +44,8 @@ const Organic = ({
         ...(bottom !== null && { bottom: `${bottom}%` })
       }}
       className={styles.shape}
-      width="510.358"
-      height="564.856"
+      width="100%"
+      height="100%"
       viewBox="0 0 510.358 564.856"
     >
       {flipped ? (

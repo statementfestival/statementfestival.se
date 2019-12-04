@@ -3,31 +3,51 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
+/**
+ * SVG circle that creates a parallax effect based on props like speed and progress.
+ * Speed is an arbitrary value that could be improved, progress goes from 0
+ * (at top of page) to 1 (at bottom of page).
+ *
+ * Required props:
+ * - speed
+ * - progress
+ *
+ * Optional props:
+ * - bottom
+ * - color
+ * - displayOnMobile
+ * - left
+ * - right
+ * - top
+ */
+
 const Circle = ({
+  bottom,
   color,
   diameter,
+  displayOnMobile,
   left,
-  right,
   progress,
+  right,
   speed,
-  top,
-  bottom,
-  displayOnMobile
+  top
 }) => {
   return (
     <svg
       pointerEvents="none"
       style={{
-        '--transform': `-${progress * speed * 10}vh`,
-        '--displayOnMobile': displayOnMobile ? 'block' : 'none',
+        '--bottom': bottom !== null ? `${bottom}%` : 'initial',
         '--diameter': `${diameter}px`,
-        ...(top !== null && { top: `${top}%` }),
-        ...(left !== null && { left: `${left}%` }),
-        ...(right !== null && { right: `${right}%` }),
-        ...(bottom !== null && { bottom: `${bottom}%` })
+        '--displayOnMobile': displayOnMobile ? 'block' : 'none',
+        '--left': left !== null ? `${left}%` : 'initial',
+        '--right': right !== null ? `${right}%` : 'initial',
+        '--top': top !== null ? `${top}%` : 'initial',
+        '--transform': `-${progress * speed * 10}vh`
       }}
       className={styles[`${color}Circle`]}
+      height="100%"
       viewBox="0 0 100 100"
+      width="100%"
       xmlns="http://www.w3.org/2000/svg"
     >
       <circle fill="currentColor" cx="50" cy="50" r="50" />
@@ -36,25 +56,27 @@ const Circle = ({
 }
 
 Circle.propTypes = {
-  left: PropTypes.number,
-  right: PropTypes.number,
-  progress: PropTypes.number.isRequired,
-  speed: PropTypes.number.isRequired,
-  top: PropTypes.number,
   bottom: PropTypes.number,
-  flipped: PropTypes.bool,
-  displayOnMobile: PropTypes.bool
+  color: PropTypes.string,
+  diameter: PropTypes.number,
+  displayOnMobile: PropTypes.bool,
+  left: PropTypes.number,
+  progress: PropTypes.number.isRequired,
+  right: PropTypes.number,
+  speed: PropTypes.number.isRequired,
+  top: PropTypes.number
 }
 
 Circle.defaultProps = {
-  left: null,
-  right: null,
-  progress: 1,
-  speed: 1,
-  top: null,
   bottom: null,
-  flipped: false,
-  displayOnMobile: false
+  color: 'primary',
+  diameter: 85,
+  displayOnMobile: false,
+  left: null,
+  progress: 0,
+  right: null,
+  speed: 1,
+  top: null
 }
 
 export default Circle

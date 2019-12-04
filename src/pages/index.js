@@ -74,6 +74,10 @@ const IndexPage = ({ data }) => {
   useLayoutEffect(() => {
     if (!isClient) return
 
+    /**
+     * Sets progress to a value between 0 and 1 depending on how far user
+     * has scrolled
+     */
     const handleScroll = nanoraf(() => {
       const total = window.document.documentElement.scrollHeight
       const { y } = getScrollPosition({ useWindow: true })
@@ -115,14 +119,14 @@ const IndexPage = ({ data }) => {
         left={9}
         progress={progress}
         speed={2}
-        top={50}
+        top={42}
       />
       <Organic
         displayOnMobile
         left={0}
         progress={progress}
         speed={10}
-        top={20}
+        top={18}
       />
       <Circle
         color="secondary"
@@ -130,15 +134,15 @@ const IndexPage = ({ data }) => {
         right={11}
         progress={progress}
         speed={2}
-        top={45}
+        top={37}
       />
       <Circle
         color="secondary"
         diameter={85}
-        right={30}
+        right={20}
         progress={progress}
         speed={1}
-        bottom={13}
+        bottom={18}
       />
       <Circle
         color="secondary"
@@ -149,7 +153,7 @@ const IndexPage = ({ data }) => {
         speed={10}
         bottom={-35}
       />
-      <Organic progress={progress} speed={10} right={0} bottom={-50} flipped />
+      <Organic progress={progress} speed={10} right={0} bottom={-60} flipped />
       <SliceRenderer slices={doc.node.body} />
     </Page>
   )

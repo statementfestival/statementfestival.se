@@ -2,9 +2,13 @@
 .secondaryCircle {
   display: var(--displayOnMobile, 'none');
   position: absolute;
-  width: var(--diameter, 100%);
-  height: var(--diameter, 100%);
+  width: calc(var(--diameter, 100%) / 2);
+  height: calc(var(--diameter, 100%) / 2);
   transform: translateY(var(--transform, 0));
+  top: calc(var(--top, 'initial') / 2);
+  bottom: calc(var(--bottom, 'initial') / 2);
+  left: calc(var(--left, 'initial') / 2);
+  right: calc(var(--right, 'initial') / 2);
   z-index: -1;
 }
 
@@ -17,5 +21,11 @@
   .primaryCircle,
   .secondaryCircle {
     display: block;
+    width: var(--diameter, 100%);
+    height: var(--diameter, 100%);
+    top: var(--top, 'initial');
+    bottom: var(--bottom, 'initial');
+    left: var(--left, 'initial');
+    right: var(--right, 'initial');
   }
 }
