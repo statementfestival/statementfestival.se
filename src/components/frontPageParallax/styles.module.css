@@ -1,0 +1,125 @@
+.firstCircle,
+.secondCircle,
+.thirdCircle,
+.fourthCircle,
+.fifthCircle,
+.sixthCircle {
+  position: absolute;
+  transform: translateY(var(--transform, 0));
+  z-index: -1;
+}
+
+/* Initially hide some of the circles on mobile */
+.thirdCircle,
+.fourthCircle,
+.fifthCircle {
+  display: none;
+}
+
+.firstCircle {
+  left: 5%;
+  top: 1%;
+  height: 2.75rem;
+  width: 2.75rem;
+}
+
+.secondCircle,
+.fourthCircle,
+.sixthCircle {
+  height: 10.5rem;
+  width: 10.5rem;
+}
+
+.secondCircle {
+  right: -30%;
+  top: 0%;
+}
+
+.sixthCircle {
+  bottom: -20%;
+  right: -13.75%;
+}
+
+.organicLeft,
+.organicRight {
+  height: auto;
+  position: absolute;
+  transform: translateY(var(--transform, 0));
+}
+
+.organicLeft {
+  left: -15%;
+  top: 23%;
+  width: 130vw;
+  z-index: -1;
+}
+
+.organicRight {
+  display: none;
+}
+
+@media (--tablet-up) {
+
+  .thirdCircle,
+  .fourthCircle,
+  .fifthCircle,
+  .organicRight {
+    display: block;
+  }
+
+  .firstCircle,
+  .thirdCircle,
+  .fifthCircle {
+    height: 5.3rem;
+    width: 5.3rem;
+  }
+
+  .secondCircle,
+  .sixthCircle {
+    height: 27rem;
+    width: 27rem;
+  }
+
+
+  .secondCircle {
+    right: -10%;
+    top: -2%;
+  }
+
+  .thirdCircle {
+    left: 15%;
+    top: 42%;
+  }
+
+  .fourthCircle {
+    right: 11%;
+    top: 37%;
+  }
+
+  .fifthCircle {
+    bottom: 18%;
+    right: 20%;
+  }
+
+  .sixthCircle {
+    bottom: -35%;
+    left: -15%;
+  }
+
+  .organicLeft,
+  .organicRight {
+    display: block;
+    width: 38vw;
+    z-index: 1;
+  }
+
+  .organicLeft {
+    left: 0;
+    top: 23%;
+  }
+
+  .organicRight {
+    right: 0;
+    bottom: -50%
+  }
+}

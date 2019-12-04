@@ -8,9 +8,7 @@ import { getScrollPosition, isClient, vh } from '../utils'
 import Page from '../components/page'
 import SEO from '../components/seo'
 import SliceRenderer from '../components/sliceRenderer'
-
-import Circle from '../components/shapes/circle'
-import Organic from '../components/shapes/organic'
+import FrontPageParallax from '../components/frontPageParallax'
 
 export const query = graphql`
   {
@@ -95,65 +93,7 @@ const IndexPage = ({ data }) => {
   return (
     <Page>
       <SEO title={RichText.asText(doc.node.title)} />
-      <Circle
-        color="secondary"
-        diameter={85}
-        displayOnMobile
-        left={10}
-        progress={progress}
-        speed={0.5}
-        top={7}
-      />
-      <Circle
-        color="secondary"
-        diameter={441}
-        displayOnMobile
-        right={-13.75}
-        progress={progress}
-        speed={10}
-        top={-5}
-      />
-      <Circle
-        color="secondary"
-        diameter={85}
-        left={9}
-        progress={progress}
-        speed={2}
-        top={42}
-      />
-      <Organic
-        displayOnMobile
-        left={0}
-        progress={progress}
-        speed={10}
-        top={18}
-      />
-      <Circle
-        color="secondary"
-        diameter={168}
-        right={11}
-        progress={progress}
-        speed={2}
-        top={37}
-      />
-      <Circle
-        color="secondary"
-        diameter={85}
-        right={20}
-        progress={progress}
-        speed={1}
-        bottom={18}
-      />
-      <Circle
-        color="secondary"
-        displayOnMobile
-        diameter={441}
-        left={-13.75}
-        progress={progress}
-        speed={10}
-        bottom={-35}
-      />
-      <Organic progress={progress} speed={10} right={0} bottom={-60} flipped />
+      <FrontPageParallax progress={progress} />
       <SliceRenderer slices={doc.node.body} />
     </Page>
   )
