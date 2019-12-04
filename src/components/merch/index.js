@@ -18,7 +18,7 @@ const Merch = ({ slice }) => {
 
   let observer
 
-  if (isClient()) {
+  if (isClient() && typeof IntersectionObserver !== 'undefined') {
     observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !playing) {
@@ -33,7 +33,7 @@ const Merch = ({ slice }) => {
   /* Start observe container as soon as node exists in DOM */
   const ref = useCallback(
     node => {
-      if (node !== null) {
+      if (node !== null && observer) {
         observer.observe(node)
       }
     },
