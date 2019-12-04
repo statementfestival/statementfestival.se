@@ -1,0 +1,21 @@
+.primaryCircle,
+.secondaryCircle {
+  display: var(--displayOnMobile, 'none');
+  position: absolute;
+  width: var(--diameter, 100%);
+  height: var(--diameter, 100%);
+  transform: translateY(var(--transform, 0));
+  z-index: -1;
+}
+
+.secondaryCircle {
+  color: var(--secondary);
+}
+
+@media (--tablet-up) {
+
+  .primaryCircle,
+  .secondaryCircle {
+    display: block;
+  }
+}
