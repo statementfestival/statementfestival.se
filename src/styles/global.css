@@ -75,10 +75,17 @@
 }
 
 body {
-  background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0D2F51 200vh, #363661 300vh, #954587 400vh) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0% no-repeat padding-box;
   min-height: 100vh;
   width: 100vw;
   margin: 0;
+}
+
+@media (--tablet-up) {
+  body {
+    background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0D2F51 200vh, #363661 300vh, #954587 400vh, #954587 500vh, #393662 600vh, #0D2F51 900vh) 0% 0% no-repeat padding-box;
+  }
+
 }
 
 h1,
