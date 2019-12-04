@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './styles.module.css'
-
 /**
  * SVG shape that creates a parallax effect based on props like speed and progress.
  * Speed is an arbitrary value that could be improved, progress goes from 0
@@ -21,29 +19,13 @@ import styles from './styles.module.css'
  * - displayOnMobile
  */
 
-const Organic = ({
-  left,
-  right,
-  progress,
-  speed,
-  top,
-  bottom,
-  flipped,
-  displayOnMobile
-}) => {
+const Organic = ({ className, flipped, style }) => {
   return (
     <svg
       pointerEvents="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{
-        '--transform': `-${progress * speed * 10}vh`,
-        '--displayOnMobile': displayOnMobile ? 'block' : 'none',
-        ...(top !== null && { top: `${top}%` }),
-        ...(left !== null && { left: `${left}%` }),
-        ...(right !== null && { right: `${right}%` }),
-        ...(bottom !== null && { bottom: `${bottom}%` })
-      }}
-      className={styles.shape}
+      style={style}
+      className={className}
       width="100%"
       height="100%"
       viewBox="0 0 510.358 564.856"
@@ -66,25 +48,15 @@ const Organic = ({
 }
 
 Organic.propTypes = {
-  left: PropTypes.number,
-  right: PropTypes.number,
-  progress: PropTypes.number.isRequired,
-  speed: PropTypes.number.isRequired,
-  top: PropTypes.number,
-  bottom: PropTypes.number,
   flipped: PropTypes.bool,
-  displayOnMobile: PropTypes.bool
+  className: PropTypes.object,
+  style: PropTypes.object
 }
 
 Organic.defaultProps = {
-  left: null,
-  right: null,
-  progress: 1,
-  speed: 1,
-  top: null,
-  bottom: null,
   flipped: false,
-  displayOnMobile: false
+  className: {},
+  style: {}
 }
 
 export default Organic

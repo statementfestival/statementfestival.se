@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './styles.module.css'
-
 /**
  * SVG circle that creates a parallax effect based on props like speed and progress.
  * Speed is an arbitrary value that could be improved, progress goes from 0
@@ -21,30 +19,12 @@ import styles from './styles.module.css'
  * - top
  */
 
-const Circle = ({
-  bottom,
-  color,
-  diameter,
-  displayOnMobile,
-  left,
-  progress,
-  right,
-  speed,
-  top
-}) => {
+const Circle = ({ className, style }) => {
   return (
     <svg
       pointerEvents="none"
-      style={{
-        '--bottom': bottom !== null ? `${bottom}%` : 'initial',
-        '--diameter': `${diameter}px`,
-        '--displayOnMobile': displayOnMobile ? 'block' : 'none',
-        '--left': left !== null ? `${left}%` : 'initial',
-        '--right': right !== null ? `${right}%` : 'initial',
-        '--top': top !== null ? `${top}%` : 'initial',
-        '--transform': `-${progress * speed * 10}vh`
-      }}
-      className={styles.circle}
+      style={style}
+      className={className}
       height="100%"
       viewBox="0 0 100 100"
       width="100%"
