@@ -3,6 +3,12 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
+/* Import fonts for preloading in order to avoid FOIT */
+import ActOfRejection from '../fonts/ActOfRejection/ActofRejection.woff2'
+import HKGroteskLight from '../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2'
+import HKGroteskSemiBold from '../fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2'
+import HKGroteskBold from '../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
+
 function SEO({ description, lang, meta, title }) {
   return (
     <StaticQuery
@@ -28,42 +34,72 @@ function SEO({ description, lang, meta, title }) {
 
         return (
           <Helmet
+            link={[
+              {
+                rel: 'preload',
+                as: 'font',
+                href: ActOfRejection,
+                type: 'font/woff2',
+                crossOrigin: 'anonymous'
+              },
+              {
+                rel: 'preload',
+                as: 'font',
+                href: HKGroteskLight,
+                type: 'font/woff2',
+                crossOrigin: 'anonymous'
+              },
+              {
+                rel: 'preload',
+                as: 'font',
+                href: HKGroteskSemiBold,
+                type: 'font/woff2',
+                crossOrigin: 'anonymous'
+              },
+              {
+                rel: 'preload',
+                as: 'font',
+                href: HKGroteskBold,
+                type: 'font/woff2',
+                crossOrigin: 'anonymous'
+              }
+            ]}
             htmlAttributes={{ lang }}
             title={title}
             titleTemplate={`%s | ${doc.node.site_title}`}
             meta={[
               {
                 name: `description`,
-                content: metaDescription,
+                content: metaDescription
               },
               {
                 property: `og:title`,
-                content: title,
+                content: title
               },
               {
                 property: `og:description`,
-                content: metaDescription,
+                content: metaDescription
               },
               {
                 property: `og:type`,
-                content: `website`,
+                content: `website`
               },
               {
                 name: `twitter:card`,
-                content: `summary`,
+                content: `summary`
               },
               {
                 name: `twitter:creator`,
-                content: 'site.siteMetadata.author',
+                content: 'site.siteMetadata.author'
               },
               {
                 name: `twitter:title`,
-                content: title,
+                content: title
               },
               {
                 name: `twitter:description`,
-                content: metaDescription,
-              },
+                content: metaDescription
+              }
             ].concat(meta)}
           />
         )
@@ -75,14 +111,14 @@ function SEO({ description, lang, meta, title }) {
 SEO.defaultProps = {
   lang: `sv`,
   meta: [],
-  description: ``,
+  description: ``
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 }
 
 export default SEO
