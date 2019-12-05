@@ -6,7 +6,7 @@ import nanoraf from 'nanoraf'
 import { getScrollPosition, isClient, vh } from '../utils'
 
 import Page from '../components/page'
-import SEO from '../components/seo'
+import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
 import FrontPageParallax from '../components/frontPageParallax'
 
@@ -92,7 +92,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Page>
-      <SEO title={RichText.asText(doc.node.title)} />
+      <Head title={RichText.asText(doc.node.title)} />
       <FrontPageParallax progress={progress} />
       <SliceRenderer slices={doc.node.body} />
     </Page>

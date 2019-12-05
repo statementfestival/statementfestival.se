@@ -4,12 +4,12 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 /* Import fonts for preloading in order to avoid FOIT */
-import ActOfRejection from '../fonts/ActOfRejection/ActofRejection.woff2'
-import HKGroteskLight from '../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2'
-import HKGroteskSemiBold from '../fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2'
-import HKGroteskBold from '../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
+import ActOfRejection from '../../fonts/ActOfRejection/ActofRejection.woff2'
+import HKGroteskLight from '../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2'
+import HKGroteskSemiBold from '../../fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2'
+import HKGroteskBold from '../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
 
-function SEO({ description, lang, meta, title }) {
+function Head({ description, lang, meta, title }) {
   return (
     <StaticQuery
       query={graphql`
@@ -108,17 +108,17 @@ function SEO({ description, lang, meta, title }) {
   )
 }
 
-SEO.defaultProps = {
+Head.defaultProps = {
   lang: `sv`,
   meta: [],
   description: ``
 }
 
-SEO.propTypes = {
+Head.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired
 }
 
-export default SEO
+export default Head

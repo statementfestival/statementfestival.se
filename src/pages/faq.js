@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
-import SEO from '../components/seo'
+import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
 
 export const query = graphql`
@@ -40,7 +40,7 @@ const FAQ = ({ data }) => {
 
   return (
     <Page>
-      <SEO title={RichText.asText(doc.node.title)} />
+      <Head title={RichText.asText(doc.node.title)} />
       <SliceRenderer slices={slices} />
     </Page>
   )
