@@ -8,14 +8,16 @@
 }
 
 .images {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  pointer-events: none;
 }
 
 .image {
+  pointer-events: none;
   position: absolute;
   display: block;
   max-width: 100%;
@@ -24,10 +26,10 @@
   height: auto;
   left: 0;
   top: 0;
-  transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 1s;
   z-index: 1;
+  background: #f0c;
 }
 
 .visible {
