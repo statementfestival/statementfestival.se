@@ -14,7 +14,7 @@ const SliceRenderer = ({ slices }) => {
       switch (slice.type) {
         case 'hero':
           return (
-            <PageSection key={index}>
+            <PageSection key={index} size="full">
               <Hero slice={slice} />
             </PageSection>
           )

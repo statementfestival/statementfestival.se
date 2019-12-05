@@ -1,0 +1,39 @@
+.wrapper {
+  position: static;
+}
+
+.children {
+  position: relative;
+  z-index: 2;
+}
+
+.images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.image {
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 1;
+  background: #f0c;
+}
+
+.visible {
+  opacity: 1;
+  transition: none;
+  z-index: 2;
+}
