@@ -33,6 +33,9 @@ export const query = graphql`
                   hero_subtitle
                   hero_title
                 }
+                fields {
+                  hero_image
+                }
               }
               ... on PRISMIC_HomepageBodyMerch {
                 type
