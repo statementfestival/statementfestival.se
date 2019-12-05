@@ -35,3 +35,7 @@
   font-weight: 200;
   margin-bottom: 4rem;
 }
+
+.link {
+  display: flex;
+}
