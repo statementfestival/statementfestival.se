@@ -1,31 +1,20 @@
-import React, { useEffect, useRef, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import objstr from 'obj-str'
 import styles from './styles.module.css'
 
-const urls = [
-  'http://placekitten.com/100',
-  'http://placekitten.com/110',
-  'http://placekitten.com/112',
-  'http://placekitten.com/111',
-  'http://placekitten.com/123',
-  'http://placekitten.com/200',
-  'http://placekitten.com/210',
-  'http://placekitten.com/212',
-  'http://placekitten.com/211',
-  'http://placekitten.com/323',
-  'http://placekitten.com/300',
-  'http://placekitten.com/310',
-  'http://placekitten.com/312',
-  'http://placekitten.com/311',
-  'http://placekitten.com/223'
-]
-
 const distance = 50
 
-const ImageFountain = ({ children }) => {
+const ImageFountain = ({ children, assets = [] }) => {
   const [images, setImages] = useState(
-    urls.map(url => ({ url, visible: false, offset: [0, 0] }))
+    assets.reduce((accumulator, current) => {
+      if (!current.hero_image) return accumulator
+      return [
+        ...accumulator,
+        { ...current.hero_image, visible: false, offset: [0, 0] }
+      ]
+    }, [])
   )
+
   const [active, setActive] = useState(false)
   const [visible, setVisible] = useState(null)
   const [mouseOffset, setMouseOffset] = useState([0, 0])
@@ -75,9 +64,10 @@ const ImageFountain = ({ children }) => {
       onMouseLeave={onmouseleave}
     >
       <div className={styles.images}>
-        {images.map(({ url, offset, visible }, i) => (
+        {images.map(({ url, offset, alt = '', visible }, i) => (
           <img
             key={i}
+            alt={alt}
             className={objstr({
               [styles.image]: true,
               [styles.visible]: visible && active

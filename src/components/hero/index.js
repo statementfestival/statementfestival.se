@@ -7,7 +7,7 @@ import ImageFountain from '../image-fountain'
 import styles from './styles.module.css'
 
 const Hero = ({ slice }) => (
-  <ImageFountain>
+  <ImageFountain assets={slice.fields}>
     <div className={styles.hero}>
       <h1 className={styles.title}>{slice.primary.hero_title}</h1>
       <h2 className={styles.subTitle}>{slice.primary.hero_subtitle}</h2>
