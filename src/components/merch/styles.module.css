@@ -16,7 +16,7 @@
   display: flex;
 }
 
-.hidden {
+.noDisplay {
   display: none;
 }
 

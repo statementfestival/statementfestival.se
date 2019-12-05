@@ -15,11 +15,11 @@ const Header = ({ siteTitle }) => {
         </div>
         {parts.length === 2 ? (
           <h1 className={styles.title}>
-            <span className={styles.hidden}>{parts[0]}</span>
+            <span className={'visuallyHidden'}>{parts[0]}</span>
             <span className={styles.visible}>{parts[1]}</span>
           </h1>
         ) : (
-          <h1 className={styles.hidden}>{siteTitle}</h1>
+          <h1 className={'visuallyHidden'}>{siteTitle}</h1>
         )}
       </Link>
     </header>

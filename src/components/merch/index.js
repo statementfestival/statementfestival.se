@@ -70,7 +70,7 @@ const Merch = ({ slice }) => {
             <img
               key={`merchImage-${index}`}
               className={
-                visibilityIndex === index ? styles.image : styles.hidden
+                visibilityIndex === index ? styles.image : styles.noDisplay
               }
               src={image.url}
               alt={image.alt}
