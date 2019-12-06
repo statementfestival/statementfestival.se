@@ -44,9 +44,11 @@ const Page = ({ children }) => {
               <Header siteTitle={doc.node.site_title} />
             </PageSection>
             <main className={styles.main}>{children}</main>
-            <PageSection>
-              <Footer />
-            </PageSection>
+            <div className={styles.footer}>
+              <PageSection>
+                <Footer />
+              </PageSection>
+            </div>
           </div>
         )
       }}
