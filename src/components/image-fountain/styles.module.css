@@ -37,4 +37,11 @@
   opacity: 1;
   transition: none;
   z-index: 2;
+  animation: fadeOut 1s 1s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
 }
