@@ -10,6 +10,7 @@
   --primary: #fff800;
   --secondary: #eb8cb2;
   --secondary-variant: #D65D87;
+  --secondary-variant--transparent: rgba(214, 93, 135, 0.8);
   --white: #ffffff;
 
   --font-size-display-headline: 3.2rem;
@@ -88,13 +89,19 @@ body {
 
 }
 
+/* Unset all button styling before adding custom styles */
+button {
+  all: unset;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-a {
+a,
+button {
   color: var(--primary);
   font-family: HKGrotesk;
   font-weight: 800;
@@ -114,6 +121,11 @@ ol {
   font-weight: 200;
   font-size: var(--font-size-text);
   line-height: 1.45;
+}
+
+ul,
+ol {
+  padding-left: 1.2rem;
 }
 
 /*
