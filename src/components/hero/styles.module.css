@@ -1,7 +1,7 @@
 .hero {
   font-family: sans-serif;
   text-align: center;
-  padding: 10vh 0 5vh;
+  padding: 3vh 0 5vh;
   position: relative;
   margin-bottom: 25vh;
 }
@@ -9,7 +9,15 @@
 @media (--tablet-up) {
   .hero {
     margin-bottom: calc(26vh + 3rem);
+    padding: 7.5vh 0 5vh;
   }
+}
+
+.title {
+  color: var(--primary);
+  font-size: var(--font-size-display-headline);
+  letter-spacing: 0.25rem;
+  margin-left: 1.1rem;
 }
 
 .title,
@@ -18,11 +26,6 @@
   font-weight: normal;
   margin-top: 0;
   margin-bottom: 0.5rem;
-}
-
-.title {
-  color: var(--primary);
-  font-size: var(--font-size-display-headline);
 }
 
 .subTitle {
@@ -34,7 +37,14 @@
   color: var(--white);
   font-family: HKGrotesk;
   font-weight: 200;
-  margin-bottom: 4rem;
+  margin: 1.5rem auto 2.5rem;
+  max-width: var(--container-desktop-width);
+}
+
+@media (--mobile-only) {
+  .description {
+    padding: 0 2.8rem;
+  }
 }
 
 .link {
