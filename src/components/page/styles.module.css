@@ -15,5 +15,11 @@
 }
 
 .main {
-  margin-top: 5.5rem;
+  margin-top: 2rem;
+}
+
+@media (--tablet-up) {
+  .main {
+    margin-top: 5.5rem;
+  }
 }
