@@ -52,7 +52,8 @@ const ImageFountain = ({ children, assets = [] }) => {
       state.map((image, i) => ({
         ...image,
         offset: visible === i ? [...mouseOffset] : [...image.offset],
-        visible: active && visible === i
+        visible: active && visible === i,
+        maxSize: Math.random() * 20 + 30
       }))
     )
   }, [...mouseOffset, active])
@@ -64,7 +65,7 @@ const ImageFountain = ({ children, assets = [] }) => {
       onMouseLeave={onmouseleave}
     >
       <div className={styles.images}>
-        {images.map(({ url, offset, alt = '', visible }, i) => (
+        {images.map(({ url, offset, alt = '', visible, maxSize = 50 }, i) => (
           <img
             key={i}
             alt={alt}
@@ -73,6 +74,8 @@ const ImageFountain = ({ children, assets = [] }) => {
               [styles.visible]: visible && active
             })}
             style={{
+              maxWidth: `${maxSize}vw`,
+              maxHeight: `${maxSize}vh`,
               transform: `translate(calc(-50% + ${offset[0]}px), calc(-50% + ${offset[1]}px))`
             }}
             src={url}
