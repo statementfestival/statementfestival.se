@@ -1,16 +1,16 @@
 .hero {
   font-family: sans-serif;
   text-align: center;
-  padding: 15vh 0 30vh;
+  padding: 15vh 0;
   position: relative;
+  margin-bottom: 15vh;
 }
 
 @media (--tablet-up) {
   .hero {
-    margin-bottom: 25rem;
+    margin-bottom: calc(15vh + 25rem);
   }
 }
-
 
 .title,
 .subTitle {
