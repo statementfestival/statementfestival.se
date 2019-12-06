@@ -4,7 +4,6 @@
   padding: 10vh 0 5vh;
   position: relative;
   margin-bottom: 25vh;
-  border-bottom: 2px solid red;
 }
 
 @media (--tablet-up) {
