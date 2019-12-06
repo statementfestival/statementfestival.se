@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 import { isClient } from '../../utils'
 
-import ExternalLink from '../externalLink'
+import { ExternalLinkDisabled } from '../externalLink'
 
 import styles from './styles.module.css'
 
@@ -51,7 +51,7 @@ const Merch = ({ slice }) => {
       const interval = setInterval(() => {
         if (visibilityIndex === totalWords - 1) setVisibility(0)
         else setVisibility(visibilityIndex + 1)
-      }, 1000)
+      }, 750)
       return () => clearInterval(interval)
     }
   }, [playing, visibilityIndex, totalWords])
@@ -82,7 +82,7 @@ const Merch = ({ slice }) => {
         </div>
       </div>
       <div className={styles.linkContainer}>
-        <ExternalLink
+        {/* <ExternalLink
           href={
             slice.primary.merch_link_address
               ? slice.primary.merch_link_address.url
@@ -90,7 +90,8 @@ const Merch = ({ slice }) => {
           }
           title={slice.primary.merch_link_title}
           hoverTitle={slice.primary.merch_link_title_hover}
-        />
+        /> */}
+        <ExternalLinkDisabled title="Coming soon!" />
       </div>
     </div>
   )
