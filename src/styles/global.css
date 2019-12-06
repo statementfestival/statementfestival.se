@@ -89,10 +89,20 @@ body {
 
 }
 
-/* Unset all button styling before adding custom styles */
+/* Reset button styling before adding custom styles */
 button {
-  all: unset;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
+
 
 h1,
 h2,
