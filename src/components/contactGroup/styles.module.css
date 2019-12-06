@@ -1,3 +1,17 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2.8rem;
+}
+
+/* Design exception for content to fit really small screens */
+@media (--mobile-smallest) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
 .link,
 .description {
   display: block;
@@ -5,11 +19,12 @@
 }
 
 .link {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .description {
   font-size: var(--font-size-text);
+  max-width: var(--container-desktop-width);
 }
 
 @media (--tablet-up) {

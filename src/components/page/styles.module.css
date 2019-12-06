@@ -11,9 +11,18 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .main {
-  margin-top: 5.5rem;
+  margin-top: 2rem;
+}
+
+@media (--tablet-up) {
+  .main {
+    margin-top: 5.5rem;
+  }
+}
+
+.footer {
+  margin-top: auto;
 }

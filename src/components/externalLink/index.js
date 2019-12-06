@@ -34,3 +34,10 @@ ExternalLink.defaultProps = {
 }
 
 export default ExternalLink
+
+/* Temp component used until webshop is in place */
+export const ExternalLinkDisabled = ({ title }) => (
+  <button className={styles.linkDisabled} disabled>
+    {title}
+  </button>
+)
