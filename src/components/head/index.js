@@ -4,10 +4,10 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 /* Import fonts for preloading in order to avoid FOIT */
-import ActOfRejection from '../../fonts/ActOfRejection/ActofRejection.woff2'
-import HKGroteskLight from '../../fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2'
-import HKGroteskSemiBold from '../../fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2'
-import HKGroteskBold from '../../fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
+import ActOfRejection from '../../assets/fonts/ActOfRejection/ActofRejection.woff2'
+import HKGroteskLight from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2'
+import HKGroteskSemiBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2'
+import HKGroteskBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
 
 function Head({ description, lang, meta, title }) {
   return (
