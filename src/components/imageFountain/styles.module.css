@@ -28,7 +28,7 @@
   left: 0;
   top: 0;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 1000ms;
   z-index: 1;
   background: #f0c;
 }
@@ -37,7 +37,7 @@
   opacity: 1;
   transition: none;
   z-index: 2;
-  animation: fadeOut 1s 1s ease-in forwards;
+  animation: fadeOut 750ms 750ms ease-in forwards;
 }
 
 @keyframes fadeOut {
