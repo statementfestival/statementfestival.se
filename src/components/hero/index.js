@@ -2,7 +2,7 @@ import React from 'react'
 
 import ExternalLink from '../externalLink'
 
-import ImageFountain from '../image-fountain'
+import ImageFountain from '../imageFountain'
 
 import styles from './styles.module.css'
 
