@@ -110,7 +110,6 @@
   .organicRight {
     display: block;
     width: 38vw;
-    z-index: 1;
   }
 
   .organicLeft {
