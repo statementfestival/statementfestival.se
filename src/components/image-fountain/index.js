@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import objstr from 'obj-str'
 import styles from './styles.module.css'
 
-const distance = 50
+const distance = 100
 
 const ImageFountain = ({ children, assets = [] }) => {
   const [images, setImages] = useState(
