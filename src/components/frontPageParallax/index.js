@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Circle from './shapes/circle.js'
-import Organic from './shapes/organic.js'
+import Circle from './../shapes/circle.js'
+import Organic from './../shapes/organic.js'
 
 import styles from './styles.module.css'
 
