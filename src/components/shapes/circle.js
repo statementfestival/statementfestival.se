@@ -3,7 +3,7 @@ import React from 'react'
 /**
  * SVG circle that is used to create a parallax effect
  */
-const Circle = ({ className, style }) => {
+const Circle = ({ className, style, fill = '#eb8cb2' }) => {
   return (
     <svg
       pointerEvents="none"
@@ -14,7 +14,7 @@ const Circle = ({ className, style }) => {
       width="100%"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle fill="#eb8cb2" cx="50" cy="50" r="50" />
+      <circle fill={fill} cx="50" cy="50" r="50" />
     </svg>
   )
 }
