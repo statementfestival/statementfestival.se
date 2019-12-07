@@ -1,31 +1,12 @@
-import React, { useRef, useLayoutEffect } from 'react'
-import Lottie from 'lottie-web'
+import React from 'react'
 
+import Birdie from '../birdie'
 import ExternalLink from '../externalLink'
-
 import ImageFountain from '../imageFountain'
 
 import styles from './styles.module.css'
 
 const Hero = ({ slice }) => {
-  const birdie = useRef()
-
-  useLayoutEffect(() => {
-    if (birdie.current) {
-      /*
-       * Lottie animation is loaded from static folder in order to bypass
-       * the module system: https://www.gatsbyjs.org/docs/static-folder/
-       */
-      Lottie.loadAnimation({
-        container: birdie.current,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: '/bird.json'
-      })
-    }
-  }, [])
-
   return (
     <ImageFountain assets={slice.fields}>
       <div className={styles.hero}>
@@ -42,7 +23,7 @@ const Hero = ({ slice }) => {
             }
           />
         </div>
-        <svg ref={birdie} />
+        <Birdie />
       </div>
     </ImageFountain>
   )
