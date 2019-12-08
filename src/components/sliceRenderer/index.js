@@ -4,7 +4,6 @@ import PageSection from '../pageSection'
 
 import ContactGroup from '../contactGroup'
 import FAQ from '../faq'
-import Hero from '../hero'
 import Merch from '../merch'
 import Text from '../text'
 
