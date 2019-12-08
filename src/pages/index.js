@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import nanoraf from 'nanoraf'
 
-import { getScrollPosition, isClient, vh } from '../utils'
+import { getScrollPosition, isClient, vh, getDateObject } from '../utils'
 
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
@@ -119,8 +119,17 @@ const IndexPage = ({ data }) => {
 
   const title = RichText.asText(doc.node.title)
   const images = doc.node.body_details.find(item => item.type === 'images')
+  const counter = doc.node.body_details.find(item => item.type === 'counter')
 
+  /* 1. Since Prismic formats date as string i.e. '2025-01-01' */
   const heroData = {
+    counter:
+      counter && counter.primary
+        ? {
+            description: counter.primary.counter_description,
+            date: getDateObject(counter.primary.counter_date) /* 1. */
+          }
+        : null,
     description: doc.node.description,
     images: images.fields ? images.fields : [],
     link_title: doc.node.link_title,
