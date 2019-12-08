@@ -12,7 +12,8 @@ const Hero = ({
   description,
   link_title,
   link_url,
-  images = []
+  images = [],
+  counter
 }) => {
   return (
     <ImageFountain assets={images}>
@@ -26,7 +27,9 @@ const Hero = ({
             href={link_url ? link_url.url : ''}
           />
         </div>
-        <Birdie />
+        {counter ? (
+          <Birdie date={counter.date} description={counter.description} />
+        ) : null}
       </div>
     </ImageFountain>
   )

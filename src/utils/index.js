@@ -44,3 +44,35 @@ export const getAnchorLink = str => {
     .replace(/[^a-zA-Z ]/g, '')
     .replace(/ /g, '-')
 }
+
+/**
+ * Takes a date and returns the number of days until that date
+ * @param {object} to A date object
+ */
+export const daysUntil = (to, from = new Date()) => {
+  return Math.ceil((to - from) / (1000 * 60 * 60 * 24))
+}
+
+/**
+ * Returns the provided date at midnight
+ * @param {object} date A date object
+ */
+export const getMidnight = date => {
+  date.setHours(0)
+  date.setMinutes(0)
+  date.setSeconds(0)
+  date.setMilliseconds(0)
+
+  return date
+}
+
+/**
+ * Takes a string and converts it to a date object
+ * @param {string} str
+ */
+export const getDateObject = (str = '2025-01-01') => {
+  const [year, month, day] = str.split('-')
+  const obj = new Date(year, parseInt(month, 10) - 1, day)
+
+  return obj
+}
