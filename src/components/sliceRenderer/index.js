@@ -12,12 +12,6 @@ const SliceRenderer = ({ slices }) => {
   return slices.map((slice, index) => {
     const res = (() => {
       switch (slice.type) {
-        case 'hero':
-          return (
-            <PageSection key={index} size="full">
-              <Hero slice={slice} />
-            </PageSection>
-          )
         case 'text':
           return (
             <PageSection key={index}>

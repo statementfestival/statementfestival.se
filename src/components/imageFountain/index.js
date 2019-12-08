@@ -7,10 +7,10 @@ const distance = 100
 const ImageFountain = ({ children, assets = [] }) => {
   const [images, setImages] = useState(
     assets.reduce((accumulator, current) => {
-      if (!current.hero_image) return accumulator
+      if (!current.fountain_image) return accumulator
       return [
         ...accumulator,
-        { ...current.hero_image, visible: false, offset: [0, 0] }
+        { ...current.fountain_image, visible: false, offset: [0, 0] }
       ]
     }, [])
   )

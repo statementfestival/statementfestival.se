@@ -6,7 +6,9 @@ import nanoraf from 'nanoraf'
 import { getScrollPosition, isClient, vh } from '../utils'
 
 import Page from '../components/page'
+import PageSection from '../components/pageSection'
 import Head from '../components/head'
+import Hero from '../components/hero'
 import SliceRenderer from '../components/sliceRenderer'
 import FrontPageParallax from '../components/frontPageParallax'
 
@@ -17,7 +19,6 @@ export const query = graphql`
       allHomepages {
         edges {
           node {
-            title
             body {
               ... on PRISMIC_HomepageBodyHero {
                 type
@@ -62,6 +63,29 @@ export const query = graphql`
               }
             }
             title
+            subtitle
+            link_title
+            link_url {
+              ... on PRISMIC__ExternalLink {
+                url
+              }
+            }
+            description
+            body_details {
+              ... on PRISMIC_HomepageBody_detailsCounter {
+                type
+                primary {
+                  counter_date
+                  counter_description
+                }
+              }
+              ... on PRISMIC_HomepageBody_detailsImages {
+                type
+                fields {
+                  fountain_image
+                }
+              }
+            }
           }
         }
       }
@@ -93,10 +117,25 @@ const IndexPage = ({ data }) => {
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
   if (!doc) return null
 
+  const title = RichText.asText(doc.node.title)
+  const images = doc.node.body_details.find(item => item.type === 'images')
+
+  const heroData = {
+    description: doc.node.description,
+    images: images.fields ? images.fields : [],
+    link_title: doc.node.link_title,
+    link_url: doc.node.link_url ? doc.node.link_url.url : '',
+    subtitle: RichText.asText(doc.node.subtitle),
+    title
+  }
+
   return (
     <Page>
-      <Head title={RichText.asText(doc.node.title)} />
+      <Head title={title} />
       <FrontPageParallax progress={progress} />
+      <PageSection size="full">
+        <Hero {...heroData} />
+      </PageSection>
       <SliceRenderer slices={doc.node.body} />
     </Page>
   )
