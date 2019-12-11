@@ -1,6 +1,7 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
+import { linkResolver } from '../../../utils/linkResolver'
 import ExternalLink from '../../externalLink'
 
 import styles from './styles.module.css'
@@ -16,7 +17,7 @@ const Text = ({ slice }) => {
         : null}
       {slice.primary.text_content ? (
         <div className={styles.content}>
-          {RichText.render(slice.primary.text_content)}
+          {RichText.render(slice.primary.text_content, linkResolver)}
         </div>
       ) : null}
       {hasLink ? (
