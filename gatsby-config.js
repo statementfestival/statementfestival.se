@@ -30,7 +30,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
-        postCssPlugins: [require(`postcss-preset-env`)({ stage: 1 })]
+        postCssPlugins: [
+          require(`postcss-preset-env`)({
+            stage: 1,
+            importFrom: 'src/styles/global.css'
+          })
+        ]
       }
     },
     {
