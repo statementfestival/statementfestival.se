@@ -1,7 +1,7 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
-import { getAnchorLink } from '../../utils'
+import { getAnchorLink } from '../../../utils'
 
 import styles from './styles.module.css'
 
