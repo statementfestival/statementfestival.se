@@ -43,7 +43,7 @@ const Birdie = ({ description, date }) => {
     window.setTimeout(() => {
       setDays(daysUntil(date))
     }, diff)
-  }, [days])
+  }, [days, date])
 
   /* Hide counter once countdown is finished */
   if (days <= 0) return null
