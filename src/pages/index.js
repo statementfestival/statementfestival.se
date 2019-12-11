@@ -20,24 +20,6 @@ export const query = graphql`
         edges {
           node {
             body {
-              ... on PRISMIC_HomepageBodyHero {
-                type
-                primary {
-                  hero_description
-                  hero_link_address {
-                    _linkType
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
-                  }
-                  hero_link_title
-                  hero_subtitle
-                  hero_title
-                }
-                fields {
-                  hero_image
-                }
-              }
               ... on PRISMIC_HomepageBodyMerch {
                 type
                 primary {
