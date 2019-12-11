@@ -2,10 +2,10 @@ import React from 'react'
 
 import PageSection from '../pageSection'
 
-import ContactGroup from '../contactGroup'
-import FAQ from '../faq'
-import Merch from '../merch'
-import Text from '../text'
+import ContactGroup from '../slices/contactGroup'
+import FAQ from '../slices/faq'
+import Merch from '../slices/merch'
+import Text from '../slices/text'
 
 const SliceRenderer = ({ slices }) => {
   return slices.map((slice, index) => {
