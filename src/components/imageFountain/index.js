@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import objstr from 'obj-str'
 import styles from './styles.module.css'
 
-const distance = 100
+const distance = 120
 
 const ImageFountain = ({ children, assets = [] }) => {
   const [images, setImages] = useState(
@@ -48,12 +48,14 @@ const ImageFountain = ({ children, assets = [] }) => {
     setVisible(state => {
       return (state + 1) % images.length
     })
+    const max = 450 // px
+    const min = 200 // px
     setImages(state =>
       state.map((image, i) => ({
         ...image,
         offset: visible === i ? [...mouseOffset] : [...image.offset],
         visible: active && visible === i,
-        maxSize: Math.random() * 20 + 30
+        maxSize: Math.floor(Math.random() * (max - min + 1)) + min
       }))
     )
   }, [...mouseOffset, active])
@@ -65,7 +67,7 @@ const ImageFountain = ({ children, assets = [] }) => {
       onMouseLeave={onmouseleave}
     >
       <div className={styles.images}>
-        {images.map(({ url, offset, alt = '', visible, maxSize = 50 }, i) => (
+        {images.map(({ url, offset, alt = '', visible, maxSize = 450 }, i) => (
           <img
             key={i}
             alt={alt}
@@ -74,8 +76,8 @@ const ImageFountain = ({ children, assets = [] }) => {
               [styles.visible]: visible && active
             })}
             style={{
-              maxWidth: `${maxSize}vw`,
-              maxHeight: `${maxSize}vh`,
+              maxWidth: `${maxSize}px`,
+              maxHeight: `${maxSize}px`,
               transform: `translate(calc(-50% + ${offset[0]}px), calc(-50% + ${offset[1]}px))`
             }}
             src={url}
