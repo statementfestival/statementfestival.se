@@ -119,7 +119,7 @@ const IndexPage = ({ data }) => {
           }
         : null,
     description: doc.node.description,
-    images: images.fields ? images.fields : [],
+    images: images && images.fields ? images.fields : [],
     link_title: doc.node.link_title,
     link_url: doc.node.link_address ? doc.node.link_address.url : '',
     subtitle: RichText.asText(doc.node.subtitle),
