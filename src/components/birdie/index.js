@@ -50,11 +50,13 @@ const Birdie = ({ description, date }) => {
 
   return (
     <div className={styles.container}>
-      <svg ref={birdie} className={styles.birdie} />
-      <Circle className={styles.circle} fill="#fff800" />
-      <div className={styles.content}>
-        <p className={styles.count}>{days}</p>
-        <p className={styles.description}>{description}</p>
+      <div className={styles.innerContainer}>
+        <svg ref={birdie} className={styles.birdie} />
+        <Circle className={styles.circle} fill="#fff800" />
+        <div className={styles.content}>
+          <p className={styles.count}>{days}</p>
+          <p className={styles.description}>{description}</p>
+        </div>
       </div>
     </div>
   )
