@@ -2,6 +2,15 @@
   position: static;
 }
 
+@media (--tablet-up) {
+
+  /* Adjust hit area in order to catch mouse events all the way to the top */
+  .wrapper {
+    transform: translateY(-5.5rem);
+    padding-top: 5.5rem;
+  }
+}
+
 .children {
   position: relative;
   z-index: 2;

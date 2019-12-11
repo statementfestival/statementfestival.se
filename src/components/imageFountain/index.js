@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import objstr from 'obj-str'
+
 import styles from './styles.module.css'
 
 const distance = 120
+const timeout = 70 // Pause fountain before changing to a new image
 
 const ImageFountain = ({ children, assets = [] }) => {
   const [images, setImages] = useState(
@@ -16,8 +18,10 @@ const ImageFountain = ({ children, assets = [] }) => {
   )
 
   const [active, setActive] = useState(false)
+  const [paused, setPaused] = useState(false)
   const [visible, setVisible] = useState(null)
   const [mouseOffset, setMouseOffset] = useState([0, 0])
+
   const onmouseenter = () => {
     setActive(true)
   }
@@ -45,9 +49,12 @@ const ImageFountain = ({ children, assets = [] }) => {
   }, [active])
 
   useEffect(() => {
+    if (paused) return
+
     setVisible(state => {
       return (state + 1) % images.length
     })
+
     const max = 450 // px
     const min = 200 // px
     setImages(state =>
@@ -58,7 +65,13 @@ const ImageFountain = ({ children, assets = [] }) => {
         maxSize: Math.floor(Math.random() * (max - min + 1)) + min
       }))
     )
-  }, [...mouseOffset, active])
+
+    setPaused(true)
+  }, [...mouseOffset, active, paused])
+
+  useEffect(() => {
+    if (paused) setTimeout(() => setPaused(false), timeout)
+  }, [paused])
 
   return (
     <div
