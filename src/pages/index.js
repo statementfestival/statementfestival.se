@@ -43,6 +43,17 @@ export const query = graphql`
                   text_title
                 }
               }
+              ... on PRISMIC_HomepageBodyLink {
+                type
+                primary {
+                  link_link_title
+                  link_link_url {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                }
+              }
             }
             title
             subtitle
