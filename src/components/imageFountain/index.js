@@ -67,7 +67,7 @@ const ImageFountain = ({ children, assets = [] }) => {
     )
 
     setPaused(true)
-  }, [...mouseOffset, active, paused])
+  }, [...mouseOffset, active])
 
   useEffect(() => {
     if (paused) setTimeout(() => setPaused(false), timeout)
