@@ -16,13 +16,10 @@
   pointer-events: none;
 }
 
-/* Temporarily use an arbitrary max-size during development */
 .image {
   pointer-events: none;
   position: absolute;
   display: block;
-  max-width: 30%;
-  max-height: 30%;
   width: auto;
   height: auto;
   left: 0;
