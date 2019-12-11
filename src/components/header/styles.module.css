@@ -3,9 +3,9 @@
 }
 
 .logo {
-  width: 277px;
+  height: 1.4375rem;
   width: 9.375rem;
-  margin: 0 auto;
+  margin: 0 auto 0.5rem;
 }
 
 .title {
@@ -30,6 +30,8 @@
 
 @media (--tablet-up) {
   .logo {
+    margin: 0 auto 0.6rem;
+    height: 2.5rem;
     width: 17.3rem;
   }
 
