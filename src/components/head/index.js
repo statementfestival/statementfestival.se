@@ -20,6 +20,7 @@ function Head({ description, lang, meta, title }) {
                 node {
                   meta_description
                   site_title
+                  og_image
                 }
               }
             }
@@ -83,6 +84,10 @@ function Head({ description, lang, meta, title }) {
               {
                 property: `og:type`,
                 content: `website`
+              },
+              {
+                property: `og:image`,
+                content: doc.node.og_image ? doc.node.og_image.url : ''
               },
               {
                 name: `twitter:card`,
