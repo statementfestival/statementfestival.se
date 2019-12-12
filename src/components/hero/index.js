@@ -22,10 +22,7 @@ const Hero = ({
         <h2 className={styles.subTitle}>{subtitle}</h2>
         <p className={styles.description}>{description}</p>
         <div className={styles.link}>
-          <ExternalLink
-            title={link_title}
-            href={link_url ? link_url.url : ''}
-          />
+          <ExternalLink title={link_title} href={link_url || ''} />
         </div>
         {counter ? (
           <Birdie date={counter.date} description={counter.description} />
