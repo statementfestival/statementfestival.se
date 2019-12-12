@@ -90,6 +90,22 @@ function Head({ description, lang, meta, title }) {
                 content: doc.node.og_image ? doc.node.og_image.url : ''
               },
               {
+                property: `og:image:width`,
+                content: doc.node.og_image
+                  ? doc.node.og_image.dimensions.width
+                  : ''
+              },
+              {
+                property: `og:image:height`,
+                content: doc.node.og_image
+                  ? doc.node.og_image.dimensions.height
+                  : ''
+              },
+              {
+                property: `og:image:alt`,
+                content: doc.node.og_image ? doc.node.og_image.alt : ''
+              },
+              {
                 name: `twitter:card`,
                 content: `summary`
               },
