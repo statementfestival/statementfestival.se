@@ -14,12 +14,26 @@ export const query = graphql`
           node {
             title
             body {
+              ... on PRISMIC_PageBodyImage_grid {
+                type
+                primary {
+                  image_grid_title
+                }
+                fields {
+                  image_grid_item
+                  image_link {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                }
+              }
               ... on PRISMIC_PageBodyText {
+                type
                 primary {
                   text_content
                   text_title
                 }
-                type
               }
             }
           }
