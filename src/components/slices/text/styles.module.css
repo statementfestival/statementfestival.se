@@ -4,7 +4,8 @@
   margin-bottom: 4rem;
 }
 
-.textBlock h2 {
+.textBlock h2,
+.textBlock h1 {
   font-size: var(--font-size-headline);
   line-height: 1.2;
   margin-top: 0;
