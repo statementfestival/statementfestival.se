@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import objstr from 'obj-str'
 
+import { isClient } from '../../utils'
+
 import styles from './styles.module.css'
 
 const timeout = 150 // Pause fountain before changing to a new image
@@ -80,22 +82,23 @@ const ImageFountain = ({ children, assets = [] }) => {
       onMouseLeave={onmouseleave}
     >
       <div className={styles.images}>
-        {images.map(({ url, offset, alt = '', visible }, i) => (
-          <img
-            key={i}
-            alt={alt}
-            className={objstr({
-              [styles.image]: true,
-              [styles.visible]: visible && active
-            })}
-            style={{
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              transform: `translate(calc(-50% + ${offset[0]}px), calc(-50% + ${offset[1]}px))`
-            }}
-            src={url}
-          />
-        ))}
+        {isClient() &&
+          images.map(({ url, offset, alt = '', visible }, i) => (
+            <img
+              key={i}
+              alt={alt}
+              className={objstr({
+                [styles.image]: true,
+                [styles.visible]: visible && active
+              })}
+              style={{
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                transform: `translate(calc(-50% + ${offset[0]}px), calc(-50% + ${offset[1]}px))`
+              }}
+              src={url}
+            />
+          ))}
       </div>
       <div className={styles.children}>{children}</div>
     </div>

@@ -21,6 +21,20 @@ export const query = graphql`
                   text_title
                 }
               }
+              ... on PRISMIC_PageBodyImage_grid {
+                type
+                primary {
+                  image_grid_title
+                }
+                fields {
+                  image_grid_item
+                  image_link {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                }
+              }
             }
           }
         }

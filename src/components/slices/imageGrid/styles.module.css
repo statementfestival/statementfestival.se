@@ -1,1 +1,44 @@
-.container {}
+.grid {
+  margin-bottom: 5rem;
+}
+
+.imageGrid h2,
+.imageGrid h3 {
+  font-size: var(--font-size-headline);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@media (--tablet-up) {
+
+  .imageGrid h2,
+  .imageGrid h1 {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+}
+
+.item {
+  margin-bottom: 2.8rem;
+}
+
+@media (--tablet-up) {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .item {
+    width: calc(50% - 1.25rem);
+    margin-bottom: 2.5rem;
+  }
+
+}

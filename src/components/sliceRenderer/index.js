@@ -38,7 +38,7 @@ const SliceRenderer = ({ slices }) => {
           )
         case 'image_grid':
           return (
-            <PageSection key={index}>
+            <PageSection size="medium" key={index}>
               <ImageGrid slice={slice} />
             </PageSection>
           )
