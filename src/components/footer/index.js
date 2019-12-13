@@ -23,6 +23,7 @@ const query = graphql`
                   url
                 }
               }
+              external_link_title
             }
             internal_links {
               link {
@@ -79,6 +80,9 @@ const Footer = () => (
                 key={`socialMedia-${index}`}
                 href={item.external_link.url}
               >
+                <span className="visuallyHidden">
+                  {item.external_link_title}
+                </span>
                 <img src={item.icon.url} alt="" />
               </a>
             ))}
