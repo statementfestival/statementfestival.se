@@ -38,6 +38,7 @@
   }
 
   .containerMedium {
+    padding: 0;
     width: var(--container-medium-desktop-width);
     max-width: 100vw;
   }
