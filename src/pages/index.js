@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import nanoraf from 'nanoraf'
 
-import { getScrollPosition, isClient, vh, getDateObject } from '../utils'
+import { getScrollPosition, vh, getDateObject } from '../utils'
 
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
@@ -85,8 +85,6 @@ const IndexPage = ({ data }) => {
   const [progress, setProgress] = useState(0)
 
   useLayoutEffect(() => {
-    if (!isClient) return
-
     /**
      * Sets progress to a value between 0 and 1 depending on how far user
      * has scrolled
