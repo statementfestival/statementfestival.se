@@ -1,14 +1,46 @@
-import React from "react"
+import React from 'react'
+import { graphql } from 'gatsby'
+import { RichText } from 'prismic-reactjs'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Page from '../components/page'
+import Head from '../components/head'
+import SliceRenderer from '../components/sliceRenderer'
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
+export const query = graphql`
+  {
+    prismic {
+      allWebsites {
+        edges {
+          node {
+            not_found_description
+            not_found_title
+          }
+        }
+      }
+    }
+  }
+`
+
+const NotFoundPage = ({ data }) => {
+  const doc = data.prismic.allWebsites.edges.slice(0, 1).pop()
+  if (!doc) return null
+
+  return (
+    <Page>
+      <Head title={RichText.asText(doc.node.not_found_title)} />
+      <SliceRenderer
+        slices={[
+          {
+            type: 'text',
+            primary: {
+              text_title: doc.node.not_found_title,
+              text_content: doc.node.not_found_description
+            }
+          }
+        ]}
+      />
+    </Page>
+  )
+}
 
 export default NotFoundPage

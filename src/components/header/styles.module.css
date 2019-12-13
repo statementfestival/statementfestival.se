@@ -1,0 +1,42 @@
+.header {
+  padding-top: 2rem;
+}
+
+.logo {
+  height: 1.4375rem;
+  width: 9.375rem;
+  margin: 0 auto 0.5rem;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.visible {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+  /* Left margin is needed to compensate for letter-spacing */
+  margin: 0.1rem 0 0 0.2rem;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+@media (--tablet-up) {
+  .logo {
+    margin: 0 auto 0.6rem;
+    height: 2.5rem;
+    width: 17.3rem;
+  }
+
+  .visible {
+    font-size: 1.75rem;
+    margin: 0.3rem 0 0 0.2rem;
+  }
+}

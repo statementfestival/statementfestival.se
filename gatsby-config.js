@@ -1,34 +1,67 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Statement Festival`,
+    description: `We are back`,
+    author: `ep`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        name: `assets`,
+        path: `${__dirname}/src/assets`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `statement-festival`,
+        short_name: `statement`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#954587`,
+        theme_color: `#fff800`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
+        icon: `src/assets/statement-icon.png` // This path is relative to the root of the site.
+      }
     },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [
+          require(`postcss-preset-env`)({
+            stage: 1,
+            importFrom: 'src/styles/global.css'
+          })
+        ]
+      }
+    },
+    {
+      resolve: 'gatsby-source-prismic-graphql',
+      options: {
+        repositoryName: 'statement', // (REQUIRED, replace with your own)
+        path: '/preview', // (optional preview path. Default: /preview)
+        previews: false // (optional, activated Previews. Default: false)
+        // pages: [
+        //   {
+        //     type: "Artist", // TypeName from prismic
+        //     match: "/artist/:uid", // Pages will be generated under this pattern
+        //     path: "/artist", // Placeholder page for unpublished documents
+        //     component: require.resolve("./src/page/artist.js"),
+        //   },
+        // ],
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-zopfli',
+      options: {
+        extensions: ['css', 'html', 'js', 'svg']
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-  ],
+  ]
 }

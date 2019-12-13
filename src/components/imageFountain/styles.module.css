@@ -1,0 +1,55 @@
+:root {
+  --fountain-fadeOut-duration: 1500ms;
+  --fountain-fadeOut-delay: 250ms;
+}
+
+.wrapper {
+  position: static;
+}
+
+.children {
+  position: relative;
+  z-index: 2;
+}
+
+.images {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.image {
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  width: auto;
+  height: auto;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity var(--fountain-fadeOut-duration);
+  z-index: 1;
+}
+
+.visible {
+  opacity: 1;
+  transition: none;
+  z-index: 2;
+  animation: fadeOut var(--fountain-fadeOut-duration) var(--fountain-fadeOut-delay) ease-out forwards;
+}
+
+@media (--tablet-up) {
+  .images {
+    display: block;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,23 @@
+.link,
+.linkDisabled {
+  background-color: var(--secondary-variant);
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  font-size: var(--font-size-button);
+  margin: 0 auto;
+  padding: 0.8rem 2.8rem;
+  text-decoration: none;
+  transition: transform 100ms ease-in-out;
+}
+
+.linkDisabled {
+  cursor: not-allowed;
+  background-color: var(--secondary-variant--transparent);
+}
+
+@media (--tablet-up) {
+  .link:hover {
+    transform: scale(1.05);
+  }
+}

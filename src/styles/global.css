@@ -1,0 +1,158 @@
+@custom-media --mobile-smallest (max-width: 320px);
+@custom-media --mobile-only (max-width: 899px);
+@custom-media --tablet-up (min-width: 900px);
+@custom-media --desktop-up (min-width: 1200px);
+
+:root {
+  --font-family-display: ActOfRejection, serif;
+  --font-family-sans-serif: HKGrotesk, sans-serif;
+
+  --primary: #fff800;
+  --secondary: #eb8cb2;
+  --secondary-variant: #D65D87;
+  --secondary-variant--transparent: rgba(214, 93, 135, 0.8);
+  --white: #ffffff;
+  --black: #000;
+
+  --font-size-display-headline: 3.2rem;
+  --font-size-display-sub: 1.5rem;
+  --font-size-headline: 3.75rem;
+  --font-size-headline-sub: 1.4rem;
+  --font-size-text: 1.2rem;
+  --font-size-button: 1.125rem;
+  --container-desktop-width: 542px;
+  --container-large-desktop-width: 1122px;
+  --container-horizontal-spacing-mobile: 3.9rem;
+}
+
+@media (--tablet-up) {
+  :root {
+    --font-size-display-headline: 6rem;
+    --font-size-headline: 3.75rem;
+    --font-size-headline-sub: 1.875rem;
+    --font-size-text: 1.25rem;
+  }
+}
+
+/**
+* Files:
+* ActofRejection.woff
+* ActofRejection.woff2
+* HKGrotesk-Light.woff2
+* HKGrotesk-Light.woff
+* HKGrotesk-Bold.woff2
+* HKGrotesk-Bold.woff
+*/
+
+@font-face {
+  font-family: ActOfRejection;
+  src: url('../assets/fonts/ActOfRejection/ActofRejection.woff2') format('woff2'),
+    url('../assets/fonts/ActOfRejection/ActofRejection.woff') format('woff');
+  font-weight: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2') format('woff2'),
+    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff') format('woff');
+  font-weight: 200;
+  font-display: block;
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2') format('woff2'),
+    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-display: block;
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2') format('woff2'),
+    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff') format('woff');
+  font-weight: 800;
+  font-display: block;
+}
+
+body {
+  background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0% no-repeat padding-box;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+}
+
+@media (--tablet-up) {
+  body {
+    background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0D2F51 200vh, #363661 300vh, #954587 400vh, #954587 500vh, #393662 600vh, #0D2F51 900vh) 0% 0% no-repeat padding-box;
+  }
+
+}
+
+/* Reset button styling before adding custom styles */
+button {
+  display: inline-block;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+button {
+  color: var(--primary);
+  font-family: HKGrotesk;
+  font-weight: 800;
+}
+
+b,
+strong {
+  font-weight: 800;
+}
+
+p,
+ul,
+li,
+ol {
+  color: var(--white);
+  font-family: HKGrotesk;
+  font-weight: 200;
+  font-size: var(--font-size-text);
+  line-height: 1.45;
+}
+
+ul,
+ol {
+  padding-left: 1.2rem;
+}
+
+/*
+ * Global class used to hide the content visually,
+ * but provide the content to screen readers.
+ */
+.visuallyHidden {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}

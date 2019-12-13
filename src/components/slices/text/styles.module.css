@@ -1,0 +1,22 @@
+.textBlock {
+  font-family: sans-serif;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.textBlock h2,
+.textBlock h1 {
+  font-size: var(--font-size-headline);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.content {
+  text-align: left;
+}
+
+.link {
+  display: flex;
+  margin-top: 2rem;
+}

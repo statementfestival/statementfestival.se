@@ -1,0 +1,27 @@
+.footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem 0 1.5rem;
+  width: 100%;
+}
+
+.footerLinks {
+  display: flex;
+  align-items: center;
+}
+
+.footerSocials,
+.footerLinks {
+  margin-bottom: 3.2rem;
+}
+
+.link {
+  margin: 0.75rem;
+  text-decoration: none;
+}
+
+.social {
+  margin: 0.8rem;
+}
