@@ -78,6 +78,10 @@ function Head({ description, lang, meta, title }) {
                 content: `${title} | ${doc.node.site_title}`
               },
               {
+                property: `og:site_name`,
+                content: doc.node.site_title
+              },
+              {
                 property: `og:description`,
                 content: metaDescription
               },
