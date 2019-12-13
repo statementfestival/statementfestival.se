@@ -1,14 +1,10 @@
-.wrapper {
-  position: static;
+:root {
+  --fountain-fadeOut-duration: 1500ms;
+  --fountain-fadeOut-delay: 250ms;
 }
 
-@media (--tablet-up) {
-
-  /* Adjust hit area in order to catch mouse events all the way to the top */
-  .wrapper {
-    transform: translateY(-5.5rem);
-    padding-top: 5.5rem;
-  }
+.wrapper {
+  position: static;
 }
 
 .children {
@@ -17,6 +13,7 @@
 }
 
 .images {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -34,16 +31,21 @@
   left: 0;
   top: 0;
   opacity: 0;
-  transition: opacity 1000ms;
+  transition: opacity var(--fountain-fadeOut-duration);
   z-index: 1;
-  background: #f0c;
 }
 
 .visible {
   opacity: 1;
   transition: none;
   z-index: 2;
-  animation: fadeOut 750ms 750ms ease-in forwards;
+  animation: fadeOut var(--fountain-fadeOut-duration) var(--fountain-fadeOut-delay) ease-out forwards;
+}
+
+@media (--tablet-up) {
+  .images {
+    display: block;
+  }
 }
 
 @keyframes fadeOut {
