@@ -67,6 +67,7 @@ const Merch = ({ slice }) => {
         {images.map((image, index) => {
           return (
             <img
+              loading="lazy"
               key={`merchImage-${index}`}
               className={
                 visibilityIndex === index ? styles.image : styles.noDisplay

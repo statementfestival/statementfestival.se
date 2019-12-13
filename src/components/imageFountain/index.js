@@ -87,6 +87,7 @@ const ImageFountain = ({ children, assets = [] }) => {
             <img
               key={i}
               alt={alt}
+              loading="lazy"
               className={objstr({
                 [styles.image]: true,
                 [styles.visible]: visible && active

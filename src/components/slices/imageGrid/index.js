@@ -31,6 +31,7 @@ const ImageGrid = ({ slice }) => {
               key={`ImageGrid-${index}`}
             >
               <img
+                loading="lazy"
                 className={styles.image}
                 srcSet={`${imageMobile.url} ${imageMobile.dimensions.width}w,
             ${imageDesktop.url} ${imageDesktop.dimensions.width}w`}
