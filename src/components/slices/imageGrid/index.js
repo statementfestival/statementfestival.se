@@ -12,7 +12,7 @@ const ImageGrid = ({ slice }) => {
       {hasHeadline
         ? RichText.render(slice.primary.image_grid_title, linkResolver)
         : null}
-      <div className={styles.grid}>
+      <div className={styles.images}>
         {slice.fields.map((item, index) => {
           const external = item.image_link ? item.image_link.url : ''
 
@@ -26,7 +26,7 @@ const ImageGrid = ({ slice }) => {
           return (
             <a
               target="_blank"
-              className={styles.item}
+              className={styles.imageContainer}
               href={external}
               key={`ImageGrid-${index}`}
             >

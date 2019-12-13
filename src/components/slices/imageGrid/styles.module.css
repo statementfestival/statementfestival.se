@@ -1,4 +1,4 @@
-.grid {
+.imageGrid {
   margin-bottom: 5rem;
 }
 
@@ -11,12 +11,9 @@
   text-align: center;
 }
 
-@media (--tablet-up) {
-
-  .imageGrid h2,
-  .imageGrid h1 {
-    margin-bottom: 2.5rem;
-  }
+.imageContainer {
+  display: block;
+  margin-bottom: 2.8rem;
 }
 
 .image {
@@ -24,21 +21,21 @@
   width: 100%;
 }
 
-.item {
-  margin-bottom: 2.8rem;
-}
-
 @media (--tablet-up) {
-  .grid {
+  .imageGrid h2,
+  .imageGrid h1 {
+    margin-bottom: 2.5rem;
+  }
+
+  .images {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
   }
 
-  .item {
+  .imageContainer {
     width: calc(50% - 1.25rem);
     margin-bottom: 2.5rem;
   }
-
 }
