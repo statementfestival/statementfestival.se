@@ -1,4 +1,5 @@
 .container,
+.containerMedium,
 .containerLarge,
 .containerFull {
   box-sizing: border-box;
@@ -9,13 +10,16 @@
   width: 100vw;
 }
 
-.container {
+.container,
+.containerMedium {
   padding: 0 2.8rem;
 }
 
 /* Design exception for content to fit really small screens */
 @media (--mobile-smallest) {
-  .container {
+
+  .container,
+  .containerMedium {
     padding: 0 1.5rem;
   }
 }
@@ -30,6 +34,11 @@
 
   .container {
     width: var(--container-desktop-width);
+    max-width: 100vw;
+  }
+
+  .containerMedium {
+    width: var(--container-medium-desktop-width);
     max-width: 100vw;
   }
 

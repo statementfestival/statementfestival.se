@@ -21,6 +21,7 @@
   --font-size-text: 1.2rem;
   --font-size-button: 1.125rem;
   --container-desktop-width: 542px;
+  --container-medium-desktop-width: 930px;
   --container-large-desktop-width: 1122px;
   --container-horizontal-spacing-mobile: 3.9rem;
 }
