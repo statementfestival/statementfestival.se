@@ -21,6 +21,13 @@ export const query = graphql`
                   text_title
                 }
               }
+              ... on PRISMIC_PageBodyTicket_form {
+                type
+                primary {
+                  ticket_form_title
+                  ticket_form_description
+                }
+              }
             }
           }
         }

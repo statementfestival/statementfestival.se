@@ -105,6 +105,26 @@ button {
   -moz-appearance: none;
 }
 
+input:not([type=checkbox]),
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: HKGrotesk;
+  border: 3px solid var(--white);
+  padding: 0.5rem;
+}
+
+textarea:focus,
+input:not([type=checkbox]):focus {
+  outline: none;
+  border: 3px solid var(--secondary-variant);
+}
+
+input[type=checkbox] {
+  outline: none;
+}
+
 
 h1,
 h2,
@@ -132,7 +152,8 @@ strong {
 p,
 ul,
 li,
-ol {
+ol,
+span {
   color: var(--white);
   font-family: HKGrotesk;
   font-weight: 200;
