@@ -26,6 +26,7 @@ const ImageGrid = ({ slice }) => {
           return (
             <a
               target="_blank"
+              rel="noopener noreferrer"
               className={styles.imageContainer}
               href={external}
               key={`ImageGrid-${index}`}
