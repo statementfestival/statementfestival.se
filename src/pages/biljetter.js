@@ -36,7 +36,7 @@ const IntegrityPage = ({ data }) => {
   return (
     <Page>
       <Head title={RichText.asText(doc.node.title)} />
-      <h1 className="visuallyHidden">{RichText.asText(doc.node.title)}</h1>
+      <h1>{RichText.asText(doc.node.title)}</h1>
       <SliceRenderer slices={doc.node.body} />
     </Page>
   )
