@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Error from '../error'
 
 import styles from './styles.module.css'
