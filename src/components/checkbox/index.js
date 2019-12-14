@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
+import Error from '../error'
 
 import styles from './styles.module.css'
 
@@ -26,6 +26,7 @@ const Checkbox = ({
       />
       <span className={styles.text}>{label}</span>
     </label>
+    {error ? <Error message={error} /> : null}
   </div>
 )
 

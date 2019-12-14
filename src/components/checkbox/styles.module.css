@@ -1,6 +1,7 @@
 .container {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   width: 100%;
+  position: relative;
 }
 
 .label {
