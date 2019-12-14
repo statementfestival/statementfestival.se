@@ -119,6 +119,11 @@ button {
   font-weight: 800;
 }
 
+h1 {
+  font-size: var(--font-size-headline);
+  margin-top: 0;
+}
+
 b,
 strong {
   font-weight: 800;
