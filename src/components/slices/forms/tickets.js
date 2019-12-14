@@ -17,21 +17,27 @@ const formdata = [
     type: 'email',
     name: 'EMAIL',
     id: 'mc-EMAIL',
-    value: ''
+    value: '',
+    required: true,
+    autoComplete: 'email'
   },
   {
     label: 'Förnamn',
     type: 'text',
     name: 'FNAME',
     id: 'mc-FNAME',
-    value: ''
+    value: '',
+    required: true,
+    autoComplete: 'given-name'
   },
   {
     label: 'Efternamn',
     type: 'text',
     name: 'LNAME',
     id: 'mc-LNAME',
-    value: ''
+    value: '',
+    required: true,
+    autoComplete: 'family-name'
   },
   {
     label: 'Jag anmäler mig till listan',
