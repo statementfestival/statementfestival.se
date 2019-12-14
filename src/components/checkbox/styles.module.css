@@ -40,7 +40,7 @@
   position: absolute;
   top: 0.1rem;
   transform: rotate(45deg) scale(0);
-  transition: transform 125ms ease-out;
+  transition: transform 90ms ease-out;
   width: 0.4rem;
 }
 
