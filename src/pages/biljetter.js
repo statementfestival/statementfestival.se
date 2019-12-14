@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
+import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
 
@@ -26,6 +27,8 @@ export const query = graphql`
                 primary {
                   ticket_form_title
                   ticket_form_description
+                  success_title
+                  success_description
                 }
               }
             }
@@ -43,7 +46,9 @@ const IntegrityPage = ({ data }) => {
   return (
     <Page>
       <Head title={RichText.asText(doc.node.title)} />
-      <h1>{RichText.asText(doc.node.title)}</h1>
+      <PageSection>
+        <h1>{RichText.asText(doc.node.title)}</h1>
+      </PageSection>
       <SliceRenderer slices={doc.node.body} />
     </Page>
   )
