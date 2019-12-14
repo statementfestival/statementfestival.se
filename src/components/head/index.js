@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import smoothscroll from 'smoothscroll-polyfill'
 
 /* Import fonts for preloading in order to avoid FOIT */
 import ActOfRejection from '../../assets/fonts/ActOfRejection/ActofRejection.woff2'
@@ -10,6 +11,7 @@ import HKGroteskSemiBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-S
 import HKGroteskBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
 
 function Head({ description, lang, meta, title }) {
+  smoothscroll.polyfill()
   return (
     <StaticQuery
       query={graphql`
