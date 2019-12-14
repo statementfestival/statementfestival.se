@@ -1,6 +1,7 @@
 .container {
   margin-bottom: 3rem;
   width: 100%;
+  position: relative;
 }
 
 .label {
@@ -11,7 +12,7 @@
 .text {
   color: var(--primary);
   font-weight: 600;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
 }
 
 .input {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import Error from '../error'
 
 import styles from './styles.module.css'
 
@@ -17,7 +17,7 @@ const Input = ({ type, id, name, required, value, onChange, label, error }) => (
         onChange={onChange}
       />
     </label>
-    {error ? <p className={styles.error}>{error}</p> : null}
+    {error ? <Error message={error} /> : null}
   </div>
 )
 
