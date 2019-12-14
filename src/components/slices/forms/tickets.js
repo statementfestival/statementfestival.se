@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useLayoutEffect } from 'react'
 import { RichText } from 'prismic-reactjs'
 
 import Input from '../../input'
@@ -61,6 +61,7 @@ const TicketForm = ({ slice }) => {
     )
   )
   const [invalid, setInvalid] = useState([])
+  const successContainer = useRef(null)
 
   const submit = event => {
     event.preventDefault()
@@ -96,7 +97,14 @@ const TicketForm = ({ slice }) => {
     }
   }
 
-  console.log(slice.primary.success_title)
+  useLayoutEffect(() => {
+    if (submitted && successContainer) {
+      successContainer.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }, [submitted])
 
   return (
     <div>
@@ -107,7 +115,7 @@ const TicketForm = ({ slice }) => {
         ? RichText.render(slice.primary.ticket_form_description)
         : null}
       {submitted ? (
-        <div className={styles.success}>
+        <div className={styles.success} ref={successContainer}>
           {slice.primary.success_title
             ? RichText.render(slice.primary.success_title)
             : null}

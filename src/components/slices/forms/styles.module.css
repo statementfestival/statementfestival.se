@@ -15,9 +15,7 @@
 
 .success {
   align-items: center;
-  animation: fadeIn 190ms ease-out forwards;
-  opacity: 0;
-  transform: translateY(50px);
+  padding-top: 3rem;
 }
 
 .success h2,
@@ -27,11 +25,4 @@
   margin-bottom: 1rem;
   margin-top: 0;
   text-align: center;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
