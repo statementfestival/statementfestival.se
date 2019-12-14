@@ -7,6 +7,7 @@ import FAQ from '../slices/faq'
 import ImageGrid from '../slices/imageGrid'
 import Merch from '../slices/merch'
 import Text from '../slices/text'
+import TicketForm from '../slices/forms/tickets'
 
 const SliceRenderer = ({ slices }) => {
   return slices.map((slice, index) => {
@@ -40,6 +41,12 @@ const SliceRenderer = ({ slices }) => {
           return (
             <PageSection size="medium" key={index}>
               <ImageGrid slice={slice} />
+            </PageSection>
+          )
+        case 'ticket_form':
+          return (
+            <PageSection key={index}>
+              <TicketForm slice={slice} />
             </PageSection>
           )
         default:
