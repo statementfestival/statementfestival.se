@@ -4,7 +4,8 @@
     "name": "EMAIL",
     "id": "mc-EMAIL",
     "value": "",
-    "autoComplete": "email"
+    "autoComplete": "email",
+    "placeholder": "Ex. minou.johansson@adress.se"
   },
   {
     "label": "Förnamn",
@@ -12,7 +13,8 @@
     "name": "FNAME",
     "id": "mc-FNAME",
     "value": "",
-    "autoComplete": "given-name"
+    "autoComplete": "given-name",
+    "placeholder": "Ex. Minou"
   },
   {
     "label": "Efternamn",
@@ -20,7 +22,8 @@
     "name": "LNAME",
     "id": "mc-LNAME",
     "value": "",
-    "autoComplete": "family-name"
+    "autoComplete": "family-name",
+    "placeholder": "Ex. Johansson"
   },
   {
     "label": "Jag anmäler mig till listan",

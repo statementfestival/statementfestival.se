@@ -11,7 +11,8 @@ const Input = ({
   value,
   onChange,
   label,
-  error
+  error,
+  placeholder
 }) => (
   <div className={styles.container}>
     <label className={styles.label}>
@@ -24,6 +25,7 @@ const Input = ({
         name={name}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
     </label>
     {error ? <Error message={error} /> : null}

@@ -121,7 +121,7 @@ textarea {
   font-family: HKGrotesk;
   font-weight: 400;
   border: 3px solid var(--white);
-  padding: 0.5rem;
+  padding: 0.7rem 0.4rem 0.4rem;
 }
 
 textarea:focus,
