@@ -43,7 +43,15 @@ export const query = graphql`
                   text_title
                   text_link_address {
                     ... on PRISMIC__ExternalLink {
+                      _linkType
                       url
+                    }
+                    ... on PRISMIC_Page {
+                      _linkType
+                      _meta {
+                        uid
+                        type
+                      }
                     }
                   }
                   text_link_title
