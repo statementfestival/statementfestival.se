@@ -2,6 +2,7 @@ import React, { useState, useRef, useLayoutEffect } from 'react'
 import { RichText } from 'prismic-reactjs'
 
 import Input from '../../input'
+import Textarea from '../../textarea'
 import Checkbox from '../../checkbox'
 import Button from '../../button'
 import Error from '../../error'
@@ -109,49 +110,72 @@ const Form = ({ slice }) => {
           action={url}
         >
           {data.map((item, index) => {
-            if (item.type === 'checkbox') {
-              return (
-                <Checkbox
-                  {...item}
-                  key={index}
-                  error={
-                    invalid.indexOf(item.name) !== -1
-                      ? 'Du måste anmäla dig till listan'
-                      : null
-                  }
-                  value="Y"
-                  checked={textValue[item.name]}
-                  onChange={event => {
-                    setTextValue({
-                      ...textValue,
-                      [item.name]: event.target.checked
-                    })
+            switch (item.type) {
+              case 'checkbox':
+                return (
+                  <Checkbox
+                    {...item}
+                    key={index}
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Du måste anmäla dig till listan'
+                        : null
+                    }
+                    value="Y"
+                    checked={textValue[item.name]}
+                    onChange={event => {
+                      setTextValue({
+                        ...textValue,
+                        [item.name]: event.target.checked
+                      })
 
-                    removeError(item.name)
-                  }}
-                />
-              )
+                      removeError(item.name)
+                    }}
+                  />
+                )
+              case 'text':
+                return (
+                  <Input
+                    {...item}
+                    key={index}
+                    value={textValue[item.name]}
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Fältet är obligatoriskt'
+                        : null
+                    }
+                    onChange={event => {
+                      removeError(item.name)
+                      setTextValue({
+                        ...textValue,
+                        [event.target.name]: event.target.value
+                      })
+                    }}
+                  />
+                )
+              case 'textarea':
+                return (
+                  <Textarea
+                    {...item}
+                    key={index}
+                    value={textValue[item.name]}
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Fältet är obligatoriskt'
+                        : null
+                    }
+                    onChange={event => {
+                      removeError(item.name)
+                      setTextValue({
+                        ...textValue,
+                        [event.target.name]: event.target.value
+                      })
+                    }}
+                  />
+                )
+              default:
+                return null
             }
-
-            return (
-              <Input
-                {...item}
-                key={index}
-                value={textValue[item.name]}
-                error={
-                  invalid.indexOf(item.name) !== -1
-                    ? 'Fältet är obligatoriskt'
-                    : null
-                }
-                onChange={event => {
-                  removeError(item.name)
-                  setTextValue({
-                    ...textValue,
-                    [event.target.name]: event.target.value
-                  })
-                }}
-              />
-            )
           })}
           <Button type="submit">Anmäl dig</Button>
           {failed ? (

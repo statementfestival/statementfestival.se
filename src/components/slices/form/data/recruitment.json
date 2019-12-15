@@ -76,7 +76,7 @@
   },
   {
     "label": "Länkar som du vill delge oss (valfri)",
-    "type": "textarea",
+    "type": "text",
     "name": "MMERGE8",
     "id": "mce-MMERGE8",
     "value": "",
