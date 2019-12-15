@@ -94,11 +94,11 @@ const Form = ({ slice }) => {
         : null}
       {submitted ? (
         <div className={styles.success} ref={successContainer}>
-          {slice.primary.success_title
-            ? RichText.render(slice.primary.success_title)
+          {slice.primary.form_success_title
+            ? RichText.render(slice.primary.form_success_title)
             : null}
-          {slice.primary.success_description
-            ? RichText.render(slice.primary.success_description)
+          {slice.primary.form_success_description
+            ? RichText.render(slice.primary.form_success_description)
             : null}
         </div>
       ) : (
