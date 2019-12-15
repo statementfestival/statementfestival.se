@@ -63,6 +63,14 @@
 
 @font-face {
   font-family: HKGrotesk;
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff2') format('woff2'),
+    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff') format('woff');
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: HKGrotesk;
   src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2') format('woff2'),
     url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff') format('woff');
   font-weight: 600;
@@ -105,6 +113,35 @@ button {
   -moz-appearance: none;
 }
 
+input:not([type=checkbox]),
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: HKGrotesk;
+  font-weight: 400;
+  border: 3px solid var(--white);
+  padding: 0.7rem 0.4rem 0.4rem;
+}
+
+textarea:focus,
+input:not([type=checkbox]):focus {
+  outline: none;
+  border: 3px solid var(--secondary-variant);
+}
+
+input[type=checkbox] {
+  outline: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  border: 3px solid var(--white);
+  font-family: HKGrotesk;
+  -webkit-text-fill-color: var(--black);
+  -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
+}
 
 h1,
 h2,
@@ -119,6 +156,12 @@ button {
   font-weight: 800;
 }
 
+h1 {
+  font-size: var(--font-size-headline);
+  margin-top: 0;
+  text-align: center;
+}
+
 b,
 strong {
   font-weight: 800;
@@ -127,7 +170,8 @@ strong {
 p,
 ul,
 li,
-ol {
+ol,
+span {
   color: var(--white);
   font-family: HKGrotesk;
   font-weight: 200;

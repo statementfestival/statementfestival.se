@@ -1,0 +1,18 @@
+.button,
+.buttonDisabled {
+  background-color: var(--secondary-variant);
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  font-size: var(--font-size-button);
+  margin: 0 auto;
+  padding: 0.8rem 2.8rem;
+  text-decoration: none;
+  transition: transform 100ms ease-in-out;
+}
+
+@media (--tablet-up) {
+  .button:hover {
+    transform: scale(1.05);
+  }
+}

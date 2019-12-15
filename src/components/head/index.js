@@ -2,14 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import smoothscroll from 'smoothscroll-polyfill'
+
+import { isClient } from '../../utils'
 
 /* Import fonts for preloading in order to avoid FOIT */
 import ActOfRejection from '../../assets/fonts/ActOfRejection/ActofRejection.woff2'
 import HKGroteskLight from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2'
 import HKGroteskSemiBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2'
+import HKGroteskMedium from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff2'
 import HKGroteskBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
 
 function Head({ description, lang, meta, title }) {
+  if (isClient()) smoothscroll.polyfill()
   return (
     <StaticQuery
       query={graphql`
@@ -47,6 +52,13 @@ function Head({ description, lang, meta, title }) {
                 rel: 'preload',
                 as: 'font',
                 href: HKGroteskLight,
+                type: 'font/woff2',
+                crossOrigin: 'anonymous'
+              },
+              {
+                rel: 'preload',
+                as: 'font',
+                href: HKGroteskMedium,
                 type: 'font/woff2',
                 crossOrigin: 'anonymous'
               },

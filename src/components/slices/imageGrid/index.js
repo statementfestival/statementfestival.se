@@ -26,11 +26,13 @@ const ImageGrid = ({ slice }) => {
           return (
             <a
               target="_blank"
+              rel="noopener noreferrer"
               className={styles.imageContainer}
               href={external}
               key={`ImageGrid-${index}`}
             >
               <img
+                loading="lazy"
                 className={styles.image}
                 srcSet={`${imageMobile.url} ${imageMobile.dimensions.width}w,
             ${imageDesktop.url} ${imageDesktop.dimensions.width}w`}

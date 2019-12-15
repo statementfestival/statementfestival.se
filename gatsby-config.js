@@ -18,13 +18,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `statement-festival`,
-        short_name: `statement`,
+        name: `Statement Festival`,
+        short_name: `Statement`,
         start_url: `/`,
-        background_color: `#954587`,
-        theme_color: `#fff800`,
+        background_color: `#5C1951`,
+        theme_color: `#FFF800`,
         display: `minimal-ui`,
-        icon: `src/assets/statement-icon.png` // This path is relative to the root of the site.
+        icon: `src/assets/statement-icon.png`
       }
     },
     {
@@ -59,9 +59,7 @@ module.exports = {
       options: {
         extensions: ['css', 'html', 'js', 'svg']
       }
-    }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    },
+    `gatsby-plugin-offline`
   ]
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
 import { isClient } from '../../../utils'
-import { ExternalLinkDisabled } from '../../externalLink'
+import ExternalLinkDisabled from '../../links/disabled'
 
 import styles from './styles.module.css'
 
@@ -67,6 +67,7 @@ const Merch = ({ slice }) => {
         {images.map((image, index) => {
           return (
             <img
+              loading="lazy"
               key={`merchImage-${index}`}
               className={
                 visibilityIndex === index ? styles.image : styles.noDisplay

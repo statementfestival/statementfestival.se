@@ -55,7 +55,15 @@ export const query = graphql`
             link_title
             link_address {
               ... on PRISMIC__ExternalLink {
+                _linkType
                 url
+              }
+              ... on PRISMIC_Page {
+                _linkType
+                _meta {
+                  uid
+                  type
+                }
               }
             }
             description
@@ -119,7 +127,7 @@ const IndexPage = ({ data }) => {
     description: doc.node.description,
     images: images && images.fields ? images.fields : [],
     link_title: doc.node.link_title,
-    link_url: doc.node.link_address ? doc.node.link_address.url : '',
+    link: doc.node.link_address,
     subtitle: RichText.asText(doc.node.subtitle),
     title
   }

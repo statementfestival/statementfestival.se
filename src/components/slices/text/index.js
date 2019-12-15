@@ -2,7 +2,7 @@ import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
 import { linkResolver } from '../../../utils/linkResolver'
-import ExternalLink from '../../externalLink'
+import ExternalLink from '../../links/external'
 
 import styles from './styles.module.css'
 
