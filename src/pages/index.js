@@ -132,9 +132,6 @@ const IndexPage = ({ data }) => {
     title
   }
 
-  console.log(doc.node.link_address._linkType)
-  // Link.document
-
   return (
     <Page>
       <Head title={title} />
