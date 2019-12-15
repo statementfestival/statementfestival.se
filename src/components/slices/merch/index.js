@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
 import { isClient } from '../../../utils'
-import { ExternalLinkDisabled } from '../../externalLink'
+import ExternalLinkDisabled from '../../links/disabled'
 
 import styles from './styles.module.css'
 

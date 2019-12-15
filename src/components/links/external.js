@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 
 import styles from './styles.module.css'
 
+/* Used when linking to external sites */
 const ExternalLink = ({ href, title, hoverTitle = null }) => {
   const [linkTitle, setTitle] = useState(title)
 
@@ -22,22 +22,4 @@ const ExternalLink = ({ href, title, hoverTitle = null }) => {
   )
 }
 
-ExternalLink.propTypes = {
-  href: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  hoverTitle: PropTypes.string
-}
-
-ExternalLink.defaultProps = {
-  href: '',
-  title: 'Link'
-}
-
 export default ExternalLink
-
-/* Temp component used until webshop is in place */
-export const ExternalLinkDisabled = ({ title }) => (
-  <button className={styles.linkDisabled} disabled>
-    {title}
-  </button>
-)
