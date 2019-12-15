@@ -10,6 +10,7 @@ import { isClient } from '../../utils'
 import ActOfRejection from '../../assets/fonts/ActOfRejection/ActofRejection.woff2'
 import HKGroteskLight from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2'
 import HKGroteskSemiBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2'
+import HKGroteskMedium from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff2'
 import HKGroteskBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
 
 function Head({ description, lang, meta, title }) {
@@ -51,6 +52,13 @@ function Head({ description, lang, meta, title }) {
                 rel: 'preload',
                 as: 'font',
                 href: HKGroteskLight,
+                type: 'font/woff2',
+                crossOrigin: 'anonymous'
+              },
+              {
+                rel: 'preload',
+                as: 'font',
+                href: HKGroteskMedium,
                 type: 'font/woff2',
                 crossOrigin: 'anonymous'
               },
