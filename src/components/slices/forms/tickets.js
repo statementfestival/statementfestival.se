@@ -141,7 +141,6 @@ const TicketForm = ({ slice }) => {
                   value="Y"
                   checked={textValue[item.name]}
                   onChange={event => {
-                    console.log(event.target.checked)
                     setTextValue({
                       ...textValue,
                       [item.name]: event.target.checked
