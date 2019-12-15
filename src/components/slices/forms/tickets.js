@@ -18,7 +18,6 @@ const formdata = [
     name: 'EMAIL',
     id: 'mc-EMAIL',
     value: '',
-    required: true,
     autoComplete: 'email'
   },
   {
@@ -27,7 +26,6 @@ const formdata = [
     name: 'FNAME',
     id: 'mc-FNAME',
     value: '',
-    required: true,
     autoComplete: 'given-name'
   },
   {
@@ -36,7 +34,6 @@ const formdata = [
     name: 'LNAME',
     id: 'mc-LNAME',
     value: '',
-    required: true,
     autoComplete: 'family-name'
   },
   {

@@ -8,7 +8,6 @@ const Input = ({
   id,
   name,
   autoComplete,
-  required,
   value,
   onChange,
   label,
@@ -23,7 +22,6 @@ const Input = ({
         type={type}
         id={id}
         name={name}
-        required={required || false}
         value={value}
         onChange={onChange}
       />
