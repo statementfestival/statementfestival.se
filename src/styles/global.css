@@ -189,7 +189,8 @@ p,
 ul,
 li,
 ol,
-span {
+span,
+label {
   color: var(--white);
   font-family: HKGrotesk;
   font-weight: 200;

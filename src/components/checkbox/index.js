@@ -1,5 +1,6 @@
 import React from 'react'
 import Error from '../error'
+import objstr from 'obj-str'
 
 import styles from './styles.module.css'
 
@@ -13,20 +14,24 @@ const Checkbox = ({
   label,
   error
 }) => (
-  <div className={styles.container}>
+  <div
+    className={objstr({
+      [styles.container]: true,
+      [styles.containerLarge]: required
+    })}
+  >
     <label className={styles.label}>
       <input
         className={styles.checkbox}
         type={type}
         id={id}
         name={name}
-        required={required}
         value={value}
         onChange={onChange}
       />
       <span className={styles.text}>{label}</span>
     </label>
-    {error ? <Error message={error} /> : null}
+    {error && required ? <Error message={error} /> : null}
   </div>
 )
 

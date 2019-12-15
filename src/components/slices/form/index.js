@@ -3,6 +3,7 @@ import { RichText } from 'prismic-reactjs'
 
 import Input from '../../input'
 import Textarea from '../../textarea'
+import RadioGroup from '../../radioGroup'
 import Checkbox from '../../checkbox'
 import Button from '../../button'
 import Error from '../../error'
@@ -130,6 +131,20 @@ const Form = ({ slice }) => {
                       })
 
                       removeError(item.name)
+                    }}
+                  />
+                )
+              case 'radio':
+                return (
+                  <RadioGroup
+                    {...item}
+                    key={index}
+                    checked={textValue[item.name]}
+                    onChange={event => {
+                      setTextValue({
+                        ...textValue,
+                        [item.name]: event.target.value
+                      })
                     }}
                   />
                 )

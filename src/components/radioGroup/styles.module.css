@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.label {
+  color: var(--white);
+  display: block;
+  font-weight: 200;
+  line-height: 1;
+  margin: 0;
+  margin-left: 2rem;
+}
+
+
+.radio:checked,
+.radio:active,
+.radio:focus {
+  border-color: var(--secondary-variant);
+}

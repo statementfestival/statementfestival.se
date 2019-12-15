@@ -30,6 +30,7 @@
     "type": "checkbox",
     "name": "gdpr[34563]",
     "id": "gdpr-34563",
-    "value": false
+    "value": false,
+    "required": true
   }
 ]
