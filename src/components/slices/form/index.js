@@ -6,50 +6,20 @@ import Checkbox from '../../checkbox'
 import Button from '../../button'
 import Error from '../../error'
 
+import ticketData from './data/ticket.json'
+import recruitmentData from './data/recruitment.json' // Update json with real data
+
 import styles from './styles.module.css'
 
-const mailchimpUrl =
-  'https://statementfestival.us20.list-manage.com/subscribe/post?u=38dbddda3f46af77ac4fbf48d&amp;id=06d6ea90a3'
+const Form = ({ slice }) => {
+  let data = []
+  if (slice.primary.form_type === 'Ticket') data = ticketData
+  if (slice.primary.form_type === 'Recruitment') data = recruitmentData
 
-const formdata = [
-  {
-    label: 'E-post',
-    type: 'email',
-    name: 'EMAIL',
-    id: 'mc-EMAIL',
-    value: '',
-    autoComplete: 'email'
-  },
-  {
-    label: 'Förnamn',
-    type: 'text',
-    name: 'FNAME',
-    id: 'mc-FNAME',
-    value: '',
-    autoComplete: 'given-name'
-  },
-  {
-    label: 'Efternamn',
-    type: 'text',
-    name: 'LNAME',
-    id: 'mc-LNAME',
-    value: '',
-    autoComplete: 'family-name'
-  },
-  {
-    label: 'Jag anmäler mig till listan',
-    type: 'checkbox',
-    name: 'gdpr[34563]',
-    id: 'gdpr-34563',
-    value: false
-  }
-]
-
-const TicketForm = ({ slice }) => {
   const [submitted, setSubmitted] = useState(false)
   const [failed, setFailed] = useState(false)
   const [textValue, setTextValue] = useState(
-    formdata.reduce(
+    data.reduce(
       (accumulator, current) => ({
         ...accumulator,
         [current.name]: current.value
@@ -59,6 +29,26 @@ const TicketForm = ({ slice }) => {
   )
   const [invalid, setInvalid] = useState([])
   const successContainer = useRef(null)
+
+  useLayoutEffect(() => {
+    if (submitted && successContainer) {
+      successContainer.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }, [submitted])
+
+  // Exit early if necessary information is not provided
+  if (
+    !slice.primary.form_address ||
+    !slice.primary.form_address.url ||
+    !slice.primary.form_type
+  ) {
+    return null
+  }
+
+  const { url } = slice.primary.form_address
 
   const submit = event => {
     event.preventDefault()
@@ -78,7 +68,7 @@ const TicketForm = ({ slice }) => {
       return
     }
 
-    fetch(mailchimpUrl, {
+    fetch(url, {
       mode: 'no-cors',
       method: 'post',
       body: new FormData(event.target)
@@ -93,15 +83,6 @@ const TicketForm = ({ slice }) => {
       setInvalid(filtered)
     }
   }
-
-  useLayoutEffect(() => {
-    if (submitted && successContainer) {
-      successContainer.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
-    }
-  }, [submitted])
 
   return (
     <div>
@@ -125,9 +106,9 @@ const TicketForm = ({ slice }) => {
           method="POST"
           onSubmit={submit}
           className={styles.form}
-          action={mailchimpUrl}
+          action={url}
         >
-          {formdata.map((item, index) => {
+          {data.map((item, index) => {
             if (item.type === 'checkbox') {
               return (
                 <Checkbox
@@ -188,4 +169,4 @@ const TicketForm = ({ slice }) => {
   )
 }
 
-export default TicketForm
+export default Form

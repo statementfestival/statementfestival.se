@@ -22,13 +22,19 @@ export const query = graphql`
                   text_title
                 }
               }
-              ... on PRISMIC_PageBodyTicket_form {
+              ... on PRISMIC_PageBodyForm {
                 type
                 primary {
-                  ticket_form_title
-                  ticket_form_description
-                  success_title
-                  success_description
+                  form_address {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                  form_description
+                  form_success_description
+                  form_success_title
+                  form_title
+                  form_type
                 }
               }
             }
