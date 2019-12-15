@@ -2,31 +2,204 @@
     "label": "E-post",
     "type": "email",
     "name": "EMAIL",
-    "id": "mc-EMAIL",
+    "id": "mce-EMAIL",
     "value": "",
-    "autoComplete": "email"
+    "autoComplete": "email",
+    "placeholder": "Ex. minou.johansson@adress.se"
   },
   {
     "label": "Förnamn",
     "type": "text",
     "name": "FNAME",
-    "id": "mc-FNAME",
+    "id": "mce-FNAME",
     "value": "",
-    "autoComplete": "given-name"
+    "autoComplete": "given-name",
+    "placeholder": "Ex. Minou"
   },
   {
     "label": "Efternamn",
     "type": "text",
     "name": "LNAME",
-    "id": "mc-LNAME",
+    "id": "mce-LNAME",
     "value": "",
-    "autoComplete": "family-name"
+    "autoComplete": "family-name",
+    "placeholder": "Ex. Johansson"
   },
   {
-    "label": "Jag anmäler mig till listan",
+    "label": "Telefonnummer",
+    "type": "text",
+    "name": "PHONE",
+    "id": "mce-PHONE",
+    "value": "",
+    "autoComplete": "phone",
+    "placeholder": "Ex. 070-123 45 67"
+  },
+  {
+    "label": "Ange kort varför du vill engagera dig i Statement",
+    "type": "textarea",
+    "name": "MMERGE3",
+    "id": "mce-MMERGE3",
+    "value": "",
+    "placeholder": "Skriv text"
+  },
+  {
+    "label": "Beskriv din erfarenhet",
+    "type": "textarea",
+    "name": "MMERGE5",
+    "id": "mce-MMERGE5",
+    "value": "",
+    "placeholder": "Skriv text"
+  },
+  {
+    "label": "Beskriv din erfarenhet",
+    "type": "textarea",
+    "name": "MMERGE5",
+    "id": "mce-MMERGE5",
+    "value": "",
+    "placeholder": "Skriv text"
+  },
+  {
+    "label": "Beskriv vad du har för bild av Statement",
+    "type": "textarea",
+    "name": "MMERGE6",
+    "id": "mce-MMERGE6",
+    "value": "",
+    "placeholder": "Skriv text"
+  },
+  {
+    "label": "Övrig information som du vill delge oss",
+    "type": "textarea",
+    "name": "MMERGE7",
+    "id": "mce-MMERGE7",
+    "value": "",
+    "placeholder": "Skriv text"
+  },
+  {
+    "label": "Länkar som du vill delge oss (valfri)",
+    "type": "textarea",
+    "name": "MMERGE8",
+    "id": "mce-MMERGE8",
+    "value": "",
+    "placeholder": "Ex. https://www.webbplats.se"
+  },
+  {
+    "label": "Vilken stad bor du i?",
+    "type": "text",
+    "name": "MMERGE10",
+    "id": "mce-MMERGE10",
+    "value": "",
+    "placeholder": "Ex. Umeå"
+  },
+  {
+    "title": "Önskar du vara gruppmedlem eller arbetsledare?",
+    "type": "radio",
+    "name": "MMERGE11",
+    "value": false,
+    "options": [{
+        "id": "mce-MMERGE11-0",
+        "label": "Arbetsledare",
+        "value": "Arbetsledare"
+      },
+      {
+        "id": "mce-MMERGE11-1",
+        "label": "Gruppmedlem",
+        "value": "Gruppmedlem"
+      }
+    ]
+  },
+  {
+    "title": "Ange önskat arbetsområde",
+    "type": "radio",
+    "name": "MMERGE12",
+    "value": false,
+    "options": [{
+        "id": "mce-MMERGE12-0",
+        "label": "Marknad",
+        "value": "Marknad"
+      },
+      {
+        "id": "mce-MMERGE12-1",
+        "label": "Spons och samarbeten",
+        "value": "Spons och samarbeten"
+      },
+      {
+        "id": "mce-MMERGE12-2",
+        "label": "Administration",
+        "value": "Administration"
+      },
+      {
+        "id": "mce-MMERGE12-3",
+        "label": "Juridik",
+        "value": "Juridik"
+      }
+    ]
+  },
+  {
+    "title": "Hur mycket erfarenhet har du inom arbetsområdet?",
+    "type": "radio",
+    "name": "MMERGE13",
+    "value": false,
+    "options": [{
+        "id": "mce-MMERGE13-0",
+        "label": "Ingen erfarenhet",
+        "value": "Ingen erfarenhet"
+      },
+      {
+        "id": "mce-MMERGE13-1",
+        "label": "Lite erfarenhet",
+        "value": "Lite erfarenhet"
+      },
+      {
+        "id": "mce-MMERGE13-2",
+        "label": "God erfarenhet",
+        "value": "God erfarenhet"
+      },
+      {
+        "id": "mce-MMERGE13-3",
+        "label": "Mycket god erfarenhet",
+        "value": "Mycket god erfarenhet"
+      }
+    ]
+  },
+  {
+    "title": "Hur många timmar du kan lägga på Statment/vecka?",
+    "type": "radio",
+    "name": "MMERGE14",
+    "value": false,
+    "options": [{
+        "id": "mce-MMERGE14-0",
+        "label": "2-5 timmar",
+        "value": "2-5 timmar"
+      },
+      {
+        "id": "mce-MMERGE14-1",
+        "label": "5-10 timmar",
+        "value": "5-10 timmar"
+      },
+      {
+        "id": "mce-MMERGE14-2",
+        "label": "10-20 timmar",
+        "value": "10-20 timmar"
+      },
+      {
+        "id": "mce-MMERGE14-3",
+        "label": "Mer än 20 timmar",
+        "value": "Mer än 20 timmar"
+      }
+    ]
+  },
+  {
+    "label": "Kontakta mig via e-post",
     "type": "checkbox",
-    "name": "gdpr[34563]",
-    "id": "gdpr-34563",
+    "name": "gdpr[38020]",
+    "id": "gdpr_38020",
+    "value": false
+  },
+  {
+    "label": "Kontakta mig via telefon",
+    "type": "checkbox",
+    "name": "gdpr[38024]",
+    "id": "gdpr_38024",
     "value": false
   }
 ]
