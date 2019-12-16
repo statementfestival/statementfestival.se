@@ -180,6 +180,12 @@ h1 {
   text-align: center;
 }
 
+h4 {
+  margin-top: 0;
+  text-align: left;
+  font-size: var(--font-size-text);
+}
+
 b,
 strong {
   font-weight: 800;

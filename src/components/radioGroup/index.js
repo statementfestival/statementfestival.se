@@ -39,7 +39,11 @@ const RadioGroup = ({
           </div>
         )
       })}
-      {error ? <Error message={error} /> : null}
+      {error ? (
+        <div className={styles.error}>
+          <Error message={error} />
+        </div>
+      ) : null}
     </div>
   )
 }
