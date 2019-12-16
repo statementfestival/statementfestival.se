@@ -1,14 +1,17 @@
+.container {
+  margin-bottom: 5rem;
+}
+
 .form,
 .success {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 5rem;
 }
 
 .button {
   display: flex;
-  margin-top: 2rem;
+  margin: 2rem 0 3rem;
 }
 
 .error {
@@ -30,4 +33,10 @@
   margin-bottom: 1rem;
   margin-top: 0;
   text-align: center;
+}
+
+.disclaimer p,
+.disclaimer a {
+  font-size: 1rem;
+  line-height: 1.5;
 }

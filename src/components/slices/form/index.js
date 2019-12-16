@@ -1,5 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import { RichText } from 'prismic-reactjs'
+import { linkResolver } from '../../../utils/linkResolver'
 
 import Input from '../../input'
 import Textarea from '../../textarea'
@@ -90,7 +91,7 @@ const Form = ({ slice }) => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       {slice.primary.ticket_form_title
         ? RichText.render(slice.primary.ticket_form_title)
         : null}
@@ -233,6 +234,11 @@ const Form = ({ slice }) => {
           ) : null}
         </form>
       )}
+      {slice.primary.form_disclaimer ? (
+        <div className={styles.disclaimer}>
+          {RichText.render(slice.primary.form_disclaimer, linkResolver)}
+        </div>
+      ) : null}
     </div>
   )
 }

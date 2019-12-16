@@ -35,6 +35,7 @@ export const query = graphql`
                   form_success_title
                   form_title
                   form_type
+                  form_disclaimer
                 }
               }
             }
