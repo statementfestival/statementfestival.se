@@ -1,4 +1,5 @@
 import React from 'react'
+import Error from '../error'
 
 import styles from './styles.module.css'
 
@@ -11,6 +12,7 @@ const RadioGroup = ({
   id,
   label,
   checked,
+  error = null,
   lookalike = false
 }) => {
   return (
@@ -37,21 +39,8 @@ const RadioGroup = ({
           </div>
         )
       })}
+      {error ? <Error message={error} /> : null}
     </div>
   )
 }
-
-{
-  /* <div>
-  <input type="radio" id="huey" name="drone" value="huey"
-         checked>
-  <label for="huey">Huey</label>
-</div>
-
-<div>
-  <input type="radio" id="dewey" name="drone" value="dewey">
-  <label for="dewey">Dewey</label>
-</div> */
-}
-
 export default RadioGroup

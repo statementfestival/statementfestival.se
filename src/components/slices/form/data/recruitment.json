@@ -5,7 +5,8 @@
     "id": "mce-EMAIL",
     "value": "",
     "autoComplete": "email",
-    "placeholder": "Ex. minou.johansson@adress.se"
+    "placeholder": "Ex. minou.johansson@adress.se",
+    "required": true
   },
   {
     "label": "Förnamn",
@@ -14,7 +15,8 @@
     "id": "mce-FNAME",
     "value": "",
     "autoComplete": "given-name",
-    "placeholder": "Ex. Minou"
+    "placeholder": "Ex. Minou",
+    "required": true
   },
   {
     "label": "Efternamn",
@@ -23,7 +25,8 @@
     "id": "mce-LNAME",
     "value": "",
     "autoComplete": "family-name",
-    "placeholder": "Ex. Johansson"
+    "placeholder": "Ex. Johansson",
+    "required": true
   },
   {
     "label": "Telefonnummer",
@@ -32,55 +35,8 @@
     "id": "mce-PHONE",
     "value": "",
     "autoComplete": "phone",
-    "placeholder": "Ex. 070-123 45 67"
-  },
-  {
-    "label": "Ange kort varför du vill engagera dig i Statement",
-    "type": "textarea",
-    "name": "MMERGE3",
-    "id": "mce-MMERGE3",
-    "value": "",
-    "placeholder": "Skriv text"
-  },
-  {
-    "label": "Beskriv din erfarenhet",
-    "type": "textarea",
-    "name": "MMERGE5",
-    "id": "mce-MMERGE5",
-    "value": "",
-    "placeholder": "Skriv text"
-  },
-  {
-    "label": "Beskriv din erfarenhet",
-    "type": "textarea",
-    "name": "MMERGE5",
-    "id": "mce-MMERGE5",
-    "value": "",
-    "placeholder": "Skriv text"
-  },
-  {
-    "label": "Beskriv vad du har för bild av Statement",
-    "type": "textarea",
-    "name": "MMERGE6",
-    "id": "mce-MMERGE6",
-    "value": "",
-    "placeholder": "Skriv text"
-  },
-  {
-    "label": "Övrig information som du vill delge oss",
-    "type": "textarea",
-    "name": "MMERGE7",
-    "id": "mce-MMERGE7",
-    "value": "",
-    "placeholder": "Skriv text"
-  },
-  {
-    "label": "Länkar som du vill delge oss (valfri)",
-    "type": "text",
-    "name": "MMERGE8",
-    "id": "mce-MMERGE8",
-    "value": "",
-    "placeholder": "Ex. https://www.webbplats.se"
+    "placeholder": "Ex. 070-123 45 67",
+    "required": true
   },
   {
     "label": "Vilken stad bor du i?",
@@ -88,24 +44,26 @@
     "name": "MMERGE10",
     "id": "mce-MMERGE10",
     "value": "",
-    "placeholder": "Ex. Umeå"
+    "placeholder": "Ex. Umeå",
+    "required": true
   },
   {
-    "title": "Vill du vara gruppmedlem eller arbetsledare?",
-    "type": "radio",
-    "name": "MMERGE11",
-    "value": false,
-    "options": [{
-        "id": "mce-MMERGE11-0",
-        "label": "Arbetsledare",
-        "value": "Arbetsledare"
-      },
-      {
-        "id": "mce-MMERGE11-1",
-        "label": "Gruppmedlem",
-        "value": "Gruppmedlem"
-      }
-    ]
+    "label": "Beskriv din bild av Statement",
+    "type": "textarea",
+    "name": "MMERGE6",
+    "id": "mce-MMERGE6",
+    "value": "",
+    "placeholder": "Skriv text",
+    "required": true
+  },
+  {
+    "label": "Berätta kort varför du vill engagera dig i Statement",
+    "type": "textarea",
+    "name": "MMERGE3",
+    "id": "mce-MMERGE3",
+    "value": "",
+    "placeholder": "Skriv text",
+    "required": true
   },
   {
     "title": "Ange önskat arbetsområde",
@@ -132,7 +90,26 @@
         "label": "Juridik",
         "value": "Juridik"
       }
-    ]
+    ],
+    "required": true
+  },
+  {
+    "title": "Vill du vara gruppmedlem eller arbetsledare?",
+    "type": "radio",
+    "name": "MMERGE11",
+    "value": false,
+    "options": [{
+        "id": "mce-MMERGE11-0",
+        "label": "Arbetsledare",
+        "value": "Arbetsledare"
+      },
+      {
+        "id": "mce-MMERGE11-1",
+        "label": "Gruppmedlem",
+        "value": "Gruppmedlem"
+      }
+    ],
+    "required": true
   },
   {
     "title": "Hur mycket erfarenhet har du inom arbetsområdet?",
@@ -159,7 +136,17 @@
         "label": "Mycket god erfarenhet",
         "value": "Mycket god erfarenhet"
       }
-    ]
+    ],
+    "required": true
+  },
+  {
+    "label": "Beskriv din erfarenhet",
+    "type": "textarea",
+    "name": "MMERGE5",
+    "id": "mce-MMERGE5",
+    "value": "",
+    "placeholder": "Skriv text",
+    "required": true
   },
   {
     "title": "Hur många timmar i veckan kan du lägga på Statement?",
@@ -186,8 +173,29 @@
         "label": "Mer än 20 timmar",
         "value": "Mer än 20 timmar"
       }
-    ]
+    ],
+    "required": true
   },
+  {
+    "label": "Övrig information som du vill tillägga",
+    "type": "textarea",
+    "name": "MMERGE7",
+    "id": "mce-MMERGE7",
+    "value": "",
+    "placeholder": "Skriv text",
+    "required": true
+  },
+  {
+    "label": "Länkar som du vill delge oss (valfri)",
+    "type": "text",
+    "name": "MMERGE8",
+    "id": "mce-MMERGE8",
+    "value": "",
+    "placeholder": "Ex. https://www.webbplats.se",
+    "required": false
+  },
+
+
   {
     "title": "Hur vill du bli kontaktad?",
     "type": "radio-look-alike",
@@ -205,6 +213,7 @@
         "label": "Via telefon",
         "value": "Y"
       }
-    ]
+    ],
+    "required": true
   }
 ]

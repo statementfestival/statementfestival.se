@@ -57,7 +57,8 @@ const Form = ({ slice }) => {
 
     const errors = []
     for (let item in textValue) {
-      if (!textValue[item] || textValue[item] === '') {
+      const { required } = data.find(entry => entry.name === item)
+      if (required && (!textValue[item] || textValue[item] === '')) {
         const index = errors.indexOf(item)
         if (index === -1) {
           errors.push(item)
@@ -69,6 +70,8 @@ const Form = ({ slice }) => {
       setInvalid(errors)
       return
     }
+
+    setInvalid([])
 
     fetch(url, {
       mode: 'no-cors',
@@ -137,17 +140,24 @@ const Form = ({ slice }) => {
               case 'radio':
               case 'radio-look-alike':
                 /* The look-alike looks and behaves like radio but is
-                 * treated as separate input fields.
-                 * - Needed due to how Mailchimp deals with list registrations
+                 * treated as separate input fields. It's due to how
+                 * Mailchimp deals with list registrations.
                  */
                 const lookalike = item.type === 'radio-look-alike'
                 return (
                   <RadioGroup
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Du måste välja ett alternativ'
+                        : null
+                    }
                     lookalike={lookalike}
                     {...item}
                     key={index}
                     checked={textValue[item.name]}
                     onChange={event => {
+                      removeError(item.name)
+
                       if (lookalike) {
                         setTextValue({
                           ...textValue,
@@ -163,6 +173,7 @@ const Form = ({ slice }) => {
                   />
                 )
               case 'text':
+              case 'email':
                 return (
                   <Input
                     {...item}
@@ -206,12 +217,16 @@ const Form = ({ slice }) => {
                 return null
             }
           })}
-          <Button type="submit">Anmäl dig</Button>
-          {failed ? (
+          <div className={styles.button}>
+            <Button type="submit">Anmäl dig</Button>
+          </div>
+          {failed || invalid.length ? (
             <div className={styles.error}>
               <Error
                 message={
-                  'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
+                  failed
+                    ? 'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
+                    : 'Några av de obligatoriska fälten är tomma.'
                 }
               />
             </div>
