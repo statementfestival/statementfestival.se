@@ -10,28 +10,33 @@ const RadioGroup = ({
   onChange,
   id,
   label,
-  checked
+  checked,
+  lookalike = false
 }) => {
-  console.log(checked, 'sjsj')
   return (
     <div className={styles.container}>
       <p className={styles.title}>{title}</p>
-      {options.map((option, index) => (
-        <div className={styles.inputContainer}>
-          <input
-            className={styles.radio}
-            type="radio"
-            id={option.id}
-            name={name}
-            checked={checked && checked === option.label}
-            value={option.label}
-            onChange={onChange}
-          />
-          <label htmlFor={option.id} className={styles.label}>
-            {option.label}
-          </label>
-        </div>
-      ))}
+      {options.map((option, index) => {
+        const isChecked = lookalike
+          ? checked && checked === option.name
+          : checked && checked === option.value
+        return (
+          <div className={styles.inputContainer}>
+            <input
+              className={styles.radio}
+              type="radio"
+              id={option.id}
+              name={lookalike ? option.name : name}
+              checked={isChecked}
+              value={option.value}
+              onChange={onChange}
+            />
+            <label htmlFor={option.id} className={styles.label}>
+              {option.label}
+            </label>
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -97,11 +97,13 @@
     "value": false,
     "options": [{
         "id": "mce-MMERGE11-0",
-        "label": "Arbetsledare"
+        "label": "Arbetsledare",
+        "value": "Arbetsledare"
       },
       {
         "id": "mce-MMERGE11-1",
-        "label": "Gruppmedlem"
+        "label": "Gruppmedlem",
+        "value": "Gruppmedlem"
       }
     ]
   },
@@ -112,19 +114,23 @@
     "value": false,
     "options": [{
         "id": "mce-MMERGE12-0",
-        "label": "Marknad"
+        "label": "Marknad",
+        "value": "Marknad"
       },
       {
         "id": "mce-MMERGE12-1",
-        "label": "Spons och samarbeten"
+        "label": "Spons och samarbeten",
+        "value": "Spons och samarbeten"
       },
       {
         "id": "mce-MMERGE12-2",
-        "label": "Administration"
+        "label": "Administration",
+        "value": "Administration"
       },
       {
         "id": "mce-MMERGE12-3",
-        "label": "Juridik"
+        "label": "Juridik",
+        "value": "Juridik"
       }
     ]
   },
@@ -135,19 +141,23 @@
     "value": false,
     "options": [{
         "id": "mce-MMERGE13-0",
-        "label": "Ingen erfarenhet"
+        "label": "Ingen erfarenhet",
+        "value": "Ingen erfarenhet"
       },
       {
         "id": "mce-MMERGE13-1",
-        "label": "Lite erfarenhet"
+        "label": "Lite erfarenhet",
+        "value": "Lite erfarenhet"
       },
       {
         "id": "mce-MMERGE13-2",
-        "label": "God erfarenhet"
+        "label": "God erfarenhet",
+        "value": "God erfarenhet"
       },
       {
         "id": "mce-MMERGE13-3",
-        "label": "Mycket god erfarenhet"
+        "label": "Mycket god erfarenhet",
+        "value": "Mycket god erfarenhet"
       }
     ]
   },
@@ -158,36 +168,43 @@
     "value": false,
     "options": [{
         "id": "mce-MMERGE14-0",
-        "label": "2-5 timmar"
+        "label": "2-5 timmar",
+        "value": "2-5 timmar"
       },
       {
         "id": "mce-MMERGE14-1",
-        "label": "5-10 timmar"
+        "label": "5-10 timmar",
+        "value": "5-10 timmar"
       },
       {
         "id": "mce-MMERGE14-2",
-        "label": "10-20 timmar"
+        "label": "10-20 timmar",
+        "value": "10-20 timmar"
       },
       {
         "id": "mce-MMERGE14-3",
-        "label": "Mer än 20 timmar"
+        "label": "Mer än 20 timmar",
+        "value": "Mer än 20 timmar"
       }
     ]
   },
   {
-    "label": "Kontakta mig via e-post",
-    "type": "checkbox",
-    "name": "gdpr[38020]",
-    "id": "gdpr_38020",
+    "title": "Hur vill du bli kontaktad?",
+    "type": "radio-look-alike",
+    "name": "GDPR",
     "value": false,
-    "required": false
-  },
-  {
-    "label": "Kontakta mig via telefon",
-    "type": "checkbox",
-    "name": "gdpr[38024]",
-    "id": "gdpr_38024",
-    "value": false,
-    "required": false
+    "options": [{
+        "name": "gdpr[38020]",
+        "id": "gdpr_38020",
+        "label": "Via e-post",
+        "value": "Y"
+      },
+      {
+        "name": "gdpr[38024]",
+        "id": "gdpr_38024",
+        "label": "Via telefon",
+        "value": "Y"
+      }
+    ]
   }
 ]

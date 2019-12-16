@@ -135,16 +135,30 @@ const Form = ({ slice }) => {
                   />
                 )
               case 'radio':
+              case 'radio-look-alike':
+                /* The look-alike looks and behaves like radio but is
+                 * treated as separate input fields.
+                 * - Needed due to how Mailchimp deals with list registrations
+                 */
+                const lookalike = item.type === 'radio-look-alike'
                 return (
                   <RadioGroup
+                    lookalike={lookalike}
                     {...item}
                     key={index}
                     checked={textValue[item.name]}
                     onChange={event => {
-                      setTextValue({
-                        ...textValue,
-                        [item.name]: event.target.value
-                      })
+                      if (lookalike) {
+                        setTextValue({
+                          ...textValue,
+                          [item.name]: event.target.name
+                        })
+                      } else {
+                        setTextValue({
+                          ...textValue,
+                          [item.name]: event.target.value
+                        })
+                      }
                     }}
                   />
                 )
