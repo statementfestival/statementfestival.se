@@ -5,7 +5,8 @@
     "id": "mc-EMAIL",
     "value": "",
     "autoComplete": "email",
-    "placeholder": "Ex. minou.johansson@adress.se"
+    "placeholder": "Ex. minou.johansson@adress.se",
+    "required": true
   },
   {
     "label": "Förnamn",
@@ -14,7 +15,8 @@
     "id": "mc-FNAME",
     "value": "",
     "autoComplete": "given-name",
-    "placeholder": "Ex. Minou"
+    "placeholder": "Ex. Minou",
+    "required": true
   },
   {
     "label": "Efternamn",
@@ -23,13 +25,15 @@
     "id": "mc-LNAME",
     "value": "",
     "autoComplete": "family-name",
-    "placeholder": "Ex. Johansson"
+    "placeholder": "Ex. Johansson",
+    "required": true
   },
   {
     "label": "Jag anmäler mig till listan",
     "type": "checkbox",
     "name": "gdpr[34563]",
     "id": "gdpr-34563",
-    "value": false
+    "value": false,
+    "required": true
   }
 ]

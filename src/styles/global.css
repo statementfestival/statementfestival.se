@@ -113,7 +113,7 @@ button {
   -moz-appearance: none;
 }
 
-input:not([type=checkbox]),
+input:not([type=checkbox]):not([type=radio]),
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -125,12 +125,12 @@ textarea {
 }
 
 textarea:focus,
-input:not([type=checkbox]):focus {
+input:not([type=checkbox]):not([type=radio]):focus {
   outline: none;
   border: 3px solid var(--secondary-variant);
 }
 
-input[type=checkbox] {
+input[type=checkbox]:not([type=radio]) {
   outline: none;
 }
 
@@ -141,6 +141,24 @@ select:-webkit-autofill {
   font-family: HKGrotesk;
   -webkit-text-fill-color: var(--black);
   -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
+}
+
+ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 0 16px 0.5em;
+  padding: 0;
+  position: relative;
+}
+
+ul li::before {
+  color: var(--primary);
+  content: "\2022";
+  display: inline-block;
+  font-size: 1.7em;
+  left: -0.9em;
+  position: absolute;
+  top: -0.4em;
 }
 
 h1,
@@ -162,6 +180,12 @@ h1 {
   text-align: center;
 }
 
+h4 {
+  margin-top: 0;
+  text-align: left;
+  font-size: var(--font-size-text);
+}
+
 b,
 strong {
   font-weight: 800;
@@ -171,7 +195,8 @@ p,
 ul,
 li,
 ol,
-span {
+span,
+label {
   color: var(--white);
   font-family: HKGrotesk;
   font-weight: 200;

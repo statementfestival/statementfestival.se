@@ -6,6 +6,11 @@
   margin-bottom: 5rem;
 }
 
+.button {
+  display: flex;
+  margin-top: 2rem;
+}
+
 .error {
   display: flex;
   justify-content: center;

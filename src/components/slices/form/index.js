@@ -2,6 +2,8 @@ import React, { useState, useRef, useLayoutEffect } from 'react'
 import { RichText } from 'prismic-reactjs'
 
 import Input from '../../input'
+import Textarea from '../../textarea'
+import RadioGroup from '../../radioGroup'
 import Checkbox from '../../checkbox'
 import Button from '../../button'
 import Error from '../../error'
@@ -55,7 +57,8 @@ const Form = ({ slice }) => {
 
     const errors = []
     for (let item in textValue) {
-      if (!textValue[item] || textValue[item] === '') {
+      const { required } = data.find(entry => entry.name === item)
+      if (required && (!textValue[item] || textValue[item] === '')) {
         const index = errors.indexOf(item)
         if (index === -1) {
           errors.push(item)
@@ -67,6 +70,8 @@ const Form = ({ slice }) => {
       setInvalid(errors)
       return
     }
+
+    setInvalid([])
 
     fetch(url, {
       mode: 'no-cors',
@@ -109,56 +114,119 @@ const Form = ({ slice }) => {
           action={url}
         >
           {data.map((item, index) => {
-            if (item.type === 'checkbox') {
-              return (
-                <Checkbox
-                  {...item}
-                  key={index}
-                  error={
-                    invalid.indexOf(item.name) !== -1
-                      ? 'Du måste anmäla dig till listan'
-                      : null
-                  }
-                  value="Y"
-                  checked={textValue[item.name]}
-                  onChange={event => {
-                    setTextValue({
-                      ...textValue,
-                      [item.name]: event.target.checked
-                    })
+            switch (item.type) {
+              case 'checkbox':
+                return (
+                  <Checkbox
+                    {...item}
+                    key={index}
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Du måste anmäla dig till listan'
+                        : null
+                    }
+                    value="Y"
+                    checked={textValue[item.name]}
+                    onChange={event => {
+                      setTextValue({
+                        ...textValue,
+                        [item.name]: event.target.checked
+                      })
 
-                    removeError(item.name)
-                  }}
-                />
-              )
+                      removeError(item.name)
+                    }}
+                  />
+                )
+              case 'radio':
+              case 'radio-look-alike':
+                /* The look-alike looks and behaves like radio but is
+                 * treated as separate input fields. It's due to how
+                 * Mailchimp deals with list registrations.
+                 */
+                const lookalike = item.type === 'radio-look-alike'
+                return (
+                  <RadioGroup
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Du måste välja ett alternativ'
+                        : null
+                    }
+                    lookalike={lookalike}
+                    {...item}
+                    key={index}
+                    checked={textValue[item.name]}
+                    onChange={event => {
+                      removeError(item.name)
+
+                      if (lookalike) {
+                        setTextValue({
+                          ...textValue,
+                          [item.name]: event.target.name
+                        })
+                      } else {
+                        setTextValue({
+                          ...textValue,
+                          [item.name]: event.target.value
+                        })
+                      }
+                    }}
+                  />
+                )
+              case 'text':
+              case 'email':
+                return (
+                  <Input
+                    {...item}
+                    key={index}
+                    value={textValue[item.name]}
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Fältet är obligatoriskt'
+                        : null
+                    }
+                    onChange={event => {
+                      removeError(item.name)
+                      setTextValue({
+                        ...textValue,
+                        [event.target.name]: event.target.value
+                      })
+                    }}
+                  />
+                )
+              case 'textarea':
+                return (
+                  <Textarea
+                    {...item}
+                    key={index}
+                    value={textValue[item.name]}
+                    error={
+                      invalid.indexOf(item.name) !== -1
+                        ? 'Fältet är obligatoriskt'
+                        : null
+                    }
+                    onChange={event => {
+                      removeError(item.name)
+                      setTextValue({
+                        ...textValue,
+                        [event.target.name]: event.target.value
+                      })
+                    }}
+                  />
+                )
+              default:
+                return null
             }
-
-            return (
-              <Input
-                {...item}
-                key={index}
-                value={textValue[item.name]}
-                error={
-                  invalid.indexOf(item.name) !== -1
-                    ? 'Fältet är obligatoriskt'
-                    : null
-                }
-                onChange={event => {
-                  removeError(item.name)
-                  setTextValue({
-                    ...textValue,
-                    [event.target.name]: event.target.value
-                  })
-                }}
-              />
-            )
           })}
-          <Button type="submit">Anmäl dig</Button>
-          {failed ? (
+          <div className={styles.button}>
+            <Button type="submit">Anmäl dig</Button>
+          </div>
+          {failed || invalid.length ? (
             <div className={styles.error}>
               <Error
                 message={
-                  'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
+                  failed
+                    ? 'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
+                    : 'Några av de obligatoriska fälten är tomma.'
                 }
               />
             </div>
