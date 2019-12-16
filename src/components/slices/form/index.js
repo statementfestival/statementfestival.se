@@ -220,18 +220,18 @@ const Form = ({ slice }) => {
           })}
           <div className={styles.button}>
             <Button type="submit">Anmäl dig</Button>
+            {failed || invalid.length ? (
+              <div className={styles.error}>
+                <Error
+                  message={
+                    failed
+                      ? 'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
+                      : 'Några av de obligatoriska fälten är tomma.'
+                  }
+                />
+              </div>
+            ) : null}
           </div>
-          {failed || invalid.length ? (
-            <div className={styles.error}>
-              <Error
-                message={
-                  failed
-                    ? 'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
-                    : 'Några av de obligatoriska fälten är tomma.'
-                }
-              />
-            </div>
-          ) : null}
         </form>
       )}
       {slice.primary.form_disclaimer ? (
