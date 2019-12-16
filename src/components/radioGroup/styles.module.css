@@ -33,18 +33,18 @@
 .radio::after {
   content: "";
   position: absolute;
-  top: 0.25rem;
-  left: 0.25rem;
+  top: 50%;
+  left: 50%;
   width: 1rem;
   height: 1rem;
   border-radius: 1rem;
   background-color: var(--secondary-variant);
-  transform: scale(0);
+  transform: translate(-50%, -50%) scale(0);
   transition: transform 90ms ease-out;
 }
 
 .radio:checked::after {
-  transform: scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .label {
