@@ -92,11 +92,11 @@ const Form = ({ slice }) => {
 
   return (
     <div className={styles.container}>
-      {slice.primary.ticket_form_title
-        ? RichText.render(slice.primary.ticket_form_title)
+      {slice.primary.form_title
+        ? RichText.render(slice.primary.form_title)
         : null}
-      {slice.primary.ticket_form_description
-        ? RichText.render(slice.primary.ticket_form_description)
+      {slice.primary.form_description
+        ? RichText.render(slice.primary.form_description)
         : null}
       {submitted ? (
         <div className={styles.success} ref={successContainer}>
