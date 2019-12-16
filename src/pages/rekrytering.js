@@ -39,6 +39,8 @@ export const query = graphql`
                 }
               }
             }
+            og_image
+            meta_description
           }
         }
       }
@@ -52,7 +54,11 @@ const IntegrityPage = ({ data }) => {
 
   return (
     <Page>
-      <Head title={RichText.asText(doc.node.title)} />
+      <Head
+        title={RichText.asText(doc.node.title)}
+        description={doc.node.description}
+        image={doc.node.og_image ? doc.node.og_image.url : null}
+      />
       <PageSection>
         <h1>{RichText.asText(doc.node.title)}</h1>
       </PageSection>

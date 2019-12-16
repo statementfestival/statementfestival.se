@@ -13,7 +13,7 @@ import HKGroteskSemiBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-S
 import HKGroteskMedium from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff2'
 import HKGroteskBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
 
-function Head({ description, lang, meta, title }) {
+function Head({ description, lang, meta, title, image }) {
   if (isClient()) smoothscroll.polyfill()
   return (
     <StaticQuery
@@ -37,6 +37,8 @@ function Head({ description, lang, meta, title }) {
         if (!doc) return null
 
         const metaDescription = description || doc.node.meta_description
+        let ogImage = doc.node.og_image ? doc.node.og_image.url : ''
+        if (image) ogImage = image
 
         return (
           <Helmet
@@ -103,7 +105,7 @@ function Head({ description, lang, meta, title }) {
               },
               {
                 property: `og:image`,
-                content: doc.node.og_image ? doc.node.og_image.url : ''
+                content: ogImage
               },
               {
                 property: `og:image:width`,
