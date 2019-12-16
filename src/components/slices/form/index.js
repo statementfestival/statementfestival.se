@@ -92,12 +92,6 @@ const Form = ({ slice }) => {
 
   return (
     <div className={styles.container}>
-      {slice.primary.form_title
-        ? RichText.render(slice.primary.form_title)
-        : null}
-      {slice.primary.form_description
-        ? RichText.render(slice.primary.form_description)
-        : null}
       {submitted ? (
         <div className={styles.success} ref={successContainer}>
           {slice.primary.form_success_title
@@ -108,137 +102,145 @@ const Form = ({ slice }) => {
             : null}
         </div>
       ) : (
-        <form
-          method="POST"
-          onSubmit={submit}
-          className={styles.form}
-          action={url}
-        >
-          {data.map((item, index) => {
-            switch (item.type) {
-              case 'checkbox':
-                return (
-                  <Checkbox
-                    {...item}
-                    key={index}
-                    error={
-                      invalid.indexOf(item.name) !== -1
-                        ? 'Du måste anmäla dig till listan'
-                        : null
-                    }
-                    value="Y"
-                    checked={textValue[item.name]}
-                    onChange={event => {
-                      setTextValue({
-                        ...textValue,
-                        [item.name]: event.target.checked
-                      })
-
-                      removeError(item.name)
-                    }}
-                  />
-                )
-              case 'radio':
-              case 'radio-look-alike':
-                /* The look-alike looks and behaves like radio but is
-                 * treated as separate input fields. It's due to how
-                 * Mailchimp deals with list registrations.
-                 */
-                const lookalike = item.type === 'radio-look-alike'
-                return (
-                  <RadioGroup
-                    error={
-                      invalid.indexOf(item.name) !== -1
-                        ? 'Du måste välja ett alternativ'
-                        : null
-                    }
-                    lookalike={lookalike}
-                    {...item}
-                    key={index}
-                    checked={textValue[item.name]}
-                    onChange={event => {
-                      removeError(item.name)
-
-                      if (lookalike) {
-                        setTextValue({
-                          ...textValue,
-                          [item.name]: event.target.name
-                        })
-                      } else {
-                        setTextValue({
-                          ...textValue,
-                          [item.name]: event.target.value
-                        })
+        <>
+          {slice.primary.form_title
+            ? RichText.render(slice.primary.form_title)
+            : null}
+          {slice.primary.form_description
+            ? RichText.render(slice.primary.form_description)
+            : null}
+          <form
+            method="POST"
+            onSubmit={submit}
+            className={styles.form}
+            action={url}
+          >
+            {data.map((item, index) => {
+              switch (item.type) {
+                case 'checkbox':
+                  return (
+                    <Checkbox
+                      {...item}
+                      key={index}
+                      error={
+                        invalid.indexOf(item.name) !== -1
+                          ? 'Du måste anmäla dig till listan'
+                          : null
                       }
-                    }}
-                  />
-                )
-              case 'text':
-              case 'email':
-                return (
-                  <Input
-                    {...item}
-                    key={index}
-                    value={textValue[item.name]}
-                    error={
-                      invalid.indexOf(item.name) !== -1
-                        ? 'Fältet är obligatoriskt'
-                        : null
+                      value="Y"
+                      checked={textValue[item.name]}
+                      onChange={event => {
+                        setTextValue({
+                          ...textValue,
+                          [item.name]: event.target.checked
+                        })
+
+                        removeError(item.name)
+                      }}
+                    />
+                  )
+                case 'radio':
+                case 'radio-look-alike':
+                  /* The look-alike looks and behaves like radio but is
+                   * treated as separate input fields. It's due to how
+                   * Mailchimp deals with list registrations.
+                   */
+                  const lookalike = item.type === 'radio-look-alike'
+                  return (
+                    <RadioGroup
+                      error={
+                        invalid.indexOf(item.name) !== -1
+                          ? 'Du måste välja ett alternativ'
+                          : null
+                      }
+                      lookalike={lookalike}
+                      {...item}
+                      key={index}
+                      checked={textValue[item.name]}
+                      onChange={event => {
+                        removeError(item.name)
+
+                        if (lookalike) {
+                          setTextValue({
+                            ...textValue,
+                            [item.name]: event.target.name
+                          })
+                        } else {
+                          setTextValue({
+                            ...textValue,
+                            [item.name]: event.target.value
+                          })
+                        }
+                      }}
+                    />
+                  )
+                case 'text':
+                case 'email':
+                  return (
+                    <Input
+                      {...item}
+                      key={index}
+                      value={textValue[item.name]}
+                      error={
+                        invalid.indexOf(item.name) !== -1
+                          ? 'Fältet är obligatoriskt'
+                          : null
+                      }
+                      onChange={event => {
+                        removeError(item.name)
+                        setTextValue({
+                          ...textValue,
+                          [event.target.name]: event.target.value
+                        })
+                      }}
+                    />
+                  )
+                case 'textarea':
+                  return (
+                    <Textarea
+                      {...item}
+                      key={index}
+                      value={textValue[item.name]}
+                      error={
+                        invalid.indexOf(item.name) !== -1
+                          ? 'Fältet är obligatoriskt'
+                          : null
+                      }
+                      onChange={event => {
+                        removeError(item.name)
+                        setTextValue({
+                          ...textValue,
+                          [event.target.name]: event.target.value
+                        })
+                      }}
+                    />
+                  )
+                default:
+                  return null
+              }
+            })}
+            <div className={styles.button}>
+              <Button type="submit">Anmäl dig</Button>
+              {failed || invalid.length ? (
+                <div className={styles.error}>
+                  <Error
+                    message={
+                      failed
+                        ? 'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
+                        : 'Några av de obligatoriska fälten är tomma.'
                     }
-                    onChange={event => {
-                      removeError(item.name)
-                      setTextValue({
-                        ...textValue,
-                        [event.target.name]: event.target.value
-                      })
-                    }}
                   />
-                )
-              case 'textarea':
-                return (
-                  <Textarea
-                    {...item}
-                    key={index}
-                    value={textValue[item.name]}
-                    error={
-                      invalid.indexOf(item.name) !== -1
-                        ? 'Fältet är obligatoriskt'
-                        : null
-                    }
-                    onChange={event => {
-                      removeError(item.name)
-                      setTextValue({
-                        ...textValue,
-                        [event.target.name]: event.target.value
-                      })
-                    }}
-                  />
-                )
-              default:
-                return null
-            }
-          })}
-          <div className={styles.button}>
-            <Button type="submit">Anmäl dig</Button>
-            {failed || invalid.length ? (
-              <div className={styles.error}>
-                <Error
-                  message={
-                    failed
-                      ? 'Något gick fel. Kontakta oss via mejl om felet kvarstår.'
-                      : 'Några av de obligatoriska fälten är tomma.'
-                  }
-                />
-              </div>
-            ) : null}
-          </div>
-        </form>
+                </div>
+              ) : null}
+            </div>
+          </form>
+          {slice.primary.form_disclaimer ? (
+            <div className={styles.disclaimer}>
+              {RichText.render(slice.primary.form_disclaimer, linkResolver)}
+            </div>
+          ) : null}
+        </>
       )}
-      {slice.primary.form_disclaimer ? (
-        <div className={styles.disclaimer}>
-          {RichText.render(slice.primary.form_disclaimer, linkResolver)}
-        </div>
-      ) : null}
     </div>
   )
 }
