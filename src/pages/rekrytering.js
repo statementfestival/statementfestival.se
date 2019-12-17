@@ -56,7 +56,7 @@ const IntegrityPage = ({ data }) => {
     <Page>
       <Head
         title={RichText.asText(doc.node.title)}
-        description={doc.node.description}
+        description={doc.node.meta_description}
         image={doc.node.og_image ? doc.node.og_image.url : null}
       />
       <PageSection>
