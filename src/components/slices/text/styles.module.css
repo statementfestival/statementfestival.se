@@ -1,20 +1,7 @@
 .textBlock {
   font-family: sans-serif;
   text-align: center;
-  margin-bottom: 5rem;
-}
-
-.textBlock h1,
-.textBlock h2,
-.textBlock h3 {
-  font-size: var(--font-size-headline);
-  line-height: 1.2;
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.textBlock h3 {
-  font-size: var(--font-size-headline-sub);
+  margin-bottom: 3rem;
 }
 
 .content {

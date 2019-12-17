@@ -1,9 +1,32 @@
+.container {
+  margin-bottom: 5rem;
+}
+
+.container h2,
+.container h3 {
+  font-size: var(--font-size-headline);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
+
+.container h3 {
+  font-size: var(--font-size-headline-sub);
+}
+
 .form,
 .success {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 5rem;
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto 3rem;
 }
 
 .error {
@@ -25,4 +48,10 @@
   margin-bottom: 1rem;
   margin-top: 0;
   text-align: center;
+}
+
+.disclaimer p,
+.disclaimer a {
+  font-size: 1rem;
+  line-height: 1.5;
 }

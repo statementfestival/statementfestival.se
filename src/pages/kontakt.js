@@ -22,6 +22,8 @@ export const query = graphql`
                 type
               }
             }
+            og_image
+            meta_description
           }
         }
       }
@@ -35,7 +37,11 @@ const ContactPage = ({ data }) => {
 
   return (
     <Page>
-      <Head title={RichText.asText(doc.node.title)} />
+      <Head
+        title={RichText.asText(doc.node.title)}
+        description={doc.node.meta_description}
+        image={doc.node.og_image ? doc.node.og_image.url : null}
+      />
       <h1 className="visuallyHidden">{RichText.asText(doc.node.title)}</h1>
       <SliceRenderer slices={doc.node.body} />
     </Page>

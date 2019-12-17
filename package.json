@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "statement-website",
   "private": true,
   "description": "Website for Statement Festival",
-  "version": "1.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "version": "1.2.0",
   "dependencies": {
     "gatsby": "^2.18.11",
     "gatsby-image": "^2.2.34",
