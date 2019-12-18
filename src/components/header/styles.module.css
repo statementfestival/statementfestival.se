@@ -3,7 +3,7 @@
 }
 
 .logo {
-  height: 1.4375rem;
+  height: 2.6rem;
   width: 9.375rem;
   margin: 0 auto 0.5rem;
 }
@@ -32,7 +32,7 @@
 @media (--tablet-up) {
   .logo {
     margin: 0 auto 0.6rem;
-    height: 2.5rem;
+    height: 4.8125rem;
     width: 17.3rem;
   }
 
