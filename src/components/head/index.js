@@ -84,6 +84,10 @@ function Head({ description, lang, meta, title, image }) {
             titleTemplate={`%s | ${doc.node.site_title}`}
             meta={[
               {
+                name: 'viewport',
+                content: 'initial-scale=1, viewport-fit=cover'
+              },
+              {
                 name: `description`,
                 content: metaDescription
               },
