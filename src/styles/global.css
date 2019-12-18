@@ -4,8 +4,8 @@
 @custom-media --desktop-up (min-width: 1200px);
 
 :root {
-  --font-family-display: ActOfRejection, serif;
-  --font-family-sans-serif: HKGrotesk, sans-serif;
+  --font-family-display: ActOfRejection, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-sans-serif: HKGrotesk, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
   --primary: #fff800;
   --secondary: #eb8cb2;
@@ -94,7 +94,18 @@ body {
 
 @media (--tablet-up) {
   body {
-    background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0D2F51 200vh, #363661 300vh, #954587 400vh, #954587 500vh, #393662 600vh, #0D2F51 900vh) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg,
+        #954587 0vh,
+        #393662 100vh,
+        #0D2F51 200vh,
+        #363661 300vh,
+        #653d74 400vh,
+        #393662 500vh,
+        #0D2F51 600vh,
+        #393662 800vh,
+        #653d74 900vh,
+        #363661 1000vh,
+        #0D2F51 1100vh) 0% 0% no-repeat padding-box;
   }
 
 }
@@ -118,7 +129,7 @@ textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-family: HKGrotesk;
+  font-family: var(--font-family-sans-serif);
   font-weight: 400;
   border: 3px solid var(--white);
   padding: 0.7rem 0.4rem 0.4rem;
@@ -138,7 +149,7 @@ input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
   border: 3px solid var(--white);
-  font-family: HKGrotesk;
+  font-family: var(--font-family-sans-serif);
   -webkit-text-fill-color: var(--black);
   -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
 }
@@ -170,7 +181,7 @@ h6,
 a,
 button {
   color: var(--primary);
-  font-family: HKGrotesk;
+  font-family: var(--font-family-sans-serif);
   font-weight: 800;
 }
 
@@ -208,7 +219,7 @@ ol,
 span,
 label {
   color: var(--white);
-  font-family: HKGrotesk;
+  font-family: var(--font-family-sans-serif);
   font-weight: 200;
   font-size: var(--font-size-text);
   line-height: 1.45;
