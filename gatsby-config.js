@@ -43,15 +43,15 @@ module.exports = {
       options: {
         repositoryName: 'statement', // (REQUIRED, replace with your own)
         path: '/preview', // (optional preview path. Default: /preview)
-        previews: false // (optional, activated Previews. Default: false)
-        // pages: [
-        //   {
-        //     type: "Artist", // TypeName from prismic
-        //     match: "/artist/:uid", // Pages will be generated under this pattern
-        //     path: "/artist", // Placeholder page for unpublished documents
-        //     component: require.resolve("./src/page/artist.js"),
-        //   },
-        // ],
+        previews: false, // (optional, activated Previews. Default: false)
+        pages: [
+          {
+            type: 'Page',
+            match: '/:uid',
+            path: '/artist',
+            component: require.resolve('./src/pages/page.js')
+          }
+        ]
       }
     },
     {
