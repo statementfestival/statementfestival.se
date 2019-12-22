@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 module.exports = {
   siteMetadata: {
     title: `Statement Festival`,
@@ -42,8 +45,9 @@ module.exports = {
       resolve: 'gatsby-source-prismic-graphql',
       options: {
         repositoryName: 'statement',
+        accessToken: process.env.PRISMIC_API_KEY,
         path: '/preview',
-        previews: false,
+        previews: true,
         pages: [
           {
             type: 'Page',

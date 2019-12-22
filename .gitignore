@@ -60,6 +60,9 @@ typings/
 # dotenv environment variable files
 .env*
 
+# Do not ignore example file
+!.env.example
+
 # gatsby files
 .cache/
 public
