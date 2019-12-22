@@ -6,6 +6,8 @@
 $ npm install
 ```
 
+Create a file called `.env.development` at the root of your project. Examples of what it should contain can be found in `.env.example`. If you want to locally build your project you’ll also have to create `.env.production` file. Gatsby keeps track of when to use which file.
+
 ## Development
 
 During development use the `develop` script. Your site is now running at `http://localhost:8000`! 🎉
