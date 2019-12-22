@@ -1,17 +1,15 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
-import { linkResolver } from '../../../utils/linkResolver'
-
 import styles from './styles.module.css'
 
 const ImageGrid = ({ slice }) => {
   const hasHeadline = slice.primary && slice.primary.image_grid_title
   return (
     <div className={styles.imageGrid}>
-      {hasHeadline
-        ? RichText.render(slice.primary.image_grid_title, linkResolver)
-        : null}
+      {hasHeadline ? (
+        <RichText render={slice.primary.image_grid_title} />
+      ) : null}
       <div className={styles.images}>
         {slice.fields.map((item, index) => {
           const external = item.image_link ? item.image_link.url : ''

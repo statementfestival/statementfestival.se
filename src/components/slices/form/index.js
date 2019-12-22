@@ -1,6 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
 import { RichText } from 'prismic-reactjs'
-import { linkResolver } from '../../../utils/linkResolver'
+import htmlSerializer from '../../../utils/htmlSerializer'
 
 import Input from '../../input'
 import Textarea from '../../textarea'
@@ -94,21 +94,27 @@ const Form = ({ slice }) => {
     <div className={styles.container}>
       {submitted ? (
         <div className={styles.success} ref={successContainer}>
-          {slice.primary.form_success_title
-            ? RichText.render(slice.primary.form_success_title)
-            : null}
-          {slice.primary.form_success_description
-            ? RichText.render(slice.primary.form_success_description)
-            : null}
+          {slice.primary.form_success_title ? (
+            <RichText render={slice.primary.form_success_title} />
+          ) : null}
+          {slice.primary.form_success_description ? (
+            <RichText
+              render={slice.primary.form_success_description}
+              htmlSerializer={htmlSerializer}
+            />
+          ) : null}
         </div>
       ) : (
         <>
-          {slice.primary.form_title
-            ? RichText.render(slice.primary.form_title)
-            : null}
-          {slice.primary.form_description
-            ? RichText.render(slice.primary.form_description)
-            : null}
+          {slice.primary.form_title ? (
+            <RichText render={slice.primary.form_title} />
+          ) : null}
+          {slice.primary.form_description ? (
+            <RichText
+              render={slice.primary.form_description}
+              htmlSerializer={htmlSerializer}
+            />
+          ) : null}
           <form
             method="POST"
             onSubmit={submit}
@@ -236,7 +242,10 @@ const Form = ({ slice }) => {
           </form>
           {slice.primary.form_disclaimer ? (
             <div className={styles.disclaimer}>
-              {RichText.render(slice.primary.form_disclaimer, linkResolver)}
+              <RichText
+                render={slice.primary.form_disclaimer}
+                htmlSerializer={htmlSerializer}
+              />
             </div>
           ) : null}
         </>

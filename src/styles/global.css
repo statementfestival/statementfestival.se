@@ -155,7 +155,7 @@ select:-webkit-autofill {
 }
 
 ul li {
-  display: inline-block;
+  display: block;
   list-style: none;
   margin: 0 0 16px 0.5em;
   padding: 0;

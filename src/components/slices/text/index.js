@@ -1,7 +1,7 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
-import { linkResolver } from '../../../utils/linkResolver'
+import htmlSerializer from '../../../utils/htmlSerializer'
 import ExternalLink from '../../links/external'
 import InternalLink from '../../links/internal'
 
@@ -18,12 +18,15 @@ const Text = ({ slice }) => {
 
   return (
     <div className={styles.textBlock}>
-      {slice.primary.text_title
-        ? RichText.render(slice.primary.text_title)
-        : null}
+      {slice.primary.text_title ? (
+        <RichText render={slice.primary.text_title} />
+      ) : null}
       {slice.primary.text_content ? (
         <div className={styles.content}>
-          {RichText.render(slice.primary.text_content, linkResolver)}
+          <RichText
+            render={slice.primary.text_content}
+            htmlSerializer={htmlSerializer}
+          />
         </div>
       ) : null}
       {hasLink && linkType === 'Link.web' ? (

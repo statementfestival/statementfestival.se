@@ -2,7 +2,7 @@ import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
 import { getAnchorLink } from '../../../utils'
-import { linkResolver } from '../../../utils/linkResolver'
+import htmlSerializer from '../../../utils/htmlSerializer'
 
 import styles from './styles.module.css'
 
@@ -20,7 +20,7 @@ const FAQ = ({ slice }) => {
           id={getAnchorLink(item.faq_question)}
         >
           <h3 className={styles.question}>{item.faq_question}</h3>
-          {RichText.render(item.faq_answer, linkResolver)}
+          <RichText render={item.faq_answer} htmlSerializer={htmlSerializer} />
         </div>
       ))}
     </div>
