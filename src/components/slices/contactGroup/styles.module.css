@@ -5,6 +5,10 @@
   padding: 0 2.8rem;
 }
 
+.container:last-of-type {
+  margin-bottom: 5rem;
+}
+
 /* Design exception for content to fit really small screens */
 @media (--mobile-smallest) {
   .container {
@@ -28,6 +32,10 @@
 }
 
 @media (--tablet-up) {
+  .container:last-of-type {
+    margin-bottom: 7rem;
+  }
+
   .link {
     font-size: var(--font-size-headline);
   }
