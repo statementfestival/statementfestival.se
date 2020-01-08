@@ -1,5 +1,31 @@
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 2rem;
+}
+
+.menu {
+  display: none;
+}
+
+@media (--tablet-up) {
+  .menu {
+    align-items: center;
+    display: flex;
+    padding-bottom: 1.8rem;
+    position: absolute;
+    right: 2.6875rem;
+  }
+
+  .menuLink {
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .menuLink:not(:last-of-type) {
+    margin: 0 1.375rem;
+  }
 }
 
 .logo {
