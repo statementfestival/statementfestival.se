@@ -9,7 +9,7 @@
   display: none;
 }
 
-@media (--tablet-up) {
+@media (--desktop-up) {
   .menu {
     align-items: center;
     display: flex;
