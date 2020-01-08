@@ -2,7 +2,7 @@ import React from 'react'
 
 import Birdie from '../birdie'
 import ImageFountain from '../imageFountain'
-import InternalLink from '../links/internal'
+import ButtonLookalike from '../links/buttonLookalike'
 import ExternalLink from '../links/external'
 
 import styles from './styles.module.css'
@@ -34,7 +34,7 @@ const Hero = ({
 
         {linkType === 'Link.document' ? (
           <div className={styles.link}>
-            <InternalLink title={link_title} to={link._meta} />
+            <ButtonLookalike title={link_title} to={link._meta} />
           </div>
         ) : null}
 
