@@ -2,8 +2,8 @@ import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
 import htmlSerializer from '../../../utils/htmlSerializer'
+import ButtonLookalike from '../../links/buttonLookalike'
 import ExternalLink from '../../links/external'
-import InternalLink from '../../links/internal'
 
 import styles from './styles.module.css'
 
@@ -40,7 +40,7 @@ const Text = ({ slice }) => {
 
       {linkType === 'Link.document' ? (
         <div className={styles.link}>
-          <InternalLink
+          <ButtonLookalike
             title={slice.primary.text_link_title}
             to={slice.primary.text_link_address._meta}
           />
