@@ -18,13 +18,20 @@
     right: 2.6875rem;
   }
 
-  .menuLink {
+  .menuLink,
+  .menuButton {
     color: var(--white);
     text-decoration: none;
   }
 
+  .menuButton {
+    background-color: var(--secondary-variant);
+    border-radius: 4px;
+    padding: 0.5rem 0.7rem 0.4375rem;
+  }
+
   .menuLink:not(:last-of-type) {
-    margin: 0 1.375rem;
+    margin-right: 1.375rem;
   }
 }
 
