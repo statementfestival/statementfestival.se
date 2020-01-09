@@ -54,6 +54,12 @@ module.exports = {
             match: '/:uid',
             path: '/page',
             component: require.resolve('./src/templates/page.js')
+          },
+          {
+            type: 'Artist',
+            match: '/artist/:uid',
+            path: '/artist',
+            component: require.resolve('./src/templates/artist.js')
           }
         ]
       }
