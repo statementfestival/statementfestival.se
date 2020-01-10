@@ -119,11 +119,13 @@ const ArtistPage = ({ data }) => {
       <Head
         title={RichText.asText(doc.node.title)}
         description={doc.node.meta_description}
+        image={image ? image.primary.main_image.url : null}
       />
       <PageSection size="regular-variant">
         <Image slice={image} />
       </PageSection>
       <PageSection>
+        {/* TODO: Convert h1 and h3 to some sort of component */}
         <h1>{RichText.asText(doc.node.title)}</h1>
         {details ? (
           <h3>{`${details.primary.group_tag} ${details.fields[0].start_time} | ${details.fields[0].stage}`}</h3>
