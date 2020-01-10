@@ -3,12 +3,13 @@ import React from 'react'
 import PageSection from '../pageSection'
 
 import ContactGroup from '../slices/contactGroup'
+import EmbeddedMedia from '../slices/embeddedMedia'
 import FAQ from '../slices/faq'
+import Form from '../slices/form'
 import Image from '../slices/image'
 import ImageGrid from '../slices/imageGrid'
 import Merch from '../slices/merch'
 import Text from '../slices/text'
-import Form from '../slices/form'
 
 const SliceRenderer = ({ slices }) => {
   return slices.map((slice, index) => {
@@ -36,6 +37,12 @@ const SliceRenderer = ({ slices }) => {
           return (
             <PageSection size="full" key={index}>
               <ContactGroup slice={slice} />
+            </PageSection>
+          )
+        case 'embedded_media':
+          return (
+            <PageSection size="regular-variant" key={index}>
+              <EmbeddedMedia slice={slice} />
             </PageSection>
           )
         case 'image_grid':
