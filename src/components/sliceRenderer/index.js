@@ -4,6 +4,7 @@ import PageSection from '../pageSection'
 
 import ContactGroup from '../slices/contactGroup'
 import FAQ from '../slices/faq'
+import Image from '../slices/image'
 import ImageGrid from '../slices/imageGrid'
 import Merch from '../slices/merch'
 import Text from '../slices/text'
@@ -41,6 +42,12 @@ const SliceRenderer = ({ slices }) => {
           return (
             <PageSection size="medium" key={index}>
               <ImageGrid slice={slice} />
+            </PageSection>
+          )
+        case 'image':
+          return (
+            <PageSection size="regular-variant" key={index}>
+              <Image slice={slice} />
             </PageSection>
           )
         case 'form':
