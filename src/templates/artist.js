@@ -59,10 +59,10 @@ export const query = graphql`
         edges {
           node {
             body {
-              ... on PRISMIC_ScheduleBodyOccasion {
+              ... on PRISMIC_ScheduleBodyCollection {
                 type
                 primary {
-                  group_tag
+                  collection_title
                 }
                 fields {
                   artist {
@@ -72,7 +72,7 @@ export const query = graphql`
                       }
                     }
                   }
-                  stage
+                  venue
                   start_time
                 }
               }
