@@ -1,5 +1,4 @@
 import React from 'react'
-import { RichText } from 'prismic-reactjs'
 
 import styles from './styles.module.css'
 
