@@ -84,31 +84,32 @@ export const query = graphql`
   }
 `
 
+const getArtistByUID = (list, uid) => {
+  for (let i = 0, len = list.length; i < len; i++) {
+    let item = list[i]
+    if (item.fields && item.fields.length) {
+      for (let i = 0, len = item.fields.length; i < len; i++) {
+        if (item.fields[i].artist) {
+          if (item.fields[i].artist._meta.uid === uid) {
+            return {
+              collectionTitle: item.primary.collection_title,
+              start: item.fields[i].start_time,
+              venue: item.fields[i].venue
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 const ArtistPage = ({ data }) => {
   const doc = data.prismic.allArtists.edges.slice(0, 1).pop()
   if (!doc) return null
 
   const uid = doc.node._meta.uid
-  let details // Info about day, venue and start time
-
   const schedule = data.prismic.allSchedules.edges.slice(0, 1).pop()
-  if (schedule) {
-    details = schedule.node.body.find(item => {
-      if (item.fields && item.fields.length) {
-        for (let i = 0, len = item.fields.length; i < len; i++) {
-          if (item.fields[i].artist) {
-            if (item.fields[i].artist._meta.uid === uid) {
-              return {
-                start: item.fields[i].start_time,
-                day: item.primary.group_tag,
-                venue: item.fields[i].stage
-              }
-            }
-          }
-        }
-      }
-    })
-  }
+  let details = schedule ? getArtistByUID(schedule.node.body, uid) : null
 
   // Filter out main image since this should visually be placed above page title
   const image = doc.node.body.find(item => item.type === 'image')
@@ -128,7 +129,7 @@ const ArtistPage = ({ data }) => {
         {/* TODO: Convert h1 and h3 to some sort of component */}
         <h1>{RichText.asText(doc.node.title)}</h1>
         {details ? (
-          <h3>{`${details.primary.group_tag} ${details.fields[0].start_time} | ${details.fields[0].stage}`}</h3>
+          <h3>{`${details.collectionTitle} ${details.start} | ${details.venue}`}</h3>
         ) : null}
       </PageSection>
       <SliceRenderer slices={filtered} />
