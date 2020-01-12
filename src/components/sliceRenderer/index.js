@@ -9,6 +9,7 @@ import Form from '../slices/form'
 import Image from '../slices/image'
 import ImageGrid from '../slices/imageGrid'
 import Merch from '../slices/merch'
+import SocialMedia from '../slices/socialMedia'
 import Text from '../slices/text'
 
 const SliceRenderer = ({ slices }) => {
@@ -61,6 +62,12 @@ const SliceRenderer = ({ slices }) => {
           return (
             <PageSection key={index}>
               <Form slice={slice} />
+            </PageSection>
+          )
+        case 'social_media':
+          return (
+            <PageSection key={index}>
+              <SocialMedia slice={slice} />
             </PageSection>
           )
         default:
