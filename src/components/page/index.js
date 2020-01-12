@@ -18,7 +18,7 @@ import styles from './styles.module.css'
  * More information can be found here:
  * [gatsby-source-prismic-graphql](https://www.gatsbyjs.org/packages/gatsby-source-prismic-graphql/#usestaticquery).
  */
-const Page = ({ children, spacings = 'regular' }) => {
+const Page = ({ children, type = 'regular' }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -62,8 +62,8 @@ const Page = ({ children, spacings = 'regular' }) => {
             <main
               className={objstr({
                 [styles.main]: true,
-                [styles.regularSpacing]: spacings === 'regular',
-                [styles.smallSpacing]: spacings === 'small'
+                [styles.regular]: type === 'regular',
+                [styles.artist]: type === 'artist'
               })}
             >
               {children}

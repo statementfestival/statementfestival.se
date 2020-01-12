@@ -18,12 +18,12 @@
 }
 
 @media (--tablet-up) {
-  .regularSpacing {
+  .regular {
     margin-top: 5.5rem;
   }
 
-  .smallSpacing {
-    margin-top: 2.7rem;
+  .artist {
+    margin: 2.7rem 0 13rem;
   }
 }
 
