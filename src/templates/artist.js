@@ -7,6 +7,7 @@ import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
 import Image from '../components/slices/image'
+import ButtonLookalike from '../components/links/buttonLookalike'
 
 export const query = graphql`
   query ArtistQuery($uid: String) {
@@ -55,7 +56,16 @@ export const query = graphql`
           }
         }
       }
-      allSchedules {
+      allLineups(uid: "line-up") {
+        edges {
+          node {
+            _meta {
+              uid
+            }
+          }
+        }
+      }
+      allSchedules(uid: "program") {
         edges {
           node {
             body {
@@ -110,13 +120,14 @@ const ArtistPage = ({ data }) => {
   const uid = doc.node._meta.uid
   const schedule = data.prismic.allSchedules.edges.slice(0, 1).pop()
   let details = schedule ? getArtistByUID(schedule.node.body, uid) : null
+  const lineup = data.prismic.allLineups.edges.slice(0, 1).pop()
 
   // Filter out main image since this should visually be placed above page title
   const image = doc.node.body.find(item => item.type === 'image')
   const filtered = doc.node.body.filter(item => item.type !== 'image')
 
   return (
-    <Page spacings="small">
+    <Page type="artist">
       <Head
         title={RichText.asText(doc.node.title)}
         description={doc.node.meta_description}
@@ -133,6 +144,9 @@ const ArtistPage = ({ data }) => {
         ) : null}
       </PageSection>
       <SliceRenderer slices={filtered} />
+      {lineup ? (
+        <ButtonLookalike title="Alla artister" to={lineup.node._meta} />
+      ) : null}
     </Page>
   )
 }
