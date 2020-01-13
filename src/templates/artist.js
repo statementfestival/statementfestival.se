@@ -61,6 +61,7 @@ export const query = graphql`
           node {
             _meta {
               uid
+              type
             }
           }
         }
