@@ -3,6 +3,10 @@ export const linkResolver = doc => {
     return `/line-up/${doc.uid}`
   }
 
+  if (doc.type === 'schedule') {
+    return `/${doc.uid}`
+  }
+
   if (doc.type === 'page') {
     return `/${doc.uid}`
   }
