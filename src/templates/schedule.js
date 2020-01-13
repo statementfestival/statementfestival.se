@@ -5,6 +5,7 @@ import { RichText } from 'prismic-reactjs'
 import Head from '../components/head'
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
+import Schedule from '../components/schedule'
 import SegmentedControl from '../components/segmentedControl'
 
 export const query = graphql`
@@ -25,13 +26,16 @@ export const query = graphql`
                 fields {
                   artist {
                     ... on PRISMIC_Artist {
+                      title
                       _meta {
                         uid
+                        type
                       }
                     }
                   }
                   venue
                   start_time
+                  end_time
                 }
               }
             }
@@ -46,7 +50,9 @@ const SchedulePage = ({ data }) => {
   const [checked, setChecked] = useState(0)
   const doc = data.prismic.allSchedules.edges.slice(0, 1).pop()
   if (!doc) return null
+
   const collections = doc.node.body.map(item => item.primary.collection_title)
+  if (!collections || !collections.length) return null
 
   return (
     <Page>
@@ -58,13 +64,14 @@ const SchedulePage = ({ data }) => {
       <PageSection>
         <h1>{RichText.asText(doc.node.title)}</h1>
       </PageSection>
-      {collections && collections.length ? (
-        <SegmentedControl
-          options={collections}
-          checked={checked}
-          onChange={index => setChecked(index)}
-        />
-      ) : null}
+      <SegmentedControl
+        options={collections}
+        checked={checked}
+        onChange={index => setChecked(index)}
+      />
+      <PageSection size="medium">
+        <Schedule entries={doc.node.body[checked].fields} />
+      </PageSection>
     </Page>
   )
 }
