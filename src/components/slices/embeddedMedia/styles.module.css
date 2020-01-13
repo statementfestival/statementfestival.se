@@ -1,3 +1,12 @@
 .container {
+  display: flex;
   margin-bottom: 6.625rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (--mobile-only) {
+  .container {
+    max-width: calc(100vw - 5.6rem);
+  }
 }

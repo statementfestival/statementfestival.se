@@ -17,6 +17,10 @@
   margin-top: 2rem;
 }
 
+.artist {
+  margin-bottom: 7rem;
+}
+
 @media (--tablet-up) {
   .regular {
     margin-top: 5.5rem;
