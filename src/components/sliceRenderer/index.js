@@ -3,11 +3,14 @@ import React from 'react'
 import PageSection from '../pageSection'
 
 import ContactGroup from '../slices/contactGroup'
+import EmbeddedMedia from '../slices/embeddedMedia'
 import FAQ from '../slices/faq'
+import Form from '../slices/form'
+import Image from '../slices/image'
 import ImageGrid from '../slices/imageGrid'
 import Merch from '../slices/merch'
+import SocialMedia from '../slices/socialMedia'
 import Text from '../slices/text'
-import Form from '../slices/form'
 
 const SliceRenderer = ({ slices }) => {
   return slices.map((slice, index) => {
@@ -37,16 +40,34 @@ const SliceRenderer = ({ slices }) => {
               <ContactGroup slice={slice} />
             </PageSection>
           )
+        case 'embedded_media':
+          return (
+            <PageSection size="regular-variant" key={index}>
+              <EmbeddedMedia slice={slice} />
+            </PageSection>
+          )
         case 'image_grid':
           return (
             <PageSection size="medium" key={index}>
               <ImageGrid slice={slice} />
             </PageSection>
           )
+        case 'image':
+          return (
+            <PageSection size="regular-variant" key={index}>
+              <Image slice={slice} />
+            </PageSection>
+          )
         case 'form':
           return (
             <PageSection key={index}>
               <Form slice={slice} />
+            </PageSection>
+          )
+        case 'social_media':
+          return (
+            <PageSection key={index}>
+              <SocialMedia slice={slice} />
             </PageSection>
           )
         default:

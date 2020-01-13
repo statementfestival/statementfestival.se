@@ -1,6 +1,6 @@
 export const linkResolver = doc => {
   if (doc.type === 'artist') {
-    return `/artist/${doc.uid}`
+    return `/line-up/${doc.uid}`
   }
 
   if (doc.type === 'page') {

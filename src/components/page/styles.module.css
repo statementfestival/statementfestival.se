@@ -17,9 +17,17 @@
   margin-top: 2rem;
 }
 
+.artist {
+  margin-bottom: 7rem;
+}
+
 @media (--tablet-up) {
-  .main {
+  .regular {
     margin-top: 5.5rem;
+  }
+
+  .artist {
+    margin: 2.7rem 0 13rem;
   }
 }
 
