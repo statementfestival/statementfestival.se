@@ -13,12 +13,14 @@ const Checkbox = ({
   onChange,
   label,
   error,
-  checked = false
+  checked = false,
+  appearance = ''
 }) => (
   <div
     className={objstr({
       [styles.container]: true,
-      [styles.containerLarge]: required
+      [styles.containerLarge]: required,
+      [styles.variant]: appearance === 'variant'
     })}
   >
     <label className={styles.label}>

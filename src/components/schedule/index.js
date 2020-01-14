@@ -59,6 +59,7 @@ const Schedule = ({ entries = [], venues = [] }) => {
                   ])
                 }
               }}
+              appearance="variant"
             />
           </div>
         ))}

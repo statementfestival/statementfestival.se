@@ -8,6 +8,11 @@
   margin-bottom: 4rem;
 }
 
+.variant,
+.variant .label {
+  margin: 0;
+}
+
 .label {
   display: flex;
   align-items: center;
@@ -19,6 +24,13 @@
   font-weight: 200;
   line-height: 1;
   margin: 0;
+}
+
+
+.variant .text {
+  font-weight: 600;
+  font-size: var(--font-size-button);
+  padding-top: 0.1rem;
 }
 
 .checkbox {
@@ -35,6 +47,10 @@
   width: 1.5rem;
 }
 
+.variant .checkbox {
+  margin-right: 0.8rem;
+}
+
 .checkbox::after {
   border-color: var(--secondary-variant);
   border-style: solid;
@@ -47,6 +63,10 @@
   transform: rotate(45deg) scale(0);
   transition: transform 90ms ease-out;
   width: 0.4rem;
+}
+
+.variant .checkbox::after {
+  border-color: var(--black);
 }
 
 .checkbox:checked::after {
