@@ -16,7 +16,7 @@
 }
 
 /* Design exception for content to fit really small screens */
-@media (--mobile-smallest) {
+@media (--mobile-only) {
 
   .container,
   .containerMedium {
