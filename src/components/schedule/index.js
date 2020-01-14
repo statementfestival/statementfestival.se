@@ -22,14 +22,16 @@ const Schedule = ({ entries = [], venues = [] }) => {
   const [checked, setChecked] = useState(venues)
 
   /* Construct a list with all full hours that have entries (i.e. 15:00) */
-  const hours = entries
-    .map(item => {
-      /* Exit early if venue of entry is not checked */
-      if (!checked.some(c => c === item.venue)) return
-
-      return `${item.start_time.substring(0, 2)}:00`
-    })
-    .filter(Boolean)
+  const hours = entries.reduce(function(accumulator, currentValue) {
+    const hour = `${currentValue.start_time.substring(0, 2)}:00`
+    if (
+      accumulator.indexOf(hour) === -1 &&
+      checked.includes(currentValue.venue)
+    ) {
+      accumulator.push(hour)
+    }
+    return accumulator
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -68,10 +70,10 @@ const Schedule = ({ entries = [], venues = [] }) => {
         )
 
         return (
-          <div key={`schedule-${hour}`}>
+          <div className={styles.entries} key={`schedule-${hour}`}>
             <h3 className={styles.title}>{hour}</h3>
             {currentEntries.map((entry, index) => {
-              if (!checked.some(c => c === entry.venue)) return
+              if (!checked.includes(entry.venue)) return
 
               return (
                 <div

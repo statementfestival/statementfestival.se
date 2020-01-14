@@ -11,6 +11,22 @@
   }
 }
 
+.prune {
+  background-color: var(--prune);
+}
+
+.nude {
+  background-color: var(--nude);
+}
+
+.secondary {
+  background-color: var(--secondary);
+}
+
+.variant {
+  background-color: var(--secondary-variant);
+}
+
 .venues {
   border-bottom: 1px solid rgba(255, 255, 255, 0.10);
   display: flex;
@@ -36,6 +52,10 @@
   text-align: left;
 }
 
+.entries:not(:last-of-type) {
+  margin-bottom: 1.4rem;
+}
+
 .entry {
   align-items: flex-start;
   border-radius: 4px;
@@ -57,7 +77,6 @@
     flex-direction: row;
     padding: 0.8rem 1.25rem;
   }
-
 }
 
 .entry:not(:last-of-type) {
@@ -78,20 +97,4 @@
 .link {
   font-weight: 600;
   margin-right: auto;
-}
-
-.prune {
-  background-color: var(--prune);
-}
-
-.nude {
-  background-color: var(--nude);
-}
-
-.secondary {
-  background-color: var(--secondary);
-}
-
-.variant {
-  background-color: var(--secondary-variant);
 }
