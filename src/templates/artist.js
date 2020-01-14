@@ -138,7 +138,6 @@ const ArtistPage = ({ data }) => {
         <Image slice={image} />
       </PageSection>
       <PageSection>
-        {/* TODO: Convert h1 and h3 to some sort of component */}
         <h1>{RichText.asText(doc.node.title)}</h1>
         {details ? (
           <h3>{`${details.collectionTitle} ${details.start} | ${details.venue}`}</h3>
