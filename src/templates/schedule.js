@@ -54,6 +54,14 @@ const SchedulePage = ({ data }) => {
   const collections = doc.node.body.map(item => item.primary.collection_title)
   if (!collections || !collections.length) return null
 
+  const venues = doc.node.body
+    .map(item => {
+      return item.fields.map(field => {
+        return field.venue
+      })
+    })
+    .flat()
+
   return (
     <Page>
       <Head
@@ -70,7 +78,10 @@ const SchedulePage = ({ data }) => {
         onChange={index => setChecked(index)}
       />
       <PageSection size="medium">
-        <Schedule entries={doc.node.body[checked].fields} />
+        <Schedule
+          entries={doc.node.body[checked].fields}
+          venues={[...new Set(venues)]} /* Remove duplicate values */
+        />
       </PageSection>
     </Page>
   )
