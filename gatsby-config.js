@@ -60,6 +60,12 @@ module.exports = {
             match: '/line-up/:uid',
             path: '/artist',
             component: require.resolve('./src/templates/artist.js')
+          },
+         {
+            type: 'Lineup',
+            match: '/:uid',
+            path: '/lineup',
+            component: require.resolve('./src/templates/lineup.js')
           }
         ]
       }
