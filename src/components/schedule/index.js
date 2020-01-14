@@ -7,19 +7,24 @@ import { linkResolver } from '../../utils/linkResolver.js'
 
 import styles from './styles.module.css'
 
+/* Each venue has a theme color */
+const VENUE_THEMES = new Map([
+  ['Whitney', 'prune'],
+  ['Festivalområdet', 'nude'],
+  ['Lill-Babs', 'secondary'],
+  ['Faktums Poddbur', 'variant']
+])
+
 const Schedule = ({ entries }) => {
   return (
     <div className={styles.container}>
       {entries.map((entry, index) => (
         <div
+          key={`entry-${index}`}
           className={objstr({
             [styles.entry]: true,
-            [styles.entryPrune]: entry.venue === 'Whitney',
-            [styles.entryNude]: entry.venue === 'Festivalområdet',
-            [styles.entrySecondary]: entry.venue === 'Lill-Babs',
-            [styles.entrySecondaryVariant]: entry.venue === 'Faktums Poddbur'
+            [styles[VENUE_THEMES.get(entry.venue)]]: true
           })}
-          key={`entry-${index}`}
         >
           <p
             className={styles.text}

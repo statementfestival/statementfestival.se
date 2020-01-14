@@ -8,8 +8,11 @@
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.625rem;
   padding: 0.8rem 1.25rem;
+}
+
+.entry:not(:last-of-type) {
+  margin-bottom: 0.625rem;
 }
 
 .text {
@@ -19,18 +22,18 @@
   text-decoration: none;
 }
 
-.entryPrune {
+.prune {
   background-color: var(--prune);
 }
 
-.entryNude {
+.nude {
   background-color: var(--nude);
 }
 
-.entrySecondary {
+.secondary {
   background-color: var(--secondary);
 }
 
-.entrySecondaryVariant {
+.variant {
   background-color: var(--secondary-variant);
 }
