@@ -90,31 +90,32 @@ const LineupPage = ({ data }) => {
 
   if (schedule) {
     controllerAlternatives = schedule.node.body.map(alternative => {
-    if (alternative.type === 'collection') {
-      return alternative.primary.collection_title
-    }
-      return null
-  })
-
-  controllerAlternatives.unshift('Alla')
-
-  if (selectedIndex > 0) {
-    selectedIndexArtists = schedule.node.body[selectedIndex - 1].fields.map(
-      artists => {
-        return artists.artist._meta.uid
+      if (alternative.type === 'collection') {
+        return alternative.primary.collection_title
       }
-    )
-  }
+      return null
+    })
+
+    controllerAlternatives.unshift('Alla')
+
+    if (selectedIndex > 0) {
+      selectedIndexArtists = schedule.node.body[selectedIndex - 1].fields.map(
+        artists => {
+          return artists.artist._meta.uid
+        }
+      )
+    }
   }
 
   const filteredArtists = doc.node.artists.reduce(
     (accumulator, currentValue) => {
+      const { artist } = currentValue
       if (!selectedIndexArtists) {
-        accumulator.push(currentValue)
+        accumulator.push(artist)
       } else {
-        const { uid } = currentValue.artist._meta
+        const { uid } = artist._meta
         if (selectedIndexArtists.includes(uid)) {
-          accumulator.push(currentValue)
+          accumulator.push(artist)
         }
       }
       return accumulator
@@ -133,13 +134,13 @@ const LineupPage = ({ data }) => {
         <h1>{RichText.asText(doc.node.title)}</h1>
       </PageSection>
       {schedule ? (
-      <SegmentedControl
-        options={controllerAlternatives}
-        checked={selectedIndex}
-        onChange={index => {
-          setSelectedIndex(index)
-        }}
-      />
+        <SegmentedControl
+          options={controllerAlternatives}
+          checked={selectedIndex}
+          onChange={index => {
+            setSelectedIndex(index)
+          }}
+        />
       ) : null}
       <PageSection size={'medium'}>
         <ImageGrid slice={filteredArtists} />
