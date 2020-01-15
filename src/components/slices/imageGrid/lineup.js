@@ -9,32 +9,31 @@ const ImageGridLineup = ({ slice }) => {
     <div className={styles.imageGrid}>
       <div className={styles.images}>
         {slice.map((item, index) => {
-          const imageDesktop = item.artist.body[0].primary.main_image.desktop
-          const titleDesktop = item.artist.title[0]
+          const image = item.body.find(content => content.type === 'image')
+          if (!image) return null
 
-          const external = item.image_link ? item.image_link.url : ''
-
-          /* const imageMobile =
-            item.image_grid_item && item.image_grid_item.mobile
-              ? item.image_grid_item.mobile
-              : ''*/
+          const {
+            desktop: imageDesktop,
+            mobile: imageMobile
+          } = image.primary.main_image
 
           return (
             <Link
               className={styles.imageContainer}
-              to={linkResolver(item.artist._meta)}
+              to={linkResolver(item._meta)}
               key={`ImageGrid-${index}`}
             >
               <img
                 loading="lazy"
                 className={styles.image}
-                srcSet={`${imageDesktop.url} ${imageDesktop.dimensions.width}w`}
+                srcSet={`${imageMobile.url} ${imageMobile.dimensions.width}w,
+            ${imageDesktop.url} ${imageDesktop.dimensions.width}w`}
                 sizes={`(max-width: 899px) 810px,
             (min-width: 900px) 445px`}
                 src={imageDesktop.url}
                 alt={imageDesktop.alt}
               ></img>
-              <h3>{titleDesktop.text}</h3>
+              <h3>{RichText.asText(item.title)}</h3>
             </Link>
           )
         })}
