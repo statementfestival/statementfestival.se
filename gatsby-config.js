@@ -66,6 +66,12 @@ module.exports = {
             match: '/:uid',
             path: '/schedule',
             component: require.resolve('./src/templates/schedule.js')
+          },
+          {
+            type: 'Lineup',
+            match: '/:uid',
+            path: '/lineup',
+            component: require.resolve('./src/templates/lineup.js')
           }
         ]
       }

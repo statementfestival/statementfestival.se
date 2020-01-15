@@ -140,6 +140,7 @@ const IndexPage = ({ data }) => {
     title
   }
 
+
   return (
     <Page>
       <Head title={title} />
