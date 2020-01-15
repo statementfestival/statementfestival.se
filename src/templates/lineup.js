@@ -85,15 +85,18 @@ const LineupPage = ({ data }) => {
 
   const schedule = data.prismic.allSchedules.edges.slice(0, 1).pop()
 
-  const controllerAlternatives = schedule.node.body.map(alternative => {
+  let controllerAlternatives
+  let selectedIndexArtists
+
+  if (schedule) {
+    controllerAlternatives = schedule.node.body.map(alternative => {
     if (alternative.type === 'collection') {
       return alternative.primary.collection_title
     }
+      return null
   })
 
   controllerAlternatives.unshift('Alla')
-
-  let selectedIndexArtists
 
   if (selectedIndex > 0) {
     selectedIndexArtists = schedule.node.body[selectedIndex - 1].fields.map(
@@ -101,6 +104,7 @@ const LineupPage = ({ data }) => {
         return artists.artist._meta.uid
       }
     )
+  }
   }
 
   const filteredArtists = doc.node.artists.reduce(
@@ -128,6 +132,7 @@ const LineupPage = ({ data }) => {
       <PageSection>
         <h1>{RichText.asText(doc.node.title)}</h1>
       </PageSection>
+      {schedule ? (
       <SegmentedControl
         options={controllerAlternatives}
         checked={selectedIndex}
@@ -135,6 +140,7 @@ const LineupPage = ({ data }) => {
           setSelectedIndex(index)
         }}
       />
+      ) : null}
       <PageSection size={'medium'}>
         <ImageGrid slice={filteredArtists} />
       </PageSection>
