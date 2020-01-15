@@ -59,7 +59,6 @@ const Schedule = ({ entries = [], venues = [] }) => {
                   ])
                 }
               }}
-              appearance="variant"
             />
           </div>
         ))}
@@ -74,7 +73,7 @@ const Schedule = ({ entries = [], venues = [] }) => {
           <div className={styles.entries} key={`schedule-${hour}`}>
             <h3 className={styles.title}>{hour}</h3>
             {currentEntries.map((entry, index) => {
-              if (!checked.includes(entry.venue)) return
+              if (!checked.includes(entry.venue)) return null
 
               return (
                 <div
