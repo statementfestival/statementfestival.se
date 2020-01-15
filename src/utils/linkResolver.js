@@ -7,6 +7,10 @@ export const linkResolver = doc => {
     return `/${doc.uid}`
   }
 
+  if (doc.type === 'lineup') {
+    return `/${doc.uid}`
+  }
+
   // Backup for all other types
   return '/'
 }
