@@ -22,7 +22,7 @@ const Schedule = ({ entries = [], venues = [] }) => {
   const [checked, setChecked] = useState(venues)
 
   /* Construct a list with all full hours that have entries (i.e. 15:00) */
-  const hours = entries.reduce(function(accumulator, currentValue) {
+  const hours = entries.reduce((accumulator, currentValue) => {
     const hour = `${currentValue.start_time.substring(0, 2)}:00`
     if (
       accumulator.indexOf(hour) === -1 &&
