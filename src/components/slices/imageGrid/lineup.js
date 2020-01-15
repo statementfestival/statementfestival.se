@@ -1,4 +1,5 @@
 import React from 'react'
+import { RichText } from 'prismic-reactjs'
 import styles from './styles.module.css'
 import { linkResolver } from '../../../utils/linkResolver.js'
 import { Link } from 'gatsby'
