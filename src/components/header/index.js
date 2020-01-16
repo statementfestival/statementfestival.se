@@ -1,7 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { RichText } from 'prismic-reactjs'
 import objstr from 'obj-str'
 
 import { linkResolver } from '../../utils/linkResolver'
@@ -27,7 +26,7 @@ const Header = ({ siteTitle, menu }) => (
           key={`menuLink-${index}`}
           to={linkResolver(item.link._meta)}
         >
-          {RichText.asText(item.link.title)}
+          {item.title}
         </Link>
       ))}
     </div>

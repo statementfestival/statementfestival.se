@@ -31,9 +31,21 @@ const Page = ({ children, type = 'regular' }) => {
                   site_title
                   menu_links {
                     appearance
+                    title
                     link {
                       ... on PRISMIC_Page {
-                        title
+                        _meta {
+                          uid
+                          type
+                        }
+                      }
+                      ... on PRISMIC_Schedule {
+                        _meta {
+                          uid
+                          type
+                        }
+                      }
+                      ... on PRISMIC_Lineup {
                         _meta {
                           uid
                           type
@@ -50,6 +62,8 @@ const Page = ({ children, type = 'regular' }) => {
       render={data => {
         const doc = data.prismic.allWebsites.edges.slice(0, 1).pop()
         if (!doc) return null
+
+        console.log(doc.node.menu_links)
 
         return (
           <div className={styles.page}>
