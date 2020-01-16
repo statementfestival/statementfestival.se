@@ -63,8 +63,6 @@ const Page = ({ children, type = 'regular' }) => {
         const doc = data.prismic.allWebsites.edges.slice(0, 1).pop()
         if (!doc) return null
 
-        console.log(doc.node.menu_links)
-
         return (
           <div className={styles.page}>
             <PageSection size="full">
