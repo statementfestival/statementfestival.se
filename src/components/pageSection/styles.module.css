@@ -6,7 +6,8 @@
   width: 100%;
 }
 
-.containerFull {
+.containerFull,
+.containerRegularVariant {
   width: 100vw;
 }
 

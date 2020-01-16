@@ -25,6 +25,14 @@ export const query = graphql`
                 type
                 primary {
                   main_image
+                  main_image_color
+                  main_imageSharp {
+                    childImageSharp {
+                      fluid(jpegQuality: 100, maxWidth: 899) {
+                        ...GatsbyImageSharpFluid_noBase64
+                      }
+                    }
+                  }
                 }
               }
               ... on PRISMIC_ArtistBodyText {
@@ -134,9 +142,11 @@ const ArtistPage = ({ data }) => {
         description={doc.node.meta_description}
         image={image ? image.primary.main_image.url : null}
       />
-      <PageSection size="regular-variant">
-        <Image slice={image} />
-      </PageSection>
+      {image ? (
+        <PageSection size="regular-variant">
+          <Image slice={image} />
+        </PageSection>
+      ) : null}
       <PageSection>
         <h1>{RichText.asText(doc.node.title)}</h1>
         {details ? (

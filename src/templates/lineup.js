@@ -37,6 +37,14 @@ export const query = graphql`
                       type
                       primary {
                         main_image
+                        main_image_color
+                        main_imageSharp {
+                          childImageSharp {
+                            fluid(jpegQuality: 100, maxWidth: 899) {
+                              ...GatsbyImageSharpFluid_noBase64
+                            }
+                          }
+                        }
                       }
                     }
                   }
