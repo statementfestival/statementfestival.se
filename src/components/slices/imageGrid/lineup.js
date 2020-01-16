@@ -1,8 +1,11 @@
 import React from 'react'
-import { RichText } from 'prismic-reactjs'
-import styles from './styles.module.css'
-import { linkResolver } from '../../../utils/linkResolver.js'
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
+import { RichText } from 'prismic-reactjs'
+
+import { linkResolver } from '../../../utils/linkResolver.js'
+
+import styles from './styles.module.css'
 
 const ImageGridLineup = ({ slice }) => {
   return (
@@ -12,27 +15,18 @@ const ImageGridLineup = ({ slice }) => {
           const image = item.body.find(content => content.type === 'image')
           if (!image) return null
 
-          const {
-            desktop: imageDesktop,
-            mobile: imageMobile
-          } = image.primary.main_image
-
           return (
             <Link
               className={styles.imageContainer}
               to={linkResolver(item._meta)}
               key={`ImageGrid-${index}`}
             >
-              <img
-                loading="lazy"
+              <Img
                 className={styles.image}
-                srcSet={`${imageMobile.url} ${imageMobile.dimensions.width}w,
-            ${imageDesktop.url} ${imageDesktop.dimensions.width}w`}
-                sizes={`(max-width: 899px) 810px,
-            (min-width: 900px) 445px`}
-                src={imageDesktop.url}
-                alt={imageDesktop.alt}
-              ></img>
+                alt={image.primary.main_image.alt}
+                backgroundColor={image.primary.main_image_color || '#954587'}
+                fluid={image.primary.main_imageSharp.childImageSharp.fluid}
+              />
               <h3>{RichText.asText(item.title)}</h3>
             </Link>
           )

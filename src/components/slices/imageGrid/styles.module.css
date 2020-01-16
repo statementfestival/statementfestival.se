@@ -17,7 +17,8 @@
 
 .image {
   display: block;
-  width: 100%;
+  height: calc(100vw - 3rem);
+  width: calc(100vw - 3rem);
 }
 
 a {
@@ -29,9 +30,15 @@ h3 {
 }
 
 @media (--tablet-up) {
+
   .imageGrid h2,
   .imageGrid h1 {
     margin-bottom: 2.5rem;
+  }
+
+  .image {
+    height: 445px;
+    width: 445px;
   }
 
   .images {
