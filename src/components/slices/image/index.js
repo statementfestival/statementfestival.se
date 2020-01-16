@@ -1,14 +1,16 @@
 import React from 'react'
+import Img from 'gatsby-image'
 
 import styles from './styles.module.css'
 
 const Image = ({ slice }) => {
   return (
     <div className={styles.container}>
-      <img
+      <Img
         className={styles.image}
-        src={slice.primary.main_image.url}
         alt={slice.primary.main_image.alt}
+        backgroundColor={slice.primary.main_image_color || '#eb8cb2'}
+        fluid={slice.primary.main_imageSharp.childImageSharp.fluid}
       />
     </div>
   )
