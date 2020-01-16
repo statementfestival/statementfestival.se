@@ -54,13 +54,16 @@ const SchedulePage = ({ data }) => {
   const collections = doc.node.body.map(item => item.primary.collection_title)
   if (!collections || !collections.length) return null
 
-  const venues = doc.node.body
-    .map(item => {
-      return item.fields.map(field => {
-        return field.venue
-      })
-    })
-    .flat()
+  const venues = doc.node.body.reduce((accumulator, current) => {
+    const venue = current.fields.map(field => field.venue)
+
+    for (let i = 0; i < venue.length; i++) {
+      if (accumulator.indexOf(venue[i]) === -1) {
+        accumulator.push(venue[i])
+      }
+    }
+    return accumulator
+  }, [])
 
   return (
     <Page>
@@ -78,10 +81,7 @@ const SchedulePage = ({ data }) => {
         onChange={index => setChecked(index)}
       />
       <PageSection size="medium">
-        <Schedule
-          entries={doc.node.body[checked].fields}
-          venues={[...new Set(venues)]} /* Remove duplicate values */
-        />
+        <Schedule entries={doc.node.body[checked].fields} venues={venues} />
       </PageSection>
     </Page>
   )
