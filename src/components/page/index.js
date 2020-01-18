@@ -29,30 +29,6 @@ const Page = ({ children, type = 'regular' }) => {
                 node {
                   meta_description
                   site_title
-                  menu_links {
-                    appearance
-                    title
-                    link {
-                      ... on PRISMIC_Page {
-                        _meta {
-                          uid
-                          type
-                        }
-                      }
-                      ... on PRISMIC_Schedule {
-                        _meta {
-                          uid
-                          type
-                        }
-                      }
-                      ... on PRISMIC_Lineup {
-                        _meta {
-                          uid
-                          type
-                        }
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -66,10 +42,7 @@ const Page = ({ children, type = 'regular' }) => {
         return (
           <div className={styles.page}>
             <PageSection size="full">
-              <Header
-                siteTitle={doc.node.site_title}
-                menu={doc.node.menu_links}
-              />
+              <Header siteTitle={doc.node.site_title} />
             </PageSection>
             <main
               className={objstr({

@@ -1,0 +1,98 @@
+.burger {
+  display: none;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.9rem;
+  z-index: 10;
+}
+
+.burger.visible {
+  display: block;
+}
+
+.menu {
+  box-sizing: border-box;
+  display: none;
+}
+
+.menuButton {
+  background-color: var(--secondary-variant);
+  border-radius: 4px;
+  color: var(--white);
+  padding: 0.8rem 2.5rem 0.7rem;
+  text-decoration: none;
+}
+
+@media (--tablet-down) {
+  .icon {
+    height: 3.8rem;
+    width: 3.8rem;
+  }
+
+  .menu:target,
+  .menu.open {
+    align-items: center;
+    background-color: var(--nude);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: flex-start;
+    left: 0;
+    padding: 6rem 1.25rem 1.25rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
+  .menuButton {
+    font-size: var(--font-size-button);
+    font-weight: 600;
+  }
+
+  .menuLink {
+    font-size: var(--font-size-headline);
+    font-weight: 600;
+    padding: 1rem 0 1.2rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .menuLink:not(.lastLink) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .lastLink {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (--desktop-up) {
+  .burger {
+    display: none;
+  }
+
+  .menu {
+    align-items: center;
+    display: flex;
+    padding-bottom: 1.8rem;
+    position: absolute;
+    right: 2.6875rem;
+  }
+
+  .menuLink,
+  .menuButton {
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .menuButton {
+    background-color: var(--secondary-variant);
+    border-radius: 4px;
+    padding: 0.5rem 0.7rem 0.4375rem;
+  }
+
+  .menuLink:not(:last-of-type) {
+    margin-right: 1.375rem;
+  }
+}
