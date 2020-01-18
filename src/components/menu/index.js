@@ -1,5 +1,4 @@
 import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
 import React, { useState, useRef, useEffect } from 'react'
 import Lottie from 'lottie-web'
 import objstr from 'obj-str'
@@ -10,6 +9,7 @@ import styles from './styles.module.css'
 
 const Menu = ({ links }) => {
   const [open, setOpen] = useState(false)
+  const [exiting, setIsExiting] = useState(false)
   const [hasToggled, setHasToggled] = useState(false)
 
   const close = useRef()
@@ -19,13 +19,25 @@ const Menu = ({ links }) => {
     if (preventDefault) event.preventDefault()
 
     if (!hasToggled) setHasToggled(true)
-    setOpen(!open)
+
+    /* Finish exit animation before setting open to false */
+    if (open) setIsExiting(true)
+    else setOpen(true)
+  }
+
+  /* Reset initial state once exit animation is finished */
+  const onanimationend = () => {
+    if (exiting) {
+      setOpen(false)
+      setIsExiting(false)
+    }
   }
 
   useEffect(() => {
+    if (!open && !exiting) return
     Lottie.goToAndStop(0)
     Lottie.play()
-  }, [open])
+  }, [open, exiting])
 
   useEffect(() => {
     const common = {
@@ -69,7 +81,7 @@ const Menu = ({ links }) => {
       <a
         className={objstr({
           [styles.burger]: true,
-          [styles.visible]: !open && hasToggled
+          [styles.visible]: (!open && hasToggled) || (open && exiting)
         })}
         href="#navigation"
         onClick={event => toggle(event, true)}
@@ -80,7 +92,7 @@ const Menu = ({ links }) => {
       <a
         className={objstr({
           [styles.burger]: true,
-          [styles.visible]: open || !hasToggled
+          [styles.visible]: (open && !exiting) || !hasToggled
         })}
         href="#main"
         onClick={event => toggle(event, true)}
@@ -90,38 +102,46 @@ const Menu = ({ links }) => {
       </a>
       <div
         className={objstr({
-          [styles.menu]: true,
-          [styles.open]: open
+          [styles.container]: true,
+          [styles.open]: open,
+          [styles.exiting]: exiting
         })}
         id="navigation"
+        onAnimationEnd={onanimationend}
       >
-        {links.map((item, index) => {
-          if (!item.link || !item.link._meta) {
-            return null
-          }
+        <div className={styles.content}>
+          {links.map((item, index) => {
+            if (!item.link || !item.link._meta) {
+              return null
+            }
 
-          /* Currently, only these page types are supported in menu */
-          const supported = ['page', 'lineup', 'schedule']
-          if (!supported.some(p => p === item.link._meta.type)) {
-            return null
-          }
+            /* Currently, only these page types are supported in menu */
+            const supported = ['page', 'lineup', 'schedule']
+            if (!supported.some(p => p === item.link._meta.type)) {
+              return null
+            }
 
-          return (
-            <Link
-              onClick={toggle}
-              className={objstr({
-                [styles.menuLink]: item.appearance === 'link',
-                [styles.menuButton]: item.appearance === 'button',
-                [styles.lastLink]:
-                  links[index + 1] && links[index + 1].appearance === 'button'
-              })}
-              key={`menuLink-${index}`}
-              to={linkResolver(item.link._meta)}
-            >
-              {item.title}
-            </Link>
-          )
-        })}
+            return (
+              <Link
+                onClick={toggle}
+                style={{
+                  animationDelay: `${index * 10 + 40}ms`,
+                  transform: `translateY(${index * -90}%)`
+                }}
+                className={objstr({
+                  [styles.link]: item.appearance === 'link',
+                  [styles.button]: item.appearance === 'button',
+                  [styles.lastLink]:
+                    links[index + 1] && links[index + 1].appearance === 'button'
+                })}
+                key={`link-${index}`}
+                to={linkResolver(item.link._meta)}
+              >
+                {item.title}
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </>
   )
