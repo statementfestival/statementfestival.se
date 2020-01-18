@@ -82,7 +82,7 @@ const Menu = ({ links }) => {
           [styles.burger]: true,
           [styles.visible]: open || !hasToggled
         })}
-        href="#"
+        href="#main"
         onClick={event => toggle(event, true)}
       >
         <svg ref={close} className={styles.icon} />

@@ -40,7 +40,7 @@ const Page = ({ children, type = 'regular' }) => {
         if (!doc) return null
 
         return (
-          <div className={styles.page}>
+          <div className={styles.page} id="main">
             <PageSection size="full">
               <Header siteTitle={doc.node.site_title} />
             </PageSection>
