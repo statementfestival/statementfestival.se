@@ -1,9 +1,5 @@
 .burger {
   display: none;
-  position: absolute;
-  right: 0.5rem;
-  top: 0.9rem;
-  z-index: 10;
 }
 
 .container {
@@ -22,6 +18,10 @@
 @media (--tablet-down) {
   .burger.visible {
     display: block;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.9rem;
+    z-index: 10;
   }
 
   .icon {
@@ -31,7 +31,7 @@
 
   .container:target,
   .container.open {
-    animation: is-entering 450ms cubic-bezier(.94, .01, .18, 1.12) forwards;
+    animation: is-entering 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
     background-color: var(--nude);
     display: block;
     height: 100vh;
@@ -44,7 +44,7 @@
   }
 
   .container.open.exiting {
-    animation: is-exiting 450ms cubic-bezier(.94, .01, .18, 1.12) forwards;
+    animation: is-exiting 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
   }
 
   .content {
@@ -75,12 +75,12 @@
   .container.open .link,
   .container:target .button,
   .container.open .button {
-    animation: is-entering 450ms cubic-bezier(.94, .01, .18, 1.12) forwards;
+    animation: is-entering 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
   }
 
   .container.is-exiting .link,
   .container.is-exiting .button {
-    animation: is-exiting 450ms cubic-bezier(.94, .01, .18, 1.12) forwards;
+    animation: is-exiting 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
   }
 
   .link:not(.lastLink) {

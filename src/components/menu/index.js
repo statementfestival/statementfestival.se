@@ -10,15 +10,12 @@ import styles from './styles.module.css'
 const Menu = ({ links }) => {
   const [open, setOpen] = useState(false)
   const [exiting, setIsExiting] = useState(false)
-  const [hasToggled, setHasToggled] = useState(false)
 
   const close = useRef()
   const burger = useRef()
 
   const toggle = (event, preventDefault = false) => {
     if (preventDefault) event.preventDefault()
-
-    if (!hasToggled) setHasToggled(true)
 
     /* Finish exit animation before setting open to false */
     if (open) setIsExiting(true)
@@ -47,32 +44,26 @@ const Menu = ({ links }) => {
     }
 
     if (burger.current) {
-      /*
-       * Lottie animation is loaded from static folder in order to bypass
-       * the module system: https://www.gatsbyjs.org/docs/static-folder/
-       */
-      Lottie.loadAnimation({
+      const animation = Lottie.loadAnimation({
         ...common,
         container: burger.current,
         name: 'burger',
         path: '/close-to-burger.json'
       })
-      Lottie.setQuality(1)
+
+      /* 1. Not ideal, but anim.goToAndStop(value, isFrame)
+       * does not seem to work before animation has been played
+       */
+      animation.setCurrentRawFrameValue(39) /* 1. */
     }
 
     if (close.current) {
-      /*
-       * Lottie animation is loaded from static folder in order to bypass
-       * the module system: https://www.gatsbyjs.org/docs/static-folder/
-       */
       Lottie.loadAnimation({
         ...common,
         container: close.current,
         name: 'close',
         path: '/burger-to-close.json'
       })
-
-      Lottie.setQuality(1)
     }
   }, [])
 
@@ -81,18 +72,18 @@ const Menu = ({ links }) => {
       <a
         className={objstr({
           [styles.burger]: true,
-          [styles.visible]: (!open && hasToggled) || (open && exiting)
+          [styles.visible]: !open || (open && exiting)
         })}
         href="#navigation"
         onClick={event => toggle(event, true)}
       >
         <svg ref={burger} className={styles.icon} />
-        <span className={'visuallyHidden'}>Öppna</span>
+        <span className={'visuallyHidden'}>Meny</span>
       </a>
       <a
         className={objstr({
           [styles.burger]: true,
-          [styles.visible]: (open && !exiting) || !hasToggled
+          [styles.visible]: open && !exiting
         })}
         href="#main"
         onClick={event => toggle(event, true)}
@@ -125,7 +116,7 @@ const Menu = ({ links }) => {
               <Link
                 onClick={toggle}
                 style={{
-                  animationDelay: `${index * 10 + 40}ms`,
+                  animationDelay: `${index * 25 + 50}ms`,
                   transform: `translateY(${index * -90}%)`
                 }}
                 className={objstr({
