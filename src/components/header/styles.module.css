@@ -1,38 +1,8 @@
 .header {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   padding-top: 2rem;
-}
-
-.menu {
-  display: none;
-}
-
-@media (--desktop-up) {
-  .menu {
-    align-items: center;
-    display: flex;
-    padding-bottom: 1.8rem;
-    position: absolute;
-    right: 2.6875rem;
-  }
-
-  .menuLink,
-  .menuButton {
-    color: var(--white);
-    text-decoration: none;
-  }
-
-  .menuButton {
-    background-color: var(--secondary-variant);
-    border-radius: 4px;
-    padding: 0.5rem 0.7rem 0.4375rem;
-  }
-
-  .menuLink:not(:last-of-type) {
-    margin-right: 1.375rem;
-  }
 }
 
 .logo {

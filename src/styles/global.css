@@ -1,6 +1,7 @@
 @custom-media --mobile-smallest (max-width: 320px);
 @custom-media --mobile-only (max-width: 899px);
 @custom-media --tablet-up (min-width: 900px);
+@custom-media --tablet-down (max-width: 1199px);
 @custom-media --desktop-up (min-width: 1200px);
 
 :root {
@@ -185,7 +186,7 @@ a,
 button {
   color: var(--primary);
   font-family: var(--font-family-sans-serif);
-  font-weight: 800;
+  font-weight: 600;
 }
 
 h1,
@@ -213,7 +214,7 @@ h4 {
 
 b,
 strong {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 p,
