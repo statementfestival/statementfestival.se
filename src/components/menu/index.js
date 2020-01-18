@@ -32,8 +32,11 @@ const Menu = ({ links }) => {
 
   useEffect(() => {
     if (!open && !exiting) return
+
     Lottie.goToAndStop(0)
-    Lottie.play()
+
+    if (open && !exiting) Lottie.play('burger-to-close')
+    if (open && exiting) Lottie.play('close-to-burger')
   }, [open, exiting])
 
   useEffect(() => {
@@ -47,7 +50,7 @@ const Menu = ({ links }) => {
       const animation = Lottie.loadAnimation({
         ...common,
         container: burger.current,
-        name: 'burger',
+        name: 'close-to-burger',
         path: '/close-to-burger.json'
       })
 
@@ -61,7 +64,7 @@ const Menu = ({ links }) => {
       Lottie.loadAnimation({
         ...common,
         container: close.current,
-        name: 'close',
+        name: 'burger-to-close',
         path: '/burger-to-close.json'
       })
     }
