@@ -19,8 +19,8 @@
   .burger.visible {
     display: block;
     position: absolute;
-    right: 0.5rem;
-    top: 0.9rem;
+    right: 0.4rem;
+    top: 1rem;
     z-index: 10;
   }
 
