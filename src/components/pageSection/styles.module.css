@@ -6,7 +6,8 @@
   width: 100%;
 }
 
-.containerFull {
+.containerFull,
+.containerRegularVariant {
   width: 100vw;
 }
 
@@ -16,7 +17,7 @@
 }
 
 /* Design exception for content to fit really small screens */
-@media (--mobile-smallest) {
+@media (--mobile-only) {
 
   .container,
   .containerMedium {
@@ -34,6 +35,11 @@
 
   .container {
     width: var(--container-desktop-width);
+    max-width: 100vw;
+  }
+
+  .containerRegularVariant {
+    width: var(--container-variant-desktop-width);
     max-width: 100vw;
   }
 

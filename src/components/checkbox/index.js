@@ -5,14 +5,15 @@ import objstr from 'obj-str'
 import styles from './styles.module.css'
 
 const Checkbox = ({
-  type,
-  id,
-  name,
-  required,
+  type = 'checkbox',
+  id = '',
+  name = '',
+  required = false,
   value,
   onChange,
   label,
-  error
+  error,
+  checked = false
 }) => (
   <div
     className={objstr({
@@ -28,6 +29,7 @@ const Checkbox = ({
         name={name}
         value={value}
         onChange={onChange}
+        checked={checked}
       />
       <span className={styles.text}>{label}</span>
     </label>

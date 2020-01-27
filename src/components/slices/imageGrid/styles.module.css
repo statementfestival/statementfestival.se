@@ -2,8 +2,7 @@
   margin-bottom: 5rem;
 }
 
-.imageGrid h2,
-.imageGrid h3 {
+.imageGrid h2 {
   font-size: var(--font-size-headline);
   line-height: 1.2;
   margin-top: 0;
@@ -18,13 +17,28 @@
 
 .image {
   display: block;
-  width: 100%;
+  height: calc(100vw - 3rem);
+  width: calc(100vw - 3rem);
+}
+
+a {
+  text-decoration: none;
+}
+
+h3 {
+  margin-top: 1rem;
 }
 
 @media (--tablet-up) {
+
   .imageGrid h2,
   .imageGrid h1 {
     margin-bottom: 2.5rem;
+  }
+
+  .image {
+    height: 445px;
+    width: 445px;
   }
 
   .images {

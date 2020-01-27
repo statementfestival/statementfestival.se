@@ -9,6 +9,7 @@ import styles from './styles.module.css'
  */
 const PageSection = ({ children, size = 'regular' }) => {
   let className = styles.container
+  if (size === 'regular-variant') className = styles.containerRegularVariant
   if (size === 'medium') className = styles.containerMedium
   if (size === 'large') className = styles.containerLarge
   if (size === 'full') className = styles.containerFull

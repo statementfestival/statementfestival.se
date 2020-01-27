@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
+import objstr from 'obj-str'
 
 import Header from '../header'
 import Footer from '../footer'
@@ -17,7 +18,7 @@ import styles from './styles.module.css'
  * More information can be found here:
  * [gatsby-source-prismic-graphql](https://www.gatsbyjs.org/packages/gatsby-source-prismic-graphql/#usestaticquery).
  */
-const Page = ({ children }) => {
+const Page = ({ children, type = 'regular' }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -39,11 +40,19 @@ const Page = ({ children }) => {
         if (!doc) return null
 
         return (
-          <div className={styles.page}>
-            <PageSection>
+          <div className={styles.page} id="main">
+            <PageSection size="full">
               <Header siteTitle={doc.node.site_title} />
             </PageSection>
-            <main className={styles.main}>{children}</main>
+            <main
+              className={objstr({
+                [styles.main]: true,
+                [styles.regular]: type === 'regular',
+                [styles.artist]: type === 'artist'
+              })}
+            >
+              {children}
+            </main>
             <div className={styles.footer}>
               <PageSection>
                 <Footer />

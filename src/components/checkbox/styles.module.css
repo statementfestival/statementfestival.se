@@ -1,7 +1,7 @@
 .container {
-  margin-bottom: 1rem;
-  width: 100%;
+  margin: 0;
   position: relative;
+  width: 100%;
 }
 
 .containerLarge {
@@ -11,14 +11,17 @@
 .label {
   display: flex;
   align-items: center;
+  margin: 0;
 }
 
 .text {
   color: var(--white);
   display: block;
-  font-weight: 200;
+  font-size: var(--font-size-button);
+  font-weight: 400;
   line-height: 1;
   margin: 0;
+  padding-top: 0.1rem;
 }
 
 .checkbox {
@@ -30,23 +33,23 @@
   border: none;
   display: block;
   height: 1.5rem;
-  margin-right: 1.2rem;
+  margin-right: 0.8rem;
   position: relative;
   width: 1.5rem;
 }
 
 .checkbox::after {
-  border-color: var(--secondary-variant);
+  border-color: var(--black);
   border-style: solid;
-  border-width: 0 4px 4px 0;
-  content: "";
-  height: 0.8rem;
-  left: 0.45rem;
+  border-width: 0 3px 3px 0;
+  content: '';
+  height: 0.7rem;
+  left: 0.5rem;
   position: absolute;
-  top: 0.1rem;
+  top: 0.15rem;
   transform: rotate(45deg) scale(0);
   transition: transform 90ms ease-out;
-  width: 0.4rem;
+  width: 0.3rem;
 }
 
 .checkbox:checked::after {

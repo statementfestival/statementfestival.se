@@ -1,5 +1,6 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
+import Img from 'gatsby-image'
 
 import styles from './styles.module.css'
 
@@ -12,14 +13,8 @@ const ImageGrid = ({ slice }) => {
       ) : null}
       <div className={styles.images}>
         {slice.fields.map((item, index) => {
+          if (!item.image) return null
           const external = item.image_link ? item.image_link.url : ''
-
-          const imageDesktop = item.image_grid_item ? item.image_grid_item : ''
-
-          const imageMobile =
-            item.image_grid_item && item.image_grid_item.mobile
-              ? item.image_grid_item.mobile
-              : ''
 
           return (
             <a
@@ -29,16 +24,12 @@ const ImageGrid = ({ slice }) => {
               href={external}
               key={`ImageGrid-${index}`}
             >
-              <img
-                loading="lazy"
+              <Img
                 className={styles.image}
-                srcSet={`${imageMobile.url} ${imageMobile.dimensions.width}w,
-            ${imageDesktop.url} ${imageDesktop.dimensions.width}w`}
-                sizes={`(max-width: 899px) 810px,
-              (min-width: 900px) 445px`}
-                src={imageDesktop.url}
-                alt={imageDesktop.alt}
-              ></img>
+                alt={item.image.alt}
+                backgroundColor="#954587"
+                fluid={item.imageSharp.childImageSharp.fluid}
+              />
             </a>
           )
         })}

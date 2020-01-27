@@ -1,6 +1,7 @@
 @custom-media --mobile-smallest (max-width: 320px);
 @custom-media --mobile-only (max-width: 899px);
 @custom-media --tablet-up (min-width: 900px);
+@custom-media --tablet-down (max-width: 1199px);
 @custom-media --desktop-up (min-width: 1200px);
 
 :root {
@@ -13,6 +14,8 @@
   --secondary-variant--transparent: rgba(214, 93, 135, 0.8);
   --white: #ffffff;
   --black: #000;
+  --prune: #954587;
+  --nude: #E6A099;
 
   --font-size-display-headline: 3.2rem;
   --font-size-display-sub: 1.5rem;
@@ -21,6 +24,7 @@
   --font-size-text: 1.2rem;
   --font-size-button: 1.125rem;
   --container-desktop-width: 542px;
+  --container-variant-desktop-width: 736px;
   --container-medium-desktop-width: 930px;
   --container-large-desktop-width: 1122px;
   --container-horizontal-spacing-mobile: 3.9rem;
@@ -90,6 +94,7 @@ body {
   min-height: 100vh;
   width: 100%;
   margin: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 @media (--tablet-up) {
@@ -182,7 +187,7 @@ a,
 button {
   color: var(--primary);
   font-family: var(--font-family-sans-serif);
-  font-weight: 800;
+  font-weight: 600;
 }
 
 h1,
@@ -194,8 +199,9 @@ h2 {
 }
 
 h3 {
-  line-height: 1.3;
   font-size: var(--font-size-headline-sub);
+  line-height: 1.3;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -209,7 +215,7 @@ h4 {
 
 b,
 strong {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 p,

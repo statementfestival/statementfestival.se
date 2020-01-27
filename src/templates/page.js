@@ -35,7 +35,14 @@ export const query = graphql`
                   image_grid_title
                 }
                 fields {
-                  image_grid_item
+                  image
+                  imageSharp {
+                    childImageSharp {
+                      fluid(quality: 100, maxWidth: 851) {
+                        ...GatsbyImageSharpFluid_noBase64
+                      }
+                    }
+                  }
                   image_link {
                     ... on PRISMIC__ExternalLink {
                       url

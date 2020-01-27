@@ -11,15 +11,39 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .main {
   margin-top: 2rem;
 }
 
-@media (--tablet-up) {
+@media (--mobile-only) {
   .main {
+    opacity: 0;
+    transform: translateY(1.8rem);
+    animation: is-revealing 190ms cubic-bezier(0, 0, 0.2, 1) 150ms forwards;
+  }
+}
+
+@keyframes is-revealing {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.artist {
+  margin-bottom: 7rem;
+}
+
+@media (--tablet-up) {
+  .regular {
     margin-top: 5.5rem;
+  }
+
+  .artist {
+    margin: 2.7rem 0 13rem;
   }
 }
 
