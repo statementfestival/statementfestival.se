@@ -1,6 +1,6 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
-import Img from 'gatsby-image'
+import Img from '../../../components/image'
 
 import styles from './styles.module.css'
 
@@ -25,10 +25,10 @@ const ImageGrid = ({ slice }) => {
               key={`ImageGrid-${index}`}
             >
               <Img
-                className={styles.image}
                 alt={item.image.alt}
-                backgroundColor="#954587"
-                fluid={item.imageSharp.childImageSharp.fluid}
+                className={styles.image}
+                imageSharp={item.imageSharp}
+                url={item.image.url}
               />
             </a>
           )
