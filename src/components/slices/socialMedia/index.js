@@ -17,7 +17,7 @@ const SocialMedia = ({ slice }) => (
   <div className={styles.container}>
     {slice.fields.map((item, index) => {
       const icon = getIcon(item.icon)
-      if (icon) return null
+      if (!icon) return null
 
       return (
         <a
