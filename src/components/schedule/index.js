@@ -23,6 +23,9 @@ const Schedule = ({ entries = [], venues = [] }) => {
 
   /* Construct a list with all full hours that have entries (i.e. 15:00) */
   const hours = entries.reduce((accumulator, currentValue) => {
+    /* Exit early if no start_time is added */
+    if (!currentValue.start_time) return accumulator
+
     const hour = `${currentValue.start_time.substring(0, 2)}:00`
     if (
       accumulator.indexOf(hour) === -1 &&
@@ -73,7 +76,7 @@ const Schedule = ({ entries = [], venues = [] }) => {
           <div className={styles.entries} key={`schedule-${hour}`}>
             <h3 className={styles.title}>{hour}</h3>
             {currentEntries.map((entry, index) => {
-              if (!checked.includes(entry.venue)) return null
+              if (!checked.includes(entry.venue) || !entry.artist) return null
 
               return (
                 <div

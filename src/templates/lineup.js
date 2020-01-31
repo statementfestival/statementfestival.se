@@ -118,6 +118,8 @@ const LineupPage = ({ data }) => {
   const filteredArtists = doc.node.artists.reduce(
     (accumulator, currentValue) => {
       const { artist } = currentValue
+      if (!artist) return accumulator // Exit early if no artist
+
       if (!selectedIndexArtists) {
         accumulator.push(artist)
       } else {
@@ -150,9 +152,11 @@ const LineupPage = ({ data }) => {
           }}
         />
       ) : null}
-      <PageSection size={'medium'}>
-        <ImageGrid slice={filteredArtists} />
-      </PageSection>
+      {filteredArtists.length ? (
+        <PageSection size={'medium'}>
+          <ImageGrid slice={filteredArtists} />
+        </PageSection>
+      ) : null}
     </Page>
   )
 }
