@@ -20,6 +20,32 @@ export const query = graphql`
             _meta {
               uid
             }
+            schedule_link {
+              ... on PRISMIC_Schedule {
+                body {
+                  ... on PRISMIC_ScheduleBodyCollection {
+                    type
+                    primary {
+                      collection_title
+                    }
+                    fields {
+                      artist {
+                        ... on PRISMIC_Artist {
+                          title
+                          _linkType
+                          _meta {
+                            uid
+                            type
+                          }
+                        }
+                      }
+                      venue
+                      start_time
+                    }
+                  }
+                }
+              }
+            }
             artists {
               artist {
                 _linkType
@@ -54,34 +80,6 @@ export const query = graphql`
           }
         }
       }
-      allSchedules(uid: "program") {
-        edges {
-          node {
-            body {
-              ... on PRISMIC_ScheduleBodyCollection {
-                type
-                primary {
-                  collection_title
-                }
-                fields {
-                  artist {
-                    ... on PRISMIC_Artist {
-                      title
-                      _linkType
-                      _meta {
-                        uid
-                        type
-                      }
-                    }
-                  }
-                  venue
-                  start_time
-                }
-              }
-            }
-          }
-        }
-      }
     }
   }
 `
@@ -91,13 +89,12 @@ const LineupPage = ({ data }) => {
   const doc = data.prismic.allLineups.edges.slice(0, 1).pop()
   if (!doc) return null
 
-  const schedule = data.prismic.allSchedules.edges.slice(0, 1).pop()
-
+  const schedule = doc.node.schedule_link
   let controllerAlternatives
   let selectedIndexArtists
 
   if (schedule) {
-    controllerAlternatives = schedule.node.body.map(alternative => {
+    controllerAlternatives = schedule.body.map(alternative => {
       if (alternative.type === 'collection') {
         return alternative.primary.collection_title
       }
@@ -107,8 +104,9 @@ const LineupPage = ({ data }) => {
     controllerAlternatives.unshift('Alla')
 
     if (selectedIndex > 0) {
-      selectedIndexArtists = schedule.node.body[selectedIndex - 1].fields.map(
+      selectedIndexArtists = schedule.body[selectedIndex - 1].fields.map(
         artists => {
+          if (!artists.artist) return null
           return artists.artist._meta.uid
         }
       )
@@ -118,6 +116,8 @@ const LineupPage = ({ data }) => {
   const filteredArtists = doc.node.artists.reduce(
     (accumulator, currentValue) => {
       const { artist } = currentValue
+      if (!artist) return accumulator // Exit early if no artist
+
       if (!selectedIndexArtists) {
         accumulator.push(artist)
       } else {
@@ -150,9 +150,11 @@ const LineupPage = ({ data }) => {
           }}
         />
       ) : null}
-      <PageSection size={'medium'}>
-        <ImageGrid slice={filteredArtists} />
-      </PageSection>
+      {filteredArtists.length ? (
+        <PageSection size={'medium'}>
+          <ImageGrid slice={filteredArtists} />
+        </PageSection>
+      ) : null}
     </Page>
   )
 }
