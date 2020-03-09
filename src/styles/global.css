@@ -90,7 +90,7 @@
 }
 
 body {
-  background: transparent linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0% no-repeat padding-box;
+  background: #0d2f51 linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0% no-repeat padding-box;
   min-height: 100vh;
   width: 100%;
   margin: 0;
@@ -99,7 +99,7 @@ body {
 
 @media (--tablet-up) {
   body {
-    background: transparent linear-gradient(180deg,
+    background: #0d2f51 linear-gradient(180deg,
         #954587 0vh,
         #393662 100vh,
         #0D2F51 200vh,
