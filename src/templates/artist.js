@@ -64,7 +64,7 @@ export const query = graphql`
           }
         }
       }
-      allLineups(uid: "line-up") {
+      allPages(uid: "biljetter") {
         edges {
           node {
             _meta {
@@ -129,7 +129,7 @@ const ArtistPage = ({ data }) => {
   const uid = doc.node._meta.uid
   const schedule = data.prismic.allSchedules.edges.slice(0, 1).pop()
   let details = schedule ? getArtistByUID(schedule.node.body, uid) : null
-  const lineup = data.prismic.allLineups.edges.slice(0, 1).pop()
+  const tickets = data.prismic.allPages.edges.slice(0, 1).pop()
 
   // Filter out main image since this should visually be placed above page title
   const image = doc.node.body.find(item => item.type === 'image')
@@ -154,8 +154,8 @@ const ArtistPage = ({ data }) => {
         ) : null}
       </PageSection>
       <SliceRenderer slices={filtered} />
-      {lineup ? (
-        <ButtonLookalike title="Alla artister" to={lineup.node._meta} />
+      {tickets ? (
+        <ButtonLookalike title="Köp biljett" to={tickets.node._meta} />
       ) : null}
     </Page>
   )
