@@ -139,7 +139,9 @@ const LineupPage = ({ data }) => {
         image={doc.node.og_image ? doc.node.og_image.url : null}
       />
       <PageSection>
-        <h1>{RichText.asText(doc.node.title)}</h1>
+        <h1 className={!schedule ? 'u-bottomSpacing' : ''}>
+          {RichText.asText(doc.node.title)}
+        </h1>
       </PageSection>
       {schedule ? (
         <SegmentedControl
