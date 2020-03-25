@@ -8,7 +8,7 @@
   bottom: 0;
   width: 100%;
   background-color: var(--secondary-variant);
-  padding: 1.2rem 2rem 1.5rem;
+  padding: 1.2rem 2.5rem 1.5rem;
   z-index: 2;
 }
 
@@ -17,11 +17,27 @@
   text-align: center;
 }
 
-@media (--tablet-up) {
+.link {
+  text-decoration: underline;
+}
 
+.button {
+  background-color: transparent;
+  outline: none;
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+}
+
+@media (--tablet-up) {
   .text {
     margin: 0 auto;
     max-width: var(--container-desktop-width);
+  }
+
+  .button {
+    right: 0.8rem;
+    top: 0.5rem;
   }
 }
 
