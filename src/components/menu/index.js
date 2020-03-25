@@ -4,6 +4,7 @@ import Lottie from 'lottie-web'
 import objstr from 'obj-str'
 
 import { linkResolver } from '../../utils/linkResolver'
+import { isClient } from '../../utils'
 
 import Logo from '../logo'
 import styles from './styles.module.css'
@@ -36,8 +37,14 @@ const Menu = ({ links }) => {
 
     Lottie.goToAndStop(0)
 
-    if (open && !exiting) Lottie.play('burger-to-close')
-    if (open && exiting) Lottie.play('close-to-burger')
+    if (open && !exiting) {
+      if (isClient()) document.body.classList.add('has-overlay')
+      Lottie.play('burger-to-close')
+    }
+    if (open && exiting) {
+      if (isClient()) document.body.classList.remove('has-overlay')
+      Lottie.play('close-to-burger')
+    }
   }, [open, exiting])
 
   useEffect(() => {

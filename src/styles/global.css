@@ -264,3 +264,12 @@ ol {
     margin-bottom: 4.5rem !important;
   }
 }
+
+@media (--tablet-down) {
+  .has-overlay {
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}
