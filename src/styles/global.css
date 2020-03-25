@@ -254,3 +254,13 @@ ol {
   width: 1px !important;
   white-space: nowrap !important;
 }
+
+.u-bottomSpacing {
+  margin-bottom: 2rem !important;
+}
+
+@media (--tablet-up) {
+  .u-bottomSpacing {
+    margin-bottom: 4.5rem !important;
+  }
+}
