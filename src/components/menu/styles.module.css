@@ -7,6 +7,10 @@
   display: none;
 }
 
+.logoContainer {
+  display: none;
+}
+
 .button {
   background-color: var(--secondary-variant);
   border-radius: 4px;
@@ -27,6 +31,16 @@
   .icon {
     height: 3.8rem;
     width: 3.8rem;
+  }
+
+  .logoContainer {
+    display: block;
+  }
+
+  .logo {
+    height: 2.6rem;
+    width: 9.375rem;
+    margin: 2rem auto 0.5rem;
   }
 
   .container:target,
@@ -55,7 +69,7 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    padding: 6rem 1.25rem 1.25rem;
+    padding: 2rem 1.25rem 1.25rem;
   }
 
   .button {

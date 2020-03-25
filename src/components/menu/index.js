@@ -5,6 +5,7 @@ import objstr from 'obj-str'
 
 import { linkResolver } from '../../utils/linkResolver'
 
+import Logo from '../logo'
 import styles from './styles.module.css'
 
 const Menu = ({ links }) => {
@@ -107,6 +108,12 @@ const Menu = ({ links }) => {
         id="navigation"
         onAnimationEnd={onanimationend}
       >
+        <Link className={styles.logoContainer} onClick={toggle} to="/">
+          <div className={styles.logo}>
+            <Logo />
+          </div>
+          <h1 className={'visuallyHidden'}>Start</h1>
+        </Link>
         <div className={styles.content}>
           {links.map((item, index) => {
             if (!item.link || !item.link._meta) {
