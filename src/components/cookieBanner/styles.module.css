@@ -1,0 +1,33 @@
+.container {
+  animation: is-entering 450ms ease-out forwards;
+  animation-delay: 550ms;
+  box-sizing: border-box;
+  opacity: 0.5;
+  transform: translateY(100%);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--secondary-variant);
+  padding: 1.2rem 2rem 1.5rem;
+  z-index: 2;
+}
+
+.text {
+  margin: 0;
+  text-align: center;
+}
+
+@media (--tablet-up) {
+
+  .text {
+    margin: 0 auto;
+    max-width: var(--container-desktop-width);
+  }
+}
+
+@keyframes is-entering {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
