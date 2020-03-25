@@ -1,13 +1,13 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Menu from './index'
-import CookieBanner from './../cookieBanner'
+import Menu from '../menu'
+import CookieBanner from '../cookieBanner'
 
-/* This wrapper is used in gatsby-browser.js in order for menu to not loose
- * it's internal state between pages.
+/* This wrapper is used in gatsby-browser.js in order for menu and coookie
+ * banner to not loose it's internal state between pages.
  */
-const MenuWrapper = ({ children }) => (
+const PageWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -58,8 +58,6 @@ const MenuWrapper = ({ children }) => (
     render={data => {
       const doc = data.prismic.allWebsites.edges.slice(0, 1).pop()
       if (!doc) return null
-
-      console.log(doc.node)
       return (
         <>
           {children}
@@ -77,4 +75,4 @@ const MenuWrapper = ({ children }) => (
   ></StaticQuery>
 )
 
-export default MenuWrapper
+export default PageWrapper
