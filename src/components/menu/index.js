@@ -4,7 +4,9 @@ import Lottie from 'lottie-web'
 import objstr from 'obj-str'
 
 import { linkResolver } from '../../utils/linkResolver'
+import { isClient } from '../../utils'
 
+import Logo from '../logo'
 import styles from './styles.module.css'
 
 const Menu = ({ links }) => {
@@ -35,8 +37,14 @@ const Menu = ({ links }) => {
 
     Lottie.goToAndStop(0)
 
-    if (open && !exiting) Lottie.play('burger-to-close')
-    if (open && exiting) Lottie.play('close-to-burger')
+    if (open && !exiting) {
+      if (isClient()) document.body.classList.add('has-overlay')
+      Lottie.play('burger-to-close')
+    }
+    if (open && exiting) {
+      if (isClient()) document.body.classList.remove('has-overlay')
+      Lottie.play('close-to-burger')
+    }
   }, [open, exiting])
 
   useEffect(() => {
@@ -54,6 +62,8 @@ const Menu = ({ links }) => {
         path: '/close-to-burger.json'
       })
 
+      Lottie.setQuality(1)
+
       /* 1. Not ideal, but anim.goToAndStop(value, isFrame)
        * does not seem to work before animation has been played
        */
@@ -67,6 +77,8 @@ const Menu = ({ links }) => {
         name: 'burger-to-close',
         path: '/burger-to-close.json'
       })
+
+      Lottie.setQuality(1)
     }
   }, [])
 
@@ -103,6 +115,12 @@ const Menu = ({ links }) => {
         id="navigation"
         onAnimationEnd={onanimationend}
       >
+        <Link className={styles.logoContainer} onClick={toggle} to="/">
+          <div className={styles.logo}>
+            <Logo />
+          </div>
+          <h1 className={'visuallyHidden'}>Start</h1>
+        </Link>
         <div className={styles.content}>
           {links.map((item, index) => {
             if (!item.link || !item.link._meta) {
