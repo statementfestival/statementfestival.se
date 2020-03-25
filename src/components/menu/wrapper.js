@@ -49,10 +49,10 @@ const MenuWrapper = ({ children }) => (
       if (!doc) return null
       return (
         <>
-          {children}
           {doc.node.menu_links.length ? (
             <Menu links={doc.node.menu_links} />
           ) : null}
+          {children}
         </>
       )
     }}
