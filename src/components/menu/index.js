@@ -54,6 +54,8 @@ const Menu = ({ links }) => {
         path: '/close-to-burger.json'
       })
 
+      Lottie.setQuality(1)
+
       /* 1. Not ideal, but anim.goToAndStop(value, isFrame)
        * does not seem to work before animation has been played
        */
@@ -67,6 +69,8 @@ const Menu = ({ links }) => {
         name: 'burger-to-close',
         path: '/burger-to-close.json'
       })
+
+      Lottie.setQuality(1)
     }
   }, [])
 
