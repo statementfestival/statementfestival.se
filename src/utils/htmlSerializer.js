@@ -21,7 +21,7 @@ export default function(type, element, content, children, index) {
       )
     } else {
       const target = element.data.target
-        ? { target: element.data.target, rel: 'noopener' }
+        ? { target: element.data.target, rel: 'noreferrer noopener' }
         : {}
       result = (
         <a href={url} {...target} key={index}>
