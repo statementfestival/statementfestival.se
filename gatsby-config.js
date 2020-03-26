@@ -82,6 +82,16 @@ module.exports = {
         extensions: ['css', 'html', 'js', 'svg']
       }
     },
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        facebookPixel: {
+          pixelId: process.env.FACEBOOK_PIXEL_ID,
+          cookieName: 'statement-gdpr-facebook-pixel'
+        },
+        environments: ['production']
+      }
+    }
   ]
 }
