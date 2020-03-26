@@ -1,6 +1,8 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
+import { checkCookie } from '../../utils'
+
 import Menu from '../menu'
 import CookieBanner from '../cookieBanner'
 
@@ -64,11 +66,14 @@ const PageWrapper = ({ children }) => (
           {doc.node.menu_links.length ? (
             <Menu links={doc.node.menu_links} />
           ) : null}
-          <CookieBanner
-            description={doc.node.cookie_description}
-            linkTitle={doc.node.cookie_link_title}
-            link={doc.node.cookie_link}
-          />
+
+          {!checkCookie('statement-gdpr-facebook-pixel', true) ? (
+            <CookieBanner
+              description={doc.node.cookie_description}
+              linkTitle={doc.node.cookie_link_title}
+              link={doc.node.cookie_link}
+            />
+          ) : null}
         </>
       )
     }}

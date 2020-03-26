@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import React from 'react'
+import React, { useState } from 'react'
 
 import { linkResolver } from '../../utils/linkResolver'
 import { isClient } from '../../utils'
@@ -8,22 +8,36 @@ import closeIcon from './../../assets/x.svg'
 import styles from './styles.module.css'
 
 const CookieBanner = ({ description, link, linkTitle }) => {
+  const [display, setDisplay] = useState(true)
+
   const setCookie = () => {
-    /* TODO: Check if cookie is set before injecting tracking script */
-    if (
-      document.cookie
-        .split(';')
-        .some(item => item.includes('acceptedCookies=true'))
-    ) {
-      console.log('The cookie "acceptedCookies" has "true" for value')
+    if (isClient()) {
+      setDisplay(false)
+      window.document.cookie = `statement-gdpr-facebook-pixel=true; max-age=31536000`
+
+      /*
+       * Inject script during this session since gatsby-plugin-gdpr-cookies
+       * is triggered upon onClientEntry.
+       */
+      if (
+        typeof window.fbq === 'function' &&
+        process.env.NODE_ENV === 'production'
+      ) {
+        window.fbq('init', process.env.FACEBOOK_PIXEL_ID)
+        window.fbq('track', 'PageView')
+      }
     }
-    document.cookie = `acceptedCookies=true; max-age=${60 * 60 * 24 * 365}`
   }
+
+  if (!display) {
+    return null
+  }
+
   return (
     <div className={styles.container}>
       <button className={styles.button} onClick={setCookie}>
         <span className="visuallyHidden">Stäng och acceptera</span>
-        <img src={closeIcon} alt="" />
+        <img src={closeIcon} alt="Stängkryss" />
       </button>
       <p className={styles.text}>
         {`${description} `}
