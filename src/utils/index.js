@@ -76,3 +76,20 @@ export const getDateObject = (str = '2025-01-01') => {
 
   return obj
 }
+
+/**
+ * Checks if a cookie is set to a specific value.
+ *
+ * @param {string} name The name of the cookie to check
+ * @param {mixed} value The value to be checked
+ */
+export const checkCookie = (name, value) => {
+  if (!isClient()) return false
+
+  if (
+    document.cookie.split(';').some(item => item.includes(`${name}=${value}`))
+  ) {
+    return true
+  }
+  return false
+}

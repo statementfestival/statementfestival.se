@@ -1,12 +1,15 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Menu from './index'
+import { checkCookie } from '../../utils'
 
-/* This wrapper is used in gatsby-browser.js in order for menu to not loose
- * it's internal state between pages.
+import Menu from '../menu'
+import CookieBanner from '../cookieBanner'
+
+/* This wrapper is used in gatsby-browser.js in order for menu and coookie
+ * banner to not loose it's internal state between pages.
  */
-const MenuWrapper = ({ children }) => (
+const PageWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -14,6 +17,16 @@ const MenuWrapper = ({ children }) => (
           allWebsites {
             edges {
               node {
+                cookie_description
+                cookie_link {
+                  ... on PRISMIC_Page {
+                    _meta {
+                      uid
+                      type
+                    }
+                  }
+                }
+                cookie_link_title
                 menu_links {
                   appearance
                   title
@@ -53,10 +66,18 @@ const MenuWrapper = ({ children }) => (
           {doc.node.menu_links.length ? (
             <Menu links={doc.node.menu_links} />
           ) : null}
+
+          {!checkCookie('statement-gdpr-facebook-pixel', true) ? (
+            <CookieBanner
+              description={doc.node.cookie_description}
+              linkTitle={doc.node.cookie_link_title}
+              link={doc.node.cookie_link}
+            />
+          ) : null}
         </>
       )
     }}
   ></StaticQuery>
 )
 
-export default MenuWrapper
+export default PageWrapper
