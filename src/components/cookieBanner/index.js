@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
+import objstr from 'obj-str'
 
 import { linkResolver } from '../../utils/linkResolver'
 import { isClient } from '../../utils'
@@ -9,11 +10,12 @@ import styles from './styles.module.css'
 
 const CookieBanner = ({ description, link, linkTitle }) => {
   const [display, setDisplay] = useState(true)
+  const [exiting, setIsExiting] = useState(false)
 
   const setCookie = () => {
     if (isClient()) {
-      setDisplay(false)
       window.document.cookie = `statement-gdpr-facebook-pixel=true; max-age=31536000`
+      setIsExiting(true)
 
       /*
        * Inject script during this session since gatsby-plugin-gdpr-cookies
@@ -29,12 +31,24 @@ const CookieBanner = ({ description, link, linkTitle }) => {
     }
   }
 
+  const onanimationend = event => {
+    if (event.animationName.includes('is-exiting')) {
+      setDisplay(false)
+    }
+  }
+
   if (!display) {
     return null
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      className={objstr({
+        [styles.container]: true,
+        [styles.exiting]: exiting
+      })}
+      onAnimationEnd={onanimationend}
+    >
       <button className={styles.button} onClick={setCookie}>
         <span className="visuallyHidden">Stäng och acceptera</span>
         <img src={closeIcon} alt="Stängkryss" />
