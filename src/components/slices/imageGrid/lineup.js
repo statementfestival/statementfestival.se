@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
+import objstr from 'obj-str'
 
 import Img from '../../../components/image'
 
@@ -8,9 +9,14 @@ import { linkResolver } from '../../../utils/linkResolver.js'
 
 import styles from './styles.module.css'
 
-const ImageGridLineup = ({ slice }) => {
+const ImageGridLineup = ({ slice, slim = false }) => {
   return (
-    <div className={styles.imageGrid}>
+    <div
+      className={objstr({
+        [styles.imageGrid]: true,
+        [styles.slim]: slim
+      })}
+    >
       <div className={styles.images}>
         {slice.map((item, index) => {
           const image = item.body.find(content => content.type === 'image')

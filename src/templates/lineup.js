@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 
 import Page from '../components/page'
+import Text from '../components/text'
 import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import ImageGrid from '../components/slices/imageGrid/lineup'
@@ -15,6 +16,7 @@ export const query = graphql`
         edges {
           node {
             title
+            text
             meta_description
             og_image
             _meta {
@@ -89,6 +91,8 @@ const LineupPage = ({ data }) => {
   const doc = data.prismic.allLineups.edges.slice(0, 1).pop()
   if (!doc) return null
 
+  console.log(doc.node)
+
   const schedule = doc.node.schedule_link
   let controllerAlternatives
   let selectedIndexArtists
@@ -154,7 +158,8 @@ const LineupPage = ({ data }) => {
       ) : null}
       {filteredArtists.length ? (
         <PageSection size={'medium'}>
-          <ImageGrid slice={filteredArtists} />
+          <ImageGrid slice={filteredArtists} slim={doc.node.text} />
+          {doc.node.text ? <Text text={doc.node.text} /> : null}
         </PageSection>
       ) : null}
     </Page>
