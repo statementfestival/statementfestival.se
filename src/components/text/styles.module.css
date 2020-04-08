@@ -1,0 +1,9 @@
+.container {
+  margin-bottom: 6rem;
+}
+
+@media (--tablet-up) {
+  .container {
+    margin-bottom: 8rem;
+  }
+}
