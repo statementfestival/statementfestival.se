@@ -23,7 +23,7 @@ const RadioGroup = ({
           ? checked && checked === option.name
           : checked && checked === option.value
         return (
-          <div className={styles.inputContainer} key={`Radio-${index}`}>
+          <div className={styles.inputContainer} key={`radio-${index}`}>
             <input
               className={styles.radio}
               type="radio"
