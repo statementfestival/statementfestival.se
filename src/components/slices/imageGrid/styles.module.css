@@ -30,6 +30,9 @@ h3 {
 }
 
 @media (--tablet-up) {
+  .imageGrid.slim {
+    margin-bottom: 2rem;
+  }
 
   .imageGrid h2,
   .imageGrid h1 {
