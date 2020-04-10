@@ -23,6 +23,11 @@
   width: 2.75rem;
 }
 
+.firstCircle.inverted {
+  right: 5%;
+  left: unset;
+}
+
 .secondCircle,
 .fourthCircle,
 .sixthCircle {
@@ -35,9 +40,19 @@
   top: 0%;
 }
 
+.secondCircle.inverted {
+  right: unset;
+  left: -23%;
+}
+
 .sixthCircle {
   bottom: -20%;
   right: -13.75%;
+}
+
+.sixthCircle.inverted {
+  right: unset;
+  left: -13.75%;
 }
 
 .organicLeft,
@@ -45,18 +60,23 @@
   height: auto;
   position: absolute;
   transform: translateY(var(--transform, 0));
+  z-index: -1;
 }
 
 .organicLeft {
   left: -15%;
   top: 23%;
   width: 130vw;
-  z-index: -1;
+}
+
+.organicLeft.inverted {
+  top: 35%;
 }
 
 .organicRight {
   display: none;
 }
+
 
 @media (--tablet-up) {
 
@@ -86,9 +106,20 @@
     top: -2%;
   }
 
+  .secondCircle.inverted {
+    right: unset;
+    left: -10%;
+  }
+
   .thirdCircle {
     left: 15%;
     top: 42%;
+  }
+
+  .thirdCircle.inverted {
+    left: unset;
+    right: 15%;
+    top: 55%;
   }
 
   .fourthCircle {
@@ -96,14 +127,29 @@
     top: 37%;
   }
 
+  .fourthCircle.inverted {
+    right: unset;
+    left: 11%;
+  }
+
   .fifthCircle {
     bottom: 18%;
     right: 20%;
   }
 
+  .fifthCircle.inverted {
+    right: unset;
+    left: 20%;
+  }
+
   .sixthCircle {
     bottom: -35%;
     left: -15%;
+  }
+
+  .sixthCircle.inverted {
+    left: unset;
+    right: -15%;
   }
 
   .organicLeft,
@@ -117,8 +163,18 @@
     top: 23%;
   }
 
+  .organicLeft.inverted {
+    top: unset;
+    bottom: -60%;
+  }
+
   .organicRight {
     right: 0;
-    bottom: -50%
+    bottom: -50%;
+  }
+
+  .organicRight.inverted {
+    bottom: unset;
+    top: 45%;
   }
 }

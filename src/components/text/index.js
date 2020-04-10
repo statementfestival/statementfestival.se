@@ -15,7 +15,7 @@ const Text = ({ text }) => {
 }
 
 Text.propTypes = {
-  text: PropTypes.object
+  text: PropTypes.array
 }
 
 export default Text
