@@ -10,7 +10,7 @@ import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import Hero from '../components/hero'
 import SliceRenderer from '../components/sliceRenderer'
-import FrontPageParallax from '../components/frontPageParallax'
+import PageParallax from '../components/parallax'
 
 export const query = graphql`
   {
@@ -140,11 +140,10 @@ const IndexPage = ({ data }) => {
     title
   }
 
-
   return (
     <Page>
       <Head title={title} />
-      <FrontPageParallax progress={progress} />
+      <PageParallax progress={progress} />
       <PageSection size="full">
         <Hero {...heroData} />
       </PageSection>

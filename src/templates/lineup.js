@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
+import nanoraf from 'nanoraf'
 
-import Page from '../components/page'
-import Text from '../components/text'
-import PageSection from '../components/pageSection'
+import { getScrollPosition, vh } from '../utils'
+
 import Head from '../components/head'
 import ImageGrid from '../components/slices/imageGrid/lineup'
+import Page from '../components/page'
+import PageParallax from '../components/parallax'
+import PageSection from '../components/pageSection'
 import SegmentedControl from '../components/segmentedControl'
+import Text from '../components/text'
 
 export const query = graphql`
   query LineUpQuery($uid: String) {
@@ -87,11 +91,27 @@ export const query = graphql`
 `
 
 const LineupPage = ({ data }) => {
+  const [progress, setProgress] = useState(0)
   const [selectedIndex, setSelectedIndex] = useState(0)
+
+  useLayoutEffect(() => {
+    /**
+     * Sets progress to a value between 0 and 1 depending on how far user
+     * has scrolled
+     */
+    const handleScroll = nanoraf(() => {
+      const total = window.document.documentElement.scrollHeight
+      const { y } = getScrollPosition({ useWindow: true })
+      const viewportHeight = vh()
+      setProgress(y / (total - viewportHeight))
+    })
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
   const doc = data.prismic.allLineups.edges.slice(0, 1).pop()
   if (!doc) return null
-
-  console.log(doc.node)
 
   const schedule = doc.node.schedule_link
   let controllerAlternatives
@@ -142,6 +162,7 @@ const LineupPage = ({ data }) => {
         description={doc.node.meta_description}
         image={doc.node.og_image ? doc.node.og_image.url : null}
       />
+      <PageParallax progress={progress} inverted />
       <PageSection>
         <h1 className={!schedule ? 'u-bottomSpacing' : ''}>
           {RichText.asText(doc.node.title)}
