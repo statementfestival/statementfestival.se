@@ -42,7 +42,7 @@ const SliceRenderer = ({ slices }) => {
           )
         case 'embedded_media':
           return (
-            <PageSection size="regular-variant" key={index}>
+            <PageSection size={slice.size || 'regular-variant'} key={index}>
               <EmbeddedMedia slice={slice} />
             </PageSection>
           )

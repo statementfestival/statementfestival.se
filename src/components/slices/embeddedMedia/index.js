@@ -1,15 +1,26 @@
 import React from 'react'
+import objstr from 'obj-str'
 
 import styles from './styles.module.css'
 
 const EmbeddedMedia = ({ slice }) => {
   if (!slice.primary) return null
-  // TODO: This is a work in progress, does not yet work properly on mobile
   return (
     <div
-      className={styles.container}
-      dangerouslySetInnerHTML={{ __html: slice.primary.embed_code }}
-    />
+      {...(slice.primary.id && { id: slice.primary.id })}
+      className={objstr({
+        [styles.container]: true,
+        [styles.containerMedium]: slice.size === 'medium'
+      })}
+    >
+      <div
+        className={styles.media}
+        dangerouslySetInnerHTML={{ __html: slice.primary.embed_code }}
+      />
+      {slice.primary.caption ? (
+        <p className={styles.caption}>{slice.primary.caption}</p>
+      ) : null}
+    </div>
   )
 }
 
