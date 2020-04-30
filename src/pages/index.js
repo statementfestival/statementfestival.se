@@ -20,6 +20,14 @@ export const query = graphql`
         edges {
           node {
             body {
+              ... on PRISMIC_HomepageBodyEmbedded_media {
+                type
+                primary {
+                  embed_code
+                  id
+                  caption
+                }
+              }
               ... on PRISMIC_HomepageBodyMerch {
                 type
                 primary {
@@ -140,6 +148,16 @@ const IndexPage = ({ data }) => {
     title
   }
 
+  const slices = doc.node.body.map(slice => {
+    if (slice.type === 'embedded_media') {
+      return {
+        ...slice,
+        size: 'medium'
+      }
+    }
+    return slice
+  })
+
   return (
     <Page>
       <Head title={title} />
@@ -147,7 +165,7 @@ const IndexPage = ({ data }) => {
       <PageSection size="full">
         <Hero {...heroData} />
       </PageSection>
-      <SliceRenderer slices={doc.node.body} />
+      <SliceRenderer slices={slices} />
     </Page>
   )
 }
