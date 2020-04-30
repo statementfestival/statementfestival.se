@@ -7,7 +7,7 @@ const EmbeddedMedia = ({ slice }) => {
   if (!slice.primary) return null
   return (
     <div
-      {...(slice.id && { id: slice.id })}
+      {...(slice.primary.id && { id: slice.primary.id })}
       className={objstr({
         [styles.container]: true,
         [styles.containerMedium]: slice.size === 'medium'
