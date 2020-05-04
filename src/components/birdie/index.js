@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Lottie from 'lottie-web'
+import objstr from 'obj-str'
 
 import { daysUntil, getMidnight } from '../../utils'
 
@@ -12,7 +13,7 @@ import styles from './styles.module.css'
  * TODO: Set a new timeout on tab focus
  */
 const Birdie = ({ description, date }) => {
-  const [days, setDays] = useState(daysUntil(date))
+  const [days, setDays] = useState(date ? daysUntil(date) : null)
   const birdie = useRef()
 
   useEffect(() => {
@@ -36,6 +37,8 @@ const Birdie = ({ description, date }) => {
 
   /* Update counter once per day at midnight */
   useEffect(() => {
+    if (days === null) return
+
     const tomorrow = new Date().getTime() + 1000 * 60 * 60 * 24
     const midnight = getMidnight(new Date(tomorrow))
     const diff = midnight - new Date()
@@ -46,15 +49,20 @@ const Birdie = ({ description, date }) => {
   }, [days, date])
 
   /* Hide counter once countdown is finished */
-  if (days <= 0) return null
+  if (days !== null && days <= 0) return null
 
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
         <svg ref={birdie} className={styles.birdie} />
         <Circle className={styles.circle} fill="#fff800" />
-        <div className={styles.content}>
-          <p className={styles.count}>{days}</p>
+        <div
+          className={objstr({
+            [styles.content]: true,
+            [styles.slimmed]: !days
+          })}
+        >
+          {days ? <p className={styles.count}>{days}</p> : null}
           <p className={styles.description}>{description}</p>
         </div>
       </div>
