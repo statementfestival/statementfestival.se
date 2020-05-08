@@ -33,6 +33,7 @@ export const getScrollPosition = ({ element, useWindow }) => {
  * @param {string} str
  */
 export const getAnchorLink = str => {
+  if (!str) return ''
   const lowercase = str.toLowerCase()
   return lowercase
     .replace(/å/g, 'a')
@@ -70,7 +71,8 @@ export const getMidnight = date => {
  * Takes a string and converts it to a date object
  * @param {string} str
  */
-export const getDateObject = (str = '2025-01-01') => {
+export const getDateObject = str => {
+  if (!str) return null
   const [year, month, day] = str.split('-')
   const obj = new Date(year, parseInt(month, 10) - 1, day)
 

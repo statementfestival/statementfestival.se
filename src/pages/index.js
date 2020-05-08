@@ -137,7 +137,9 @@ const IndexPage = ({ data }) => {
       counter && counter.primary
         ? {
             description: counter.primary.counter_description,
-            date: getDateObject(counter.primary.counter_date) /* 1. */
+            date: counter.primary.counter_date
+              ? getDateObject(counter.primary.counter_date)
+              : null /* 1. */
           }
         : null,
     description: doc.node.description,
