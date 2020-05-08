@@ -33,6 +33,7 @@ export const getScrollPosition = ({ element, useWindow }) => {
  * @param {string} str
  */
 export const getAnchorLink = str => {
+  if (!str) return ''
   const lowercase = str.toLowerCase()
   return lowercase
     .replace(/å/g, 'a')
