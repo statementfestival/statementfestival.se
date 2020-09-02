@@ -5,13 +5,9 @@ import PageWrapper from './src/components/pageWrapper'
  * so that internal state is kept between pages. For more information:
  * https://www.gatsbyjs.org/docs/browser-apis/#wrapPageElement
  */
-export const wrapPageElement = ({ element, props }) => (
-  <PageWrapper {...props}>{element}</PageWrapper>
-)
+// export const wrapPageElement = ({ element, props }) => (
+//   <PageWrapper {...props}>{element}</PageWrapper>
+// )
 
 require('normalize.css')
 require('./src/styles/global.css')
-
-const { registerLinkResolver } = require('gatsby-source-prismic-graphql')
-const { linkResolver } = require('./src/utils/linkResolver')
-registerLinkResolver(linkResolver)

@@ -18,50 +18,74 @@ import styles from './styles.module.css'
  * More information can be found here:
  * [gatsby-source-prismic-graphql](https://www.gatsbyjs.org/packages/gatsby-source-prismic-graphql/#usestaticquery).
  */
+// const Page = ({ children, type = 'regular' }) => {
+//   return (
+//     <StaticQuery
+//       query={graphql`
+//         query {
+//           prismic {
+//             allWebsites {
+//               edges {
+//                 node {
+//                   meta_description
+//                   site_title
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       `}
+//       render={data => {
+//         const doc = data.prismic.allWebsites.edges.slice(0, 1).pop()
+//         if (!doc) return null
+
+//         return (
+//           <div className={styles.page} id="main">
+//             <PageSection size="full">
+//               <Header siteTitle={doc.node.site_title} />
+//             </PageSection>
+//             <main
+//               className={objstr({
+//                 [styles.main]: true,
+//                 [styles.regular]: type === 'regular',
+//                 [styles.artist]: type === 'artist'
+//               })}
+//             >
+//               {children}
+//             </main>
+//             <div className={styles.footer}>
+//               <PageSection>
+//                 <Footer />
+//               </PageSection>
+//             </div>
+//           </div>
+//         )
+//       }}
+//     />
+//   )
+// }
+
 const Page = ({ children, type = 'regular' }) => {
   return (
-    <StaticQuery
-      query={graphql`
-        query {
-          prismic {
-            allWebsites {
-              edges {
-                node {
-                  meta_description
-                  site_title
-                }
-              }
-            }
-          }
-        }
-      `}
-      render={data => {
-        const doc = data.prismic.allWebsites.edges.slice(0, 1).pop()
-        if (!doc) return null
-
-        return (
-          <div className={styles.page} id="main">
-            <PageSection size="full">
-              <Header siteTitle={doc.node.site_title} />
-            </PageSection>
-            <main
-              className={objstr({
-                [styles.main]: true,
-                [styles.regular]: type === 'regular',
-                [styles.artist]: type === 'artist'
-              })}
-            >
-              {children}
-            </main>
-            <div className={styles.footer}>
-              <PageSection>
-                <Footer />
-              </PageSection>
-            </div>
-          </div>
-        )
-      }}
-    />
+    <div className={styles.page} id="main">
+      <PageSection size="full">
+        <Header siteTitle={'SiteTitle'} />
+      </PageSection>
+      <main
+        className={objstr({
+          [styles.main]: true,
+          [styles.regular]: type === 'regular',
+          [styles.artist]: type === 'artist'
+        })}
+      >
+        {children}
+      </main>
+      <div className={styles.footer}>
+        <PageSection>
+          <Footer />
+        </PageSection>
+      </div>
+    </div>
   )
 }
 

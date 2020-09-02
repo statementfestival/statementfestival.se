@@ -42,38 +42,51 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: 'statement',
         accessToken: process.env.PRISMIC_API_KEY,
-        path: '/preview',
-        previews: true,
-        pages: [
-          {
-            type: 'Page',
-            match: '/:uid',
-            path: '/page',
-            component: require.resolve('./src/templates/page.js')
-          },
-          {
-            type: 'Artist',
-            match: '/line-up/:uid',
-            path: '/artist',
-            component: require.resolve('./src/templates/artist.js')
-          },
-          {
-            type: 'Schedule',
-            match: '/:uid',
-            path: '/schedule',
-            component: require.resolve('./src/templates/schedule.js')
-          },
-          {
-            type: 'Lineup',
-            match: '/:uid',
-            path: '/lineup',
-            component: require.resolve('./src/templates/lineup.js')
-          }
-        ]
+        linkResolver: ({ node, key, value }) => doc => {},
+        // See: https://prismic.io/docs/javascript/query-the-api/fetch-linked-document-fields
+        fetchLinks: [
+          // Your list of links
+        ],
+
+        // Set an HTML serializer function used to process formatted content.
+        // Fields with rich text formatting use this function to generate the
+        // correct HTML.
+        // The document node, field key (i.e. API ID), and field value are
+        // provided to the function, as seen below. This allows you to use
+        // different HTML serializer logic for each field if necessary.
+        // See: https://prismic.io/docs/nodejs/beyond-the-api/html-serializer
+        htmlSerializer: ({ node, key, value }) => (
+          type,
+          element,
+          content,
+          children
+        ) => {},
+        schemas: {
+          artist: require('./src/schemas/artist.json'),
+          homepage: require('./src/schemas/homepage.json'),
+          lineup: require('./src/schemas/lineup.json'),
+          page: require('./src/schemas/page.json'),
+          schedule: require('./src/schemas/schedule.json'),
+          website: require('./src/schemas/website.json')
+        },
+        // Add the Prismic Toolbar script to the site. Defaults to false.
+        // Set to "legacy" if your repository requires the older toolbar script.
+        // See: https://prismic.io/docs/rest-api/beyond-the-api/the-preview-feature
+        prismicToolbar: true,
+
+        // Set a function to determine if images are downloaded locally and made
+        // available for gatsby-transformer-sharp for use with gatsby-image.
+        // The document node, field key (i.e. API ID), and field value are
+        // provided to the function, as seen below. This allows you to use
+        // different logic for each field if necessary.
+        // This defaults to always return false.
+        shouldDownloadImage: ({ node, key, value }) => {
+          // Return true to download the image or false to skip.
+        }
       }
     },
     {
