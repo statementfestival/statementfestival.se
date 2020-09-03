@@ -1,14 +1,14 @@
-// import React from 'react'
-// import { graphql } from 'gatsby'
-// import { RichText } from 'prismic-reactjs'
+import React from 'react'
+import { graphql } from 'gatsby'
 
-// import Page from '../components/page'
-// import PageSection from '../components/pageSection'
-// import Head from '../components/head'
-// import SliceRenderer from '../components/sliceRenderer'
-// import Image from '../components/slices/image'
-// import ButtonLookalike from '../components/links/buttonLookalike'
+import Page from '../components/page'
+import PageSection from '../components/pageSection'
+import Head from '../components/head'
+import SliceRenderer from '../components/sliceRenderer'
+import Image from '../components/slices/image'
+import ButtonLookalike from '../components/links/buttonLookalike'
 
+// TODO: Remove old query once new one is fully implemented
 // export const query = graphql`
 //   query ArtistQuery($uid: String) {
 //     prismic {
@@ -103,78 +103,154 @@
 //   }
 // `
 
-// const getArtistByUID = (list, uid) => {
-//   for (let i = 0, len = list.length; i < len; i++) {
-//     let item = list[i]
-//     if (item.fields && item.fields.length) {
-//       for (let i = 0, len = item.fields.length; i < len; i++) {
-//         if (item.fields[i].artist) {
-//           if (item.fields[i].artist._meta.uid === uid) {
-//             return {
-//               collectionTitle: item.primary.collection_title,
-//               start: item.fields[i].start_time,
-//               venue: item.fields[i].venue
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+const getArtistByUID = (list, uid) => {
+  for (let i = 0, len = list.length; i < len; i++) {
+    let item = list[i]
+    if (item.fields && item.fields.length) {
+      for (let i = 0, len = item.fields.length; i < len; i++) {
+        if (item.fields[i].artist) {
+          if (item.fields[i].artist._meta.uid === uid) {
+            return {
+              collectionTitle: item.primary.collection_title,
+              start: item.fields[i].start_time,
+              venue: item.fields[i].venue
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
-// const ArtistPage = ({ data }) => {
-//   const doc = data.prismic.allArtists.edges.slice(0, 1).pop()
-//   if (!doc) return null
+const ArtistPage = ({ data }) => {
+  const doc = data.allPrismicArtist.edges.slice(0, 1).pop()
+  if (!doc) return null
 
-//   const uid = doc.node._meta.uid
-//   const schedule = data.prismic.allSchedules.edges.slice(0, 1).pop()
-//   let details = schedule ? getArtistByUID(schedule.node.body, uid) : null
-//   const tickets = data.prismic.allPages.edges.slice(0, 1).pop()
+  const { uid } = doc.node
+  const schedule = data.allPrismicSchedule.edges.slice(0, 1).pop()
+  let details = schedule ? getArtistByUID(schedule.node.body, uid) : null
+  const tickets = data.allPrismicPage.edges.slice(0, 1).pop()
 
-//   // Filter out main image since this should visually be placed above page title
-//   const image = doc.node.body.find(item => item.type === 'image')
-//   const filtered = doc.node.body.filter(item => item.type !== 'image')
+  // Filter out main image since this should visually be placed above page title
+  const image = doc.node.data.body.find(item => item.slice_type === 'image')
+  const filtered = doc.node.data.body.filter(
+    item => item.slice_type !== 'image'
+  )
 
-//   return (
-//     <Page type="artist">
-//       <Head
-//         title={RichText.asText(doc.node.title)}
-//         description={doc.node.meta_description}
-//         image={image ? image.primary.main_image.url : null}
-//       />
-//       {image ? (
-//         <PageSection size="regular-variant">
-//           <Image slice={image} />
-//         </PageSection>
-//       ) : null}
-//       <PageSection>
-//         <h1>{RichText.asText(doc.node.title)}</h1>
-//         {details ? (
-//           <h3>{`${details.collectionTitle} ${details.start} | ${details.venue}`}</h3>
-//         ) : null}
-//       </PageSection>
-//       <SliceRenderer slices={filtered} />
-//       {tickets ? (
-//         <ButtonLookalike title="Köp biljett" to={tickets.node._meta} />
-//       ) : null}
-//     </Page>
-//   )
-// }
+  console.log(filtered)
 
-// export default ArtistPage
-import React from 'react'
-import { graphql } from 'gatsby'
-
-const ComponentName = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
+  return (
+    <Page type="artist">
+      <Head
+        title={doc.node.data.title.text}
+        description={doc.node.data.meta_description}
+        image={image ? image.primary.main_image.url : null}
+      />
+      {image ? (
+        <PageSection size="regular-variant">
+          <Image slice={image} />
+        </PageSection>
+      ) : null}
+      <PageSection>
+        <h1>{doc.node.data.title.text}</h1>
+        {details ? (
+          <h3>{`${details.collectionTitle} ${details.start} | ${details.venue}`}</h3>
+        ) : null}
+      </PageSection>
+      <SliceRenderer slices={filtered} />
+      {tickets ? (
+        <ButtonLookalike
+          title="Köp biljett"
+          to={{ uid: tickets.node.uid, type: tickets.node.type }}
+        />
+      ) : null}
+    </Page>
+  )
+}
 
 export const query = graphql`
-  {
-    allPrismicLineup {
+  query($uid: String) {
+    allPrismicArtist(filter: { uid: { eq: $uid } }) {
       edges {
         node {
           data {
             title {
-              html
+              raw
+              text
+            }
+            meta_description
+            body {
+              ... on PrismicArtistBodyText {
+                primary {
+                  text_content {
+                    raw
+                  }
+                }
+                slice_type
+              }
+              ... on PrismicArtistBodyImage {
+                primary {
+                  main_image {
+                    alt
+                    fluid(maxWidth: 899) {
+                      src
+                    }
+                    url
+                  }
+                  main_image_color
+                }
+                slice_type
+              }
+              ... on PrismicArtistBodySocialMedia {
+                id
+                slice_type
+                items {
+                  external_link_title
+                  icon
+                  external_link {
+                    url
+                  }
+                }
+              }
+              ... on PrismicArtistBodyEmbeddedMedia {
+                slice_type
+                primary {
+                  embed_code
+                }
+              }
+            }
+          }
+          uid
+          type
+        }
+      }
+    }
+    allPrismicPage {
+      edges {
+        node {
+          uid
+          type
+        }
+      }
+    }
+    allPrismicSchedule {
+      edges {
+        node {
+          data {
+            body {
+              ... on PrismicScheduleBodyCollection {
+                slice_type
+                primary {
+                  collection_title
+                }
+                items {
+                  artist {
+                    uid
+                  }
+                  venue
+                  start_time
+                }
+              }
             }
           }
         }
@@ -183,4 +259,4 @@ export const query = graphql`
   }
 `
 
-export default ComponentName
+export default ArtistPage
