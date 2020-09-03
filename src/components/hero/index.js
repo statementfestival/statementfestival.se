@@ -17,7 +17,7 @@ const Hero = ({
   counter
 }) => {
   /* Render different links depending on if it's an external or internal one */
-  const linkType = link ? link._linkType : ''
+  const linkType = link ? link.link_type : ''
 
   return (
     <ImageFountain assets={images}>
@@ -26,15 +26,18 @@ const Hero = ({
         <h2 className={styles.subTitle}>{subtitle}</h2>
         <p className={styles.description}>{description}</p>
 
-        {linkType === 'Link.web' ? (
+        {linkType === 'Web' ? (
           <div className={styles.link}>
             <ExternalLink title={link_title} href={link.url || ''} />
           </div>
         ) : null}
 
-        {linkType === 'Link.document' ? (
+        {linkType === 'Document' ? (
           <div className={styles.link}>
-            <ButtonLookalike title={link_title} to={link._meta} />
+            <ButtonLookalike
+              title={link_title}
+              to={{ uid: link.uid, type: link.type }}
+            />
           </div>
         ) : null}
 
