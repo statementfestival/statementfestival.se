@@ -38,7 +38,6 @@ const PageWrapper = ({ children }) => {
   `)
   const doc = data.allPrismicWebsite.edges.slice(0, 1).pop()
   if (!doc) return null
-  console.log(doc.node.data)
   return (
     <>
       {children}
