@@ -70,7 +70,7 @@ const Footer = () => {
             <Link
               className={styles.link}
               key={`siteLink-${index}`}
-              to={linkResolver(type, uid)}
+              to={linkResolver({ type, uid })}
             >
               {text}
             </Link>
