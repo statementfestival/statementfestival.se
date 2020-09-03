@@ -13,23 +13,23 @@ const Text = ({ slice }) => {
 
   /* Render different links depending on if it's an external or internal one */
   const linkType = slice.primary.text_link_address
-    ? slice.primary.text_link_address._linkType
+    ? slice.primary.text_link_address.link_type
     : ''
 
   return (
     <div className={styles.textBlock}>
       {slice.primary.text_title ? (
-        <RichText render={slice.primary.text_title} />
+        <RichText render={slice.primary.text_title.raw} />
       ) : null}
       {slice.primary.text_content ? (
         <div className={styles.content}>
           <RichText
-            render={slice.primary.text_content}
+            render={slice.primary.text_content.raw}
             htmlSerializer={htmlSerializer}
           />
         </div>
       ) : null}
-      {hasLink && linkType === 'Link.web' ? (
+      {hasLink && linkType === 'Web' ? (
         <div className={styles.link}>
           <ExternalLink
             href={slice.primary.text_link_address.url}
@@ -38,7 +38,7 @@ const Text = ({ slice }) => {
         </div>
       ) : null}
 
-      {linkType === 'Link.document' ? (
+      {linkType === 'Document' ? (
         <div className={styles.link}>
           <ButtonLookalike
             title={slice.primary.text_link_title}
