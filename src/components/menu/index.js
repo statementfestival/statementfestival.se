@@ -123,13 +123,13 @@ const Menu = ({ links }) => {
         </Link>
         <div className={styles.content}>
           {links.map((item, index) => {
-            if (!item.link || !item.link._meta) {
+            if (!item.link) {
               return null
             }
 
             /* Currently, only these page types are supported in menu */
             const supported = ['page', 'lineup', 'schedule']
-            if (!supported.some(p => p === item.link._meta.type)) {
+            if (!supported.some(p => p === item.link.type)) {
               return null
             }
 
@@ -147,7 +147,7 @@ const Menu = ({ links }) => {
                     links[index + 1] && links[index + 1].appearance === 'button'
                 })}
                 key={`link-${index}`}
-                to={linkResolver(item.link._meta)}
+                to={linkResolver({ type: item.link.type, uid: item.link.uid })}
               >
                 {item.title}
               </Link>

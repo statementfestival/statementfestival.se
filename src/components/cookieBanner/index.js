@@ -55,7 +55,10 @@ const CookieBanner = ({ description, link, linkTitle }) => {
       </button>
       <p className={styles.text}>
         {`${description} `}
-        <Link className={styles.link} to={linkResolver(link._meta)}>
+        <Link
+          className={styles.link}
+          to={linkResolver({ type: link.type, uid: link.uid })}
+        >
           {linkTitle}
         </Link>
       </p>
