@@ -29,7 +29,7 @@ const Text = ({ slice }) => {
           />
         </div>
       ) : null}
-      {hasLink && linkType === 'Web' ? (
+      {hasLink && linkType === 'Any' ? (
         <div className={styles.link}>
           <ExternalLink
             href={slice.primary.text_link_address.url}
@@ -42,7 +42,10 @@ const Text = ({ slice }) => {
         <div className={styles.link}>
           <ButtonLookalike
             title={slice.primary.text_link_title}
-            to={slice.primary.text_link_address._meta}
+            to={{
+              type: slice.primary.text_link_address.type,
+              uid: slice.primary.text_link_address.uid
+            }}
           />
         </div>
       ) : null}

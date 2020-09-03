@@ -109,8 +109,10 @@ export const query = graphql`
                   }
                   text_link_title
                   text_link_address {
+                    link_type
                     type
                     url
+                    uid
                   }
                 }
               }
