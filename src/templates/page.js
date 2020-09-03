@@ -90,7 +90,9 @@ export const query = graphql`
                 }
               }
               ... on PrismicPageBodyFaq {
-                id
+                primary {
+                  faq_title
+                }
                 items {
                   faq_answer {
                     raw
