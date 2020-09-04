@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import objstr from 'obj-str'
 import { Link } from 'gatsby'
-import { RichText } from 'prismic-reactjs'
 
 import { linkResolver } from '../../utils/linkResolver.js'
 
@@ -94,8 +93,13 @@ const Schedule = ({ entries = [], venues = [] }) => {
                       [styles.text]: true,
                       [styles.link]: true
                     })}
-                    to={linkResolver(entry.artist._meta)}
-                  >{`${RichText.asText(entry.artist.title)}`}</Link>
+                    to={linkResolver({
+                      type: entry.artist.document.type,
+                      uid: entry.artist.document.uid
+                    })}
+                  >
+                    {entry.artist.document.data.title.text}
+                  </Link>
                   <p className={styles.text}>{entry.venue}</p>
                 </div>
               )
