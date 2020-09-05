@@ -101,7 +101,7 @@ const LineupPage = ({ data }) => {
       {filteredArtists.length ? (
         <PageSection size={'medium'}>
           <ImageGrid slice={filteredArtists} slim={doc.node.data.text} />
-          {doc.node.data.text ? <Text text={doc.node.data.text} /> : null}
+          {doc.node.data.text ? <Text text={doc.node.data.text.raw} /> : null}
         </PageSection>
       ) : null}
     </Page>
