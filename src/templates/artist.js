@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { withPreview } from 'gatsby-source-prismic'
 
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
@@ -9,26 +10,25 @@ import Image from '../components/slices/image'
 import ButtonLookalike from '../components/links/buttonLookalike'
 
 const ArtistPage = ({ data }) => {
-  const doc = data.allPrismicArtist.edges.slice(0, 1).pop()
+  const doc = data.prismicArtist
   if (!doc) return null
 
-  const { uid } = doc.node
   const schedule = data.allPrismicSchedule.edges.slice(0, 1).pop()
-  let details = schedule ? getArtistByUID(schedule.node.data.body, uid) : null
+  let details = schedule
+    ? getArtistByUID(schedule.node.data.body, doc.uid)
+    : null
 
   const tickets = data.allPrismicPage.edges.slice(0, 1).pop()
 
   // Filter out main image since this should visually be placed above page title
-  const image = doc.node.data.body.find(item => item.slice_type === 'image')
-  const filtered = doc.node.data.body.filter(
-    item => item.slice_type !== 'image'
-  )
+  const image = doc.data.body.find((item) => item.slice_type === 'image')
+  const filtered = doc.data.body.filter((item) => item.slice_type !== 'image')
 
   return (
     <Page type="artist">
       <Head
-        title={doc.node.data.title.text}
-        description={doc.node.data.meta_description}
+        title={doc.data.title.text}
+        description={doc.data.meta_description}
         image={image ? image.primary.main_image.url : null}
       />
       {image ? (
@@ -37,7 +37,7 @@ const ArtistPage = ({ data }) => {
         </PageSection>
       ) : null}
       <PageSection>
-        <h1>{doc.node.data.title.text}</h1>
+        <h1>{doc.data.title.text}</h1>
         {details ? (
           <h3>{`${details.collectionTitle} ${details.start} | ${details.venue}`}</h3>
         ) : null}
@@ -74,60 +74,57 @@ const getArtistByUID = (list, uid) => {
 
 export const query = graphql`
   query($uid: String) {
-    allPrismicArtist(filter: { uid: { eq: $uid } }) {
-      edges {
-        node {
-          data {
-            title {
-              raw
-              text
+    prismicArtist(uid: { eq: $uid }) {
+      prismicId
+      data {
+        title {
+          raw
+          text
+        }
+        meta_description
+        body {
+          ... on PrismicArtistBodyText {
+            primary {
+              text_content {
+                raw
+              }
             }
-            meta_description
-            body {
-              ... on PrismicArtistBodyText {
-                primary {
-                  text_content {
-                    raw
-                  }
-                }
-                slice_type
-              }
-              ... on PrismicArtistBodyImage {
-                primary {
-                  main_image_color
-                  main_image {
-                    alt
-                    url
-                    fluid(maxWidth: 899) {
-                      ...GatsbyPrismicImageFluid_noBase64
-                    }
-                  }
-                }
-                slice_type
-              }
-              ... on PrismicArtistBodySocialMedia {
-                id
-                slice_type
-                items {
-                  external_link_title
-                  icon
-                  external_link {
-                    url
-                  }
+            slice_type
+          }
+          ... on PrismicArtistBodyImage {
+            primary {
+              main_image_color
+              main_image {
+                alt
+                url
+                fluid(maxWidth: 899) {
+                  ...GatsbyPrismicImageFluid_noBase64
                 }
               }
-              ... on PrismicArtistBodyEmbeddedMedia {
-                slice_type
-                primary {
-                  embed_code
-                }
+            }
+            slice_type
+          }
+          ... on PrismicArtistBodySocialMedia {
+            id
+            slice_type
+            items {
+              external_link_title
+              icon
+              external_link {
+                url
               }
             }
           }
-          uid
-          type
+          ... on PrismicArtistBodyEmbeddedMedia {
+            slice_type
+            primary {
+              embed_code
+            }
+          }
         }
       }
+      uid
+      type
     }
     allPrismicPage {
       edges {
@@ -163,4 +160,4 @@ export const query = graphql`
   }
 `
 
-export default ArtistPage
+export default withPreview(ArtistPage)

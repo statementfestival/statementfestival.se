@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react'
 import { graphql } from 'gatsby'
 import nanoraf from 'nanoraf'
+import { withPreview } from 'gatsby-source-prismic'
 
 import { getScrollPosition, vh, getDateObject } from '../utils'
 
@@ -30,16 +31,16 @@ const IndexPage = ({ data }) => {
     return () => window.removeEventListener('scroll', handleScroll)
   })
 
-  const doc = data.allPrismicHomepage.edges.slice(0, 1).pop()
+  const doc = data.prismicHomepage
   if (!doc) return null
 
-  const { title, subtitle } = doc.node.data
-  const images = doc.node.data.body_details.find(
-    item => item.slice_type === 'images'
+  const { title, subtitle } = doc.data
+  const images = doc.data.body_details.find(
+    (item) => item.slice_type === 'images'
   )
 
-  const counter = doc.node.data.body_details.find(
-    item => item.slice_type === 'counter'
+  const counter = doc.data.body_details.find(
+    (item) => item.slice_type === 'counter'
   )
 
   /* 1. Since Prismic formats date as string i.e. '2025-01-01' */
@@ -53,15 +54,15 @@ const IndexPage = ({ data }) => {
               : null /* 1. */
           }
         : null,
-    description: doc.node.data.description,
+    description: doc.data.description,
     images: images && images.items ? images.items : [],
-    link_title: doc.node.data.link_title,
-    link: doc.node.data.link_address,
+    link_title: doc.data.link_title,
+    link: doc.data.link_address,
     subtitle: subtitle.text,
     title: title.text
   }
 
-  const slices = doc.node.data.body.map(slice => {
+  const slices = doc.data.body.map((slice) => {
     if (slice.slice_type === 'embedded_media') {
       return {
         ...slice,
@@ -85,81 +86,78 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allPrismicHomepage {
-      edges {
-        node {
-          data {
-            body {
-              ... on PrismicHomepageBodyEmbeddedMedia {
-                slice_type
-                primary {
-                  caption
-                  embed_code
-                  id
-                }
+    prismicHomepage {
+      prismicId
+      data {
+        body {
+          ... on PrismicHomepageBodyEmbeddedMedia {
+            slice_type
+            primary {
+              caption
+              embed_code
+              id
+            }
+          }
+          ... on PrismicHomepageBodyText {
+            slice_type
+            primary {
+              text_content {
+                raw
               }
-              ... on PrismicHomepageBodyText {
-                slice_type
-                primary {
-                  text_content {
-                    raw
-                  }
-                  text_title {
-                    raw
-                  }
-                  text_link_title
-                  text_link_address {
-                    link_type
-                    type
-                    url
-                    uid
-                  }
-                }
+              text_title {
+                raw
               }
-              ... on PrismicHomepageBodyMerch {
-                id
-                slice_type
-                primary {
-                  merch_link_address {
-                    uid
-                    type
-                  }
-                  merch_link_title
-                  merch_link_title_hover
-                  merch_title
-                }
+              text_link_title
+              text_link_address {
+                link_type
+                type
+                url
+                uid
               }
             }
-            title {
-              text
-            }
-            subtitle {
-              text
-            }
-            link_title
-            link_address {
-              link_type
-              url
-              uid
-              type
-            }
-            description
-            body_details {
-              ... on PrismicHomepageBodyDetailsCounter {
-                slice_type
-                primary {
-                  counter_date
-                  counter_description
-                }
+          }
+          ... on PrismicHomepageBodyMerch {
+            id
+            slice_type
+            primary {
+              merch_link_address {
+                uid
+                type
               }
-              ... on PrismicHomepageBodyDetailsImages {
-                slice_type
-                items {
-                  fountain_image {
-                    alt
-                    url
-                  }
-                }
+              merch_link_title
+              merch_link_title_hover
+              merch_title
+            }
+          }
+        }
+        title {
+          text
+        }
+        subtitle {
+          text
+        }
+        link_title
+        link_address {
+          link_type
+          url
+          uid
+          type
+        }
+        description
+        body_details {
+          ... on PrismicHomepageBodyDetailsCounter {
+            slice_type
+            primary {
+              counter_date
+              counter_description
+            }
+          }
+          ... on PrismicHomepageBodyDetailsImages {
+            slice_type
+            items {
+              fountain_image {
+                alt
+                url
               }
             }
           }
@@ -169,4 +167,4 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default withPreview(IndexPage)

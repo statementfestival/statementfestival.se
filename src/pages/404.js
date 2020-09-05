@@ -1,24 +1,30 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { withUnpublishedPreview } from 'gatsby-source-prismic'
+
+import ArtistPage from '../templates/artist'
+import LineupPage from '../templates/lineup'
+import SinglePage from '../templates/page'
+import SchedulePage from '../templates/schedule'
 
 import Page from '../components/page'
 import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
 
 const NotFoundPage = ({ data }) => {
-  const doc = data.allPrismicWebsite.edges.slice(0, 1).pop()
+  const doc = data.prismicWebsite
   if (!doc) return null
 
   return (
     <Page>
-      <Head title={doc.node.data.not_found_title.text} />
+      <Head title={doc.data.not_found_title.text} />
       <SliceRenderer
         slices={[
           {
-            type: 'text',
+            slice_type: 'text',
             primary: {
-              text_title: doc.node.data.not_found_title.raw,
-              text_content: doc.node.data.not_found_description.raw
+              text_title: doc.data.not_found_title,
+              text_content: doc.data.not_found_description
             }
           }
         ]}
@@ -29,22 +35,26 @@ const NotFoundPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allPrismicWebsite {
-      edges {
-        node {
-          id
-          data {
-            not_found_description {
-              raw
-            }
-            not_found_title {
-              raw
-            }
-          }
+    prismicWebsite {
+      prismicId
+      data {
+        not_found_description {
+          raw
+        }
+        not_found_title {
+          raw
+          text
         }
       }
     }
   }
 `
 
-export default NotFoundPage
+export default withUnpublishedPreview(NotFoundPage, {
+  templateMap: {
+    artist: ArtistPage,
+    lineup: LineupPage,
+    page: SinglePage,
+    schedule: SchedulePage
+  }
+})

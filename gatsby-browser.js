@@ -1,4 +1,5 @@
 import React from 'react'
+import { PreviewStoreProvider } from 'gatsby-source-prismic'
 import PageWrapper from './src/components/pageWrapper'
 
 /* All pages need to be wrapped by a fragment containing the menu component
@@ -7,6 +8,10 @@ import PageWrapper from './src/components/pageWrapper'
  */
 export const wrapPageElement = ({ element, props }) => (
   <PageWrapper {...props}>{element}</PageWrapper>
+)
+
+export const wrapRootElement = ({ element }) => (
+  <PreviewStoreProvider>{element}</PreviewStoreProvider>
 )
 
 require('normalize.css')
