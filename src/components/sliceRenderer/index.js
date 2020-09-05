@@ -15,7 +15,7 @@ import Text from '../slices/text'
 const SliceRenderer = ({ slices }) => {
   return slices.map((slice, index) => {
     const res = (() => {
-      switch (slice.type) {
+      switch (slice.slice_type) {
         case 'text':
           return (
             <PageSection key={index}>

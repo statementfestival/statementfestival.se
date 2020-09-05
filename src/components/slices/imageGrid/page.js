@@ -9,10 +9,10 @@ const ImageGrid = ({ slice }) => {
   return (
     <div className={styles.imageGrid}>
       {hasHeadline ? (
-        <RichText render={slice.primary.image_grid_title} />
+        <RichText render={slice.primary.image_grid_title.raw} />
       ) : null}
       <div className={styles.images}>
-        {slice.fields.map((item, index) => {
+        {slice.items.map((item, index) => {
           if (!item.image) return null
           const external = item.image_link ? item.image_link.url : ''
 
@@ -27,7 +27,7 @@ const ImageGrid = ({ slice }) => {
               <Img
                 alt={item.image.alt}
                 className={styles.image}
-                imageSharp={item.imageSharp}
+                fluid={item.image.fluid}
                 url={item.image.url}
               />
             </a>

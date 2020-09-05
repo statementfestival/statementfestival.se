@@ -1,0 +1,240 @@
+{
+  "Introduction": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Page Title"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "text": [],
+          "contact_group": [],
+          "faq": [],
+          "image_grid": [],
+          "ticket_form": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Use when you want to display a text block",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "text_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2, heading3",
+                  "label": "Title",
+                  "placeholder": "Title of the text block"
+                }
+              },
+              "text_content": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading3, heading4, strong, hyperlink, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Content",
+                  "placeholder": "Content body of the text block"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "contact_group": {
+            "type": "Slice",
+            "fieldset": "Contact Group",
+            "description": "Display an email address and description",
+            "icon": "email",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "email_address": {
+                "type": "Text",
+                "config": {
+                  "label": "Email address",
+                  "placeholder": "info@statementfestival.se"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Short description explaining when to email this address"
+                }
+              }
+            }
+          },
+          "faq": {
+            "type": "Slice",
+            "fieldset": "FAQ",
+            "description": "Group of questions",
+            "icon": "live_help",
+            "display": "list",
+            "non-repeat": {
+              "faq_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Title explaining what type of questions this section covers"
+                }
+              }
+            },
+            "repeat": {
+              "faq_question": {
+                "type": "Text",
+                "config": {
+                  "label": "Question",
+                  "placeholder": "What is Statement?"
+                }
+              },
+              "faq_answer": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Answer",
+                  "placeholder": "Statement is..."
+                }
+              }
+            }
+          },
+          "image_grid": {
+            "type": "Slice",
+            "fieldset": "Image Grid",
+            "description": "Linked images with optional headline",
+            "icon": "add_a_photo",
+            "display": "grid",
+            "non-repeat": {
+              "image_grid_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Title",
+                  "placeholder": "Title of image grid"
+                }
+              }
+            },
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              },
+              "image_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Image link",
+                  "placeholder": "Link to external website or internal content"
+                }
+              }
+            }
+          },
+          "form": {
+            "type": "Slice",
+            "fieldset": "Form",
+            "description": "Form handled by Mailchimp",
+            "icon": "content_paste",
+            "display": "list",
+            "non-repeat": {
+              "form_type": {
+                "type": "Select",
+                "config": {
+                  "options": ["Ticket", "Recruitment"],
+                  "default_value": "Ticket",
+                  "label": "Form type",
+                  "placeholder": "Select which form to use"
+                }
+              },
+              "form_address": {
+                "type": "Link",
+                "config": {
+                  "label": "Form address",
+                  "placeholder": "URL to post form to"
+                }
+              },
+              "form_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Title",
+                  "placeholder": "Optional title"
+                }
+              },
+              "form_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading3, strong, hyperlink, list-item, o-list-item, o-list-item",
+                  "label": "Description",
+                  "placeholder": "Optional description"
+                }
+              },
+              "form_disclaimer": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, hyperlink",
+                  "label": "Disclaimer",
+                  "placeholder": "Optional disclaimer, placed before submit button"
+                }
+              },
+              "form_success_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2, heading3",
+                  "label": "Success Title",
+                  "placeholder": "Thank you for subscribing!"
+                }
+              },
+              "form_success_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, hyperlink",
+                  "label": "Success Message",
+                  "placeholder": "Description of what happens next"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Unique ID",
+        "placeholder": "SEO-friendly website URL, like \"kontakt\""
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta description",
+        "placeholder": "Short and unique description used when page is shared on i.e. social media"
+      }
+    },
+    "og_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200,
+          "height": 630
+        },
+        "thumbnails": [],
+        "label": "Image visible when shared on social media"
+      }
+    }
+  }
+}

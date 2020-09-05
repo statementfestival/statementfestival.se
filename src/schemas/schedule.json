@@ -1,0 +1,104 @@
+{
+  "Introduction": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Page Title"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "collection": []
+        },
+        "choices": {
+          "collection": {
+            "type": "Slice",
+            "fieldset": "Collection",
+            "description": "The schedule for one day, or one city",
+            "icon": "date_range",
+            "display": "list",
+            "non-repeat": {
+              "collection_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Could be a day (like Friday) or place (like Abisko)"
+                }
+              }
+            },
+            "repeat": {
+              "artist": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": ["artist"],
+                  "label": "Artist",
+                  "placeholder": "Link to artist page"
+                }
+              },
+              "venue": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Whitney",
+                    "Lill-Babs",
+                    "Festivalområdet",
+                    "Faktums Poddbur"
+                  ],
+                  "label": "Venue",
+                  "placeholder": "Venue (optional)"
+                }
+              },
+              "start_time": {
+                "type": "Text",
+                "config": {
+                  "label": "Start Time",
+                  "placeholder": "17:00"
+                }
+              },
+              "end_time": {
+                "type": "Text",
+                "config": {
+                  "label": "End Time",
+                  "placeholder": "18:00"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Unique ID",
+        "placeholder": "SEO-friendly website URL, like \"program\""
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta description",
+        "placeholder": "Short and unique description used when page is shared on i.e. social media"
+      }
+    },
+    "og_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200,
+          "height": 630
+        },
+        "thumbnails": [],
+        "label": "Image visible when shared on social media"
+      }
+    }
+  }
+}

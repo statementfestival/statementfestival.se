@@ -13,14 +13,17 @@ const FAQ = ({ slice }) => {
       id={getAnchorLink(slice.primary.faq_title)}
     >
       <h2 className={styles.title}> {slice.primary.faq_title}</h2>
-      {slice.fields.map((item, itemIndex) => (
+      {slice.items.map((item, itemIndex) => (
         <div
           className={styles.faq}
           key={`question-${itemIndex}`}
           id={getAnchorLink(item.faq_question)}
         >
           <h3 className={styles.question}>{item.faq_question}</h3>
-          <RichText render={item.faq_answer} htmlSerializer={htmlSerializer} />
+          <RichText
+            render={item.faq_answer.raw}
+            htmlSerializer={htmlSerializer}
+          />
         </div>
       ))}
     </div>

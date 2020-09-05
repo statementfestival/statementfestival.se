@@ -1,0 +1,172 @@
+{
+  "Menu": {
+    "menu_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "link": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["page", "lineup", "schedule"],
+              "label": "Link",
+              "placeholder": "Link to internal content"
+            }
+          },
+          "title": {
+            "type": "Text",
+            "config": {
+              "label": "Title",
+              "placeholder": "Link title"
+            }
+          },
+          "appearance": {
+            "type": "Select",
+            "config": {
+              "options": ["link", "button"],
+              "default_value": "link",
+              "label": "Appearance",
+              "placeholder": "Choose if it should look like a link or button"
+            }
+          }
+        },
+        "label": "Internal Links"
+      }
+    }
+  },
+  "Footer": {
+    "internal_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "link": {
+            "type": "Link",
+            "config": {
+              "label": "Link",
+              "placeholder": "Link to internal site content"
+            }
+          }
+        },
+        "label": "Internal Links"
+      }
+    },
+    "social_media": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "icon": {
+            "type": "Link",
+            "config": {
+              "select": "media",
+              "label": "Social Media Icon",
+              "placeholder": "facebook.svg"
+            }
+          },
+          "external_link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "External Link",
+              "placeholder": "Link to social media"
+            }
+          },
+          "external_link_title": {
+            "type": "Text",
+            "config": {
+              "label": "Link title",
+              "placeholder": "Hidden link title needed by screen readers"
+            }
+          }
+        },
+        "label": "Social Media Links"
+      }
+    }
+  },
+  "Cookie Banner": {
+    "cookie_description": {
+      "type": "Text",
+      "config": {
+        "label": "Cookie Description",
+        "placeholder": "Statement använder cookies..."
+      }
+    },
+    "cookie_link_title": {
+      "type": "Text",
+      "config": {
+        "label": "Link title",
+        "placeholder": "Läs mer"
+      }
+    },
+    "cookie_link": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["page"],
+        "label": "Link",
+        "placeholder": "Link to cookie policy"
+      }
+    }
+  },
+  "Not found": {
+    "not_found_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "404 Title",
+        "placeholder": "Not found"
+      }
+    },
+    "not_found_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, hyperlink",
+        "label": "404 description",
+        "placeholder": "Friendly description that explains what went wrong"
+      }
+    }
+  },
+  "Site Meta": {
+    "site_title": {
+      "type": "Text",
+      "config": {
+        "label": "Site title",
+        "placeholder": "Statement Festival"
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta description",
+        "placeholder": "Världens första stora musikfestival för kvinnor, icke-binära och transpersoner"
+      }
+    },
+    "author": {
+      "type": "Text",
+      "config": {
+        "label": "Author",
+        "placeholder": "Statement Festival"
+      }
+    },
+    "og_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200,
+          "height": 630
+        },
+        "thumbnails": [],
+        "label": "Default image when shared on social media"
+      }
+    }
+  },
+  "Prismic Meta ": {
+    "label": {
+      "type": "Text",
+      "config": {
+        "label": "Label",
+        "placeholder": "Website",
+        "useAsTitle": true
+      }
+    }
+  }
+}

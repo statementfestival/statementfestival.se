@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 const ContactGroup = ({ slice }) => {
   return (
     <>
-      {slice.fields.map((contact, index) => {
+      {slice.items.map((contact, index) => {
         return (
           <div className={styles.container} key={`contactGroup-${index}`}>
             <a className={styles.link} href={`mailto:${contact.email_address}`}>

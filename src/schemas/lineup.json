@@ -1,0 +1,75 @@
+{
+  "Introduction": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Page Title"
+      }
+    },
+    "artists": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "artist": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["artist"],
+              "label": "Artist",
+              "placeholder": "Link to artist page"
+            }
+          }
+        },
+        "label": "Artists"
+      }
+    },
+    "text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, heading2, heading3, heading4, strong, hyperlink, list-item",
+        "label": "Text",
+        "placeholder": "More artists to be announced soon!"
+      }
+    }
+  },
+  "Related Schedule": {
+    "schedule_link": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["schedule"],
+        "label": "Related Schedule",
+        "placeholder": "Link to event schedule"
+      }
+    }
+  },
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Unique ID",
+        "placeholder": "SEO-friendly website URL, like \"lineup\""
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta description",
+        "placeholder": "Short and unique description used when page is shared on i.e. social media"
+      }
+    },
+    "og_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200,
+          "height": 630
+        },
+        "thumbnails": [],
+        "label": "Image visible when shared on social media"
+      }
+    }
+  }
+}
