@@ -35,12 +35,12 @@ const LineupPage = ({ data }) => {
   const doc = data.allPrismicLineup.edges.slice(0, 1).pop()
   if (!doc) return null
 
-  const schedule = doc.node.data.schedule_link
+  const schedule = doc.node.data.schedule_link.document
   let controllerAlternatives
   let selectedIndexArtists
 
   if (schedule) {
-    controllerAlternatives = schedule.document.data.body.map(alternative => {
+    controllerAlternatives = schedule.data.body.map(alternative => {
       if (alternative.slice_type === 'collection') {
         return alternative.primary.collection_title
       }
@@ -50,7 +50,7 @@ const LineupPage = ({ data }) => {
     controllerAlternatives.unshift('Alla')
 
     if (selectedIndex > 0) {
-      selectedIndexArtists = schedule.document.data.body[
+      selectedIndexArtists = schedule.data.body[
         selectedIndex - 1
       ].items.map(i => {
         if (!i.artist) return null
@@ -169,16 +169,14 @@ export const query = graphql`
                         ... on PrismicArtistBodyImage {
                           slice_type
                           primary {
+                            main_image_color
                             main_image {
-                              url
                               alt
-                              thumbnails {
-                                desktop {
-                                  url
-                                }
+                              url
+                              fluid(maxWidth: 899) {
+                                ...GatsbyPrismicImageFluid_noBase64
                               }
                             }
-                            main_image_color
                           }
                         }
                       }
