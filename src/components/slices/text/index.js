@@ -29,7 +29,7 @@ const Text = ({ slice }) => {
           />
         </div>
       ) : null}
-      {hasLink && linkType === 'Any' ? (
+      {hasLink && linkType === 'Web' ? (
         <div className={styles.link}>
           <ExternalLink
             href={slice.primary.text_link_address.url}
