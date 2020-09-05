@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { RichText } from 'prismic-reactjs'
 import objstr from 'obj-str'
 
 import Img from '../../../components/image'
