@@ -1,4 +1,5 @@
-[{
+[
+  {
     "label": "E-post",
     "type": "email",
     "name": "EMAIL",
@@ -70,7 +71,8 @@
     "type": "radio",
     "name": "MMERGE12",
     "value": false,
-    "options": [{
+    "options": [
+      {
         "id": "mce-MMERGE12-0",
         "label": "Marknad",
         "value": "Marknad"
@@ -98,7 +100,8 @@
     "type": "radio",
     "name": "MMERGE11",
     "value": false,
-    "options": [{
+    "options": [
+      {
         "id": "mce-MMERGE11-0",
         "label": "Arbetsledare",
         "value": "Arbetsledare"
@@ -116,7 +119,8 @@
     "type": "radio",
     "name": "MMERGE13",
     "value": false,
-    "options": [{
+    "options": [
+      {
         "id": "mce-MMERGE13-0",
         "label": "Ingen erfarenhet",
         "value": "Ingen erfarenhet"
@@ -153,7 +157,8 @@
     "type": "radio",
     "name": "MMERGE14",
     "value": false,
-    "options": [{
+    "options": [
+      {
         "id": "mce-MMERGE14-0",
         "label": "2-5 timmar",
         "value": "2-5 timmar"
@@ -177,13 +182,13 @@
     "required": true
   },
   {
-    "label": "Övrig information som du vill tillägga",
+    "label": "Övrig information som du vill tillägga (valfri)",
     "type": "textarea",
     "name": "MMERGE7",
     "id": "mce-MMERGE7",
     "value": "",
     "placeholder": "Skriv text",
-    "required": true
+    "required": false
   },
   {
     "label": "Länkar som du vill delge oss (valfri)",
@@ -195,13 +200,13 @@
     "required": false
   },
 
-
   {
     "title": "Hur vill du bli kontaktad?",
     "type": "radio-look-alike",
     "name": "GDPR",
     "value": false,
-    "options": [{
+    "options": [
+      {
         "name": "gdpr[38020]",
         "id": "gdpr_38020",
         "label": "Via e-post",
