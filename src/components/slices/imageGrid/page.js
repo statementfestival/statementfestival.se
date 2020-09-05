@@ -27,7 +27,7 @@ const ImageGrid = ({ slice }) => {
               <Img
                 alt={item.image.alt}
                 className={styles.image}
-                /* imageSharp={item.imageSharp} TODO: Figure out how to use this with new plugin */
+                fluid={item.image.fluid}
                 url={item.image.url}
               />
             </a>

@@ -94,14 +94,14 @@ export const query = graphql`
               }
               ... on PrismicArtistBodyImage {
                 primary {
+                  main_image_color
                   main_image {
                     alt
-                    fluid(maxWidth: 899) {
-                      src
-                    }
                     url
+                    fluid(maxWidth: 899) {
+                      ...GatsbyPrismicImageFluid_noBase64
+                    }
                   }
-                  main_image_color
                 }
                 slice_type
               }

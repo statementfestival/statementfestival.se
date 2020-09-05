@@ -80,8 +80,8 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    fluid {
-                      base64
+                    fluid(maxWidth: 851) {
+                      ...GatsbyPrismicImageFluid_noBase64
                     }
                   }
                   image_link {
