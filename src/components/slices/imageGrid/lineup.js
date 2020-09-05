@@ -34,7 +34,8 @@ const ImageGridLineup = ({ slice, slim = false }) => {
                 alt={image.primary.main_image.alt}
                 className={styles.image}
                 backgroundColor={image.primary.main_image_color}
-                url={image.primary.main_image.thumbnails.desktop.url}
+                fluid={image.primary.main_image.fluid}
+                url={image.primary.main_image.url}
               />
               <h3>{item.document.data.title.text}</h3>
             </Link>
