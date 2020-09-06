@@ -1,0 +1,170 @@
+{
+  "Introduction": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Artist",
+        "placeholder": "Beyoncé"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "text": [],
+          "contact_group": [],
+          "faq": [],
+          "image": [],
+          "ticket_form": [],
+          "social_media": [],
+          "embedded_media": [],
+          "link": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Introduction of the artist",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "text_content": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading3, heading4, strong, hyperlink, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Content",
+                  "placeholder": "Content body of the text block"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "image": {
+            "type": "Slice",
+            "fieldset": "Image",
+            "description": "Main artist image",
+            "icon": "add_a_photo",
+            "display": "grid",
+            "non-repeat": {
+              "main_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [
+                    {
+                      "name": "desktop",
+                      "width": 445,
+                      "height": 445
+                    },
+                    {
+                      "name": "mobile",
+                      "width": 810,
+                      "height": 810
+                    }
+                  ],
+                  "label": "Main image"
+                }
+              },
+              "main_image_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Dominant image color"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "social_media": {
+            "type": "Slice",
+            "fieldset": "Social Media",
+            "description": "Links to social media",
+            "icon": "language",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "options": ["Facebook", "Instagram", "Spotify"],
+                  "label": "Icon",
+                  "placeholder": "Social media icon"
+                }
+              },
+              "external_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "External Link",
+                  "placeholder": "Link to social media"
+                }
+              },
+              "external_link_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Link title",
+                  "placeholder": "Hidden link title needed by screen readers"
+                }
+              }
+            }
+          },
+          "embedded_media": {
+            "type": "Slice",
+            "fieldset": "Embedded Media",
+            "description": "Embed videos, playlists, songs...",
+            "icon": "music_note",
+            "display": "list",
+            "non-repeat": {
+              "embed_code": {
+                "type": "Text",
+                "config": {
+                  "label": "Embed code",
+                  "placeholder": "Code embedded from i.e. Spotify, YouTube..."
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "link": {
+            "type": "Slice",
+            "fieldset": "Link",
+            "description": "Link to related content",
+            "icon": "insert_link",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Unique ID",
+        "placeholder": "SEO-friendly website URL, like \"beyonce\""
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta description",
+        "placeholder": "Short and unique description used when page is shared on i.e. social media"
+      }
+    }
+  },
+  "Meta": {
+    "related_lineup": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["lineup"],
+        "label": "Related Lineup",
+        "placeholder": "Link to lineup"
+      }
+    }
+  }
+}

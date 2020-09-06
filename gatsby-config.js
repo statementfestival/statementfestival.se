@@ -16,8 +16,6 @@ module.exports = {
         path: `${__dirname}/src/assets`
       }
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -42,38 +40,26 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: 'statement',
         accessToken: process.env.PRISMIC_API_KEY,
-        path: '/preview',
-        previews: true,
-        pages: [
-          {
-            type: 'Page',
-            match: '/:uid',
-            path: '/page',
-            component: require.resolve('./src/templates/page.js')
-          },
-          {
-            type: 'Artist',
-            match: '/line-up/:uid',
-            path: '/artist',
-            component: require.resolve('./src/templates/artist.js')
-          },
-          {
-            type: 'Schedule',
-            match: '/:uid',
-            path: '/schedule',
-            component: require.resolve('./src/templates/schedule.js')
-          },
-          {
-            type: 'Lineup',
-            match: '/:uid',
-            path: '/lineup',
-            component: require.resolve('./src/templates/lineup.js')
-          }
-        ]
+        schemas: {
+          artist: require('./src/schemas/artist.json'),
+          homepage: require('./src/schemas/homepage.json'),
+          lineup: require('./src/schemas/lineup.json'),
+          page: require('./src/schemas/page.json'),
+          schedule: require('./src/schemas/schedule.json'),
+          website: require('./src/schemas/website.json')
+        },
+        prismicToolbar: true,
+        linkResolver: ({ node, key, value }) => (doc) => {
+          if (doc.type === 'artist') return `/line-up/${doc.uid}`
+          if (doc.type === 'schedule') return `/${doc.uid}`
+          if (doc.type === 'page') return `/${doc.uid}`
+          if (doc.type === 'lineup') return `/${doc.uid}`
+          return '/'
+        }
       }
     },
     {

@@ -1,121 +1,133 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { RichText } from 'prismic-reactjs'
+import { withPreview } from 'gatsby-source-prismic'
 
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
 
+const PAGE_WITH_VISIBLE_TITLE = ['biljetter', 'rekrytering']
+
+const SinglePage = ({ data }) => {
+  const doc = data.prismicPage
+  if (!doc) return null
+
+  const renderTitleVisually = PAGE_WITH_VISIBLE_TITLE.some(
+    (item) => item === doc.uid
+  )
+
+  return (
+    <Page>
+      <Head
+        title={doc.data.title.text}
+        description={doc.data.meta_description}
+        image={doc.data.og_image ? doc.data.og_image.url : null}
+      />
+      {renderTitleVisually ? (
+        <PageSection>
+          <h1>{doc.data.title.text}</h1>
+        </PageSection>
+      ) : (
+        <h1 className="visuallyHidden">{doc.data.title.text}</h1>
+      )}
+      <SliceRenderer slices={doc.data.body} />
+    </Page>
+  )
+}
+
 export const query = graphql`
-  query PageQuery($uid: String) {
-    prismic {
-      allPages(uid: $uid) {
-        edges {
-          node {
-            title
-            body {
-              ... on PRISMIC_PageBodyText {
-                type
-                primary {
-                  text_content
-                  text_title
-                }
+  query($uid: String) {
+    prismicPage(uid: { eq: $uid }) {
+      uid
+      prismicId
+      data {
+        meta_description
+        title {
+          text
+        }
+        body {
+          ... on PrismicPageBodyText {
+            slice_type
+            primary {
+              text_content {
+                raw
               }
-              ... on PRISMIC_PageBodyContact_group {
-                fields {
-                  description
-                  email_address
-                }
-                type
+              text_title {
+                raw
               }
-              ... on PRISMIC_PageBodyImage_grid {
-                type
-                primary {
-                  image_grid_title
-                }
-                fields {
-                  image
-                  imageSharp {
-                    childImageSharp {
-                      fluid(quality: 100, maxWidth: 851) {
-                        ...GatsbyImageSharpFluid_noBase64
-                      }
-                    }
-                  }
-                  image_link {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
-                  }
-                }
-              }
-              ... on PRISMIC_PageBodyFaq {
-                fields {
-                  faq_question
-                  faq_answer
-                }
-                primary {
-                  faq_title
-                }
-                type
-              }
-              ... on PRISMIC_PageBodyForm {
-                type
-                primary {
-                  form_address {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
-                  }
-                  form_description
-                  form_success_description
-                  form_success_title
-                  form_title
-                  form_type
-                  form_disclaimer
-                }
-              }
-            }
-            meta_description
-            og_image
-            _meta {
-              uid
             }
           }
+          ... on PrismicPageBodyContactGroup {
+            slice_type
+            items {
+              description
+              email_address
+            }
+          }
+          ... on PrismicPageBodyImageGrid {
+            slice_type
+            primary {
+              image_grid_title {
+                raw
+              }
+            }
+            items {
+              image {
+                alt
+                url
+                fluid(maxWidth: 851) {
+                  ...GatsbyPrismicImageFluid_noBase64
+                }
+              }
+              image_link {
+                url
+              }
+            }
+          }
+          ... on PrismicPageBodyFaq {
+            primary {
+              faq_title
+            }
+            items {
+              faq_answer {
+                raw
+              }
+              faq_question
+            }
+            slice_type
+          }
+          ... on PrismicPageBodyForm {
+            slice_type
+            primary {
+              form_address {
+                url
+              }
+              form_description {
+                raw
+              }
+              form_disclaimer {
+                raw
+              }
+              form_success_description {
+                raw
+              }
+              form_success_title {
+                raw
+              }
+              form_title {
+                raw
+              }
+              form_type
+            }
+          }
+        }
+        og_image {
+          url
         }
       }
     }
   }
 `
 
-const PAGE_WITH_VISIBLE_TITLE = ['biljetter', 'rekrytering']
-
-const SinglePage = ({ data }) => {
-  const doc = data.prismic.allPages.edges.slice(0, 1).pop()
-  if (!doc) return null
-
-  const renderTitleVisually = PAGE_WITH_VISIBLE_TITLE.some(
-    item => item === doc.node._meta.uid
-  )
-
-  return (
-    <Page>
-      <Head
-        title={RichText.asText(doc.node.title)}
-        description={doc.node.meta_description}
-        image={doc.node.og_image ? doc.node.og_image.url : null}
-      />
-      {renderTitleVisually ? (
-        <PageSection>
-          <h1>{RichText.asText(doc.node.title)}</h1>
-        </PageSection>
-      ) : (
-        <h1 className="visuallyHidden">{RichText.asText(doc.node.title)}</h1>
-      )}
-      <SliceRenderer slices={doc.node.body} />
-    </Page>
-  )
-}
-
-export default SinglePage
+export default withPreview(SinglePage)

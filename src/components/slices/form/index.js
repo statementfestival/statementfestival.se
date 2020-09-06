@@ -95,11 +95,11 @@ const Form = ({ slice }) => {
       {submitted ? (
         <div className={styles.success} ref={successContainer}>
           {slice.primary.form_success_title ? (
-            <RichText render={slice.primary.form_success_title} />
+            <RichText render={slice.primary.form_success_title.raw} />
           ) : null}
           {slice.primary.form_success_description ? (
             <RichText
-              render={slice.primary.form_success_description}
+              render={slice.primary.form_success_description.raw}
               htmlSerializer={htmlSerializer}
             />
           ) : null}
@@ -107,11 +107,11 @@ const Form = ({ slice }) => {
       ) : (
         <>
           {slice.primary.form_title ? (
-            <RichText render={slice.primary.form_title} />
+            <RichText render={slice.primary.form_title.raw} />
           ) : null}
           {slice.primary.form_description ? (
             <RichText
-              render={slice.primary.form_description}
+              render={slice.primary.form_description.raw}
               htmlSerializer={htmlSerializer}
             />
           ) : null}
@@ -243,7 +243,7 @@ const Form = ({ slice }) => {
           {slice.primary.form_disclaimer ? (
             <div className={styles.disclaimer}>
               <RichText
-                render={slice.primary.form_disclaimer}
+                render={slice.primary.form_disclaimer.raw}
                 htmlSerializer={htmlSerializer}
               />
             </div>

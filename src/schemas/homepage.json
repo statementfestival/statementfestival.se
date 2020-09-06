@@ -1,0 +1,243 @@
+{
+  "Introduction": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Page Title"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Subtitle",
+        "placeholder": "Date of festival"
+      }
+    },
+    "description": {
+      "type": "Text",
+      "config": {
+        "label": "Description",
+        "placeholder": "Short description of the festival and who it is for"
+      }
+    },
+    "link_title": {
+      "type": "Text",
+      "config": {
+        "label": "Link Title",
+        "placeholder": "Title of external/internal link"
+      }
+    },
+    "link_address": {
+      "type": "Link",
+      "config": {
+        "label": "Link url",
+        "placeholder": "URL to internal content or external site, i.e. ticket seller",
+        "allowTargetBlank": true
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "hero": [],
+          "merch": [],
+          "text": [],
+          "link": []
+        },
+        "choices": {
+          "merch": {
+            "type": "Slice",
+            "fieldset": "Merch",
+            "description": "Use to display Statement merch",
+            "icon": "attach_money",
+            "display": "list",
+            "non-repeat": {
+              "merch_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Match number of words with number of images"
+                }
+              },
+              "merch_link_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Link title",
+                  "placeholder": "Title of external or internal link"
+                }
+              },
+              "merch_link_title_hover": {
+                "type": "Text",
+                "config": {
+                  "label": "Merch link hover title",
+                  "placeholder": "Title of external or internal link when user hover it"
+                }
+              },
+              "merch_link_address": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Link address",
+                  "placeholder": "Address to merch site"
+                }
+              }
+            },
+            "repeat": {
+              "merch_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Merch Image"
+                }
+              }
+            }
+          },
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Use when you want to display a text block",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "text_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Title",
+                  "placeholder": "Title of the text block"
+                }
+              },
+              "text_content": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading3, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Content",
+                  "placeholder": "Content body of the text block"
+                }
+              },
+              "text_link_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Link title",
+                  "placeholder": "Link title (optional, link placed at the end of section)"
+                }
+              },
+              "text_link_address": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Link url",
+                  "placeholder": "Link URL (optional, link placed at the end of section)"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "embedded_media": {
+            "type": "Slice",
+            "fieldset": "Embedded Media",
+            "description": "Embed videos, playlists, songs...",
+            "icon": "music_note",
+            "display": "list",
+            "non-repeat": {
+              "embed_code": {
+                "type": "Text",
+                "config": {
+                  "label": "Embed code",
+                  "placeholder": "Code embedded from i.e. Spotify, YouTube..."
+                }
+              },
+              "caption": {
+                "type": "Text",
+                "config": {
+                  "label": "Caption",
+                  "placeholder": "Relive the festival"
+                }
+              },
+              "id": {
+                "type": "Text",
+                "config": {
+                  "label": "Id",
+                  "placeholder": "Needed if you want to be able to scroll to section"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "Details": {
+    "body_details": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "counter": [],
+          "images": []
+        },
+        "choices": {
+          "counter": {
+            "type": "Slice",
+            "fieldset": "Counter",
+            "description": "Count down to an important date",
+            "icon": "access_alarm",
+            "display": "list",
+            "non-repeat": {
+              "counter_date": {
+                "type": "Date",
+                "config": {
+                  "label": "Date",
+                  "placeholder": "Date to count down to"
+                }
+              },
+              "counter_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Short explantion, i.e. Days Left"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "images": {
+            "type": "Slice",
+            "fieldset": "Images",
+            "description": "Images used to create a nice fade effect",
+            "icon": "camera_roll",
+            "display": "grid",
+            "non-repeat": {},
+            "repeat": {
+              "fountain_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Prismic Meta": {
+    "label": {
+      "type": "Text",
+      "config": {
+        "label": "Label",
+        "placeholder": "Homepage",
+        "useAsTitle": true
+      }
+    }
+  }
+}
