@@ -18,31 +18,28 @@ function Head({ description, lang, meta, title, image }) {
 
   const data = useStaticQuery(graphql`
     {
-      allPrismicWebsite {
-        edges {
-          node {
-            data {
-              meta_description
-              site_title
-              og_image {
-                alt
-                url
-                dimensions {
-                  height
-                  width
-                }
-              }
+      prismicWebsite {
+        prismicId
+        data {
+          meta_description
+          site_title
+          og_image {
+            alt
+            url
+            dimensions {
+              height
+              width
             }
           }
         }
       }
     }
   `)
-  const doc = data.allPrismicWebsite.edges.slice(0, 1).pop()
+  const doc = data.prismicWebsite
   if (!doc) return null
 
-  const metaDescription = description || doc.node.data.meta_description
-  let ogImage = doc.node.data.og_image ? doc.node.data.og_image.url : ''
+  const metaDescription = description || doc.data.meta_description
+  let ogImage = doc.data.og_image ? doc.data.og_image.url : ''
   if (image) ogImage = image
 
   return (
@@ -86,7 +83,7 @@ function Head({ description, lang, meta, title, image }) {
       ]}
       htmlAttributes={{ lang }}
       title={title}
-      titleTemplate={`%s | ${doc.node.data.site_title}`}
+      titleTemplate={`%s | ${doc.data.site_title}`}
       meta={[
         {
           name: 'viewport',
@@ -98,11 +95,11 @@ function Head({ description, lang, meta, title, image }) {
         },
         {
           property: `og:title`,
-          content: `${title} | ${doc.node.data.site_title}`
+          content: `${title} | ${doc.data.site_title}`
         },
         {
           property: `og:site_name`,
-          content: doc.node.data.site_title
+          content: doc.data.site_title
         },
         {
           property: `og:description`,
@@ -118,19 +115,15 @@ function Head({ description, lang, meta, title, image }) {
         },
         {
           property: `og:image:width`,
-          content: doc.node.data.og_image
-            ? doc.node.data.og_image.dimensions.width
-            : ''
+          content: doc.data.og_image ? doc.data.og_image.dimensions.width : ''
         },
         {
           property: `og:image:height`,
-          content: doc.node.data.og_image
-            ? doc.node.data.og_image.dimensions.height
-            : ''
+          content: doc.data.og_image ? doc.data.og_image.dimensions.height : ''
         },
         {
           property: `og:image:alt`,
-          content: doc.node.data.og_image ? doc.node.data.og_image.alt : ''
+          content: doc.data.og_image ? doc.data.og_image.alt : ''
         },
         {
           name: `twitter:card`,

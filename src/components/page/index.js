@@ -12,25 +12,21 @@ import styles from './styles.module.css'
 const Page = ({ children, type = 'regular' }) => {
   const data = useStaticQuery(graphql`
     {
-      allPrismicWebsite {
-        edges {
-          node {
-            data {
-              site_title
-            }
-          }
+      prismicWebsite {
+        prismicId
+        data {
+          site_title
         }
       }
     }
   `)
-
-  const doc = data.allPrismicWebsite.edges.slice(0, 1).pop()
+  const doc = data.prismicWebsite
   if (!doc) return null
 
   return (
     <div className={styles.page} id="main">
       <PageSection size="full">
-        <Header siteTitle={doc.node.data.site_title} />
+        <Header siteTitle={doc.data.site_title} />
       </PageSection>
       <main
         className={objstr({

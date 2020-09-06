@@ -12,44 +12,39 @@ import CookieBanner from '../cookieBanner'
 const PageWrapper = ({ children }) => {
   const data = useStaticQuery(graphql`
     {
-      allPrismicWebsite {
-        edges {
-          node {
-            data {
-              cookie_description
-              cookie_link {
-                uid
-                type
-              }
-              cookie_link_title
-              menu_links {
-                appearance
-                title
-                link {
-                  uid
-                  type
-                }
-              }
+      prismicWebsite {
+        prismicId
+        data {
+          cookie_description
+          cookie_link {
+            uid
+            type
+          }
+          cookie_link_title
+          menu_links {
+            appearance
+            title
+            link {
+              uid
+              type
             }
           }
         }
       }
     }
   `)
-  const doc = data.allPrismicWebsite.edges.slice(0, 1).pop()
+  const doc = data.prismicWebsite
   if (!doc) return null
   return (
     <>
       {children}
-      {doc.node.data.menu_links.length ? (
-        <Menu links={doc.node.data.menu_links} />
-      ) : null}
+      {doc.data.menu_links.length ? <Menu links={doc.data.menu_links} /> : null}
 
       {!checkCookie('statement-gdpr-facebook-pixel', true) ? (
         <CookieBanner
-          description={doc.node.data.cookie_description}
-          linkTitle={doc.node.data.cookie_link_title}
-          link={doc.node.data.cookie_link}
+          description={doc.data.cookie_description}
+          linkTitle={doc.data.cookie_link_title}
+          link={doc.data.cookie_link}
         />
       ) : null}
     </>

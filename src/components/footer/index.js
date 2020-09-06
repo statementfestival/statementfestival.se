@@ -8,32 +8,29 @@ import styles from './styles.module.css'
 const Footer = () => {
   const data = useStaticQuery(graphql`
     {
-      allPrismicWebsite {
-        edges {
-          node {
-            data {
-              social_media {
-                icon {
-                  url
-                }
-                external_link {
-                  url
-                }
-                external_link_title
-              }
-              internal_links {
-                link {
-                  document {
-                    ... on PrismicPage {
-                      data {
-                        title {
-                          text
-                        }
-                      }
-                      uid
-                      type
+      prismicWebsite {
+        prismicId
+        data {
+          social_media {
+            icon {
+              url
+            }
+            external_link {
+              url
+            }
+            external_link_title
+          }
+          internal_links {
+            link {
+              document {
+                ... on PrismicPage {
+                  data {
+                    title {
+                      text
                     }
                   }
+                  uid
+                  type
                 }
               }
             }
@@ -42,17 +39,17 @@ const Footer = () => {
       }
     }
   `)
-  const doc = data.allPrismicWebsite.edges.slice(0, 1).pop()
+  const doc = data.prismicWebsite
   if (!doc) return null
 
   const socials =
-    doc.node.data.social_media && doc.node.data.social_media.length
-      ? doc.node.data.social_media
+    doc.data.social_media && doc.data.social_media.length
+      ? doc.data.social_media
       : []
 
   const internalLinks =
-    doc.node.data.internal_links && doc.node.data.internal_links.length
-      ? doc.node.data.internal_links
+    doc.data.internal_links && doc.data.internal_links.length
+      ? doc.data.internal_links
       : []
 
   return (

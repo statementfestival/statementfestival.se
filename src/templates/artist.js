@@ -13,12 +13,11 @@ const ArtistPage = ({ data }) => {
   const doc = data.prismicArtist
   if (!doc) return null
 
-  const schedule = data.allPrismicSchedule.edges.slice(0, 1).pop()
-  let details = schedule
-    ? getArtistByUID(schedule.node.data.body, doc.uid)
-    : null
+  const schedule = data.prismicSchedule
+  let details = schedule ? getArtistByUID(schedule.data.body, doc.uid) : null
 
-  const tickets = data.allPrismicPage.edges.slice(0, 1).pop()
+  const tickets = data.prismicPage
+  console.log(tickets)
 
   // Filter out main image since this should visually be placed above page title
   const image = doc.data.body.find((item) => item.slice_type === 'image')
@@ -46,7 +45,7 @@ const ArtistPage = ({ data }) => {
       {tickets ? (
         <ButtonLookalike
           title="Köp biljett"
-          to={{ uid: tickets.node.uid, type: tickets.node.type }}
+          to={{ uid: tickets.uid, type: tickets.type }}
         />
       ) : null}
     </Page>
@@ -126,32 +125,26 @@ export const query = graphql`
       uid
       type
     }
-    allPrismicPage {
-      edges {
-        node {
-          uid
-          type
-        }
-      }
+    prismicPage {
+      prismicId
+      uid
+      type
     }
-    allPrismicSchedule {
-      edges {
-        node {
-          data {
-            body {
-              ... on PrismicScheduleBodyCollection {
-                slice_type
-                primary {
-                  collection_title
-                }
-                items {
-                  artist {
-                    uid
-                  }
-                  venue
-                  start_time
-                }
+    prismicSchedule {
+      prismicId
+      data {
+        body {
+          ... on PrismicScheduleBodyCollection {
+            slice_type
+            primary {
+              collection_title
+            }
+            items {
+              artist {
+                uid
               }
+              venue
+              start_time
             }
           }
         }
