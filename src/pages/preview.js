@@ -5,7 +5,7 @@ import Page from '../components/page'
 import PageSection from '../components/pageSection'
 import Head from '../components/head'
 
-const PreviewPage = ({ isPreview, isLoading }) => {
+const PreviewPage = ({ isPreview }) => {
   if (isPreview === false) return 'Not a preview!'
 
   return (
