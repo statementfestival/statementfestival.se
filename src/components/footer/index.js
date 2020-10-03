@@ -58,6 +58,7 @@ const Footer = ({ theme = 'default' }) => {
   `)
 
   let doc
+  // TODO: 'event' needs to be flexible enough for multiple events
   if (theme === 'default') doc = data.prismicWebsite
   if (theme === 'event') doc = data.allPrismicEventhomepage.edges[0].node
 

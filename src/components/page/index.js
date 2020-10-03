@@ -23,8 +23,6 @@ const Page = ({ children, type = 'regular', theme = 'default' }) => {
   const doc = data.prismicWebsite
   if (!doc) return null
 
-  console.log(children)
-
   return (
     <div className={styles.page} id="main">
       <PageSection size="full">
