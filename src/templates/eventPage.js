@@ -18,7 +18,7 @@ const EventPage = ({ data }) => {
   )
 
   return (
-    <Page>
+    <Page theme="event">
       <Head
         type="event"
         title={doc.data.title.text}

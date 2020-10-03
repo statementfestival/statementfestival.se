@@ -38,15 +38,18 @@ const PageWrapper = ({ children }) => {
   if (!doc) return null
 
   let menu = doc.data.menu_links.length ? doc.data.menu_links : false
-  const { prismicEventhomepage, prismicEventpage } = children.props.data
-  if (prismicEventhomepage && prismicEventhomepage.data.menu_links) {
-    if (prismicEventhomepage.data.menu_links.length) {
-      menu = prismicEventhomepage.data.menu_links
-    }
-  }
 
-  if (prismicEventpage && prismicEventpage.data.event_link) {
-    menu = prismicEventpage.data.event_link.document.data.menu_links
+  if (children && children.props && children.props.data) {
+    const { prismicEventhomepage, prismicEventpage } = children.props.data
+    if (prismicEventhomepage && prismicEventhomepage.data.menu_links) {
+      if (prismicEventhomepage.data.menu_links.length) {
+        menu = prismicEventhomepage.data.menu_links
+      }
+    }
+
+    if (prismicEventpage && prismicEventpage.data.event_link) {
+      menu = prismicEventpage.data.event_link.document.data.menu_links
+    }
   }
 
   return (

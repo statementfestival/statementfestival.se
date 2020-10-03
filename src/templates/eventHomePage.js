@@ -55,7 +55,7 @@ const EventHomePage = ({ data }) => {
   })
 
   return (
-    <Page>
+    <Page theme="event">
       <Head title={title.text} type="event" />
       <PageParallax progress={progress} inverted theme="dark" />
       <PageSection size="full">
