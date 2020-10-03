@@ -5,7 +5,7 @@ import { linkResolver } from '../../utils/linkResolver'
 
 import styles from './styles.module.css'
 
-const Footer = ({ theme = 'default' }) => {
+const Footer = ({ content }) => {
   const data = useStaticQuery(graphql`
     {
       prismicWebsite {
@@ -37,42 +37,20 @@ const Footer = ({ theme = 'default' }) => {
           }
         }
       }
-      allPrismicEventhomepage {
-        edges {
-          node {
-            data {
-              social_media {
-                icon {
-                  url
-                }
-                external_link_title
-                external_link {
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
     }
   `)
 
-  let doc
-  // TODO: 'event' needs to be flexible enough for multiple events
-  if (theme === 'default') doc = data.prismicWebsite
-  if (theme === 'event') doc = data.allPrismicEventhomepage.edges[0].node
-
+  let doc = data.prismicWebsite
   if (!doc) return null
 
+  /* Use page provided content if available */
+  const opts = content || doc.data
+
   const socials =
-    doc.data.social_media && doc.data.social_media.length
-      ? doc.data.social_media
-      : []
+    opts.social_media && opts.social_media.length ? opts.social_media : []
 
   const internalLinks =
-    doc.data.internal_links && doc.data.internal_links.length
-      ? doc.data.internal_links
-      : []
+    opts.internal_links && opts.internal_links.length ? opts.internal_links : []
 
   return (
     <footer className={styles.footer}>

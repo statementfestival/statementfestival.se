@@ -53,9 +53,8 @@ const EventHomePage = ({ data }) => {
     }
     return slice
   })
-
   return (
-    <Page theme="event">
+    <Page theme="event" footer={doc.data}>
       <Head title={title.text} type="event" />
       <PageParallax progress={progress} inverted theme="dark" />
       <PageSection size="full">
@@ -86,6 +85,15 @@ export const query = graphql`
                 }
               }
             }
+          }
+        }
+        social_media {
+          icon {
+            url
+          }
+          external_link_title
+          external_link {
+            url
           }
         }
         body {

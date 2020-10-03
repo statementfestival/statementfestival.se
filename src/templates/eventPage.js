@@ -17,8 +17,12 @@ const EventPage = ({ data }) => {
     (item) => item === doc.uid
   )
 
+  const footer = doc.data.event_link && doc.data.event_link.document
   return (
-    <Page theme="event">
+    <Page
+      theme="event"
+      footer={footer ? doc.data.event_link.document.data : false}
+    >
       <Head
         type="event"
         title={doc.data.title.text}
@@ -63,6 +67,15 @@ export const query = graphql`
                         }
                       }
                     }
+                  }
+                }
+                social_media {
+                  icon {
+                    url
+                  }
+                  external_link_title
+                  external_link {
+                    url
                   }
                 }
               }

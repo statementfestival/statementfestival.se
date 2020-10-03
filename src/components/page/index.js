@@ -9,7 +9,7 @@ import PageSection from '../pageSection'
 
 import styles from './styles.module.css'
 
-const Page = ({ children, type = 'regular', theme = 'default' }) => {
+const Page = ({ children, footer, type = 'regular' }) => {
   const data = useStaticQuery(graphql`
     {
       prismicWebsite {
@@ -39,7 +39,7 @@ const Page = ({ children, type = 'regular', theme = 'default' }) => {
       </main>
       <div className={styles.footer}>
         <PageSection>
-          <Footer theme={theme} />
+          <Footer content={footer} />
         </PageSection>
       </div>
     </div>
