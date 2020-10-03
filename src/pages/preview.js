@@ -26,7 +26,13 @@ export default withPreviewResolver(PreviewPage, {
     if (doc.type === 'page') return `/${doc.uid}`
     if (doc.type === 'lineup') return `/${doc.uid}`
     if (doc.type === 'eventhomepage') return `/${doc.uid}`
-    if (doc.type === 'eventpage') return `/event/${doc.uid}`
+    if (doc.type === 'eventpage') {
+      let parent = 'event'
+      if (doc.data && doc.data.event_link) {
+        parent = doc.data.event_link.uid
+      }
+      return `/${parent}/${doc.uid}`
+    }
     return '/'
   }
 })
