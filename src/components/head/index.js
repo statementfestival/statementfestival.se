@@ -13,7 +13,7 @@ import HKGroteskSemiBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-S
 import HKGroteskMedium from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff2'
 import HKGroteskBold from '../../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2'
 
-function Head({ description, lang, meta, title, image }) {
+function Head({ description, lang, meta, title, image, type }) {
   if (isClient()) smoothscroll.polyfill()
 
   const data = useStaticQuery(graphql`
@@ -84,6 +84,7 @@ function Head({ description, lang, meta, title, image }) {
       htmlAttributes={{ lang }}
       title={title}
       titleTemplate={`%s | ${doc.data.site_title}`}
+      {...(type && { bodyAttributes: { class: type } })}
       meta={[
         {
           name: 'viewport',

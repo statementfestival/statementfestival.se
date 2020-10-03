@@ -20,6 +20,7 @@ const EventPage = ({ data }) => {
   return (
     <Page>
       <Head
+        type="event"
         title={doc.data.title.text}
         description={doc.data.meta_description}
         image={doc.data.og_image ? doc.data.og_image.url : null}

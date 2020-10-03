@@ -36,7 +36,6 @@ const EventHomePage = ({ data }) => {
 
   const { title, subtitle } = doc.data
 
-  /* 1. Since Prismic formats date as string i.e. '2025-01-01' */
   const heroData = {
     description: doc.data.description,
     link_title: doc.data.link_title,
@@ -57,8 +56,8 @@ const EventHomePage = ({ data }) => {
 
   return (
     <Page>
-      <Head title={title.text} />
-      <PageParallax progress={progress} />
+      <Head title={title.text} type="event" />
+      <PageParallax progress={progress} inverted theme="dark" />
       <PageSection size="full">
         <Hero {...heroData} />
       </PageSection>

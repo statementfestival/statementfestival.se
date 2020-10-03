@@ -20,7 +20,7 @@ export const linkResolver = (doc) => {
   }
 
   if (doc.type === 'eventpage') {
-    let parent = 'event'
+    let parent = 'projekt' // TODO: Remove once fully dynamic
     if (doc.document && doc.document.data) {
       if (doc.document.data.event_link)
         parent = doc.document.data.event_link.uid
