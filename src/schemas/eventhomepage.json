@@ -1,0 +1,249 @@
+{
+  "Introduction": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Event Title"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Subtitle",
+        "placeholder": "Date of event"
+      }
+    },
+    "description": {
+      "type": "Text",
+      "config": {
+        "label": "Description",
+        "placeholder": "Short description of the event"
+      }
+    },
+    "link_title": {
+      "type": "Text",
+      "config": {
+        "label": "Link Title",
+        "placeholder": "Title of external/internal link"
+      }
+    },
+    "link_address": {
+      "type": "Link",
+      "config": {
+        "label": "Link url",
+        "placeholder": "URL to internal content or external site, i.e. ticket seller",
+        "allowTargetBlank": true
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "hero": [],
+          "merch": [],
+          "text": [],
+          "link": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Use when you want to display a text block",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "text_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Title",
+                  "placeholder": "Title of the text block"
+                }
+              },
+              "text_content": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading3, em, hyperlink, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Content",
+                  "placeholder": "Content body of the text block"
+                }
+              },
+              "text_link_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Link title",
+                  "placeholder": "Link title (optional, link placed at the end of section)"
+                }
+              },
+              "text_link_address": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Link url",
+                  "placeholder": "Link URL (optional, link placed at the end of section)"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "embedded_media": {
+            "type": "Slice",
+            "fieldset": "Embedded Media",
+            "description": "Embed videos, playlists, songs...",
+            "icon": "music_note",
+            "display": "list",
+            "non-repeat": {
+              "embed_code": {
+                "type": "Text",
+                "config": {
+                  "label": "Embed code",
+                  "placeholder": "Code embedded from i.e. Spotify, YouTube..."
+                }
+              },
+              "caption": {
+                "type": "Text",
+                "config": {
+                  "label": "Caption",
+                  "placeholder": "Relive the festival"
+                }
+              },
+              "id": {
+                "type": "Text",
+                "config": {
+                  "label": "Id",
+                  "placeholder": "Needed if you want to be able to scroll to section"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "Menu": {
+    "menu_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "link": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["homepage", "eventpage"],
+              "label": "Link",
+              "placeholder": "Link to internal content"
+            }
+          },
+          "title": {
+            "type": "Text",
+            "config": {
+              "label": "Title",
+              "placeholder": "Link title"
+            }
+          },
+          "appearance": {
+            "type": "Select",
+            "config": {
+              "options": ["link", "button"],
+              "default_value": "link",
+              "label": "Appearance",
+              "placeholder": "Choose if it should look like a link or button"
+            }
+          }
+        },
+        "label": "Internal Links"
+      }
+    }
+  },
+  "Footer": {
+    "internal_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "link": {
+            "type": "Link",
+            "config": {
+              "label": "Link",
+              "placeholder": "Link to internal site content"
+            }
+          }
+        },
+        "label": "Internal Links"
+      }
+    },
+    "social_media": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "icon": {
+            "type": "Link",
+            "config": {
+              "select": "media",
+              "label": "Social Media Icon",
+              "placeholder": "facebook.svg"
+            }
+          },
+          "external_link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "External Link",
+              "placeholder": "Link to social media"
+            }
+          },
+          "external_link_title": {
+            "type": "Text",
+            "config": {
+              "label": "Link title",
+              "placeholder": "Hidden link title needed by screen readers"
+            }
+          }
+        },
+        "label": "Social Media Links"
+      }
+    }
+  },
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Unique ID",
+        "placeholder": "SEO-friendly website URL, like \"event\""
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta description",
+        "placeholder": "Short and unique description used when page is shared on i.e. social media"
+      }
+    },
+    "og_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200,
+          "height": 630
+        },
+        "thumbnails": [],
+        "label": "Image visible when shared on social media"
+      }
+    }
+  },
+  "Prismic Meta": {
+    "label": {
+      "type": "Text",
+      "config": {
+        "label": "Label",
+        "placeholder": "Event",
+        "useAsTitle": true
+      }
+    }
+  }
+}

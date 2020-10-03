@@ -1,4 +1,4 @@
-export const linkResolver = doc => {
+export const linkResolver = (doc) => {
   if (doc.type === 'artist') {
     return `/line-up/${doc.uid}`
   }
@@ -13,6 +13,19 @@ export const linkResolver = doc => {
 
   if (doc.type === 'lineup') {
     return `/${doc.uid}`
+  }
+
+  if (doc.type === 'eventhomepage') {
+    return `/${doc.uid}`
+  }
+
+  if (doc.type === 'eventpage') {
+    let parent = 'event'
+    if (doc.document && doc.document.data) {
+      if (doc.document.data.event_link)
+        parent = doc.document.data.event_link.uid
+    }
+    return `/${parent}/${doc.uid}`
   }
 
   // Backup for all other types

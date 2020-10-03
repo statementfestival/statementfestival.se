@@ -25,6 +25,8 @@ export default withPreviewResolver(PreviewPage, {
     if (doc.type === 'schedule') return `/${doc.uid}`
     if (doc.type === 'page') return `/${doc.uid}`
     if (doc.type === 'lineup') return `/${doc.uid}`
+    if (doc.type === 'eventhomepage') return `/${doc.uid}`
+    if (doc.type === 'eventpage') return `/event/${doc.uid}`
     return '/'
   }
 })

@@ -90,7 +90,7 @@ const Menu = ({ links }) => {
           [styles.visible]: !open || (open && exiting)
         })}
         href="#navigation"
-        onClick={event => toggle(event, true)}
+        onClick={(event) => toggle(event, true)}
       >
         <svg ref={burger} className={styles.icon} />
         <span className={'visuallyHidden'}>Meny</span>
@@ -101,7 +101,7 @@ const Menu = ({ links }) => {
           [styles.visible]: open && !exiting
         })}
         href="#main"
-        onClick={event => toggle(event, true)}
+        onClick={(event) => toggle(event, true)}
       >
         <svg ref={close} className={styles.icon} />
         <span className={'visuallyHidden'}>Stäng</span>
@@ -128,8 +128,15 @@ const Menu = ({ links }) => {
             }
 
             /* Currently, only these page types are supported in menu */
-            const supported = ['page', 'lineup', 'schedule']
-            if (!supported.some(p => p === item.link.type)) {
+            const supported = [
+              'page',
+              'lineup',
+              'schedule',
+              'homepage',
+              'eventhomepage',
+              'eventpage'
+            ]
+            if (!supported.some((p) => p === item.link.type)) {
               return null
             }
 
@@ -147,7 +154,7 @@ const Menu = ({ links }) => {
                     links[index + 1] && links[index + 1].appearance === 'button'
                 })}
                 key={`link-${index}`}
-                to={linkResolver({ type: item.link.type, uid: item.link.uid })}
+                to={linkResolver(item.link)}
               >
                 {item.title}
               </Link>
