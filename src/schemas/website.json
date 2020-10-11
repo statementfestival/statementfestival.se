@@ -8,7 +8,7 @@
             "type": "Link",
             "config": {
               "select": "document",
-              "customtypes": ["page", "lineup", "schedule"],
+              "customtypes": ["page", "lineup", "schedule", "eventhomepage"],
               "label": "Link",
               "placeholder": "Link to internal content"
             }
