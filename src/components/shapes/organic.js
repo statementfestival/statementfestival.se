@@ -4,7 +4,6 @@ import React from 'react'
  * SVG shape that is used to create a parallax effect
  */
 const Organic = ({ className = {}, flipped = false, style = {}, fill }) => {
-  console.log('fill', fill)
   return (
     <svg
       pointerEvents="none"
