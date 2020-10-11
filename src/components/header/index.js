@@ -5,13 +5,19 @@ import React from 'react'
 import Logo from '../logo'
 import styles from './styles.module.css'
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, customLogo, home }) => {
   return (
     <header className={styles.header}>
-      <Link className={styles.link} to="/">
-        <div className={styles.logo}>
-          <Logo />
-        </div>
+      <Link className={styles.link} to={home}>
+        {customLogo ? (
+          <div className={styles.customLogo}>
+            <img src={customLogo.url} />
+          </div>
+        ) : (
+          <div className={styles.logo}>
+            <Logo />
+          </div>
+        )}
         <h1 className={'visuallyHidden'}>{siteTitle}</h1>
       </Link>
     </header>

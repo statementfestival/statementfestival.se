@@ -54,7 +54,7 @@ const EventHomePage = ({ data }) => {
     return slice
   })
   return (
-    <Page theme="event" footer={doc.data}>
+    <Page theme="event" footer={doc.data} home={doc.url} logo={doc.data.logo}>
       <Head title={title.text} type="event" />
       <PageParallax progress={progress} inverted theme="dark" />
       <PageSection size="full">
@@ -69,7 +69,11 @@ export const query = graphql`
   query($uid: String) {
     prismicEventhomepage(uid: { eq: $uid }) {
       prismicId
+      url
       data {
+        logo {
+          url
+        }
         menu_links {
           appearance
           title

@@ -17,12 +17,15 @@ const EventPage = ({ data }) => {
     (item) => item === doc.uid
   )
 
-  const footer = doc.data.event_link && doc.data.event_link.document
+  let home, logo, footer
+  if (doc.data.event_link && doc.data.event_link.document) {
+    home = doc.data.event_link.document.url
+    logo = doc.data.event_link.document.data.logo
+    footer = doc.data.event_link.document.data
+  }
+
   return (
-    <Page
-      theme="event"
-      footer={footer ? doc.data.event_link.document.data : false}
-    >
+    <Page theme="event" home={home} logo={logo} footer={footer}>
       <Head
         type="event"
         title={doc.data.title.text}
@@ -51,7 +54,11 @@ export const query = graphql`
           document {
             ... on PrismicEventhomepage {
               id
+              url
               data {
+                logo {
+                  url
+                }
                 menu_links {
                   appearance
                   title

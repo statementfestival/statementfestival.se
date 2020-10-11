@@ -5,10 +5,15 @@
   padding-top: 2rem;
 }
 
-.logo {
+.logo,
+.customLogo {
   height: 2.6rem;
   width: 9.375rem;
   margin: 0 auto 0.5rem;
+}
+
+.customLogo {
+  height: auto;
 }
 
 .title {
@@ -33,10 +38,15 @@
 }
 
 @media (--tablet-up) {
-  .logo {
+  .logo,
+  .customLogo {
     margin: 0 auto 0.6rem;
     height: 4.8125rem;
     width: 17.3rem;
+  }
+
+  .customLogo {
+    height: auto;
   }
 
   .visible {

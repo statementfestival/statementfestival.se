@@ -9,7 +9,7 @@ import PageSection from '../pageSection'
 
 import styles from './styles.module.css'
 
-const Page = ({ children, footer, type = 'regular' }) => {
+const Page = ({ children, footer, logo, type = 'regular', home = '/' }) => {
   const data = useStaticQuery(graphql`
     {
       prismicWebsite {
@@ -26,7 +26,7 @@ const Page = ({ children, footer, type = 'regular' }) => {
   return (
     <div className={styles.page} id="main">
       <PageSection size="full">
-        <Header siteTitle={doc.data.site_title} />
+        <Header home={home} siteTitle={doc.data.site_title} customLogo={logo} />
       </PageSection>
       <main
         className={objstr({

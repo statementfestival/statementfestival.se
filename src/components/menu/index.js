@@ -9,7 +9,7 @@ import { isClient } from '../../utils'
 import Logo from '../logo'
 import styles from './styles.module.css'
 
-const Menu = ({ links }) => {
+const Menu = ({ links, customLogo, home = '/' }) => {
   const [open, setOpen] = useState(false)
   const [exiting, setIsExiting] = useState(false)
 
@@ -115,10 +115,16 @@ const Menu = ({ links }) => {
         id="navigation"
         onAnimationEnd={onanimationend}
       >
-        <Link className={styles.logoContainer} onClick={toggle} to="/">
-          <div className={styles.logo}>
-            <Logo />
-          </div>
+        <Link className={styles.logoContainer} onClick={toggle} to={home}>
+          {customLogo ? (
+            <div className={styles.customLogo}>
+              <img src={customLogo.url} />
+            </div>
+          ) : (
+            <div className={styles.logo}>
+              <Logo />
+            </div>
+          )}
           <h1 className={'visuallyHidden'}>Start</h1>
         </Link>
         <div className={styles.content}>
