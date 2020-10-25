@@ -1,0 +1,90 @@
+.shape {
+  position: absolute;
+  transform: translateY(var(--transform, 0));
+  z-index: -1;
+}
+
+.circle {
+  right: -20%;
+  top: 80%;
+  height: 18rem;
+  width: 18rem;
+}
+
+.organic {
+  height: auto;
+  left: -10%;
+  top: 30%;
+  width: 100vw;
+}
+
+.leftHand {
+  left: -5%;
+  top: 20%;
+  height: 15rem;
+  width: auto;
+}
+
+.rightHand {
+  right: 5%;
+  bottom: 30%;
+  height: 15rem;
+  width: auto;
+}
+
+.coin {
+  right: 5%;
+  bottom: 15%;
+  height: 8rem;
+  width: 8rem;
+}
+
+.coins {
+  left: 5%;
+  top: 5%;
+  height: 10rem;
+  width: 10rem;
+}
+
+@media (--tablet-up) {
+  .organic {
+    left: -20%;
+    top: 23%;
+    width: 75vw;
+  }
+
+  .circle {
+    right: -5%;
+    top: 60%;
+    height: 25rem;
+    width: 25rem;
+  }
+
+  .leftHand {
+    left: 5%;
+    top: 40%;
+    height: 20rem;
+    width: auto;
+  }
+
+  .coins {
+    left: 5%;
+    top: 7%;
+    height: auto;
+    width: 25vw;
+  }
+
+  .rightHand {
+    right: 0;
+    bottom: 10%;
+    height: 25rem;
+    width: auto;
+  }
+
+  .coin {
+    right: 15%;
+    bottom: 10%;
+    height: 15vw;
+    width: 15vw;
+  }
+}
