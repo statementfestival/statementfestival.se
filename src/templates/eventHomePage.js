@@ -10,7 +10,7 @@ import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import Hero from '../components/hero'
 import SliceRenderer from '../components/sliceRenderer'
-import PageParallax from '../components/parallax'
+import EventPageParallax from '../components/parallax/event'
 
 const EventHomePage = ({ data }) => {
   const [progress, setProgress] = useState(0)
@@ -56,7 +56,7 @@ const EventHomePage = ({ data }) => {
   return (
     <Page theme="event" footer={doc.data} home={doc.url} logo={doc.data.logo}>
       <Head title={title.text} type="event" />
-      <PageParallax progress={progress} inverted theme="dark" />
+      <EventPageParallax progress={progress} />
       <PageSection size="full">
         <Hero {...heroData} />
       </PageSection>
@@ -73,6 +73,7 @@ export const query = graphql`
       data {
         logo {
           url
+          alt
         }
         menu_links {
           appearance

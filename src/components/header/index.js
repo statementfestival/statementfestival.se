@@ -11,7 +11,7 @@ const Header = ({ siteTitle, customLogo, home }) => {
       <Link className={styles.link} to={home}>
         {customLogo ? (
           <div className={styles.customLogo}>
-            <img src={customLogo.url} />
+            <img src={customLogo.url} alt={customLogo.alt} />
           </div>
         ) : (
           <div className={styles.logo}>

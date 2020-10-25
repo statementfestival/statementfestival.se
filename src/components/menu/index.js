@@ -118,7 +118,7 @@ const Menu = ({ links, customLogo, home = '/' }) => {
         <Link className={styles.logoContainer} onClick={toggle} to={home}>
           {customLogo ? (
             <div className={styles.customLogo}>
-              <img src={customLogo.url} />
+              <img src={customLogo.url} alt={customLogo.alt} />
             </div>
           ) : (
             <div className={styles.logo}>

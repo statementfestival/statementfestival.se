@@ -58,6 +58,7 @@ export const query = graphql`
               data {
                 logo {
                   url
+                  alt
                 }
                 menu_links {
                   appearance
