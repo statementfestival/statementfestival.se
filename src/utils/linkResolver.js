@@ -20,7 +20,8 @@ export const linkResolver = (doc) => {
   }
 
   if (doc.type === 'eventpage') {
-    let parent = 'projekt' // TODO: This should not be hardcoded
+    /* Right now, there can be only one event page */
+    let parent = process.env.EVENT_PAGE_PARENT
     if (doc.document && doc.document.data) {
       if (doc.document.data.event_link)
         parent = doc.document.data.event_link.uid

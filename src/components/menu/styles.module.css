@@ -43,8 +43,13 @@
     width: 9.375rem;
     margin: 2rem auto 0.5rem;
   }
+
   .customLogo {
     height: auto;
+  }
+
+  .customLogo img {
+    width: 100%;
   }
 
   .container:target,
