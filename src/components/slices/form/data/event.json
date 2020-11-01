@@ -1,0 +1,95 @@
+[
+  {
+    "title": "Ingår du/ni i Statements målgrupp?",
+    "type": "radio",
+    "name": "MMERGE3",
+    "value": false,
+    "options": [
+      {
+        "id": "mce-MMERGE3-0",
+        "label": "Ja",
+        "value": "Ja"
+      },
+      {
+        "id": "mce-MMERGE3-1",
+        "label": "Nej",
+        "value": "Nej"
+      }
+    ],
+    "required": true
+  },
+  {
+    "label": "Kontaktperson",
+    "type": "text",
+    "name": "FNAME",
+    "id": "mce-FNAME",
+    "value": "",
+    "placeholder": "För- och efternamn",
+    "required": false
+  },
+  {
+    "label": "E-post",
+    "type": "email",
+    "name": "EMAIL",
+    "id": "mce-EMAIL",
+    "value": "",
+    "autoComplete": "email",
+    "placeholder": "Ex. minou.johansson@adress.se",
+    "required": true
+  },
+  {
+    "label": "Telefonnummer",
+    "type": "text",
+    "name": "PHONE",
+    "id": "mce-PHONE",
+    "value": "",
+    "autoComplete": "phone",
+    "placeholder": "Ex. 070-123 45 67",
+    "required": false
+  },
+  {
+    "label": "Typ av organisation",
+    "type": "text",
+    "name": "MMERGE2",
+    "id": "mc-MMERGE2",
+    "value": "",
+    "placeholder": "Tex. Förening",
+    "required": false
+  },
+  {
+    "label": "Beskriv din idé i korthet (max 500 tecken)",
+    "type": "textarea",
+    "name": "MMERGE5",
+    "id": "mce-MMERGE5",
+    "value": "",
+    "placeholder": "Idén handlar om att...",
+    "required": true
+  },
+  {
+    "label": "Vilket syfte har ditt projekt? Vad vill du uppnå?",
+    "type": "textarea",
+    "name": "MMERGE6",
+    "id": "mce-MMERGE6",
+    "value": "",
+    "placeholder": "Syftet med projektet är att...",
+    "required": true
+  },
+  {
+    "label": "Några andra tankar?",
+    "type": "textarea",
+    "name": "MMERGE7",
+    "id": "mce-MMERGE7",
+    "value": "",
+    "placeholder": "Jag tänker att...",
+    "required": true
+  },
+  {
+    "label": "Länk till projektplan med budget",
+    "type": "text",
+    "name": "MMERGE8",
+    "id": "mce-MMERGE8",
+    "value": "",
+    "placeholder": "Ex. https://www.webbplats.se",
+    "required": true
+  }
+]
