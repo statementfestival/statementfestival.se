@@ -50,14 +50,25 @@ module.exports = {
           lineup: require('./src/schemas/lineup.json'),
           page: require('./src/schemas/page.json'),
           schedule: require('./src/schemas/schedule.json'),
-          website: require('./src/schemas/website.json')
+          website: require('./src/schemas/website.json'),
+          eventhomepage: require('./src/schemas/eventhomepage.json'),
+          eventpage: require('./src/schemas/eventpage.json')
         },
         prismicToolbar: true,
         linkResolver: ({ node, key, value }) => (doc) => {
+          // TODO: Make sure that event_link exists
           if (doc.type === 'artist') return `/line-up/${doc.uid}`
           if (doc.type === 'schedule') return `/${doc.uid}`
           if (doc.type === 'page') return `/${doc.uid}`
           if (doc.type === 'lineup') return `/${doc.uid}`
+          if (doc.type === 'eventhomepage') return `/${doc.uid}`
+          if (doc.type === 'eventpage') {
+            let parent = 'event'
+            if (doc.data && doc.data.event_link) {
+              parent = doc.data.event_link.uid
+            }
+            return `/${parent}/${doc.uid}`
+          }
           return '/'
         }
       }

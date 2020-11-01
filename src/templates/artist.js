@@ -17,7 +17,6 @@ const ArtistPage = ({ data }) => {
   let details = schedule ? getArtistByUID(schedule.data.body, doc.uid) : null
 
   const tickets = data.prismicPage
-  console.log(tickets)
 
   // Filter out main image since this should visually be placed above page title
   const image = doc.data.body.find((item) => item.slice_type === 'image')

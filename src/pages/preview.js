@@ -5,7 +5,7 @@ import Page from '../components/page'
 import PageSection from '../components/pageSection'
 import Head from '../components/head'
 
-const PreviewPage = ({ isPreview, isLoading }) => {
+const PreviewPage = ({ isPreview }) => {
   if (isPreview === false) return 'Not a preview!'
 
   return (
@@ -25,6 +25,14 @@ export default withPreviewResolver(PreviewPage, {
     if (doc.type === 'schedule') return `/${doc.uid}`
     if (doc.type === 'page') return `/${doc.uid}`
     if (doc.type === 'lineup') return `/${doc.uid}`
+    if (doc.type === 'eventhomepage') return `/${doc.uid}`
+    if (doc.type === 'eventpage') {
+      let parent = 'event'
+      if (doc.data && doc.data.event_link) {
+        parent = doc.data.event_link.uid
+      }
+      return `/${parent}/${doc.uid}`
+    }
     return '/'
   }
 })

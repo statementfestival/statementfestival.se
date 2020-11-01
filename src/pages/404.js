@@ -6,6 +6,8 @@ import ArtistPage from '../templates/artist'
 import LineupPage from '../templates/lineup'
 import SinglePage from '../templates/page'
 import SchedulePage from '../templates/schedule'
+import EventHomePage from '../templates/eventHomePage'
+import EventPage from '../templates/eventPage'
 
 import Page from '../components/page'
 import Head from '../components/head'
@@ -55,6 +57,8 @@ export default withUnpublishedPreview(NotFoundPage, {
     artist: ArtistPage,
     lineup: LineupPage,
     page: SinglePage,
-    schedule: SchedulePage
+    schedule: SchedulePage,
+    eventhomepage: EventHomePage,
+    eventpage: EventPage
   }
 })

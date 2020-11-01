@@ -5,7 +5,7 @@ import { linkResolver } from '../../utils/linkResolver'
 
 import styles from './styles.module.css'
 
-const Footer = () => {
+const Footer = ({ content }) => {
   const data = useStaticQuery(graphql`
     {
       prismicWebsite {
@@ -39,18 +39,18 @@ const Footer = () => {
       }
     }
   `)
-  const doc = data.prismicWebsite
+
+  let doc = data.prismicWebsite
   if (!doc) return null
 
+  /* Use page provided content if available */
+  const opts = content || doc.data
+
   const socials =
-    doc.data.social_media && doc.data.social_media.length
-      ? doc.data.social_media
-      : []
+    opts.social_media && opts.social_media.length ? opts.social_media : []
 
   const internalLinks =
-    doc.data.internal_links && doc.data.internal_links.length
-      ? doc.data.internal_links
-      : []
+    opts.internal_links && opts.internal_links.length ? opts.internal_links : []
 
   return (
     <footer className={styles.footer}>

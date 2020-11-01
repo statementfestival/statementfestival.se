@@ -37,15 +37,24 @@
     display: block;
   }
 
-  .logo {
+  .logo,
+  .customLogo {
     height: 2.6rem;
     width: 9.375rem;
     margin: 2rem auto 0.5rem;
   }
 
+  .customLogo {
+    height: auto;
+  }
+
+  .customLogo img {
+    width: 100%;
+  }
+
   .container:target,
   .container.open {
-    animation: is-entering 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
+    animation: is-entering 450ms cubic-bezier(0.94, 0.01, 0.18, 1.17) forwards;
     background-color: var(--nude);
     display: block;
     height: 100vh;
@@ -58,7 +67,7 @@
   }
 
   .container.open.exiting {
-    animation: is-exiting 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
+    animation: is-exiting 450ms cubic-bezier(0.94, 0.01, 0.18, 1.17) forwards;
   }
 
   .content {
@@ -89,12 +98,12 @@
   .container.open .link,
   .container:target .button,
   .container.open .button {
-    animation: is-entering 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
+    animation: is-entering 450ms cubic-bezier(0.94, 0.01, 0.18, 1.17) forwards;
   }
 
   .container.is-exiting .link,
   .container.is-exiting .button {
-    animation: is-exiting 450ms cubic-bezier(.94, .01, .18, 1.17) forwards;
+    animation: is-exiting 450ms cubic-bezier(0.94, 0.01, 0.18, 1.17) forwards;
   }
 
   .link:not(.lastLink) {
