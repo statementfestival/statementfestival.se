@@ -1,15 +1,39 @@
-import React from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { graphql } from 'gatsby'
+import nanoraf from 'nanoraf'
 import { withPreview } from 'gatsby-source-prismic'
+
+import { getScrollPosition, vh } from '../utils'
 
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
+import EventPageParallax from '../components/parallax/event'
+
+// TODO: Add Select element
 
 const PAGE_WITH_VISIBLE_TITLE = ['biljetter', 'rekrytering']
 
 const EventPage = ({ data }) => {
+  const [progress, setProgress] = useState(0)
+
+  useLayoutEffect(() => {
+    /**
+     * Sets progress to a value between 0 and 1 depending on how far user
+     * has scrolled
+     */
+    const handleScroll = nanoraf(() => {
+      const total = window.document.documentElement.scrollHeight
+      const { y } = getScrollPosition({ useWindow: true })
+      const viewportHeight = vh()
+      setProgress(y / (total - viewportHeight))
+    })
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
   const doc = data.prismicEventpage
   if (!doc) return null
 
@@ -32,6 +56,7 @@ const EventPage = ({ data }) => {
         description={doc.data.meta_description}
         image={doc.data.og_image ? doc.data.og_image.url : null}
       />
+      <EventPageParallax progress={progress} />
       {renderTitleVisually ? (
         <PageSection>
           <h1>{doc.data.title.text}</h1>
