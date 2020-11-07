@@ -3,6 +3,7 @@ import { RichText } from 'prismic-reactjs'
 import htmlSerializer from '../../../utils/htmlSerializer'
 
 import Input from '../../input'
+import FileInput from '../../fileInput'
 import Select from '../../select'
 import Textarea from '../../textarea'
 import RadioGroup from '../../radioGroup'
@@ -16,6 +17,7 @@ import eventData from './data/event.json'
 
 import styles from './styles.module.css'
 
+// TODO: Test forms without file inputs
 const Form = ({ slice }) => {
   let data = []
   if (slice.primary.form_type === 'Ticket') data = ticketData
@@ -76,13 +78,39 @@ const Form = ({ slice }) => {
 
     setInvalid([])
 
-    fetch(url, {
-      mode: 'no-cors',
-      method: 'post',
-      body: new FormData(event.target)
-    })
-      .then(() => setSubmitted(true))
-      .catch((error) => setFailed(true))
+    const form = event.currentTarget
+    const fileInput = data.find((entry) => entry.type === 'file')
+    /* Upload file locally before posting to external form */
+    if (fileInput) {
+      const file = new FormData()
+      file.set('upfile', form[fileInput.name].files[0])
+
+      fetch('/api/upload.php', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: file
+      })
+        .then((body) => body.json())
+        .then((res) => {
+          const body = new FormData(form)
+          body.set(fileInput.name, res.filename)
+          fetch(url, { mode: 'no-cors', method: 'POST', body })
+            .then(() => setSubmitted(true))
+            .catch((error) => setFailed(true))
+        })
+        .catch((error) => {
+          console.error(error)
+          setFailed(true)
+        })
+    } else {
+      fetch(url, {
+        mode: 'no-cors',
+        method: 'post',
+        body: new FormData(event.target)
+      })
+        .then(() => setSubmitted(true))
+        .catch((error) => setFailed(true))
+    }
   }
 
   const removeError = (name) => {
@@ -212,6 +240,26 @@ const Form = ({ slice }) => {
                       error={
                         invalid.indexOf(item.name) !== -1
                           ? 'Fältet är obligatoriskt'
+                          : null
+                      }
+                      onChange={(event) => {
+                        removeError(item.name)
+                        setTextValue({
+                          ...textValue,
+                          [event.target.name]: event.target.value
+                        })
+                      }}
+                    />
+                  )
+                case 'file':
+                  // TODO: should this be a controlled element?
+                  return (
+                    <FileInput
+                      {...item}
+                      key={index}
+                      error={
+                        invalid.indexOf(item.name) !== -1
+                          ? 'Du måste ladda upp en fil'
                           : null
                       }
                       onChange={(event) => {
