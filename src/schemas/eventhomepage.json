@@ -134,10 +134,8 @@
           "link": {
             "type": "Link",
             "config": {
-              "select": "document",
-              "customtypes": ["homepage", "eventpage"],
               "label": "Link",
-              "placeholder": "Link to internal content"
+              "placeholder": "Link to page"
             }
           },
           "title": {
