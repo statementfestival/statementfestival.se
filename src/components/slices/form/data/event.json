@@ -85,12 +85,19 @@
     "required": true
   },
   {
-    "label": "Länk till projektplan med budget",
-    "type": "text",
+    "label": "Ladda upp projektplan med budget",
+    "type": "file",
     "name": "MMERGE8",
     "id": "mce-MMERGE8",
-    "value": "",
-    "placeholder": "Ex. https://www.webbplats.se",
+    "required": true,
+    "accept": "image/png, image/jpeg"
+  },
+  {
+    "label": "Jag har läst och accepterat de allmänna villkoren, samt accepterar att Föreningen Statement behandlar min angivna information under arbetet med 100 KEX.",
+    "type": "checkbox",
+    "name": "gdpr[58300]",
+    "id": "gdpr_58300",
+    "value": false,
     "required": true
   }
 ]
