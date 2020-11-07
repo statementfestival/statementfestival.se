@@ -49,12 +49,13 @@
   },
   {
     "label": "Typ av organisation",
-    "type": "text",
+    "type": "select",
     "name": "MMERGE2",
     "id": "mc-MMERGE2",
     "value": "",
-    "placeholder": "Tex. Förening",
-    "required": false
+    "placeholder": "Välj ett alternativ",
+    "required": true,
+    "options": ["Företag", "Förening", "Privatperson(er)"]
   },
   {
     "label": "Beskriv din idé i korthet (max 500 tecken)",

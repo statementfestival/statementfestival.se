@@ -3,6 +3,7 @@ import { RichText } from 'prismic-reactjs'
 import htmlSerializer from '../../../utils/htmlSerializer'
 
 import Input from '../../input'
+import Select from '../../select'
 import Textarea from '../../textarea'
 import RadioGroup from '../../radioGroup'
 import Checkbox from '../../checkbox'
@@ -57,7 +58,6 @@ const Form = ({ slice }) => {
 
   const submit = (event) => {
     event.preventDefault()
-
     const errors = []
     for (let item in textValue) {
       const { required } = data.find((entry) => entry.name === item)
@@ -186,6 +186,26 @@ const Form = ({ slice }) => {
                 case 'email':
                   return (
                     <Input
+                      {...item}
+                      key={index}
+                      value={textValue[item.name]}
+                      error={
+                        invalid.indexOf(item.name) !== -1
+                          ? 'Fältet är obligatoriskt'
+                          : null
+                      }
+                      onChange={(event) => {
+                        removeError(item.name)
+                        setTextValue({
+                          ...textValue,
+                          [event.target.name]: event.target.value
+                        })
+                      }}
+                    />
+                  )
+                case 'select':
+                  return (
+                    <Select
                       {...item}
                       key={index}
                       value={textValue[item.name]}
