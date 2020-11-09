@@ -7,10 +7,8 @@
           "link": {
             "type": "Link",
             "config": {
-              "select": "document",
-              "customtypes": ["page", "lineup", "schedule"],
               "label": "Link",
-              "placeholder": "Link to internal content"
+              "placeholder": "Link to page"
             }
           },
           "title": {

@@ -5,17 +5,21 @@
 @custom-media --desktop-up (min-width: 1200px);
 
 :root {
-  --font-family-display: ActOfRejection, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-sans-serif: HKGrotesk, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-display: ActOfRejection, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-family-sans-serif: HKGrotesk, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
 
   --primary: #fff800;
   --secondary: #eb8cb2;
-  --secondary-variant: #D65D87;
+  --secondary-variant: #d65d87;
   --secondary-variant--transparent: rgba(214, 93, 135, 0.8);
   --white: #ffffff;
   --black: #000;
   --prune: #954587;
-  --nude: #E6A099;
+  --nude: #e6a099;
 
   --font-size-display-headline: 3.2rem;
   --font-size-display-sub: 1.5rem;
@@ -51,7 +55,8 @@
 
 @font-face {
   font-family: ActOfRejection;
-  src: url('../assets/fonts/ActOfRejection/ActofRejection.woff2') format('woff2'),
+  src: url('../assets/fonts/ActOfRejection/ActofRejection.woff2')
+      format('woff2'),
     url('../assets/fonts/ActOfRejection/ActofRejection.woff') format('woff');
   font-weight: normal;
   font-display: block;
@@ -59,60 +64,101 @@
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2') format('woff2'),
-    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff') format('woff');
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff2')
+      format('woff2'),
+    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Light.woff')
+      format('woff');
   font-weight: 200;
   font-display: block;
 }
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff2') format('woff2'),
-    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff') format('woff');
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff2')
+      format('woff2'),
+    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Medium.woff')
+      format('woff');
   font-weight: 400;
   font-display: block;
 }
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2') format('woff2'),
-    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff') format('woff');
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff2')
+      format('woff2'),
+    url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-SemiBold.woff')
+      format('woff');
   font-weight: 600;
   font-display: block;
 }
 
 @font-face {
   font-family: HKGrotesk;
-  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2') format('woff2'),
+  src: url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff2')
+      format('woff2'),
     url('../assets/fonts/HK_Grotesk_webfont/HKGrotesk-Bold.woff') format('woff');
   font-weight: 800;
   font-display: block;
 }
 
 body {
-  background: #0d2f51 linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0% no-repeat padding-box;
+  background: #0d2f51
+    linear-gradient(180deg, #954587 0vh, #393662 100vh, #0d2f51 200vh) 0% 0%
+    no-repeat padding-box;
   min-height: 100vh;
   width: 100%;
   margin: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+body.event {
+  background: #0d2f51
+    linear-gradient(
+      180deg,
+      #052443 0vh,
+      #0d2f51 50vh,
+      #393662 100vh,
+      #683e75 200vh
+    )
+    0% 0% no-repeat padding-box;
+}
+
 @media (--tablet-up) {
   body {
-    background: #0d2f51 linear-gradient(180deg,
+    background: #0d2f51
+      linear-gradient(
+        180deg,
         #954587 0vh,
         #393662 100vh,
-        #0D2F51 200vh,
+        #0d2f51 200vh,
         #363661 300vh,
         #653d74 400vh,
         #393662 500vh,
-        #0D2F51 600vh,
+        #0d2f51 600vh,
         #393662 800vh,
         #653d74 900vh,
         #363661 1000vh,
-        #0D2F51 1100vh) 0% 0% no-repeat padding-box;
+        #0d2f51 1100vh
+      )
+      0% 0% no-repeat padding-box;
   }
 
+  body.event {
+    background: #0d2f51
+      linear-gradient(
+        180deg,
+        #0d2f51 0vh #363661 100vh,
+        #653d74 200vh,
+        #393662 300vh,
+        #0d2f51 400vh,
+        #393662 500vh,
+        #653d74 600vh,
+        #363661 800vh,
+        #0d2f51 900vh,
+        #683e75 1000vh
+      )
+      0% 0% no-repeat padding-box;
+  }
 }
 
 /* Reset button styling before adding custom styles */
@@ -129,7 +175,7 @@ button {
   -moz-appearance: none;
 }
 
-input:not([type=checkbox]):not([type=radio]),
+input:not([type='checkbox']):not([type='radio']),
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -141,12 +187,12 @@ textarea {
 }
 
 textarea:focus,
-input:not([type=checkbox]):not([type=radio]):focus {
+input:not([type='checkbox']):not([type='radio']):focus {
   outline: none;
   border: 3px solid var(--secondary-variant);
 }
 
-input[type=checkbox]:not([type=radio]) {
+input[type='checkbox']:not([type='radio']) {
   outline: none;
 }
 
@@ -169,7 +215,7 @@ ul li {
 
 ul li::before {
   color: var(--primary);
-  content: "\2022";
+  content: '\2022';
   display: inline-block;
   font-size: 1.7em;
   left: -0.9em;

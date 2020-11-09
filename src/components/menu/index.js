@@ -9,7 +9,7 @@ import { isClient } from '../../utils'
 import Logo from '../logo'
 import styles from './styles.module.css'
 
-const Menu = ({ links }) => {
+const Menu = ({ links, customLogo, home = '/' }) => {
   const [open, setOpen] = useState(false)
   const [exiting, setIsExiting] = useState(false)
 
@@ -90,7 +90,7 @@ const Menu = ({ links }) => {
           [styles.visible]: !open || (open && exiting)
         })}
         href="#navigation"
-        onClick={event => toggle(event, true)}
+        onClick={(event) => toggle(event, true)}
       >
         <svg ref={burger} className={styles.icon} />
         <span className={'visuallyHidden'}>Meny</span>
@@ -101,7 +101,7 @@ const Menu = ({ links }) => {
           [styles.visible]: open && !exiting
         })}
         href="#main"
-        onClick={event => toggle(event, true)}
+        onClick={(event) => toggle(event, true)}
       >
         <svg ref={close} className={styles.icon} />
         <span className={'visuallyHidden'}>Stäng</span>
@@ -115,10 +115,16 @@ const Menu = ({ links }) => {
         id="navigation"
         onAnimationEnd={onanimationend}
       >
-        <Link className={styles.logoContainer} onClick={toggle} to="/">
-          <div className={styles.logo}>
-            <Logo />
-          </div>
+        <Link className={styles.logoContainer} onClick={toggle} to={home}>
+          {customLogo ? (
+            <div className={styles.customLogo}>
+              <img src={customLogo.url} alt={customLogo.alt} />
+            </div>
+          ) : (
+            <div className={styles.logo}>
+              <Logo />
+            </div>
+          )}
           <h1 className={'visuallyHidden'}>Start</h1>
         </Link>
         <div className={styles.content}>
@@ -128,8 +134,15 @@ const Menu = ({ links }) => {
             }
 
             /* Currently, only these page types are supported in menu */
-            const supported = ['page', 'lineup', 'schedule']
-            if (!supported.some(p => p === item.link.type)) {
+            const supported = [
+              'page',
+              'lineup',
+              'schedule',
+              'homepage',
+              'eventhomepage',
+              'eventpage'
+            ]
+            if (!supported.some((p) => p === item.link.type)) {
               return null
             }
 
@@ -147,7 +160,7 @@ const Menu = ({ links }) => {
                     links[index + 1] && links[index + 1].appearance === 'button'
                 })}
                 key={`link-${index}`}
-                to={linkResolver({ type: item.link.type, uid: item.link.uid })}
+                to={linkResolver(item.link)}
               >
                 {item.title}
               </Link>
