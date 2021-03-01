@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { withPreview } from 'gatsby-source-prismic'
 
 import Page from '../components/page'
-import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
-
-const PAGE_WITH_VISIBLE_TITLE = ['biljetter', 'rekrytering']
+import EventPageParallax from '../components/parallax/event'
 
 const EventPage = ({ data }) => {
+  const [progress, setProgress] = useState(0)
+
+  // TODO: Convert to common hook to keep it dry
+  useLayoutEffect(() => {
+    /**
+     * Sets progress to a value between 0 and 1 depending on how far user
+     * has scrolled
+     */
+    const handleScroll = nanoraf(() => {
+      const total = window.document.documentElement.scrollHeight
+      const { y } = getScrollPosition({ useWindow: true })
+      const viewportHeight = vh()
+      setProgress(y / (total - viewportHeight))
+    })
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
   const doc = data.prismicEventpage
   if (!doc) return null
-
-  const renderTitleVisually = PAGE_WITH_VISIBLE_TITLE.some(
-    (item) => item === doc.uid
-  )
 
   let home, logo, footer
   if (doc.data.event_link && doc.data.event_link.document) {
@@ -32,13 +45,8 @@ const EventPage = ({ data }) => {
         description={doc.data.meta_description}
         image={doc.data.og_image ? doc.data.og_image.url : null}
       />
-      {renderTitleVisually ? (
-        <PageSection>
-          <h1>{doc.data.title.text}</h1>
-        </PageSection>
-      ) : (
-        <h1 className="visuallyHidden">{doc.data.title.text}</h1>
-      )}
+      <EventPageParallax progress={progress} />
+      <h1 className="visuallyHidden">{doc.data.title.text}</h1>
       <SliceRenderer slices={doc.data.body} />
     </Page>
   )
