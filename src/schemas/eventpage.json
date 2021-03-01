@@ -150,7 +150,7 @@
               "form_type": {
                 "type": "Select",
                 "config": {
-                  "options": ["Ticket", "Recruitment"],
+                  "options": ["Ticket", "Recruitment", "Event", "Merchkit"],
                   "default_value": "Ticket",
                   "label": "Form type",
                   "placeholder": "Select which form to use"
