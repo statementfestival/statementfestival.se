@@ -10,7 +10,8 @@ import Button from '../../button'
 import Error from '../../error'
 
 import ticketData from './data/ticket.json'
-import recruitmentData from './data/recruitment.json' // Update json with real data
+import recruitmentData from './data/recruitment.json'
+import merchkitData from './data/merchkit.json'
 
 import styles from './styles.module.css'
 
