@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { graphql } from 'gatsby'
+import nanoraf from 'nanoraf'
 import { withPreview } from 'gatsby-source-prismic'
+
+import { getScrollPosition, vh } from '../utils'
 
 import Page from '../components/page'
 import Head from '../components/head'
