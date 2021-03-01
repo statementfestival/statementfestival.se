@@ -227,7 +227,7 @@ const Form = ({ slice }) => {
               }
             })}
             <div className={styles.button}>
-              <Button type="submit">Anmäl dig</Button>
+              <Button type="submit">Skicka</Button>
               {failed || invalid.length ? (
                 <div className={styles.error}>
                   <Error
