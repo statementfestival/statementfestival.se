@@ -50,7 +50,7 @@
     "required": true
   },
   {
-    "label": "Jag anmäler mig till listan",
+    "label": "Jag godkänner att Statement sparar mina uppgifter",
     "type": "checkbox",
     "name": "gdpr[58856]",
     "id": "gdpr_58856",
