@@ -1,0 +1,60 @@
+[
+  {
+    "label": "E-post",
+    "type": "email",
+    "name": "EMAIL",
+    "id": "mc-EMAIL",
+    "value": "",
+    "autoComplete": "email",
+    "placeholder": "Ex. minou.johansson@adress.se",
+    "required": true
+  },
+  {
+    "label": "Namn",
+    "type": "text",
+    "name": "NAME",
+    "id": "mce-NAME",
+    "value": "",
+    "autoComplete": "name",
+    "placeholder": "Ex. Minou Johansson",
+    "required": true
+  },
+  {
+    "label": "Adress",
+    "type": "text",
+    "name": "ADDRESS",
+    "id": "mce-ADDRESS",
+    "value": "",
+    "autoComplete": "address",
+    "placeholder": "Storgatan 1",
+    "required": true
+  },
+  {
+    "label": "Postnummer",
+    "type": "text",
+    "name": "ZIP",
+    "id": "mce-ZIP",
+    "value": "",
+    "autoComplete": "zipcode",
+    "placeholder": "123 45",
+    "required": true
+  },
+  {
+    "label": "Ort",
+    "type": "text",
+    "name": "CITY",
+    "id": "mce-CITY",
+    "value": "",
+    "autoComplete": "city",
+    "placeholder": "Umeå",
+    "required": true
+  },
+  {
+    "label": "Jag anmäler mig till listan",
+    "type": "checkbox",
+    "name": "gdpr[58856]",
+    "id": "gdpr_58856",
+    "value": false,
+    "required": true
+  }
+]
