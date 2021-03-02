@@ -1,9 +1,8 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import nanoraf from 'nanoraf'
 import { withPreview } from 'gatsby-source-prismic'
 
-import { getScrollPosition, vh } from '../utils'
+import { useProgress } from '../hooks/useProgress'
 
 import Head from '../components/head'
 import ImageGrid from '../components/slices/imageGrid/lineup'
@@ -14,24 +13,8 @@ import SegmentedControl from '../components/segmentedControl'
 import Text from '../components/text'
 
 const LineupPage = ({ data }) => {
-  const [progress, setProgress] = useState(0)
+  const [progress] = useProgress()
   const [selectedIndex, setSelectedIndex] = useState(0)
-
-  useLayoutEffect(() => {
-    /**
-     * Sets progress to a value between 0 and 1 depending on how far user
-     * has scrolled
-     */
-    const handleScroll = nanoraf(() => {
-      const total = window.document.documentElement.scrollHeight
-      const { y } = getScrollPosition({ useWindow: true })
-      const viewportHeight = vh()
-      setProgress(y / (total - viewportHeight))
-    })
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
 
   const doc = data.prismicLineup
   if (!doc) return null

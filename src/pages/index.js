@@ -1,9 +1,9 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import nanoraf from 'nanoraf'
 import { withPreview } from 'gatsby-source-prismic'
 
-import { getScrollPosition, vh, getDateObject } from '../utils'
+import { getDateObject } from '../utils'
+import { useProgress } from '../hooks/useProgress'
 
 import Page from '../components/page'
 import PageSection from '../components/pageSection'
@@ -13,23 +13,7 @@ import SliceRenderer from '../components/sliceRenderer'
 import PageParallax from '../components/parallax'
 
 const IndexPage = ({ data }) => {
-  const [progress, setProgress] = useState(0)
-
-  useLayoutEffect(() => {
-    /**
-     * Sets progress to a value between 0 and 1 depending on how far user
-     * has scrolled
-     */
-    const handleScroll = nanoraf(() => {
-      const total = window.document.documentElement.scrollHeight
-      const { y } = getScrollPosition({ useWindow: true })
-      const viewportHeight = vh()
-      setProgress(y / (total - viewportHeight))
-    })
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
+  const [progress] = useProgress()
 
   const doc = data.prismicHomepage
   if (!doc) return null
