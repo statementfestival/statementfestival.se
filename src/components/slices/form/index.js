@@ -10,7 +10,8 @@ import Button from '../../button'
 import Error from '../../error'
 
 import ticketData from './data/ticket.json'
-import recruitmentData from './data/recruitment.json' // Update json with real data
+import recruitmentData from './data/recruitment.json'
+import merchkitData from './data/merchkit.json'
 
 import styles from './styles.module.css'
 
@@ -18,6 +19,7 @@ const Form = ({ slice }) => {
   let data = []
   if (slice.primary.form_type === 'Ticket') data = ticketData
   if (slice.primary.form_type === 'Recruitment') data = recruitmentData
+  if (slice.primary.form_type === 'Merchkit') data = merchkitData
 
   const [submitted, setSubmitted] = useState(false)
   const [failed, setFailed] = useState(false)
@@ -53,12 +55,12 @@ const Form = ({ slice }) => {
 
   const { url } = slice.primary.form_address
 
-  const submit = event => {
+  const submit = (event) => {
     event.preventDefault()
 
     const errors = []
     for (let item in textValue) {
-      const { required } = data.find(entry => entry.name === item)
+      const { required } = data.find((entry) => entry.name === item)
       if (required && (!textValue[item] || textValue[item] === '')) {
         const index = errors.indexOf(item)
         if (index === -1) {
@@ -80,12 +82,12 @@ const Form = ({ slice }) => {
       body: new FormData(event.target)
     })
       .then(() => setSubmitted(true))
-      .catch(error => setFailed(true))
+      .catch((error) => setFailed(true))
   }
 
-  const removeError = name => {
+  const removeError = (name) => {
     if (invalid.indexOf(name) !== -1) {
-      const filtered = invalid.filter(error => error !== name)
+      const filtered = invalid.filter((error) => error !== name)
       setInvalid(filtered)
     }
   }
@@ -135,7 +137,7 @@ const Form = ({ slice }) => {
                       }
                       value="Y"
                       checked={textValue[item.name]}
-                      onChange={event => {
+                      onChange={(event) => {
                         setTextValue({
                           ...textValue,
                           [item.name]: event.target.checked
@@ -163,7 +165,7 @@ const Form = ({ slice }) => {
                       {...item}
                       key={index}
                       checked={textValue[item.name]}
-                      onChange={event => {
+                      onChange={(event) => {
                         removeError(item.name)
 
                         if (lookalike) {
@@ -192,7 +194,7 @@ const Form = ({ slice }) => {
                           ? 'Fältet är obligatoriskt'
                           : null
                       }
-                      onChange={event => {
+                      onChange={(event) => {
                         removeError(item.name)
                         setTextValue({
                           ...textValue,
@@ -212,7 +214,7 @@ const Form = ({ slice }) => {
                           ? 'Fältet är obligatoriskt'
                           : null
                       }
-                      onChange={event => {
+                      onChange={(event) => {
                         removeError(item.name)
                         setTextValue({
                           ...textValue,
@@ -226,7 +228,7 @@ const Form = ({ slice }) => {
               }
             })}
             <div className={styles.button}>
-              <Button type="submit">Anmäl dig</Button>
+              <Button type="submit">Skicka</Button>
               {failed || invalid.length ? (
                 <div className={styles.error}>
                   <Error
