@@ -1,5 +1,15 @@
 [
   {
+    "label": "Namn",
+    "type": "text",
+    "name": "NAME",
+    "id": "mce-NAME",
+    "value": "",
+    "autoComplete": "name",
+    "placeholder": "Ex. Minou Johansson",
+    "required": true
+  },
+  {
     "label": "E-post",
     "type": "email",
     "name": "EMAIL",
@@ -10,13 +20,13 @@
     "required": true
   },
   {
-    "label": "Namn",
+    "label": "Telefonnummer",
     "type": "text",
-    "name": "NAME",
-    "id": "mce-NAME",
+    "name": "PHONE",
+    "id": "mce-PHONE",
     "value": "",
-    "autoComplete": "name",
-    "placeholder": "Ex. Minou Johansson",
+    "autoComplete": "phone",
+    "placeholder": "Ex. 070-123 45 67",
     "required": true
   },
   {
