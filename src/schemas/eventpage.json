@@ -137,6 +137,22 @@
                   "label": "Image link",
                   "placeholder": "Link to external website or internal content"
                 }
+              },
+              "image_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Name or title (optional)"
+                }
+              },
+              "image_description": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Description (optional)"
+                }
               }
             }
           },

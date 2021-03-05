@@ -124,6 +124,10 @@ export const query = graphql`
               image_link {
                 url
               }
+              image_description {
+                raw
+              }
+              image_title
             }
           }
           ... on PrismicEventpageBodyFaq {
