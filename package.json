@@ -2,7 +2,7 @@
   "name": "statement-website",
   "private": true,
   "description": "Website for Statement Festival",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "dependencies": {
     "gatsby": "^2.24.53",
     "gatsby-image": "^2.4.16",
