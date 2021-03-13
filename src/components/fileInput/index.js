@@ -26,6 +26,7 @@ const FileInput = ({
         accept={accept}
       />
     </label>
+    <p className={styles.valid}>Tillåtna format: {accept}</p>
     {error ? <Error message={error} /> : null}
   </div>
 )

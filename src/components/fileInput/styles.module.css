@@ -16,6 +16,10 @@
   margin-bottom: 0.4rem;
 }
 
+.valid {
+  font-size: var(--font-size-description);
+}
+
 .input {
   cursor: pointer;
   background-color: transparent;
