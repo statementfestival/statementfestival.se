@@ -100,7 +100,7 @@
     "id": "mce-MMERGE7",
     "value": "",
     "placeholder": "Jag tänker att...",
-    "required": true
+    "required": false
   },
   {
     "label": "Ladda upp projektplan med budget",
