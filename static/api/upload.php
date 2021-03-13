@@ -39,9 +39,12 @@ try
     // Check MIME Type by yourself.
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     if (false === $ext = array_search($finfo->file($_FILES['upfile']['tmp_name']) , array(
-        'jpg' => 'image/jpeg',
-        'png' => 'image/png',
-        'gif' => 'image/gif'
+        'pdf' => 'application/pdf',
+        'doc' => 'application/msword',
+        'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'rtf' => 'application/rtf',
+        'txt' => 'application/txt',
+        'odt' => 'application/vnd.oasis.opendocument.text'
     ) , true))
     {
         throw new RuntimeException('Invalid file format.');
