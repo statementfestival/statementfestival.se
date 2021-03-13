@@ -17,6 +17,7 @@ const Textarea = ({
     <label className={styles.label}>
       <span className={styles.text}>{label}</span>
       <textarea
+        maxLength={500}
         rows="3"
         className={styles.textarea}
         type={type}
