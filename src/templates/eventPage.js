@@ -3,43 +3,18 @@ import { graphql } from 'gatsby'
 import nanoraf from 'nanoraf'
 import { withPreview } from 'gatsby-source-prismic'
 
-import { getScrollPosition, vh } from '../utils'
+import { useProgress } from '../hooks/useProgress'
 
 import Page from '../components/page'
-import PageSection from '../components/pageSection'
 import Head from '../components/head'
 import SliceRenderer from '../components/sliceRenderer'
 import EventPageParallax from '../components/parallax/event'
 
-// TODO: Add Select element
-
-const PAGE_WITH_VISIBLE_TITLE = ['biljetter', 'rekrytering']
-
 const EventPage = ({ data }) => {
-  const [progress, setProgress] = useState(0)
-
-  useLayoutEffect(() => {
-    /**
-     * Sets progress to a value between 0 and 1 depending on how far user
-     * has scrolled
-     */
-    const handleScroll = nanoraf(() => {
-      const total = window.document.documentElement.scrollHeight
-      const { y } = getScrollPosition({ useWindow: true })
-      const viewportHeight = vh()
-      setProgress(y / (total - viewportHeight))
-    })
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
+  const [progress] = useProgress()
 
   const doc = data.prismicEventpage
   if (!doc) return null
-
-  const renderTitleVisually = PAGE_WITH_VISIBLE_TITLE.some(
-    (item) => item === doc.uid
-  )
 
   let home, logo, footer
   if (doc.data.event_link && doc.data.event_link.document) {
@@ -57,13 +32,7 @@ const EventPage = ({ data }) => {
         image={doc.data.og_image ? doc.data.og_image.url : null}
       />
       <EventPageParallax progress={progress} />
-      {renderTitleVisually ? (
-        <PageSection>
-          <h1>{doc.data.title.text}</h1>
-        </PageSection>
-      ) : (
-        <h1 className="visuallyHidden">{doc.data.title.text}</h1>
-      )}
+      <h1 className="visuallyHidden">{doc.data.title.text}</h1>
       <SliceRenderer slices={doc.data.body} />
     </Page>
   )
@@ -156,6 +125,10 @@ export const query = graphql`
               image_link {
                 url
               }
+              image_description {
+                raw
+              }
+              image_title
             }
           }
           ... on PrismicEventpageBodyFaq {

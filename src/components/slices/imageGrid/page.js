@@ -14,28 +14,42 @@ const ImageGrid = ({ slice }) => {
       <div className={styles.images}>
         {slice.items.map((item, index) => {
           if (!item.image) return null
-          const external = item.image_link ? item.image_link.url : ''
+          const external = item.image_link?.url
 
           return (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
+            <div
               className={styles.imageContainer}
-              href={external}
-              key={`ImageGrid-${index}`}
+              key={`ImageGrid-wrapper-${index}`}
             >
-              <Img
-                alt={item.image.alt}
-                className={styles.image}
-                fluid={item.image.fluid}
-                url={item.image.url}
-              />
-            </a>
+              <ConditionalLink
+                condition={external}
+                wrapper={(children) => (
+                  <a target="_blank" rel="noopener noreferrer" href={external}>
+                    {children}
+                  </a>
+                )}
+              >
+                <Img
+                  key={`ImageGrid-image-${index}`}
+                  alt={item.image.alt}
+                  className={styles.image}
+                  fluid={item.image.fluid}
+                  url={item.image.url}
+                />
+              </ConditionalLink>
+              {item.image_title && <h3>{item.image_title}</h3>}
+              {item.image_description && (
+                <RichText render={item.image_description.raw} />
+              )}
+            </div>
           )
         })}
       </div>
     </div>
   )
 }
+
+const ConditionalLink = ({ condition, wrapper, children }) =>
+  condition ? wrapper(children) : children
 
 export default ImageGrid

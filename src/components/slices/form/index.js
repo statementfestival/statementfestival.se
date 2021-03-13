@@ -14,6 +14,7 @@ import Error from '../../error'
 import ticketData from './data/ticket.json'
 import recruitmentData from './data/recruitment.json'
 import eventData from './data/event.json'
+import merchkitData from './data/merchkit.json'
 
 import styles from './styles.module.css'
 
@@ -23,6 +24,7 @@ const Form = ({ slice }) => {
   if (slice.primary.form_type === 'Ticket') data = ticketData
   if (slice.primary.form_type === 'Recruitment') data = recruitmentData
   if (slice.primary.form_type === 'Event') data = eventData
+  if (slice.primary.form_type === 'Merchkit') data = merchkitData
 
   const [submitted, setSubmitted] = useState(false)
   const [failed, setFailed] = useState(false)
@@ -296,7 +298,7 @@ const Form = ({ slice }) => {
               }
             })}
             <div className={styles.button}>
-              <Button type="submit">Anmäl dig</Button>
+              <Button type="submit">Skicka</Button>
               {failed || invalid.length ? (
                 <div className={styles.error}>
                   <Error
