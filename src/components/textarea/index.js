@@ -7,7 +7,6 @@ const Textarea = ({
   type,
   id,
   name,
-  autoComplete,
   value,
   onChange,
   label,
