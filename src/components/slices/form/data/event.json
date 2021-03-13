@@ -24,7 +24,7 @@
     "name": "FNAME",
     "id": "mce-FNAME",
     "value": "",
-    "placeholder": "För- och efternamn",
+    "placeholder": "Minou Johansson",
     "required": false
   },
   {
@@ -48,14 +48,32 @@
     "required": false
   },
   {
-    "label": "Typ av organisation",
+    "label": "Namn på projekt",
+    "type": "text",
+    "name": "MMERGE9",
+    "id": "mce-MMERGE9",
+    "value": "",
+    "placeholder": "Projektnamn",
+    "required": true
+  },
+  {
+    "label": "Sökandes organisationsform",
     "type": "select",
     "name": "MMERGE2",
-    "id": "mc-MMERGE2",
+    "id": "mce-MMERGE2",
     "value": "",
     "placeholder": "Välj ett alternativ",
     "required": true,
-    "options": ["Företag", "Förening", "Privatperson(er)"]
+    "options": ["Företag", "Förening", "Privatperson(er)", "Annat"]
+  },
+  {
+    "label": "Organisations- eller personnummer",
+    "type": "text",
+    "name": "MMERGE10",
+    "id": "mce-MMERGE10",
+    "value": "",
+    "placeholder": "XXXXXX-XXXX",
+    "required": true
   },
   {
     "label": "Beskriv din idé i korthet (max 500 tecken)",
@@ -90,10 +108,10 @@
     "name": "MMERGE8",
     "id": "mce-MMERGE8",
     "required": true,
-    "accept": "image/png, image/jpeg"
+    "accept": ".pdf,.doc,.docx, odt,.rtf,.txt"
   },
   {
-    "label": "Jag har läst och accepterat de allmänna villkoren, samt accepterar att Föreningen Statement behandlar min angivna information under arbetet med 100 KEX.",
+    "label": "Jag har läst och accepterat de allmänna villkoren, samt accepterar att Föreningen Statement behandlar min angivna information under arbetet med 100KEX.",
     "type": "checkbox",
     "name": "gdpr[58300]",
     "id": "gdpr_58300",
