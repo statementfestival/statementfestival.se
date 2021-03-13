@@ -1,6 +1,5 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import nanoraf from 'nanoraf'
 import { withPreview } from 'gatsby-source-prismic'
 
 import { useProgress } from '../hooks/useProgress'
@@ -18,9 +17,10 @@ const EventPage = ({ data }) => {
 
   let home, logo, footer
   if (doc.data.event_link && doc.data.event_link.document) {
-    home = doc.data.event_link.document.url
-    logo = doc.data.event_link.document.data.logo
-    footer = doc.data.event_link.document.data
+    const { url, data } = doc.data.event_link.document
+    home = url
+    logo = data.logo
+    footer = data
   }
 
   return (
