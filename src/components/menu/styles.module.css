@@ -95,7 +95,6 @@
     text-align: center;
     width: 100%;
   }
-
   .container:target .link,
   .container.open .link,
   .container:target .button,
@@ -144,6 +143,14 @@
 
   .link:not(:last-of-type) {
     margin-right: 1.375rem;
+  }
+
+  .link {
+    transition: color 190ms ease;
+  }
+
+  .activeLink {
+    color: var(--primary);
   }
 }
 
