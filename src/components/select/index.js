@@ -24,7 +24,7 @@ const Select = ({
           id={id}
           name={name}
           value={value}
-          onBlur={onChange}
+          onChange={onChange}
         >
           <option disabled value="">
             {placeholder}
