@@ -1,0 +1,9 @@
+# Use this if you want to test file uploads locally.
+# In order for it to work, you must run `npm run build`.
+# Website can be accessed at localhost, port 5000.
+apache:
+  image: php:7.4-apache
+  volumes:
+    - ./public:/var/www/html/
+  ports:
+    - '5000:80'
