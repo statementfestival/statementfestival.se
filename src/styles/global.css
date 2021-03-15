@@ -263,6 +263,14 @@ h2 {
   text-align: center;
 }
 
+@media (--mobile-only) {
+  h1,
+  h2 {
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
 h3 {
   font-size: var(--font-size-headline-sub);
   line-height: 1.3;
