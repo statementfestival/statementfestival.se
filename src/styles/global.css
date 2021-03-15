@@ -26,6 +26,7 @@
   --font-size-headline: 3.75rem;
   --font-size-headline-sub: 1.7rem;
   --font-size-text: 1.2rem;
+  --font-size-description: 0.9rem;
   --font-size-button: 1.125rem;
   --container-desktop-width: 542px;
   --container-variant-desktop-width: 736px;
@@ -176,7 +177,8 @@ button {
 }
 
 input:not([type='checkbox']):not([type='radio']),
-textarea {
+textarea,
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -187,9 +189,26 @@ textarea {
 }
 
 textarea:focus,
+select:focus,
 input:not([type='checkbox']):not([type='radio']):focus {
   outline: none;
   border: 3px solid var(--secondary-variant);
+}
+
+select {
+  background: var(--white) url(../assets/chevron-down.svg) no-repeat center
+    right;
+  border-radius: 4px;
+}
+
+select:invalid {
+  color: grey;
+}
+
+@-moz-document url-prefix() {
+  select:invalid {
+    color: var(--black);
+  }
 }
 
 input[type='checkbox']:not([type='radio']) {
@@ -242,6 +261,14 @@ h2 {
   margin: 0em 0 0.3em;
   line-height: 1.1;
   text-align: center;
+}
+
+@media (--mobile-only) {
+  h1,
+  h2 {
+    word-wrap: break-word;
+    hyphens: auto;
+  }
 }
 
 h3 {

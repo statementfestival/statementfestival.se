@@ -153,6 +153,9 @@ const Menu = ({ links, customLogo, home = '/' }) => {
                   animationDelay: `${index * 25 + 50}ms`,
                   transform: `translateY(${index * -90}%)`
                 }}
+                activeClassName={
+                  item.appearance === 'link' ? styles.activeLink : null
+                }
                 className={objstr({
                   [styles.link]: item.appearance === 'link',
                   [styles.button]: item.appearance === 'button',

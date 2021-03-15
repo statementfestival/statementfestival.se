@@ -1,0 +1,121 @@
+[
+  {
+    "title": "Ingår du/ni i Statements målgrupp?",
+    "type": "radio",
+    "name": "MMERGE3",
+    "value": false,
+    "options": [
+      {
+        "id": "mce-MMERGE3-0",
+        "label": "Ja",
+        "value": "Ja"
+      },
+      {
+        "id": "mce-MMERGE3-1",
+        "label": "Nej",
+        "value": "Nej"
+      }
+    ],
+    "required": true
+  },
+  {
+    "label": "Kontaktperson",
+    "type": "text",
+    "name": "FNAME",
+    "id": "mce-FNAME",
+    "value": "",
+    "placeholder": "Minou Johansson",
+    "required": false
+  },
+  {
+    "label": "E-post",
+    "type": "email",
+    "name": "EMAIL",
+    "id": "mce-EMAIL",
+    "value": "",
+    "autoComplete": "email",
+    "placeholder": "Ex. minou.johansson@adress.se",
+    "required": true
+  },
+  {
+    "label": "Telefonnummer",
+    "type": "text",
+    "name": "PHONE",
+    "id": "mce-PHONE",
+    "value": "",
+    "autoComplete": "phone",
+    "placeholder": "Ex. 070-123 45 67",
+    "required": false
+  },
+  {
+    "label": "Namn på projekt",
+    "type": "text",
+    "name": "MMERGE9",
+    "id": "mce-MMERGE9",
+    "value": "",
+    "placeholder": "Projektnamn",
+    "required": true
+  },
+  {
+    "label": "Sökandes organisationsform",
+    "type": "select",
+    "name": "MMERGE2",
+    "id": "mce-MMERGE2",
+    "value": "",
+    "placeholder": "Välj ett alternativ",
+    "required": true,
+    "options": ["Företag", "Förening", "Privatperson(er)", "Annat"]
+  },
+  {
+    "label": "Organisations- eller personnummer",
+    "type": "text",
+    "name": "MMERGE10",
+    "id": "mce-MMERGE10",
+    "value": "",
+    "placeholder": "XXXXXX-XXXX",
+    "required": true
+  },
+  {
+    "label": "Beskriv din idé i korthet (max 500 tecken)",
+    "type": "textarea",
+    "name": "MMERGE5",
+    "id": "mce-MMERGE5",
+    "value": "",
+    "placeholder": "Idén handlar om att...",
+    "required": true
+  },
+  {
+    "label": "Vilket syfte har ditt projekt? Vad vill du uppnå?",
+    "type": "textarea",
+    "name": "MMERGE6",
+    "id": "mce-MMERGE6",
+    "value": "",
+    "placeholder": "Syftet med projektet är att...",
+    "required": true
+  },
+  {
+    "label": "Några andra tankar?",
+    "type": "textarea",
+    "name": "MMERGE7",
+    "id": "mce-MMERGE7",
+    "value": "",
+    "placeholder": "Jag tänker att...",
+    "required": false
+  },
+  {
+    "label": "Ladda upp projektplan med budget",
+    "type": "file",
+    "name": "MMERGE8",
+    "id": "mce-MMERGE8",
+    "required": true,
+    "accept": ".pdf,.doc,.docx, odt,.rtf,.txt"
+  },
+  {
+    "label": "Jag har läst och accepterar de allmänna villkoren, samt accepterar att Föreningen Statement behandlar min angivna information under arbetet med 100KEX.",
+    "type": "checkbox",
+    "name": "gdpr[58300]",
+    "id": "gdpr_58300",
+    "value": false,
+    "required": true
+  }
+]
